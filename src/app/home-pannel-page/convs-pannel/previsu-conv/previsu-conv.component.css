@@ -1,0 +1,55 @@
+p {
+  margin-left : 20px;
+  width:100%;
+}
+
+.informationsPreVisuGroup{
+  display: flex;
+  width:100%;
+  background-color:rgb(250, 138, 47);
+  color : #EEEEEE;
+  border : solid 1px black;
+}
+
+.informationsPreVisuGroup:hover{
+  background-color: #EEEEEE;
+  color : black;
+  cursor:pointer;
+}
+
+.informationsPreVisuSolo{
+  display: flex;
+  width:100%;
+  background-color: rgba(26,24,55,1);
+  color : #EEEEEE;
+  border : solid 1px black;
+}
+
+.informationsPreVisuSolo:hover{
+  background-color: #EEEEEE;
+  color : black;
+  cursor:pointer;
+}
+
+
+.nameDisplay{
+  border-right:1px dashed black;
+}
+.nbrMessageDisplay{
+  border-right:1px dashed black;
+}
+
+.numberPeopleDisplay{
+  display:flex;
+  border-right:1px dashed black;
+}
+
+img {
+  height :40px;
+  width : auto;
+  margin-left:0px;
+}
+
+.maxFreezeDisplay .maxStreakDisplay .currentStreakDisplay .nbrMessageDisplay .numberPeopleDisplay{
+  text-align: center;
+}

@@ -1,0 +1,88 @@
+<div class="table">
+  <div class="oneRow">
+    <div class="oneCard cardtop">
+     <h2>Information générale de la conversation</h2>
+      <div class="explication">
+        <div class="infoBox">
+          <img src="https://image.flaticon.com/icons/svg/265/265674.svg"/>
+          <p>Premier message</p>
+          <h5>{{firstToSpeak}}</h5>
+        </div>
+        <div class="infoBox">
+          <img src="https://image.flaticon.com/icons/svg/265/265667.svg"/>
+          <p>Participants</p>
+          <h5>{{nbParticipants}}</h5>
+        </div> 
+        <div class="infoBox">
+          <img src="https://image.flaticon.com/icons/svg/149/149063.svg"/>
+          <p>Nombre de messages</p>
+          <h5>{{nbMessages}}</h5>
+        </div>
+        <div class="infoBox">
+          <img src="https://image.flaticon.com/icons/svg/1356/1356271.svg"/>
+          <p>Date création</p>
+          <h5>{{dateCreationConv| date:'medium'}}</h5>
+        </div>
+      </div>
+
+    <div class="totalThreeCards">
+      <div class="threeCards freezeCard">
+        <div class="img"></div>
+        <div class="threeCardsSmiley">
+          <h1>{{freezeSmiley}}</h1>
+        </div>
+        <div class="threeCardsText">
+          <p>{{maxFreeze}}</p>
+        </div>
+      </div>
+      <div class="threeCards fireCard">
+        <div class="img"></div>
+        <div class="threeCardsSmiley">
+          <h1>{{currentStreakSmiley}}</h1>
+        </div>
+        <div class="threeCardsText">
+          <p>{{currentStreak}}</p>
+        </div>
+      </div>
+      <div class="threeCards streakCard">
+        <div class="img"></div>
+        <div class="threeCardsSmiley">
+          <h1>{{maxStreakSmiley}}</h1>
+        </div>
+        <div class="threeCardsText">
+          <p>{{maxStreak}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+  <div class="oneRow">
+    <div class="oneCard cardbotleft">
+      <div class="sideText">
+        <h2>Influence des participants</h2>
+        <img class = "imgHelp" (click)="help('Influencer')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpInfluencer">
+          <p style="font-size:50%;">Le graph indique le top 5 vous incluant des influenceurs de la conversation</p>
+          <h3 style="font-size:50%;">Les points d'influence sont calculés à partir de :</h3>
+          <p style="margin-left:10%; margin-bottom:0; margin-top:0; font-size:50%;">- Nombre de messages envoyés</p>
+          <p style="margin-left:10%; margin-bottom:0; margin-top:0; font-size:50%;">- Nombre de réactions reçues sur les messages</p>
+          <p style="margin-left:10%; margin-bottom:0; margin-top:0; font-size:50%;">- Nombre de caractères par message</p>
+          <p style="margin-left:10%; margin-bottom:0; margin-top:0; font-size:50%;">- Ratio réactions reçues / réactions envoyées</p>
+          <h4 style="font-size:50%;">Il se peut que les résultats ne soient pas proches de la réalité, le résultat n'est pas à prendre au serieux</h4>
+        </div>
+        <div *ngIf="influenceUserChart" class="card-body p-1 m-0" style="position: relative; height: 80%;">
+          <canvas class="statChart" #influenceUserGraph id="graphInfluencer">{{ influenceUserChart }}</canvas>
+        </div>
+      </div>
+    </div>
+    <div class="oneCard cardbotright">
+      <h2>Détails "Influence"</h2>
+      <div class="detail">
+        <p *ngFor="let labels of influenceUser['labels']; let i=index">
+        <b>{{labels}}</b> :{{influenceUser['data'][i]}} points</p>
+      </div>
+    </div>
+  </div>
+</div>

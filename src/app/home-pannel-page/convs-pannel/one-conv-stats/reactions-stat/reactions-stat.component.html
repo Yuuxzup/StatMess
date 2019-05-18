@@ -1,0 +1,61 @@
+<div class="table">
+  <div class="oneRow">
+    <div class="oneCard cardtopleft">
+      <div class="sideText">
+        <h2>Réactions de la conversation</h2>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('NbrReactionsConv')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpNbrReactionsConv">
+          <p>Indique le nombre ainsi que le type de réactions envoyées dans la conversation</p>       
+        </div>
+        <div *ngIf="nbReactionChart" class="card-body p-1 m-0" style="position: relative; height: 95% ;width:90%; padding-top:2%;" >
+        <canvas class="statChart" #nbReactionGraph id="graphNbrReactionsConv">{{ nbReactionChart }}</canvas>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="oneCard cardtopright">
+      <h2>Détail "Réactions de la conversation"</h2>
+      <div class="detail">
+        <p *ngFor="let labels of totalReactions['labels']; let i=index">
+        <b>{{labels}}</b> :{{totalReactions['data'][i]}} envoyée(s)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="oneRow">
+    <div class="oneCard cardbotleft">
+      <h2>Détail "Réactions des participants"</h2>
+      <div class="detail">
+        <p *ngFor="let labels of reactionDetail['labels']; let i=index">
+        <b>{{labels}}</b> :{{reactionDetail['data']['send'][i]}} envoyée(s) et {{reactionDetail['data']['receive'][i]}} reçue(s)
+        </p>
+      </div>    
+    </div>
+
+    <div class="oneCard cardbotright">
+      <div class="sideText">
+        <h2>Réactions des participants</h2>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('NbrReactionsPerso')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpNbrReactionsPerso">
+          <h3 style="font-size:45%;">La bar du bas indique le nombre de réactions reçues, celle du haut le nombre de réactions envoyées</h3>
+          <h3 style="font-size:45%; margin:auto; margin-bottom:0;">Si la conversation comporte plus de 5 personnes le graph affiche:</h3>
+          <p style="font-size:45%; margin:auto;">- Le top 3 des personnes ayant le plus envoyées ET reçues de réactions</p> 
+          <p style="font-size:45%; margin:auto">- La personne ayant reçue le plus de réactions</p>
+          <p style="font-size:45%; margin:auto">- La personne ayant envoyée le plus de réactions</p>
+          <p style="font-size:45%; margin:auto">- Vous en <b style="color:#FA8A2F">orange</b></p>
+          <p style="font-size:45%; margin:auto">- La moyenne de la conversation en <b style="color:#32CD32">vert</b></p>         
+        </div>
+        <div *ngIf="nbReactionPerUserChart" class="card-body p-1 m-0" style="position: relative; height: 95% ;width:90%; padding-top:2%;">
+        <canvas class="statChart" #nbReactionPerUserGraph id="graphNbrReactionsPerso">{{ nbReactionPerUserChart }}</canvas>
+        </div>
+      </div> 
+    </div>
+  </div>
+
+

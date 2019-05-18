@@ -1,0 +1,82 @@
+<div class="pannelSelector">
+  <div class="pannelWithIndic">
+    <div class="onePannelInSelector" (click)="switchPannel('home')">
+      <img src="https://requestreduce.org/images/logo-house-clipart-16.png">
+      <p>Home</p>
+    </div>
+    <div class="indicatorPannel {{isHome}}"></div>
+  </div>
+  <div class="pannelWithIndic">
+    <div class="onePannelInSelector" (click)="switchPannel('ownStats')">
+      <img src="https://image.flaticon.com/icons/png/512/57/57058.png">
+      <p>Mes stats</p>
+    </div>
+    <div class="indicatorPannel {{isMyStats}}"></div>
+  </div>
+   <div class="pannelWithIndic">
+    <div class="onePannelInSelector" (click)="switchPannel('statsConv')">
+      <img src="https://login.thedemandengine.net/Images/ShopWebsite/Message.png">
+      <p>Mes conversations</p>
+    </div>
+    <div class="indicatorPannel {{isMyConvs}}"></div>
+  </div>
+  <div class="pannelWithIndic">
+    <div class="onePannelInSelector" (click)="switchPannel('profil')">
+      <img src="https://images-eu.ssl-images-amazon.com/images/I/41J0uBGSfjL.png">
+      <p>Mon profil</p>
+    </div>
+    <div class="indicatorPannel {{isMyProfil}}"></div>
+  </div>
+</div>
+
+<div *ngIf="isHome && !isLoading">
+  <h1>Tableau de bord</h1>
+
+  <div class="tPannel">
+    <figure class="snip1477" (click)="switchPannel('ownStats')">
+      <img src="https://image.flaticon.com/icons/svg/417/417751.svg" />
+    <div class="title">
+      <div>
+        <h4>Stats globales</h4>
+      </div>
+    </div>
+    <figcaption>
+      <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+    </figcaption>
+    <a href="#"></a>
+    </figure>
+
+    <figure class="snip1477" (click)="switchPannel('statsConv')">
+      <img src="https://image.flaticon.com/icons/svg/1000/1000384.svg" />
+    <div class="title">
+      <div>
+        <h4>Conversations</h4>
+      </div>
+    </div>
+    <figcaption>
+      <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+    </figcaption>
+    <a href="#"></a>
+    </figure>
+
+    <figure class="snip1477" (click)="switchPannel('profil')">
+      <img src="https://image.flaticon.com/icons/svg/1283/1283201.svg" />
+    <div class="title">
+      <div>
+        <h4>Profil</h4>
+      </div>
+    </div>
+    <figcaption>
+      <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+    </figcaption>
+    <a href="#"></a>
+    </figure>
+  </div>
+</div>
+
+
+<div class="mainPannel">
+  <app-own-stats-pannel [listFilesDico]="listFilesDico" *ngIf="isMyStats"></app-own-stats-pannel>
+  <app-convs-pannel [listFilesDico]="listFilesDico" *ngIf="isMyConvs"></app-convs-pannel>
+  <app-profil-pannel [listFilesDico]="listFilesDico" *ngIf="isMyProfil"></app-profil-pannel>
+</div>

@@ -1,0 +1,66 @@
+<div class="table">
+  <div class="oneRow">
+    <div class="oneCard cardmain">
+      <div class="sideText">
+        <h2>Répartition des messages par tranche horaire</h2>
+        <img class = "imgHelp" style="margin-top:0.5%" (click)="help('NbrMessagePerTime')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpNbrMessagePerTime">
+          <p>La courbe <b style="color:#FA8A2F">orange</b> indique votre pourcentage de messages envoyés par tranche horaire</p>
+          <p>Les bars <b style="color:#1A1837">bleu foncé</b> indiquent le pourcentage de messages envoyés de la conversation par tranche horaire</p>    
+        </div>
+        <div *ngIf="hoursToSendChart" class="card-body p-1 m-0" style="position: relative; height: 95%; padding-top:2%;padding-bottom:3%;">
+        <canvas class="statChart" #hoursToSendGraph id="graphNbrMessagePerTime">{{ hoursToSendChart }}</canvas>
+        </div>
+      </div>     
+    </div>
+  </div>
+
+  <div class="oneRow">
+    <div class="oneCard cardleft">
+      <div class="sideText">
+        <h2>Somme des messages en fonction du temps</h2>
+        <img class = "imgHelp" style="margin-top:0.7%" (click)="help('SumMessage')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpSumMessage">
+          <p style="font-size:45%;">Indique la somme des messages envoyés des participants de la conversation en fonction du temps</p>
+            <h3 style="font-size:45%; margin:auto; margin-bottom:0;">Si la conversation comporte plus de 5 personnes le graph affiche:</h3>
+            <p style="font-size:45%; margin:auto;">- Le top 5 des personnes écrivant le plus de caractères par messages</p> 
+            <p style="font-size:45%; margin:auto">- Vous en <b style="color:#FA8A2F">orange</b></p>
+            <p style="font-size:45%; margin:auto">- La moyenne de la conversation en <b style="color:#32CD32">vert</b></p> 
+            <h3 style="font-size:45%; margin-top:2%; margin-bottom:0">Le temps est affiché selon la date de votre premier message</h3>
+            <p style="margin-top:1%; font-size:45%;margin-top:0;margin-bottom:0;">- Soit par jour</p>
+            <p style="font-size:45%;margin-top:0;margin-bottom:0;">- Soit par mois : Sept 12 signifie Septembre 2012</p>
+            <p style="font-size:45%;margin-top:0;margin-bottom:0;">- Soit par année</p>
+                
+        </div>
+        <div *ngIf="sumMessageChart" class="card-body p-1 m-0" style="position: relative; height: 100%; padding-top:1vh;padding-bottom:3%;">
+        <canvas class="statChart" #sumMessageGraph id="graphSumMessage">{{ sumMessageChart }}</canvas>
+        </div>
+      </div> 
+    </div>
+
+    <div class="oneCard cardright">
+      <div class="sideText">
+        <h2>Temps de réponse moyen</h2>
+        <img style="margin-top:0.7%" class = "imgHelp" (click)="help('AverageTimeToAnswer')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpAverageTimeToAnswer">
+          <p style="font-size:45%;">Indique le temps de réponse moyen des participants de manière approximée</p>
+          <h3 style="font-size:45%; margin:auto; margin-bottom:0;">Si la conversation comporte plus de 5 personnes le graph affiche:</h3>
+          <p style="font-size:45%; margin:auto;">- Le top 3 des personnes répondant le plus vite</p> 
+          <p style="font-size:45%; margin:auto">- La personne répondant le plus lentement</p>
+          <p style="font-size:45%; margin:auto">- Vous en <b style="color:#FA8A2F">orange</b></p>
+          <p style="font-size:45%; margin:auto">- La moyenne de la conversation en <b style="color:#32CD32">vert</b></p>       
+        </div>
+        <div *ngIf="averageTimeToAnswerChart" class="card-body p-1 m-0" style="position: relative; height: 100%; padding-top:2%;">
+        <canvas class="statChart" #averageTimeToAnswerGraph id="graphAverageTimeToAnswer">{{ averageTimeToAnswerChart }}</canvas>
+      </div>
+      </div>      
+    </div>
+  </div>
+</div>
+

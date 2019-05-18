@@ -1,0 +1,126 @@
+<div class="table">
+  <div class="oneRow">
+    <div class="oneCard cardtopleft">
+      <div class="sideText">
+        <h2>Nombre de questions</h2>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('Question')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpQuestion">
+          <p>Vous voulez de l'aide pour lire ?</p>       
+        </div>
+        <div id="graphQuestion" style="height:75%; padding-top:0.5%;">
+        <img style="height:20%;" src="https://image.flaticon.com/icons/svg/189/189665.svg"/>
+        <p> {{nbreQuestionToPrintSum}} </p>
+        <p> {{nbreQuestionToPrintAverage}} </p>
+        <p> {{nbreQuestionsToPrintMax}} </p>
+        <p> {{nbreQuestionsToPrintUser}} </p>
+        <img style="height:20%;" src="https://image.flaticon.com/icons/svg/189/189665.svg"/>
+      </div>
+      </div>  
+    </div>
+
+    <div class="oneCard cardtopright">
+      <div class="sideText">
+        <h2>Nombre de caractères</h2>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('Book')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpBook">
+          <p style="font-size:55%; margin:auto; margin-top:1.5%;">Le livre équivalent de la conversation est celui le plus proche du nombre de caractère de votre conversation avec les livres stockés dans notre base de donnée</p>
+          <p style="font-size:55%; margin:auto; margin-top:3%;">Par exemple: si votre livre est "Le tome 1 du Seigneur des Anneaux", cela veut dire que vous avez écrit l'équivalent de ce livre dans votre conversation en terme de nombre de mots</p>
+        </div>
+        <div id="graphBook" class="explication">
+          <div class="infoBox">
+            <img src="https://image.flaticon.com/icons/svg/327/327006.svg"/>
+            <p>Caractères</p>
+            <h5>{{bookStat['sumCaracteres']}}</h5>
+          </div>
+          <div class="infoBox">
+            <img src="https://image.flaticon.com/icons/svg/1320/1320430.svg"/>
+            <p>Pages/participant</p>
+            <h5>{{bookStat['averagePagesPerUser']}}</h5>
+          </div>
+          <div class="infoBox">
+            <img src="https://image.flaticon.com/icons/svg/977/977488.svg"/>
+            <p>Vitesse</p>
+            <h5>{{wordPerTimeToPrint}}</h5>
+          </div>
+      </div>
+      <hr style="margin-top:7%;" class="overview">
+      <div class="explication" id="book">
+        <div class="infoBox" id="infoBoxBook">
+          <img src="https://image.flaticon.com/icons/svg/167/167756.svg"/>
+          <p>Livre équivalent de la conversation</p>
+        </div>
+        <h5>{{bookStat['book']}}</h5>
+      </div>
+      </div>
+  </div> 
+      
+      
+    
+</div>
+  <div class="oneRow">
+    <div class="oneCard cardbotright">
+      <div class="sideText">
+        <h2>Distance</h2>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('DistanceH')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpDistanceH">
+          <p>La distance est considéré en prenant la taille des caractères de Facebook</p>       
+        </div>
+        <div id="graphDistanceH" style="height:75%; padding-top:0.5%;">
+        <div class="explication" id="distance">
+          <div class="infoBox">
+            <img src="https://image.flaticon.com/icons/svg/1244/1244506.svg"/>
+            <p>Distance parcourue</p>
+            <h5>{{distanceStat['distanceTotal']}}</h5>
+          </div>
+          <div class="infoBox">
+            <img src="https://image.flaticon.com/icons/svg/977/977488.svg"/>
+            <p>Vitesse</p>
+            <h5>{{distancePerTimetoPrint}}</h5>
+          </div>
+      </div>
+      </div>
+      </div> 
+    </div>
+
+    <div class="oneCard cardbotleft">
+      <div class="sideText">
+        <h2>Temps associés à la conversation</h2>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('TimeHelp')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpTimeHelp">
+          <p>Ce sont les temps qu'une personne moyenne mettrait à :</p>
+          <p style="margin-top:1%; font-size:55%;margin-top:0;margin-bottom:0;">- Lire la conversation à voix haute sans s'arrêter</p>
+          <p style="font-size:55%;margin-top:0;margin-bottom:0;">- Écrire la conversation sur ordinateur sans s'arrêter</p>
+          <p style="font-size:55%;margin-top:0;margin-bottom:0;">- Écrire la conversation à la main sans s'arrêter</p>     
+        </div>
+        <div id="graphTimeHelp" style="height:75%; padding-top:0.5%;">
+        <div class="explication">
+        <div class="infoTime">
+          <img src="https://image.flaticon.com/icons/svg/201/201608.svg"/>
+          <hr class="overview">
+          <p>Lire la conversation </p><h5>{{timeSpentTotal['read']}}</h5>
+        </div>
+        <div class="infoTime">
+          <img src="https://image.flaticon.com/icons/svg/201/201580.svg"/>
+          <hr class="overview">
+          <p>Écrire la conversation sur ordinateur </p><h5>{{timeSpentTotal['computer']}}</h5>
+        </div>
+        <div class="infoTime">
+          <img src="https://image.flaticon.com/icons/svg/1391/1391017.svg"/>
+          <hr class="overview">
+          <p>Écrire la conversation à la main </p><h5>{{timeSpentTotal['hand']}}</h5>
+        </div>
+      </div>
+      </div>
+      </div>  
+      
+    </div>
+  </div>
+</div>

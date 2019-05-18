@@ -1,0 +1,57 @@
+<div class="table">
+  <div class="oneRow">
+    <div class="oneCard cardtopleft">
+
+      <div class="sideText">
+        <h2>Répartition des messages par participants</h2>
+        <img class = "imgHelp" style="margin-top:0.6%;" (click)="help('NbrMessagePerUser')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpNbrMessagePerUser">
+          <p style="font-size:80%; margin:auto; margin-top:5%">Passez la souris sur le graph pour afficher le nombre de messages envoyés par l'individu</p>
+          <p style="font-size:80%; margin:auto">Vous êtes affiché en <b style="color:#FA8A2F">orange</b></p>       
+        </div>
+        <div *ngIf="nbMessagePerUserChart" class="card-body p-1 m-0" style="position: relative; height: 90%; padding-top:2%;">
+        <canvas class="statChart"  #nbMessagePerUserGraph id="graphNbrMessagePerUser">{{ nbMessagePerUserChart }}</canvas>
+        </div>
+      </div> 
+    </div>
+    <div class="oneCard cardtopright">
+      <h2>Détails "Répartition des messages par participants"</h2>
+      <div class="detail">
+        <p *ngFor="let labels of nbMessagePerUser['labels']; let i=index">
+        <b>{{labels}}</b> :{{nbMessagePerUser['data'][i]}} messages
+        </p>
+      </div>
+</div> 
+    
+  </div>
+  <div class="oneRow">
+    <div class="oneCard cardbotleft">
+      <div class="sideText">
+        <h2>Moyenne de caractères par message</h2>
+        <img class = "imgHelp" style="margin-top:0.6%;" (click)="help('CaracterPerMessage')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>
+      <div class="sideImg">
+        <div class="helpText" id="helpCaracterPerMessage">
+          <p style="font-size:50%; margin:auto; margin-top:5%">Si la conversation comporte plus de 5 personnes le graph affiche:</p>
+          <p style="font-size:50%; margin:auto; margin-top:5%">- Le top 3 des personnes écrivant le plus de caractères par messages</p>
+          <p style="font-size:50%; margin:auto">- Le top 3 des personnes écrivant le moins de caractères par messages</p>   
+          <p style="font-size:50%; margin:auto">- Vous en <b style="color:#FA8A2F">orange</b></p>
+          <p style="font-size:50%; margin:auto">- La moyenne de la conversation en <b style="color:#32CD32">vert</b></p>     
+        </div>
+        <div *ngIf="averageMessagePerUserChart" class="card-body p-1 m-0" style="position: relative; height:90%;width:90%; padding-top:2%;">
+        <canvas class="statChart" #averageMessagePerUserGraph id="graphCaracterPerMessage">{{ averageMessagePerUserChart }}</canvas>
+        </div>
+      </div> 
+    </div>
+    <div class="oneCard cardbotright">
+      <h2>Détails "Moyenne de caractères par message"</h2>
+      <div class="detail">
+        <p *ngFor="let labels of averageMessagePerUserHtml['labels']; let i=index">
+        <b>{{labels}}</b> :{{averageMessagePerUserHtml['data'][i]}} caractères/message
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

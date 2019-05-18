@@ -1,0 +1,539 @@
+.oneConv {
+  display :flex;
+  height: 10%;
+  width : 100%;
+  margin-top: 3px;
+}
+
+
+
+
+.goBack {
+  height:5%;
+  width:10%;
+  font-size:100%;
+
+}
+
+.mainStats {
+  width:100%;
+  margin-top : 1%;
+  margin-right : auto;
+  margin-left : auto;
+}
+
+
+p{
+  margin-bottom: 0px;
+}
+
+input{
+  margin-bottom : 10px;
+}
+
+.sortBar{
+  display:flex;
+}
+app-previsu-conv{
+  width:100%;
+}
+
+.listFilter{
+  display:flex;
+  justify-content: space-around;
+  margin-top: 4%;
+  margin-bottom: 1%;
+  padding-right: 7%;
+  padding-left: 2%;
+}
+
+
+
+.recapStats p{
+  margin-top:0px;
+  margin-bottom : 0px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.navigateur {
+  width:90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.page{
+  background-color:  #EEEEEE;
+  color: rgb(51, 51, 51);
+  min-height:97vh;
+}
+
+hr.overview{
+  display:block;
+  border:none;
+  height:1px;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  width : 40%;
+  margin : 2%;
+  margin-left: auto;
+	margin-right: auto;
+}
+
+//Animation bouton checkbox
+
+// Bouton checkbox conv groupe
+#inputGroup1 {
+    display: block;
+    margin: 10px 0;
+    position: relative;
+
+    label {
+      padding: 12px 30px;
+      width: 100%;
+      display: block;
+      text-align: left;
+      color: #3C454C;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 200ms ease-in;
+      overflow: hidden;
+
+      &:before {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        content: '';
+        background-color: rgb(250, 138, 47);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale3d(1, 1, 1);
+        transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 0;
+        z-index: -1;
+      }
+
+      &:after {
+        width: 32px;
+        height: 32px;
+        content: '';
+        border: 2px solid #D1D7DC;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+        background-repeat: no-repeat;
+        background-position: 2px 3px;
+        border-radius: 50%;
+        z-index: 2;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: all 200ms ease-in;
+      }
+    }
+
+    input:checked ~ label {
+      color: #fff;
+
+      &:before {
+        transform: translate(-50%, -50%) scale3d(56, 56, 1);
+        opacity: 1;
+      }
+
+      &:after {
+        background-color: #54E0C7;
+        border-color: #54E0C7;
+      }
+    }
+
+    input {
+      width: 32px;
+      height: 32px;
+      order: 1;
+      z-index: 2;
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      visibility: hidden;
+    }
+  }
+
+
+// codepen formatting
+.form {
+  padding: 0 16px;
+  max-width: 550px;
+  margin: 50px auto;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+body {
+  background-color: #D1D7DC;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+code {
+  background-color: #9AA3AC;
+  padding: 0 8px;
+}
+
+//checkbox conv soolo
+
+#inputGroup2 {
+    display: block;
+    margin: 10px 0;
+    position: relative;
+
+    label {
+      padding: 12px 30px;
+      width: 100%;
+      display: block;
+      text-align: left;
+      color: #3C454C;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 200ms ease-in;
+      overflow: hidden;
+
+      &:before {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        content: '';
+        background-color: #1A1837;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale3d(1, 1, 1);
+        transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 0;
+        z-index: -1;
+      }
+
+      &:after {
+        width: 32px;
+        height: 32px;
+        content: '';
+        border: 2px solid #D1D7DC;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+        background-repeat: no-repeat;
+        background-position: 2px 3px;
+        border-radius: 50%;
+        z-index: 2;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: all 200ms ease-in;
+      }
+    }
+
+    input:checked ~ label {
+      color: #fff;
+
+      &:before {
+        transform: translate(-50%, -50%) scale3d(56, 56, 1);
+        opacity: 1;
+      }
+
+      &:after {
+        background-color: #54E0C7;
+        border-color: #54E0C7;
+      }
+    }
+
+    input {
+      width: 32px;
+      height: 32px;
+      order: 1;
+      z-index: 2;
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      visibility: hidden;
+    }
+  }
+
+
+// codepen formatting
+.form {
+  padding: 0 16px;
+  max-width: 550px;
+  margin: 50px auto;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+body {
+  background-color: #D1D7DC;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+code {
+  background-color: #9AA3AC;
+  padding: 0 8px;
+}
+
+// Animation search bar 
+
+
+
+/* Base styling */
+
+body {
+    width: 430px;
+    margin: 0 auto;
+    background-color: #F7CAC9;
+    font-family: 'Raleway', sans-serif;
+}
+
+.search {
+
+    &__container{
+      width:40%;
+      margin-top: 0.8%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    &__title {
+        font-size: 22px;
+        font-weight: 900;
+        text-align: center;
+        color: #ff8b88;
+    }
+    
+    &__input {
+        width: 100%;
+        padding: 12px 24px;
+
+        background-color: transparent;
+        transition: transform 250ms ease-in-out;
+        font-size: 14px;
+        line-height: 18px;
+        
+        color: #575756;
+        background-color: transparent;
+/*         background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg); */
+ 
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 95% center;
+        border-radius: 50px;
+        border: 1px solid #575756;
+        transition: all 250ms ease-in-out;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        
+        &::placeholder {
+            color: color(#575756 a(0.8));
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        &:hover,
+        &:focus {
+            padding: 12px 0;
+            outline: 0;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #575756;
+            border-radius: 0;
+            background-position: 100% center;
+        }
+    }
+}
+
+.credits {
+    &__container {
+        margin-top: 24px;
+    }
+    
+    &__text {
+        text-align: center;
+        font-size: 13px;
+        line-height: 18px;
+    }
+    
+    &__link {
+        color: #ff8b88;
+        text-decoration: none;
+        transition: color 250ms ease-in;
+        
+        &:hover,
+        &:focus {
+            color: color(#ff8b88 blackness(+25%));
+        }
+    }
+}
+
+.buttonBack{
+  background-color: white;
+  width: 100px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #1A1837;
+}
+
+.buttonBack:hover .Icon span{
+  background:#FA8A2F;
+}
+
+.Icon {
+  width: 50px;
+  height: 50px;
+  margin-right:auto;
+  margin-left:auto;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.Icon span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 23px;
+  height: 8px;
+  width: 100%;
+  background: #1A1837;
+  border-radius: 4px;
+  transform: rotate(0deg);
+  transition: .2s ease-in-out;
+}
+
+.Icon span:nth-child(1),
+.Icon span:nth-child(3) {
+  width: 50%;
+  transform: rotate(45deg);
+}
+
+.Icon span:nth-child(1) {
+  left: 3px;
+  top: 15px;
+}
+
+.Icon span:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+.Icon span:nth-child(3) {
+  left: 20px;
+  top: 31px;
+}
+
+.Icon.open span:nth-child(1),
+.Icon.open span:nth-child(3) {
+    left: -1px;
+}
+
+.Icon.open span:nth-child(1) {
+  top: 15px;
+  transform: rotate(135deg);
+}
+
+.Icon.open span:nth-child(2) {
+  transform: rotate(0deg);
+}
+
+.Icon.open span:nth-child(3) {
+  top: 31px;
+  transform: rotate(45deg);
+}
+
+// Button Back 
+
+$ease: cubic-bezier(.2,1,.3,1);
+  
+.wrapper {
+  position: absolute;
+  margin-left:5%;
+  transform: translate(-50%, -50%);
+  margin-top:2.2%;
+  
+  svg {
+    width: 100px;
+    height: 9vh;
+    margin: 0 2rem;
+    cursor: pointer;
+    overflow: visible;
+    polygon, path {
+      transition: all 0.5s $ease;
+      fill : #1A1837;
+    }
+    &:hover polygon, &:hover path {
+      transition: all 1s $ease;
+      fill: rgb(250, 138, 47);
+    }
+      
+    &:hover .arrow {
+      animation: arrow-anim 2.5s $ease infinite;
+    }
+    &:hover .arrow-fixed {
+      animation: arrow-fixed-anim 2.5s $ease infinite;
+    }
+  }
+}
+
+@keyframes arrow-anim {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	5% {
+		transform: translateX(-0.1rem);
+	}
+	100% {
+		transform: translateX(1rem);
+		opacity: 0;
+	}
+}
+
+@keyframes arrow-fixed-anim {
+	5% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 0.4;
+	}
+	100% {
+		opacity: 1;
+	}
+}

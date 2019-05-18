@@ -1,0 +1,854 @@
+p {
+  display: block;
+  margin-block-start: 0px;
+  margin-block-end:0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.table{
+  height: 70vh;
+}
+
+.oneRow{
+  display : flex;
+  height:50%;
+  width:100%;
+}
+
+.oneCard{
+  width : 50%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.totalThreeCards{
+  display:flex;
+  justify-content: center;
+}
+
+.threeCards {
+  width:15vw;
+  padding-bottom: 1vh;
+  padding-top: auto;
+  align-content: center;
+  text-align: center;
+  box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 0.1px solid;
+  background-color:#EEEEEE;
+  color : black;
+  margin-left : 2%;
+  margin-right : 2%;
+  margin-top:1%;
+  margin-bottom :1%;
+  position: relative;
+  z-index: 5;
+}
+
+.threeCardsSmiley{
+  height: 50%;
+  width : 100%;
+  font-size : 100px;
+}
+
+.threeCardsText{
+  height : 50%;
+  width : 100%;
+}
+
+
+
+
+.card1 {
+  background-color : #323B4D;
+}
+.card2 {
+  background-color : #323B52;
+}
+.card3 {
+  background-color : #323B52;
+}
+.card4 {
+  background-color : #323B4D;
+}
+
+h2 {
+  font-size: 20px;;
+}
+
+.galaxy{
+  height:50vh;
+  background-color:rgb(255, 255, 255);
+  box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.oneCard {
+  display:flex;
+  width : 65%;
+  height : 70vh;
+  margin-left : auto;
+  margin-right : auto;
+  margin-top:5vh;
+  border-radius: 1px;
+  overflow: hidden; /*Pour masquer les border radius et background*/
+  box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 0.1px solid;
+  border-color : black;
+  align-content: center;
+  flex-direction : column;
+}
+
+.kpiOverview {
+  width : 100%;
+  margin-left : auto;
+  margin-right : auto;
+  margin-top:3vh;
+  box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding-bottom: 3vh;
+  background-color:rgb(255, 255, 255);
+}
+
+
+.sideText {
+  background-color:#1A1837;
+  color: white;
+  height : 10%;
+  width : 100%;
+  text-align : center;
+  margin : auto;
+  text-justify : center;
+  font-size : 30px;   
+  position : relative;
+}
+
+.sideText p{
+  margin-top:1vh;
+}
+
+.sideImg {
+  background-color:rgb(255, 255, 255);
+  color: black;
+  height : 90%;
+  position : bottom;
+  width : 100%;
+  
+  
+}
+
+.graph {
+  position: relative; 
+  height: 100% ; 
+  width : 100%;
+  
+
+}
+
+.title b {
+  color:#D5D22E;
+}
+
+.overviewCard h1{
+  text-align : center;
+  font-size: 2.5em;
+  color : #EEEEEE;
+}
+
+.rowOverviewPair {
+  //padding-bottom:3vh;
+  display:flex;
+  justify-content:space-between;
+  padding-left : 5%;
+  padding-right : 5%;
+  align-content : center;
+  margin-left : 3%;
+  margin-top : 3%;
+  margin-right : 3%;
+  margin-bottom:0%;
+}
+
+.rowOverviewOdd {
+  display:flex;
+  justify-content:space-between;
+  align-content : center;
+  margin-left : 17.4%;
+  //margin-top : 1%;
+  margin-right : 17.4%;
+  margin-bottom:0%;
+}
+
+.borderModuleTop{
+  width : 15vw;
+  height : 15vw;
+  border-radius:1000px;
+  background: linear-gradient(to bottom, rgb(250, 138, 47) 80%, #1A1837);
+}
+.borderModuleMiddle{
+  width : 15vw;
+  height : 15vw;
+  border-radius:1000px;
+  background: linear-gradient(to right, #1A1837 80%, #1A1837);
+}
+.borderModuleBottom{
+  width : 15vw;
+  height : 15vw;
+  border-radius:1000px;
+  background: linear-gradient(to top, rgb(250, 138, 47) 80%, #1A1837);
+}
+
+
+.boxOverview {
+  width : 14vw;
+  height : 14vw;
+  background-color:rgb(255, 255, 255);
+  align-content : center;
+  border-radius:1000px;
+  margin:auto;
+  margin-top:0.5vw
+}
+
+.sideImgBoxOverview{
+  width : 100%;
+  margin : auto;
+  padding-top : 2%;
+}
+
+img {
+  height : 75%;
+  width: 50%; 
+  margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.sideTextBoxOverview{ 
+  width:100%;
+  text-align : center;
+  align-content : center;
+  margin : auto;
+}
+
+.numberBox{
+  color : rgba(40, 37, 88, 0.815);
+  height:3vw;
+  font-weight : bold;
+  font-size : 1.5em;
+  text-align : center;
+}
+
+.descriptionBox{
+  text-align : center;
+  height:7vw;
+  font-size : 1em;
+}
+
+hr.overview{
+  display:block;
+  border:none;
+  height:1px;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  width : 30%;
+  margin : 2%;
+  margin-left: auto;
+	margin-right: auto;
+}
+
+hr.messageTitle{
+  display:block;
+  border:none;
+  height:1px;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(rgba(40, 37, 88, 0.815)) ,to(#EEEEEE));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(rgba(40, 37, 88, 0.815)) ,to(#EEEEEE));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(rgba(40, 37, 88, 0.815)) ,to(#EEEEEE));
+  width : 100%;
+  margin-left: auto;
+	margin-right: auto;
+  margin-bottom:0;
+}
+
+
+hr.messageTitleBottom{
+  display:block;
+  border:none;
+  height:1px;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(rgba(40, 37, 88, 0.815)) ,to(#EEEEEE));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(rgba(40, 37, 88, 0.815)) ,to(#EEEEEE));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(rgba(40, 37, 88, 0.815)) ,to(#EEEEEE));
+  width : 100%;
+  margin-top:8px;
+  margin-left: auto;
+	margin-right: auto;
+}
+
+.subTitleOverview{
+  text-align : center;
+  font-size : 1.8em;
+}
+
+.descriptionChart{
+  margin-top : 1%;
+  font-size : 1em;
+  color : #EEEEEE;
+  text-align : center;
+  font-style :italic;
+}
+
+.rowOverviewChart {
+  height : 18vh;
+  display:flex;
+  justify-content:space-between;
+  align-content : center;
+  margin-left : 8%;
+  margin-top : 2%;
+  margin-right : 8%;
+  margin-bottom:0%;
+}
+.boxOverviewChart {
+  width : 18vh;
+  height : 100%;
+  background-color:#EEEEEE;
+  align-content : center;
+  padding : auto;
+}
+
+.boxOverviewChart:hover{
+  cursor: pointer;
+  background-color : #1A1837;
+  color : #EEEEEE;
+  transform: scale(1.2);
+}
+
+.icon {
+  width:5vw;
+  height:5vw;
+}
+
+.imgHelp {
+  width : auto;
+  height: 5vh;
+  position : absolute;
+  right: 0;
+  top: 0;
+  margin-top : 5px;
+  margin-right : 10px;
+  cursor : pointer;
+}
+
+.helpText {
+  width : 63vw;
+  height : 63vh;
+  position : absolute;
+  background-color: rgba(0,0,0,0.5);
+  color : #D5D22E ;
+  font-size : 5vh;
+  z-index : -1;
+}
+
+.helpTextHalf {
+  width : 38.8vw;
+  height : 63vh;
+  position : absolute;
+  background-color: rgba(0,0,0,0.5);
+  color : #D5D22E ;
+  font-size : 5vh;
+  z-index : -1;
+}
+
+
+.twoCards {
+  display:flex;
+  width : 40%;
+  height : 70vh;
+  margin-left : auto;
+  margin-right : auto;
+  margin-top:5vh;
+  border-radius: 1px;
+  overflow: hidden; /*Pour masquer les border radius et background*/
+  box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 0.1px solid;
+  border-color : black;
+  align-content: center;
+  flex-direction : column;
+}
+
+.totalTwoCards {
+  display:flex;
+  justify-content: center;
+}
+
+.freezeCard .img{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(https://i.f1g.fr/media/figaro/orig/2019/01/22/XVM7c94a5d8-1e71-11e9-a628-f5feed317e99.jpg) center center;
+  opacity: .4;
+  width: 100%;
+  height: 100%;
+}
+
+.fireCard .img{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(https://66.media.tumblr.com/d3f3f6ec5459140e1c6f99b6cd22fa93/tumblr_og6xw27BVe1vr11fyo1_400.jpg) center center;
+  opacity: .4;
+  width: 100%;
+  height: 100%;
+}
+
+.streakCard .img{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(https://i.pinimg.com/originals/b5/64/dd/b564ddcc3c8886c9479b4f1275677781.jpg) center center;
+  opacity: .4;
+  width: 100%;
+  height: 100%;
+}
+
+h2 {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.messageCard{
+  width:60%;
+  background-color:rgb(255, 255, 255);
+  box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-right: auto;
+  margin-left:auto;
+}
+
+.sideInfoMessageBox{
+  width : 100%;
+  background-color : rgb(255, 255, 255);
+  height : 16vh;
+  padding-bottom : 20px;
+}
+
+.sideButtonMessageBox{
+  width : 20%;
+  height: 10vh;
+  display : inline-block;
+  margin-top:5%;
+}
+
+.sideTexteMessageBox{
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.messageBox{
+  text-align: center;
+}
+
+.sideInfoBox{
+  height :80%;
+}
+
+#destinataire{
+  width : 30%;
+  float : left;
+  height : 80%;
+}
+
+#date{
+  width : 40%;
+  height: 80%;
+  display : inline-block;
+  margin:0 auto;
+}
+
+#length{
+  width : 30%;
+  height: 80%;
+  float : right;
+  text-align: center;
+}
+
+
+.imgDestinataire{
+  height : 35%;
+}
+
+.imgDate{
+  height : 35%;
+}
+
+.imgLength{
+  height : 35%;
+}
+
+.buttonMessage{
+  margin-top : 1%;
+}
+
+#messageHide{
+  background-color : #fff;
+  position : relative;
+}
+
+#send p{
+  text-align:left;
+  margin-left : 10%;
+  margin-right : 10%;
+  float: right;
+  background: #0084ff;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  border-radius: 30px;
+  padding: 20px;
+  clear: both;
+  margin-bottom : 5%;
+  
+}
+
+
+
+#send{
+  background : #1A1837;
+}
+
+
+
+#receive p{
+  text-align:left;
+  margin-left : 10%;
+  margin-right : 10%;
+  float: right;
+  background: #eee;
+  font-family: Helvetica, Arial, sans-serif;
+  border-radius: 30px;
+  padding: 20px;
+  clear: both;
+  margin-bottom : 5%;
+  
+}
+
+#send h3{
+  color : #ffffff;
+}
+
+#send h2{
+  background : #1A1837;
+  color : #ffffff;
+}
+
+#send messageTitle{
+  display:block;
+  border:none;
+  height:1px;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#ffffff) ,to(#1A1837));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#ffffff) ,to(#1A1837));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#ffffff) ,to(#1A1837));
+  width : 100%;
+  margin-bottom : 1%;
+  margin-left: auto;
+	margin-right: auto;
+}
+
+
+#send .sideInfoMessageBox{
+  background:#1A1837;
+}
+
+#reaction h3{
+  color : #ffffff;
+}
+
+#reaction h2{
+  background : #1A1837;
+  color : #ffffff;
+}
+
+#reaction messageTitle{
+  display:block;
+  border:none;
+  height:1px;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#ffffff) ,to(#1A1837));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#ffffff) ,to(#1A1837));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#ffffff) ,to(#1A1837));
+  width : 100%;
+  margin-bottom : 1%;
+  margin-left: auto;
+	margin-right: auto;
+}
+
+
+#reaction .sideInfoMessageBox{
+  background:#1A1837;
+}
+
+#reaction p{
+  margin-left : 10%;
+  margin-right : 10%;
+  float: right;
+  background: #0084ff;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  border-radius: 30px;
+  padding: 20px;
+  clear: both;
+  
+}
+
+
+
+#reaction{
+  background : #1A1837;
+}
+
+
+
+
+.sideTexteMessageBox h4{
+    margin-left: 3px;
+    margin-right: 3px;
+    background: #ffffff;
+    color: rgb(78, 78, 78);
+    font-family: Helvetica, Arial, sans-serif;
+    border-radius: 30px;
+    padding: 5px;
+    clear: both;
+    display : inline-block;
+    margin-top:0;
+    box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom : 5%;
+    margin-top:-2%;
+}
+
+.reactionUnderMessage{
+  margin-left:480px;
+}
+
+#subtitle{
+  margin-bottom:2%;
+}
+
+.suggestionContact {
+  text-align : center;
+  display : flex;
+}
+
+.suggestionCard{
+  width:40%;
+  box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-right: auto;
+  margin-left:auto;
+  padding-bottom : 5%;
+}
+
+#suggestionCardLeft{
+  background-color : #1A1837;
+}
+
+#suggestionCardLeft h3{
+  color : #ffffff;
+}
+
+#suggestionCardRight{
+  background-color:rgb(255, 255, 255);
+}
+
+#suggestionCardRight h3{
+  color :rgb(78, 78, 78);
+}
+
+.suggestionContact messageTitle{
+  margin-bottom : 3%;
+}
+
+#suggestionCardRight messageTitle{
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#1A1837) ,to(#EEEEEE));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#1A1837) ,to(#EEEEEE));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#1A1837) ,to(#EEEEEE));
+}
+
+#suggestionCardLeft messageTitle{
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE) ,to(#1A1837));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE) ,to(#1A1837));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE) ,to(#1A1837));
+}
+
+.suggestRandomMessageHide p{
+  margin-left : 10%;
+  margin-right : 10%;
+  background: #0084ff;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  border-radius: 30px;
+  padding: 20px;
+  clear: both;
+  margin-bottom : 1%;
+  
+}
+
+.randomContact{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+  width: 20%;
+  padding-bottom: 1%;
+  border-radius: 100px;
+  padding-top: 1%;
+}
+
+#messengerButtonLogo{
+  height: 3vh;
+  padding-right: 1vh;
+}
+
+#messengerButton{
+    padding: 0.1vh 1vh;
+    background: #0084ff;
+    color: white;
+}
+
+#suggestionCardLeft h4{
+  color : #ffffff;
+}
+
+#suggestionCardLeft h5{
+  color:#ffffff;
+}
+
+.suggestBestContact{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+  width: 20%;
+  padding-bottom: 1%;
+  border-radius: 100px;
+  padding-top: 1%;
+}
+
+.suggestBestContactInfo{
+  display : flex;
+  color : #ffffff;
+  height : 20vh;
+  padding-top : 6vh;
+  justify-content : center;
+}
+
+.suggestBestContactInfo h4{
+  margin-top :0;
+}
+
+.suggestBestContactInfo h5{
+  margin-bottom: 1vh;
+  margin-top: 1vh; 
+}
+
+#nbrMessageSuggestBestContact{
+  padding-right : 10%;
+  height : 20vh;
+}
+
+lastDateSuggestBestContact{
+  height : 20vh;
+}
+
+#statmessLogoButton{
+  height: 3vh;
+  padding-right: 1vh;
+}
+
+.buttonMoreDetail{
+  background : #ffffff;
+  color : #1A1837;
+}
+
+
+// CSS pour les informations des graphes .borderModule
+
+.arrow_box {
+	position: relative;
+	background: #1A1837;
+	border: 2px solid #FA8A2F;
+  width:41%;
+  height:30%;
+}
+
+#nbrMessagePerTimeArrow{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4.8%;
+}
+#radarArrow{
+  height:12%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 24%;
+}
+
+
+
+#bestFriendPerTimeArrow{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+}
+
+#nbrConvPerTimeArrow{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10.5%;
+}
+
+#nbrGenderPerTimeArrow{
+  margin-top: 0.5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.arrow_box h3{
+  font-size: 50%;
+  margin-top: 1%;
+  color:white;
+}
+
+.arrow_box p{
+  font-size:50%;
+  color:white;
+}
+
+.arrow_box:after, .arrow_box:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(26, 24, 55, 0);
+	border-top-color: #1A1837;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.arrow_box:before {
+	border-color: rgba(250, 138, 47, 0);
+	border-top-color: #FA8A2F;
+	border-width: 33px;
+	margin-left: -33px;
+}
+
+
+

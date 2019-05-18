@@ -1,0 +1,47 @@
+<div class="navigateur" *ngIf="!isStats">
+  <h2>Analyse des conversations</h2>
+  <hr class="overview">
+  <div class="listFilter">
+    <div class="inputGroup" id="inputGroup1">
+      <input type="checkbox" name="option1" id="option1" [(ngModel)]="filtreDico.listeStatus.isConvGroup" (change)="filter()">
+      <label for="option1">Conversations de groupe</label>
+    </div>
+    <div class="search__container">
+      <input class="search__input" type="text" placeholder="Rechercher une conversation" [(ngModel)]="filtreDico.text" (keyup)="filter()">
+    </div>
+    <div class="inputGroup" id="inputGroup2">
+      <input type="checkbox" name="option2" id="option2" [(ngModel)]="filtreDico.listeStatus.isConvSolo" (change)="filter()">
+      <label for="option2">Conversations normales</label>
+    </div>
+  </div>
+  <div class="sortBar">
+    <button class = "sortButton" style="width:25%; cursor:pointer;" (click)="correspondanceSort(0)">Name {{sortedChoices.name}}</button>
+    <button class = "sortButton" style="width:15%; cursor:pointer;" (click)="correspondanceSort(5)">Nombre participants {{sortedChoices.nbrParticipant}}</button>
+    <button class = "sortButton" style="width:15%; cursor:pointer;" (click)="correspondanceSort(1)">Messages {{sortedChoices.nbrMessage}}</button>
+    <button class = "sortButton" style="width:10%; cursor:pointer;" (click)="correspondanceSort(2)">Current Streak {{sortedChoices.currentStreak}}</button>
+    <button class = "sortButton" style="width:10%; cursor:pointer;" (click)="correspondanceSort(3)">Max Streak {{sortedChoices.maxStreak}}</button>
+    <button class = "sortButton" style="width:10%; cursor:pointer;" (click)="correspondanceSort(4)">Max Freeze {{sortedChoices.maxFreeze}}</button>
+    <button class = "sortButton" style="width:15%; cursor:pointer;" (click)="correspondanceSort(6)">Dernier message {{sortedChoices.lastMessage}}</button>
+  </div>
+
+    <div *ngFor="let file of listFilesDicoFiltered">
+      <div class="oneConv" (click)="onSubmit(file.index)">
+          <app-previsu-conv [file]="file"></app-previsu-conv>
+      </div>
+    </div>
+</div>
+
+<div class="mainStats" *ngIf="isStats" >
+  <div class="wrapper" (click)="invertStat()">
+    <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="prev" transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
+            <polygon class="arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+            <polygon class="arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+            <path d="M-1.48029737e-15,0.56157424 L-1.48029737e-15,16.1929159 L9.708,8.33860465 L-2.66453526e-15,0.56157424 L-1.48029737e-15,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
+        </g>
+    </svg>
+  </div>
+
+  <app-one-conv-stats [fileConvToDisplay]="fileConvToDisplay"></app-one-conv-stats>
+</div>
+

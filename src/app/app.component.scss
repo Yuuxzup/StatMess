@@ -1,0 +1,336 @@
+p {
+  font-family: Lato;
+}
+
+img{
+  width : auto;
+  height: 4vh;
+  margin-right:0px;
+  margin-top: auto;
+  margin-bottom:auto;
+}
+.horizontalBar{
+  display : flex;
+  background-color:#1A1837;
+  height : 4vh;
+  color : white
+  
+}
+.horizontalBar h1{
+  font-size: 2vh;
+}
+
+.footer{
+  background-color: #1A1837;
+  text-align: right;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 100;
+}
+
+.footer p{
+  font-size: 100%;
+}
+
+.main{
+  width:98%;
+  min-height:85.5vh;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+.page{
+  background-color:  #EEEEEE;
+  color: rgb(51, 51, 51);
+  min-height:97vh;
+}
+
+.body{
+  background-color:  #EEEEEE;
+}
+
+.cover {
+  background-image: url(https://www.nar.realtor/sites/default/files/styles/main_stage_image/public/bubble-chart-GettyImages-469874317-1300w-867h.png?itok=0vhgIEn4);
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
+  height: 56vh;
+  padding-top: 41vh;
+}
+.rectLaunch {
+  background-color:rgba(38,64,83, 0.8);
+  width: 25vw;
+  height: 18vh;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px double white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h1{
+  background: -webkit-linear-gradient(rgb(250, 138, 47), rgb(214, 87, 28));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  font-size:3em;
+}
+
+.footer h1{
+  background: -webkit-linear-gradient(#fa8a2f, #d6571c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: right;
+  margin-right: 20px;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  font-size: 1em;
+}
+
+p{
+  background: -webkit-linear-gradient(rgb(250, 138, 47), rgb(214, 87, 28));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  font-size:2em;
+}
+
+.rectLaunch:hover{
+  background-color: rgba(85, 85, 84, 0.8);
+  cursor:pointer;
+}
+
+@mixin button($bcolor,
+$url,
+$x1,
+$y1,
+$bor,
+$col) {
+ background: $bcolor;
+ -webkit-mask: url($url);
+ mask: url($url);
+ -webkit-mask-size: $x1 $y1;
+ mask-size: $x1 $y1;
+ border: $bor;
+ color: $col;
+}
+
+.button-container-2 {
+  position: relative;
+  width: 20%;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+  border: 1px solid #000;
+  transition: 0.5s;
+  letter-spacing: 1px;
+
+ button {
+  width: 101%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 1px;
+
+  @include button(#102A54,
+  "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png",
+  3000%,
+  100%,
+  none,
+  #fff);
+  cursor: pointer;
+  -webkit-animation: ani2 0.7s steps(29) forwards;
+  animation: ani2 0.7s steps(29) forwards;
+
+  &:hover {
+   -webkit-animation: ani 0.7s steps(29) forwards;
+   animation: ani 0.7s steps(29) forwards;
+  }
+ }
+}
+.mas {
+  position: absolute;
+  color: #000;
+  text-align: center;
+  width: 100%;
+  height: 25vh;
+  font-weight: 300;
+  font-size: 20px;
+  overflow: hidden;
+  background-color: white;
+}
+
+@-webkit-keyframes ani {
+ from {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+ }
+
+ to {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+ }
+}
+
+@-webkit-keyframes ani2 {
+ from {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+ }
+
+ to {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+ }
+}
+
+.cguPage .buttonBack{
+  background-color: white;
+  width: 100px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #1A1837;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.buttonBack:hover .Icon span{
+  background:#FA8A2F;
+}
+
+.Icon {
+  width: 50px;
+  height: 50px;
+  margin-right:auto;
+  margin-left:auto;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.Icon span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 23px;
+  height: 8px;
+  width: 100%;
+  background: #1A1837;
+  border-radius: 4px;
+  transform: rotate(0deg);
+  transition: .2s ease-in-out;
+}
+
+.Icon span:nth-child(1),
+.Icon span:nth-child(3) {
+  width: 50%;
+  transform: rotate(45deg);
+}
+
+.Icon span:nth-child(1) {
+  left: 3px;
+  top: 15px;
+}
+
+.Icon span:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+.Icon span:nth-child(3) {
+  left: 20px;
+  top: 31px;
+}
+
+.Icon.open span:nth-child(1),
+.Icon.open span:nth-child(3) {
+    left: -1px;
+}
+
+.Icon.open span:nth-child(1) {
+  top: 15px;
+  transform: rotate(135deg);
+}
+
+.Icon.open span:nth-child(2) {
+  transform: rotate(0deg);
+}
+
+.Icon.open span:nth-child(3) {
+  top: 31px;
+  transform: rotate(45deg);
+}
+
+// Button Back 
+
+$ease: cubic-bezier(.2,1,.3,1);
+  
+.wrapper {
+  position: absolute;
+  margin-left:5%;
+  transform: translate(-50%, -50%);
+  margin-top:2.2%;
+  
+  svg {
+    width: 100px;
+    height: 9vh;
+    margin: 0 2rem;
+    cursor: pointer;
+    overflow: visible;
+    polygon, path {
+      transition: all 0.5s $ease;
+      fill : #1A1837;
+    }
+    &:hover polygon, &:hover path {
+      transition: all 1s $ease;
+      fill: rgb(250, 138, 47);
+    }
+      
+    &:hover .arrow {
+      animation: arrow-anim 2.5s $ease infinite;
+    }
+    &:hover .arrow-fixed {
+      animation: arrow-fixed-anim 2.5s $ease infinite;
+    }
+  }
+}
+
+@keyframes arrow-anim {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	5% {
+		transform: translateX(-0.1rem);
+	}
+	100% {
+		transform: translateX(1rem);
+		opacity: 0;
+	}
+}
+
+@keyframes arrow-fixed-anim {
+	5% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 0.4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.CGU:hover {
+  cursor:pointer;
+  
+}

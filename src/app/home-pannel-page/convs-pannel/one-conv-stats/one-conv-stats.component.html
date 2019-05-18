@@ -1,0 +1,63 @@
+<div class="main">
+  <div class="sideBar">
+
+
+    <div class="oneElementInMenu {{isOverViewOneConv}}" (click)="switchStat('overViewOneConv')">
+      <p>Overview</p>
+    </div>
+
+
+    <div class="oneElementInMenu {{isMessages}}" (click)="switchStat('messages')">
+      <p>Messages</p>
+    </div>
+
+
+    <div class="oneElementInMenu {{isTemps}}" (click)="switchStat('temps')">
+      <p>Temps</p>
+    </div>
+
+
+    <div class="oneElementInMenu {{isReactions}}" (click)="switchStat('reactions')">
+      <p>Réactions</p>
+    </div>
+
+    <div class="oneElementInMenu {{isAutres}}" (click)="switchStat('autres')">
+      <p>Autres</p>
+    </div>
+  
+  </div>
+
+
+
+  <div class="pannelStat">
+    <app-overview-stat *ngIf="isOverViewOneConv"
+    [nbMessagePerUser]="nbMessagePerUser"
+    [influenceUser] = "influenceUser"
+    [maxFreeze] = "maxFreeze"
+    [maxStreak]="theMaxStreak"
+    [currentStreak]="currentStreak"
+    [firstToSpeak]="firstToSpeak"
+    [nbMessages]="nbMessages"
+    [nbParticipants]="nbParticipants"
+    [dateCreationConv]="dateCreationConv"></app-overview-stat>
+
+    <app-messages-stat *ngIf="isMessages"
+    [nbMessagePerUser] = "nbMessagePerUser"
+    [averageLengthOfMessagesPerUser] = "averageLengthOfMessagesPerUser"></app-messages-stat>
+
+    <app-time-stat *ngIf="isTemps"
+    [sumMessagesPerUserByTime] = "sumMessagesPerUserByTime"
+    [hoursToSend] = "hoursToSend"
+    [averageTimeToAnswer]= "averageTimeToAnswer"></app-time-stat>
+
+     <app-reactions-stat *ngIf="isReactions"
+    [totalReactions]="totalReactions"
+    [reactionDetail]="reactionDetail"></app-reactions-stat>
+
+    <app-autres-stat *ngIf="isAutres"
+    [nbreQuestionsPerUser] = "nbreQuestionsPerUser"
+    [bookStat] = "bookStat"
+    [timeSpentTotal] = "timeSpentTotal"
+    [distanceStat] = "distanceStat"></app-autres-stat>
+
+</div>

@@ -1,0 +1,213 @@
+.oneSlider{
+  display : flex;
+  justify-content: space-between;
+  background-color: #EEEEEE;
+}
+
+.fullBoxSlider{
+    width: 100%;
+    /* border: 1px solid; */
+    margin-top: 3vh;
+}
+.constantSlider{
+  display:flex;
+  height:7vh;
+}
+
+.headerInfos {
+  text-align: center;
+}
+
+.header p, .headerInfos p{
+  vertical-align:middle;
+  margin-left: auto;
+  margin-right: auto;
+  margin-block-start: auto;
+  margin-block-end: auto;
+}
+
+.constantSlider img:hover{
+  cursor:pointer;
+}
+
+.constantSlider img{
+  height: 6vh;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+b{
+  color:rgba(40, 37, 88, 0.815);
+}
+
+mat-slider {
+  width : 75%;
+  margin-right : auto;
+  margin-left : auto;
+}
+
+.oneSlider p {
+  width: 11%;
+  text-align: center;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  background-color: #212F3D;
+  border-radius: 30px;
+  color: white;
+  padding: 0px;
+  height: 1.5vw;
+}
+
+::ng-deep .mat-slider-disabled .mat-slider-track-fill,::ng-deep .mat-slider-disabled .mat-slider-thumb{
+  background-color:blue;
+}
+
+.listInfos {
+  display:flex;
+  width:100%;
+}
+.colonne {
+  width:50%;
+}
+
+.colonne p{
+  vertical-align:middle;
+  margin-left: auto;
+  margin-right: auto;
+  margin-block-start: auto;
+  margin-block-end: auto;
+}
+.container {
+    margin: 30px 20px;
+}
+//POUR LE SLIDER POSITIF
+
+//Rend visible la couleur de la track selected
+::ng-deep .sliderRight .igx-slider--disabled .igx-slider__track-fill {
+    visibility:visible;
+}
+
+//Couleur de la track selected
+::ng-deep .sliderRight .igx-slider__track-fill,::ng-deep .sliderRight .igx-slider--disabled .igx-slider__track-fill {
+  background:green;
+}
+
+//Couleur des dot
+::ng-deep .sliderRight .igx-slider--disabled .igx-slider__thumb-to .dot{
+  background:green;
+}
+
+::ng-deep .sliderRight .igx-slider--disabled .igx-slider__thumb-from .dot{
+  display:none;
+}
+
+//POUR LE SLIDER NEGATIF
+
+//Rend visible la couleur de la track selected
+::ng-deep .sliderLeft .igx-slider--disabled .igx-slider__track-fill {
+    visibility:visible;
+}
+
+//Couleur de la track selected
+::ng-deep .sliderLeft .igx-slider__track-fill,::ng-deep .sliderLeft .igx-slider--disabled .igx-slider__track-fill {
+  background:blue;
+}
+
+//Couleur des dot
+::ng-deep .sliderLeft .igx-slider--disabled .igx-slider__thumb-from .dot,{
+  background:blue;
+}
+
+::ng-deep .sliderLeft .igx-slider--disabled .igx-slider__thumb-to .dot{
+  display:none;
+}
+
+::ng-deep .sliderLeft, ::ng-deep .sliderRight {
+  width:75%;
+  margin-top: 0.4vw;
+}
+
+.nav-tgl {
+    display: inline-block;
+    cursor: pointer;
+    z-index: 90;
+    width: 2vw;
+    height: 2vw;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    background: #fff;
+    box-shadow: 0px 4px 24px rgba(0,0,0,0.24);
+    line-height: 0.6;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 1vh;
+	
+	// making the dividers
+	> span {
+		// the second divider
+		display: inline-block;
+    position: relative;
+    height: 15px;
+    width: 3px;
+    margin-top: 10px;
+    border-radius: 1px;
+    background: #293335;
+    vertical-align: middle;
+		
+		// the first & the third dividers
+		&:before {
+      display: inline-block;
+      position: absolute;
+      content: "";
+      height: 4px;
+      left: 0px;
+      top: -8px;
+      width: 4px;
+      border-radius: 50%;
+      background: #293335;
+      transition: all 200ms;
+		}
+	}
+	
+	// ofcorse we should find a replacement for the focus state but it's not our topic
+	&:focus {outline: none}
+	
+	&:hover > span:before {
+		background-color:orange;
+	}
+}
+
+// for the nav background (styling the nav itself is not our topic)
+.nav:before {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  transition: all 500ms ease-in-out;
+	
+	// that's all the pen about
+  clip-path: circle(30px at calc(100% - 65px) 65px);
+	// for AT
+  visibility: hidden;
+}
+
+// when it gits activated
+.nav-tgl.active > span {
+    height: 1px;
+    width: 25px;
+    transform: rotate(-45deg);
+    margin-top:0px;
+  &:after, &:before {
+    top: 0px;
+    left: 0;
+    height: 2px;
+    width: 25px;
+  }
+  &:before {
+    transform: rotate(90deg);
+  }
+}

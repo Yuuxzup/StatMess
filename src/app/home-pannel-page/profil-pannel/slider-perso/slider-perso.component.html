@@ -1,0 +1,33 @@
+<div class="fullBoxSlider">
+  <div class="constantSlider">
+    <div class="oneSlider" style="width:94%">
+      <p>{{labelMin}}</p>
+      
+      <div class="container" class="sliderLeft" *ngIf="isLeft">
+          <igx-slider id="slider" [type]="sliderType.RANGE" [minValue]="-100" [maxValue]="100" [(ngModel)]="priceRange" disabled="true"></igx-slider>
+      </div>
+      <div class="container" class="sliderRight" *ngIf="!isLeft">
+          <igx-slider id="slider" [type]="sliderType.RANGE" [minValue]="-100" [maxValue]="100" [(ngModel)]="priceRange" disabled="true"></igx-slider>
+      </div>
+
+      <p>{{labelMax}}</p>
+    </div>
+      <button (click)="invertInfos()" class="nav-tgl" id="buttonSpan-{{index}}" type="button">
+        <span aria-hidden="true"></span>
+      </button>
+  </div>
+  
+  <div class="informations" *ngIf="isInfosOpen">
+    <div class="headerInfos" style="width:100%">
+      <p>Cette information a été calculée à partir de :</p>
+    </div>
+    <div class="listInfos">
+      <div class="colonne">
+        <p *ngFor="let info of listInfosOdd" [innerHTML]="info"></p>
+      </div>
+      <div class="colonne">
+        <p *ngFor="let info of listInfosEven" [innerHTML]="info"></p>
+      </div>
+    </div>
+  </div>
+</div>

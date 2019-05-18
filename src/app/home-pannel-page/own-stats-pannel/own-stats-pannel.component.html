@@ -1,0 +1,634 @@
+<div *ngIf="!isFileOpen">
+  <h1 style="text-align:center;">Vos statistiques</h1>
+  <hr class="overview">
+  <div class="kpiOverview">
+    <p class="subTitleOverview">14 nombres pour vous décrire</p>
+    <div class="rowOverviewPair" id="rowTop">
+      <div class="borderModuleTop">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/134/134909.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{nbrConversations}}</p>
+            <p class="descriptionBox">Conversations</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleTop">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/123/123382.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{statsGlobalesMessages.messagesSend}}</p>
+            <p class="descriptionBox">Messages envoyés</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleTop">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/179/179681.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{statsGlobalesMessages.messagesReceived}}</p>
+            <p class="descriptionBox">Messages reçus</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleTop">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/327/327006.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{statsGlobalesMessages.caracParMessage}}</p>
+            <p class="descriptionBox">Caractères par message</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleTop">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/1006/1006120.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{bestFriend.name}}</p>
+            <p class="descriptionBox">Best friend</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div  class="rowOverviewOdd" id="rowMiddle">
+      <div class="borderModuleMiddle">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+          <img src="https://image.flaticon.com/icons/svg/251/251974.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{userAverageAnswerTime.data[0]}} mn</p>
+            <p class="descriptionBox">Temps de réponse</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleMiddle">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/526/526754.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{statsGlobalesMessages.nbrKm}} km</p>
+            <p class="descriptionBox">Parcourus avec vos caractères</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleMiddle">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/1320/1320430.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{statsGlobalesMessages.nbrPage}}</p>
+            <p class="descriptionBox">Pages écrites</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleMiddle">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img *ngIf="genreMostConvIsWoman" src="https://image.flaticon.com/icons/svg/145/145862.svg" class="icon"/>
+            <img *ngIf="!genreMostConvIsWoman" src="https://image.flaticon.com/icons/svg/145/145867.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{percentInterlocuteursGenre.percent}}%</p>
+            <p class="descriptionBox">De vos interlocuteurs sont des {{percentInterlocuteursGenre.genre}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rowOverviewPair" style="margin-top:0" id="rowBottom">
+      <div class="borderModuleBottom">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/134/134909.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{nbrConversations}}</p>
+            <p class="descriptionBox">Conversations</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleBottom">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/123/123382.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{statsGlobalesMessages.messagesSend}}</p>
+            <p class="descriptionBox">Messages envoyés</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleBottom">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/179/179681.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{statsGlobalesMessages.messagesReceived}}</p>
+            <p class="descriptionBox">Messages reçus</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleBottom">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/327/327006.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{statsGlobalesMessages.caracParMessage}}</p>
+            <p class="descriptionBox">Caractères par message</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="borderModuleBottom">
+        <div class="boxOverview">
+          <div class="sideImgBoxOverview">
+            <img src="https://image.flaticon.com/icons/svg/1006/1006120.svg" class="icon"/>
+          </div>
+          <div class="sideTextBoxOverview">
+            <p class="numberBox">{{bestFriend.name}}</p>
+            <p class="descriptionBox">Best friend</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="overview">
+
+  <div class="totalThreeCards">
+    <div class="threeCards freezeCard">
+      <div class="img"></div>
+      <div class="threeCardsSmiley">
+        <h2>{{freeze}}</h2>
+      </div>
+      <div class="threeCardsText">
+        <p>{{indicateursFlammeFreezeStrike.nomConvFreeze}}</p>
+        <p>{{indicateursFlammeFreezeStrike.dicoData.maxFreeze}}</p>
+      </div>
+    </div>
+    <div class="threeCards fireCard">
+      <div class="img"></div>
+      <div class="threeCardsSmiley">
+        <h2>{{streak}}</h2>
+      </div>
+      <div class="threeCardsText">
+        <p>{{indicateursFlammeFreezeStrike.nomConvFlamme}}</p>
+        <p>{{indicateursFlammeFreezeStrike.dicoData.maxFlamme}}</p>
+      </div>
+    </div>
+    <div class="threeCards streakCard">
+      <div class="img"></div>
+      <div class="threeCardsSmiley">
+        <h2>{{maxStreak}}</h2>
+      </div>
+      <div class="threeCardsText">
+        <p>{{indicateursFlammeFreezeStrike.nomConvStrike}}</p>
+        <p>{{indicateursFlammeFreezeStrike.dicoData.maxStrike}}</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="overview">
+  <div class="subTitleOverview">Vos messages</div>
+  <hr class="overview">
+  <div class="messageCard">
+
+    <div class="messageBox" id="send">
+      <div class="sideInfoMessageBox">
+        <h2>Votre plus long message envoyé</h2>
+        <hr class="messageTitle" id="subtitle">
+        <div class="sideInfoBox" id="destinataire">
+          <img class = "imgDestinataire" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
+          <h3>À {{longestMessage[0][3]}}</h3>
+        </div>
+        <div class="sideInfoBox" id="date">
+          <img class = "imgDate"  src="https://image.flaticon.com/icons/svg/148/148977.svg"/>
+          <h3>{{longestMessage[0][2]| date:'medium'}}</h3>
+        </div>
+        <div class="sideInfoBox" id="length">
+          <img class = "imgLength"  src="https://image.flaticon.com/icons/svg/1040/1040228.svg"/>
+          <h3>{{longestMessage[0][1]}} caractères</h3>
+        </div>
+      </div>
+      <div class="sideButtonMessageBox">
+          <button class="buttonMessage" mat-button (click)="invertHide('send')"> Afficher / Cacher </button>
+      </div>
+      <div class="sideTexteMessageBox" *ngIf="!isHide['send']" id="send">
+        <p>{{longestMessage[0][0]}}</p>
+      </div>
+      <hr class="messageTitle">
+    </div>
+
+    <div class="messageBox" id="receive">
+      <div class="sideInfoMessageBox" >
+        <h2>Votre plus long message reçu</h2>
+        <hr class="messageTitle" id="subtitle">
+        <div class="sideInfoBox" id="destinataire">
+          <img class = "imgDestinataire" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
+          <h3>De {{longestMessage[1][3]}}</h3>
+        </div>
+        <div class="sideInfoBox" id="date">
+          <img class = "imgDate"  src="https://image.flaticon.com/icons/svg/148/148977.svg"/>
+          <h3>{{longestMessage[1][2]| date:'medium'}}</h3>
+        </div>
+        <div class="sideInfoBox" id="length">
+          <img class = "imgLength"  src="https://image.flaticon.com/icons/svg/1040/1040228.svg"/>
+          <h3>{{longestMessage[1][1]}} caractères</h3>
+        </div>
+      </div>
+      <div class="sideButtonMessageBox">
+          <button class="buttonMessage" mat-button (click)="invertHide('receive')"> Afficher / Cacher </button>
+      </div>
+      <div class="sideTexteMessageBox" *ngIf="!isHide['receive']" id="receive">
+        <p>{{longestMessage[1][0]}}</p>
+      </div>
+      <hr class="messageTitle">
+    </div>
+
+
+    <div class="messageBox" id="reaction">
+      <div class="sideInfoMessageBox" >
+        <h2>Votre message avec le plus de réactions</h2>
+        <hr class="messageTitle" id="subtitle">
+        <div class="sideInfoBox" id="destinataire">
+          <img class = "imgDestinataire" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
+          <h3>À {{bestReactionsMessage['name']}}</h3>
+        </div>
+        <div class="sideInfoBox" id="date">
+          <img class = "imgDate"  src="https://image.flaticon.com/icons/svg/148/148977.svg"/>
+          <h3>{{bestReactionsMessage['date']| date:'medium'}}</h3>
+        </div>
+        <div class="sideInfoBox" id="length">
+          <img class = "imgLength"  src="https://image.flaticon.com/icons/svg/1530/1530861.svg"/>
+          <h3>{{bestReactionsMessage['numberReactions']}} réactions</h3>
+        </div>
+      </div>
+      <div class="sideButtonMessageBox">
+          <button class="buttonMessage" mat-button (click)="invertHide('reaction')"> Afficher / Cacher </button>
+      </div>
+      <div class="sideTexteMessageBox" *ngIf="!isHide['reaction']" id="reaction">
+        <p>{{bestReactionsMessage['message']}}</p>
+        <div class="reactionUnderMessage">
+          <h4 *ngIf="displayReaction( bestReactionsMessage['typeReaction'][0][1] )">{{bestReactionsMessage['typeReaction'][0][0]}} {{bestReactionsMessage['typeReaction'][0][1]}}</h4>
+          <h4 *ngIf="displayReaction( bestReactionsMessage['typeReaction'][1][1] )">{{bestReactionsMessage['typeReaction'][1][0]}} {{bestReactionsMessage['typeReaction'][1][1]}}</h4>
+          <h4 *ngIf="displayReaction( bestReactionsMessage['typeReaction'][2][1] )">{{bestReactionsMessage['typeReaction'][2][0]}} {{bestReactionsMessage['typeReaction'][2][1]}}</h4>
+          <h4 *ngIf="displayReaction( bestReactionsMessage['typeReaction'][3][1] )">{{bestReactionsMessage['typeReaction'][3][0]}} {{bestReactionsMessage['typeReaction'][3][1]}}</h4>
+          <h4 *ngIf="displayReaction( bestReactionsMessage['typeReaction'][4][1] )">{{bestReactionsMessage['typeReaction'][4][0]}} {{bestReactionsMessage['typeReaction'][4][1]}}</h4>
+          <h4 *ngIf="displayReaction( bestReactionsMessage['typeReaction'][5][1] )">{{bestReactionsMessage['typeReaction'][5][0]}} {{bestReactionsMessage['typeReaction'][5][1]}}</h4>
+          <h4 *ngIf="displayReaction( bestReactionsMessage['typeReaction'][6][1] )">{{bestReactionsMessage['typeReaction'][6][0]}} {{bestReactionsMessage['typeReaction'][6][1]}}</h4>
+        </div>
+      </div>
+    <hr class="messageTitle">
+    </div>
+
+  </div>
+
+  <hr class="overview">
+  <div class="subTitleOverview">Suggestion de contacts</div>
+  <hr class="overview">
+
+  <div class="suggestionContact">
+
+    <div class="suggestionCard" id="suggestionCardLeft">
+      <h3>Renouez les liens</h3>
+      <hr class="messageTitle">
+      <h4>StatMess vous suggère</h4>
+      <div class="suggestBestContact">
+        <img class = "imgDestinataire" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
+        <h4 style="color:black;padding-left: 1vh; padding-right: 1vh;">{{suggestBestContact[0].name}}</h4>
+      </div>
+      <div class="suggestBestContactInfo">
+        <div id="nbrMessageSuggestBestContact"  >
+          <img class = "imgDestinataire" src="https://image.flaticon.com/icons/svg/149/149063.svg"/>
+          <h5>Nombre de messages</h5>
+          <h4>{{suggestBestContact[0].nbrMessage}}</h4>
+        </div>
+        <div id="lastDateSuggestBestContact">
+          <img class = "imgDestinataire" src="https://image.flaticon.com/icons/svg/148/148977.svg"/>
+          <h5>Dernier message</h5>
+          <h4>{{suggestBestContact[1]| date:'medium'}}</h4>
+        </div>
+    </div>
+    <button class="buttonMoreDetail" mat-button (click)="redirectConv()">
+      <input type="image" id="statmessLogoButton" src="https://i.pinimg.com/originals/0b/73/51/0b7351f7b132512ea28fae9d5fff1bde.png"/>
+      En savoir plus
+    </button>
+    <hr class="messageTitle" style="margin-top:5vh;">
+    <h4 style="padding-top:4vh">Lance toi</h4>
+    <button class="buttonRandomContact" id="messengerButton" mat-button (click)="goToMessenger()"><input type="image" id="messengerButtonLogo" src="https://applets.imgix.net/https%3A%2F%2Fassets.ifttt.com%2Fimages%2Fchannels%2F433795753%2Ficons%2Fon_color_large.png%3Fversion%3D0?ixlib=rails-2.1.3&w=240&h=240&auto=compress&s=5070929d86de9003994475ad1fd5eef3" />Envoyer le message</button>
+    
+    </div>
+    
+    <div class="suggestionCard" id="suggestionCardRight">
+      <h3>Lancez-vous dans l'inconnu</h3>
+      <hr class="messageTitle">
+      <h4>Quel sera ton contact ?</h4>
+      <button class="buttonRandomContact" *ngIf="isHide['randomContact']" mat-button (click)="invertHide('randomContact')">Générer votre contact inconnu</button>
+      <div class="suggestRandomContactHide" *ngIf="!isHide['randomContact']">
+        <div class="randomContact">
+          <img class = "imgDestinataire" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
+          <h4 style="color:black; padding-left: 1vh; padding-right: 1vh;">{{suggestRandomContact}}</h4>
+        </div>
+        <h4>Quel sera ton message ?</h4>
+        <button class="buttonRandomContact" *ngIf="isHide['randomMessage']" mat-button (click)="invertHide('randomMessage')">Générer votre message aléatoire</button>
+        <div class="suggestRandomMessageHide" *ngIf="!isHide['randomMessage']">
+          <p>{{randomMessage[0]}}</p>
+          <div style="display:flex; padding-left:10%; padding-right:10%; height:8vh;">
+            <img style="width: 2vw; height: 2vh; margin-left:0; margin-right:0;" src="https://image.flaticon.com/icons/svg/131/131917.svg"/>
+            <h5 style="margin-top:0;font-style: italic; color:#BFBFBF">{{randomMessage[1]}}</h5>
+          </div>
+          <h4>Courage on croît en toi</h4>
+          <button class="buttonRandomContact" id="messengerButton" mat-button (click)="goToMessenger()"><input type="image" id="messengerButtonLogo" src="https://applets.imgix.net/https%3A%2F%2Fassets.ifttt.com%2Fimages%2Fchannels%2F433795753%2Ficons%2Fon_color_large.png%3Fversion%3D0?ixlib=rails-2.1.3&w=240&h=240&auto=compress&s=5070929d86de9003994475ad1fd5eef3" />Envoyer le message</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <hr class="overview">
+  <div class="subTitleOverview">Podium des conversations</div>
+  <hr class="overview">
+
+  <select [(ngModel)]="selectedSort" (ngModelChange)="ngAfterViewInit()" id="selectionButton">
+      <option value="nbrMessage">Number of messages</option>
+      <option value="nbrParticipant">Number of participants</option>
+      <option value="maxStreak">Max streak</option>
+  </select>
+  <div class="galaxy">
+      <div *ngIf="bubbleConvChart" class="graph">
+        <canvas class="statChart" #bubbleConvGraph id="bubbleConvGraph">{{ bubbleConvChart }}</canvas>
+      </div>
+  </div>
+
+  <!--<div class="subTitleOverview">Vos Graphs</div>
+  <div class="descriptionChart">Cliquez sur l'icône du graph ci-dessous ou défilez la page</div>
+  <div class="rowOverviewChart">
+    <div class="boxOverviewChart" onclick="location.href='#messagesByTime';">
+      <div class="sideImgBoxOverview">
+      <img src="https://s3.amazonaws.com/peoplepng/wp-content/uploads/2018/07/01161250/Graph-PNG-Photo.png">
+      </div>
+      <div class="sideTextBoxOverview">
+      <div class="descriptionBox">Évolution des messages</div>
+      </div>
+    </div>
+    <div class="boxOverviewChart" onclick="location.href='#conversationsByTime';">
+      <div class="sideImgBoxOverview">
+      <img src="https://s3.amazonaws.com/peoplepng/wp-content/uploads/2018/07/01161250/Graph-PNG-Photo.png">
+      </div>
+      <div class="sideTextBoxOverview">
+      <div class="descriptionBox">Évolution du nombre de conversations</div>
+      </div>
+    </div>
+    <div class="boxOverviewChart" onclick="location.href='#genderByTime';">
+      <div class="sideImgBoxOverview">
+      <img src="https://s3.amazonaws.com/peoplepng/wp-content/uploads/2018/07/01161250/Graph-PNG-Photo.png">
+      </div>
+      <div class="sideTextBoxOverview">
+      <div class="descriptionBox">Évolution du genre des personnes</div>
+      </div>
+    </div>
+    <div class="boxOverviewChart" onclick="location.href='#bestFriendsByTime';">
+      <div class="sideImgBoxOverview">
+      <img src="https://s3.amazonaws.com/peoplepng/wp-content/uploads/2018/07/01161250/Graph-PNG-Photo.png">
+      </div>
+      <div class="sideTextBoxOverview">
+      <div class="descriptionBox">Évolution des best friends</div>
+      </div>
+    </div>
+    <div class="boxOverviewChart" onclick="location.href='#reactions';">
+      <div class="sideImgBoxOverview">
+      <img src="https://s3.amazonaws.com/peoplepng/wp-content/uploads/2018/07/01161250/Graph-PNG-Photo.png">
+      </div>
+      <div class="sideTextBoxOverview">
+      <div class="descriptionBox">Réactions envoyées et reçues</div>
+      </div>
+    </div>
+    <div class="boxOverviewChart" onclick="location.href='#messagesPerTime';">
+      <div class="sideImgBoxOverview">
+      <img src="https://s3.amazonaws.com/peoplepng/wp-content/uploads/2018/07/01161250/Graph-PNG-Photo.png">
+      </div>
+      <div class="sideTextBoxOverview">
+      <div class="descriptionBox">Répartition des messages par tranche horaire</div>
+      </div>
+    </div>
+  </div>-->
+
+  <hr class="overview">
+  <div class="subTitleOverview">Vos graphs</div>
+  <hr class="overview">
+
+  <div class="totalTwoCards">
+    <div class="twoCards">
+      <div class="sideText">
+        <p>Répartition du type de conversation</p>
+        <img class = "imgHelp" (click)="help('TypeConv')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>   
+      <div class="sideImg">
+        <div class="helpTextHalf" id="helpTypeConv" style="text-align:center">
+          <p style="color:#ffffff; font-size: 60%;margin-top:5%">La partie <b style="color:#FA8A2F">orange</b> indique le nombre total de vos conversations à 2</p>
+          <p style="color:#ffffff; font-size: 60%;margin-top:5%">La partie <b style="color:#1A1837">bleu foncé</b> indique le nombre total de vos conversations de groupe</p>
+        </div>
+        <div *ngIf="repartitionTypeConvChart " class="graph" id="graphTypeConv">
+          <canvas class="statChart" #repartitionTypeConvGraph id="repartitionTypeConvGraph">{{ repartitionTypeConvChart }}</canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="twoCards">
+      <div class="sideText">
+        <p>Répartition du type de messages</p>
+        <img class = "imgHelp" (click)="help('TypeMessages')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+      </div>   
+      <div class="sideImg">
+        <div class="helpTextHalf" id="helpTypeMessages" style="text-align:center">
+          <p style="color:#ffffff; font-size: 60%;margin-top:10%">Indique le type de messages reçus : photos, vidéos et liens</p>
+        </div>
+        <div *ngIf="repartitionTypeMessageChart" class="graph" id="graphTypeMessages">
+          <canvas class="statChart" #repartitionTypeMessageGraph id="repartitionTypeMessageGraph">{{ repartitionTypeMessageChart }}</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="oneCard" id="messagesByTime">
+    <div class="sideText">
+      <p>Nombre de messages par période de temps</p>
+      <img class = "imgHelp" (click)="help('MessagesByTime')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+    </div>   
+    <div class="sideImg">
+      <div class="helpText" id="helpMessagesByTime">
+        <p style="color:#ffffff; font-size: 80%;margin-top: 3%;">La courbe <b style="color:#FA8A2F">orange</b> indique le nombre de messages reçus en fonction du temps</p>
+        <hr class="overview">
+        <p style="color:#ffffff;font-size: 80%;">La courbe <b style="color:#1A1837">bleu foncé</b> indique le nombre de messages envoyés en fonction du temps</p>
+          <div class="arrow_box" id="nbrMessagePerTimeArrow">
+            <h3>Le temps est affiché selon la date de votre premier message</h3>
+            <p>Soit par jour</p>
+            <p>Soit par mois : Sept 12 signifie Septembre 2012</p>
+            <p>Soit par année</p>
+          </div>
+        </div>
+      <div *ngIf="nbrMessagePerPeriodChart " class="graph" id="graphMessagesByTime">
+        <canvas class="statChart" #nbrMessagePerPeriodGraph id="nbrMessagePerPeriodGraph">{{ nbrMessagePerPeriodChart }}</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="oneCard" id="conversationsByTime">
+    <div class="sideText">
+      <p>Evolution du nombre de conversations</p>
+      <img class = "imgHelp" (click)="help('ConversationsByTime')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+    </div>
+    <div class="sideImg">
+      <div class="helpText" id="helpConversationsByTime">
+          <p style="color:#ffffff; font-size: 80%;margin-top: 3%;">Chaque bar <b style="color:#FA8A2F">orange</b> indique le nombre de conversations que vous avez eues pendant la période de temps indiquée en bas</p>
+          <div class="arrow_box" id="nbrConvPerTimeArrow">
+            <h3>Le temps est affiché selon la date de votre premier message</h3>
+            <p>Soit par jour</p>
+            <p>Soit par mois : Janv 17 signifie Janvier 2017</p>
+            <p>Soit par année</p>
+          </div>
+      </div>
+      <div *ngIf="nbrConvActivPerPeriodChart " class="graph" id="graphConversationsByTime">
+        <canvas class="statChart" #nbrConvActivPerPeriodGraph id="nbrConvActivPerPeriodGraph">{{ nbrConvActivPerPeriodChart }}</canvas>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="oneCard" id="genderByTime">
+    <div class="sideText">
+      <p>Evolution du genre des personnes à qui vous parlez</p>
+      <img class = "imgHelp" (click)="help('GenderByTime')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+    </div>
+    <div class="sideImg">
+      <div class="helpText" id="helpGenderByTime">
+          <p style="color:#ffffff; font-size: 50%;margin-top: 3%;">La bar <b style="color:rgb(241,77,156)">rose</b> indique le nombre de filles que à qui vous avez parlées pendant la période de temps indiquée en bas</p>
+          <hr class="overview">
+          <p style="color:#ffffff; font-size: 50%">La bar <b style="color:rgb(77,89,241)">bleu</b> indique le nombre de garçons à qui vous avez parlés pendant la période de temps indiquée en bas</p>
+          <hr class="overview">
+          <p style="color:#ffffff; font-size: 50%">La bar <b style="color:#1A1837">bleu foncé</b> indique le nombre d'individus indéterminés à qui vous avez parlés pendant la période de temps indiquée en bas (page facebook ou prénom non référencé dans nos bases de données)</p>
+          <div class="arrow_box" id="nbrGenderPerTimeArrow">
+            <h3>Le temps est affiché selon la date de votre premier message</h3>
+            <p>Soit par jour</p>
+            <p>Soit par mois : Oct 19 signifie Octobre 2019</p>
+            <p>Soit par année</p>
+          </div>
+      </div>
+      <div *ngIf="repartitionGenreActivePerPeriodChart " class="graph" id="graphGenderByTime">
+        <canvas class="statChart" #repartitionGenreActivePerPeriodGraph id="repartitionGenreActivePerPeriodGraph">{{ repartitionGenreActivePerPeriodChart }}</canvas>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="oneCard" id="bestFriendsByTime">
+    <div class="sideText">
+      <p>Best Friend par période</p>
+      <img class = "imgHelp" (click)="help('BestFriendsByTime')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+    </div>
+    <div class="sideImg">
+      <div class="helpText" id="helpBestFriendsByTime">
+          <p style="color:#ffffff; font-size: 50%;margin-top: 3%;">La barre indique le nombre de caractères envoyés à votre meilleur.e ami.e pendant la période indiquée en bas</p>
+          <hr class="overview">
+          <p style="color:#ffffff; font-size: 50%">Elle est <b style="color:rgb(241,77,156)">rose</b> si c'est une fille</p>
+          <p style="color:#ffffff; font-size: 50%">Elle est <b style="color:rgb(77,89,241)">bleue</b> si c'est un garçon</p>
+          <p style="color:#ffffff; font-size: 50%">Elle est <b style="color:#1A1837">bleu foncé</b> si c'est indeterminé (page facebook ou prénom non référencé dans nos bases de données)</p>
+          <div class="arrow_box" id="bestFriendPerTimeArrow">
+            <h3>Le temps est affiché selon la date de votre premier message</h3>
+            <p>Soit par jour</p>
+            <p>Soit par mois : Fev 16 signifie Février 2016</p>
+            <p>Soit par année</p>
+          </div>
+      </div>
+      <div *ngIf="bestFriendPerPeriodChart " class="graph" id="graphBestFriendsByTime">
+        <canvas class="statChart" #bestFriendPerPeriodGraph id="bestFriendPerPeriodGraph">{{ bestFriendPerPeriodChart }}</canvas>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="oneCard" id="reactions">
+    <div class="sideText">
+      <p>Vos réactions</p>
+      <img class = "imgHelp" (click)="help('Reactions')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+    </div>
+    <div class="sideImg">
+      <div class="helpText" id="helpReactions">
+          <p style="color:#ffffff; font-size: 80%;margin-top:2%">Le <b style="color:#FA8A2F">orange</b> indique le nombre et le type de réactions que vous avez reçues</p>
+          <p style="color:#ffffff; font-size: 80%;margin-top:2%">Le <b style="color:#1A1837">bleu foncé</b> indique le nombre et le type de réactions que vous avez envoyées</p>
+          <div class="arrow_box" id="radarArrow">
+            <h3>Cliquez sur une légende pour la masquer ou la faire apparaître</h3>
+          </div>
+      </div>
+      <div *ngIf="radarReacChart " class="graph" id="graphReactions">
+        <canvas class="statChart" #radarReacGraph id="radarReacGraph">{{ radarReacChart }}</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="oneCard" id="messagesPerTime">
+    <div class="sideText">
+      <p>Répartition des messages par tranche horaire</p>
+      <img class = "imgHelp" (click)="help('MessagesPerTime')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+    </div>
+    <div class="sideImg">
+      <div class="helpText" id="helpMessagesPerTime" style="text-align:center">
+          <p style="color:#ffffff; font-size: 80%;margin-top:5%">Chaque bar <b style="color:#FA8A2F">orange</b> indique le pourcentage de messages envoyés dans la tranche horaire indiquée en bas</p>
+          <hr class="overview">
+          <p style="color:#ffffff; font-size: 80%;margin-top:1%">Exemple: si la bar <b style="color:#FA8A2F">orange</b> est à 20% sur l'horaire 14h, cela veut dire que vous avez envoyé 20% de vos messages entre 14h et 15h</p> 
+      </div>
+      <div *ngIf="hoursISendChart " class="graph" id="graphMessagesPerTime">
+        <canvas class="statChart" #hoursISendGraph id="hoursISendGraph">{{ hoursISendChart }}</canvas>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="dashboard" style="display:none">
+    <select [(ngModel)]="selectedSort" (ngModelChange)="ngAfterViewInit()" id="selectionButton">
+      <option value="nbrMessage">Number of messages</option>
+      <option value="nbrParticipant">Number of participants</option>
+      <option value="maxStreak">Max streak</option>
+    </select>
+    <div *ngIf="bubbleConvSortChart" class="graph" style="position: relative; height: 100%">
+      <canvas class="statChart" #bubbleConvSortGraph id="bubbleConvSortGraph">{{ bubbleConvSortChart }}</canvas>
+    </div>
+  </div>
+</div>
+
+<div class="mainStats" *ngIf="isFileOpen">
+  <button class="goBack" mat-button (click)="invertStat()"> ↜ </button>
+  <app-one-conv-stats [fileConvToDisplay]="fileSelected" ></app-one-conv-stats>
+</div>
+
+<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3; display:none">

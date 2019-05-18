@@ -1,0 +1,230 @@
+.table{
+  height: 79vh; /*Normalement a 80 mais bug de scroll bar */
+}
+
+.oneRow{
+  display : flex;
+  height:50%;
+  width:100%;
+  color : #EEEEEE;
+}
+
+.oneCard{
+  text-align: center;
+  vertical-align: middle;
+  border : solid 1px #EEEEEE;
+}
+
+.cardtop {
+  width : 100%;
+  background: white;
+  border-radius: 5px 5px 0px 0px;
+}
+
+
+.cardbotleft{
+  width : 50%;
+  border-radius: 0px 0px 0px 5px;
+  background-color: white;
+  height:90%;
+}
+
+.cardbotright{
+  width : 50%;
+  background-color: white;
+  border-radius: 0px 0px 5px 0px;
+  color : white;
+}
+
+.cardbotright p{
+  color:black;
+}
+
+
+h2 {
+  font-size: 20px;
+  background : #1A1837; 
+  margin:0;
+  padding-bottom: 1vh;
+  padding-top: 1vh;
+  color:white;
+}
+
+.explication{
+  display:flex;
+  justify-content:center;
+  height : 40%;
+  width : 80%;
+  padding-right:10%;
+  padding-left:10%;
+  color: black;
+}
+
+.infoBox{
+  margin: auto;
+  width: 20%;
+  padding-right: 5%;
+  padding-left: 5%;
+  height: 40%;
+  margin-top: 2%;
+}
+
+
+.infoBox img{
+  height : 75%;
+  background : #1A1837;
+  border-radius:50%;
+  padding : 2vh;
+}
+
+.totalThreeCards{
+  display:flex;
+  justify-content: center;
+  width : 80%;
+  height:25%;
+  padding-right:10%;
+  padding-left:10%;
+  padding-top:2.5%;
+}
+
+.threeCards {
+  width:15vw;
+  padding-bottom: 1vh;
+  padding-top: auto;
+  align-content: center;
+  text-align: center;
+  box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 0.1px solid;
+  background-color:#EEEEEE;
+  color : black;
+  margin-left : 2%;
+  margin-right : 2%;
+  margin-top:1%;
+  margin-bottom :1%;
+  position: relative;
+  z-index: 5;
+}
+
+.threeCardsSmiley{
+  height: 50%;
+  width : 100%;
+  font-size : 100px;
+}
+
+.threeCardsText{
+  height : 50%;
+  width : 100%;
+}
+
+.freezeCard .img{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(https://i.f1g.fr/media/figaro/orig/2019/01/22/XVM7c94a5d8-1e71-11e9-a628-f5feed317e99.jpg) center center;
+  opacity: .4;
+  width: 100%;
+  height: 100%;
+}
+
+.fireCard .img{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(https://66.media.tumblr.com/d3f3f6ec5459140e1c6f99b6cd22fa93/tumblr_og6xw27BVe1vr11fyo1_400.jpg) center center;
+  opacity: .4;
+  width: 100%;
+  height: 100%;
+}
+
+.streakCard .img{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(https://i.pinimg.com/originals/b5/64/dd/b564ddcc3c8886c9479b4f1275677781.jpg) center center;
+  opacity: .4;
+  width: 100%;
+  height: 100%;
+}
+
+.threeCardsSmiley h1{
+  margin-top:0;
+  font-size : 20%;
+}
+
+.threeCardsText p{
+  margin-top:1vh;
+}
+.infoBox p{
+  margin-bottom:1vh;
+  margin-top:-2%;
+}
+
+.infoBox h5{
+  margin-top: -5%;
+  font-size: 3vh;
+}
+
+.detail{
+  overflow: auto;
+  height: 87%;
+}
+
+.sideText {
+  background-color:#1A1837;
+  color: white;
+  height : 13.8%;
+  width : 100%;
+  text-align : center;
+  margin : auto;
+  text-justify : center;
+  font-size : 30px;   
+  position : relative;
+}
+
+.sideText p{
+  margin-top:1vh;
+}
+
+.sideImg {
+  background-color:rgb(255, 255, 255);
+  color: black;
+  height : 96.5%;
+  position : bottom;
+  width : 100%; 
+}
+
+.helpText {
+  width : 63vw;
+  height : 63vh;
+  position : absolute;
+  background-color: rgba(0,0,0,0.5);
+  color : white ;
+  font-size : 5vh;
+  z-index : -1;
+}
+
+.imgHelp {
+  width : auto;
+  height: 70%;
+  position : absolute;
+  right: 0;
+  top: 0;
+  margin-right : 10px;
+  cursor : pointer;
+  margin-top: 1.2%;
+}
+
+#helpInfluencer {
+  width: 42.5%;
+  height: 34.4%;
+}
+
