@@ -190,9 +190,9 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
                 formatter: (value, ctx) => {
                 let sum = 0;
                 let dataArr = ctx.chart.data.datasets[0].data;
-                dataArr.map(data => {
-                    sum += data;
-                });
+                for(var k=0;k<dataArr.length;k++){
+                  sum += Number(dataArr[k])
+                }
                 let percentage = (value*100 / sum);
                 if(percentage>1.5){ //Ici on stop d'afficher les % lorsqu'on passe en dessous de 1.5
                   return (value*100 / sum).toFixed(1)+"%"
@@ -333,8 +333,8 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
                 fontColor : '#1A1837',
             },
             maxBarThickness : 60,  
-            barPercentage : 1,
-            categoryPercentage : 0.7,
+            /*barPercentage : 1,
+            categoryPercentage : 0.7,*/
             scaleLabel : {
               labelString : 'Participants',
               display : true,

@@ -613,19 +613,6 @@
       </div>
     </div>
   </div>
-
-
-
-  <div class="dashboard" style="display:none">
-    <select [(ngModel)]="selectedSort" (ngModelChange)="ngAfterViewInit()" id="selectionButton">
-      <option value="nbrMessage">Number of messages</option>
-      <option value="nbrParticipant">Number of participants</option>
-      <option value="maxStreak">Max streak</option>
-    </select>
-    <div *ngIf="bubbleConvSortChart" class="graph" style="position: relative; height: 100%">
-      <canvas class="statChart" #bubbleConvSortGraph id="bubbleConvSortGraph">{{ bubbleConvSortChart }}</canvas>
-    </div>
-  </div>
 </div>
 
 <div class="mainStats" *ngIf="isFileOpen">

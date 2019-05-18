@@ -270,11 +270,11 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
 
         this.hoursToSendChart.push(new Chart
         (this.hoursToSendGraph.nativeElement.getContext('2d'), {  
-            plugins : {
-              datalabels : {
-                display : true,
-              }
-            },
+          /*plugins : {
+            datalabels : {
+              display : true,
+            }
+          },*/
           type: 'bar',
           data: {
             labels: this.hoursArray,
@@ -458,12 +458,12 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
 
         this.averageTimeToAnswerChart.push(new Chart
         (this.averageTimeToAnswerGraph.nativeElement.getContext('2d'), {  
-            plugins : {
-              datalabels : {
-                display : false,
-              }
-            },
-            type: 'bar',
+          /*plugins : {
+            datalabels : {
+              display : false,
+            }
+          },*/
+          type: 'bar',
           data: {
             labels: this.averageTimeToAnswerDisplay['labels'],
             datasets: [
