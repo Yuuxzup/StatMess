@@ -42,16 +42,16 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
   
   //ViewChild du graphe message par tranche horaire
   @ViewChild('hoursToSendGraph') hoursToSendGraph: ElementRef;
-  hoursToSendChart :any;
+  hoursToSendChart = [];
 
   //ViewChild du graphe somme message en fonction du temps
   @ViewChild('sumMessageGraph') sumMessageGraph: ElementRef;
-  sumMessageChart :any;
+  sumMessageChart = [];
   sumMessageData = [] //Je l'implémente pour gérer l'affichage de mes datas
   
   //ViewChild du graphe temps de réponse moyen
   @ViewChild('averageTimeToAnswerGraph') averageTimeToAnswerGraph: ElementRef;
-  averageTimeToAnswerChart :any;
+  averageTimeToAnswerChart = [];
   averageTimeToAnswerDisplay : any;
   
  

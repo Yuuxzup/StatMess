@@ -42,14 +42,14 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
 
   //ViewChild du message per user
   @ViewChild('nbMessagePerUserGraph') nbMessagePerUserGraph: ElementRef;
-  nbMessagePerUserChart : any;
+  nbMessagePerUserChart = [];
   backgroundColorNbMessage = [];
   nbMessagePerUserDisplay = false;
 
 
   //ViewChild de l'average message per user
   @ViewChild('averageMessagePerUserGraph') averageMessagePerUserGraph: ElementRef;
-  averageMessagePerUserChart : any;
+  averageMessagePerUserChart = [];
   averageMessagePerUserData :any;
   averageMessagePerUserHtml : any;
   

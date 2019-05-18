@@ -48,7 +48,7 @@ export class OverviewStatComponent implements OnInit, AfterViewInit {
 
   //ViewChild de l'influence des users
   @ViewChild('influenceUserGraph') influenceUserGraph: ElementRef;
-  influenceUserChart : any;
+  influenceUserChart = [];
   influenceUserAdapt : any;
   backgroundColorInfluence = [];
   sumScoreInfluence : any;

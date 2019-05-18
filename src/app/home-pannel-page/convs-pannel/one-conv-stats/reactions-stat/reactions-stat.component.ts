@@ -56,7 +56,7 @@ export class ReactionsStatComponent implements OnInit, AfterViewInit {
   //Viewchild du graphe bâton
 
     @ViewChild('nbReactionPerUserGraph') nbReactionPerUserGraph: ElementRef;
-    nbReactionPerUserChart : any;
+    nbReactionPerUserChart = [];
     reactionDetailAdapt : any;
     backgroundColorReceive = [];
     backgroundColorSend = [];
