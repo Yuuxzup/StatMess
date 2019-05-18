@@ -56,7 +56,7 @@ export class ReactionsStatComponent implements OnInit, AfterViewInit {
   //Viewchild du graphe bâton
 
     @ViewChild('nbReactionPerUserGraph') nbReactionPerUserGraph: ElementRef;
-    nbReactionPerUserChart : any;
+    nbReactionPerUserChart =[];
     reactionDetailAdapt : any;
     backgroundColorReceive = [];
     backgroundColorSend = [];
@@ -235,7 +235,7 @@ Chart.defaults.global.plugins.deferred.yOffset = 100;
 
 //Chart sur les réaction totales
 
-        this.nbReactionChart = new Chart
+        this.nbReactionChart.push(new Chart
         (this.nbReactionGraph.nativeElement.getContext('2d'), {  
             type: 'radar',
             
@@ -316,13 +316,13 @@ Chart.defaults.global.plugins.deferred.yOffset = 100;
             },
 
           }
-        });
+        }));
 
 
 
 //Chart sur les réaction par User
 
-        this.nbReactionPerUserChart = new Chart
+        this.nbReactionPerUserChart.push(new Chart
         (this.nbReactionPerUserGraph.nativeElement.getContext('2d'), {  
             type: 'bar',
             
@@ -401,7 +401,7 @@ Chart.defaults.global.plugins.deferred.yOffset = 100;
             },
 
           }
-        });
+        }));
 
 
 }

@@ -42,14 +42,14 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
 
   //ViewChild du message per user
   @ViewChild('nbMessagePerUserGraph') nbMessagePerUserGraph: ElementRef;
-  nbMessagePerUserChart : any;
+  nbMessagePerUserChart =[];
   backgroundColorNbMessage = [];
   nbMessagePerUserDisplay = false;
 
 
   //ViewChild de l'average message per user
   @ViewChild('averageMessagePerUserGraph') averageMessagePerUserGraph: ElementRef;
-  averageMessagePerUserChart : any;
+  averageMessagePerUserChart =[];
   averageMessagePerUserData :any;
   averageMessagePerUserHtml : any;
   
@@ -160,7 +160,7 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
 
   //Chart sur les nombres de message par user
 
-        this.nbMessagePerUserChart = new Chart
+        this.nbMessagePerUserChart.push(new Chart
         (this.nbMessagePerUserGraph.nativeElement.getContext('2d'), {  
             type: 'doughnut',
             
@@ -232,12 +232,12 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
             },
 
           }
-        });
+        }));
 
 
   //Chart sur le nombre de caractère moyen par message
 
-        this.averageMessagePerUserChart = new Chart
+        this.averageMessagePerUserChart.push(new Chart
         (this.averageMessagePerUserGraph.nativeElement.getContext('2d'), {  
             type: 'horizontalBar',
           data: {
@@ -344,7 +344,7 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
     },
 
           }
-        });      
+        }));      
   }
 
 

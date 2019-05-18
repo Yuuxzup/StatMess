@@ -87,8 +87,8 @@ export class StatsConvService {
   }
   
   // CALCUL LE NBR DE J MAX PENDANT LESQUELS IL Y A EU AU MOINS UN MESSAGE D'ENVOYE
-  calculMaxStreak(jsonContent : any, actualStreak : any, tsLastMessage){
-    let currentDateTimeStamp = tsLastMessage
+  calculMaxStreak(jsonContent : any, actualStreak : any){
+    let currentDateTimeStamp = this.lastMessageUploadTimestamp
 
     const numberMillisecondsInOneDay=1000*60*60*24;
 
@@ -133,7 +133,7 @@ export class StatsConvService {
   }
 
   calculMaxFreeze(jsonContent : any){
-    let currentDateTimeStamp = (new Date()).getTime()-1000*60*60*3; //On prend 3 heures de marge entre la date de DL et la date de test
+    let currentDateTimeStamp = this.lastMessageUploadTimestamp
     //console.log(currentDateTimeStamp);
     const numberMillisecondsInOneDay=1000*60*60*24;
     let reverseMessagesTab = jsonContent["messages"]
