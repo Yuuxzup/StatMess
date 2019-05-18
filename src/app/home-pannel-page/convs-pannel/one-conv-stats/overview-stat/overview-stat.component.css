@@ -106,7 +106,6 @@ h2 {
 }
 
 .threeCardsSmiley{
-  height: 50%;
   width : 100%;
   font-size : 100px;
 }
@@ -181,7 +180,6 @@ h2 {
 .sideText {
   background-color:#1A1837;
   color: white;
-  height : 13.8%;
   width : 100%;
   text-align : center;
   margin : auto;
