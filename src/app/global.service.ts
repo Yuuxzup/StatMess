@@ -185,7 +185,7 @@ export class GlobalService {
       if (fileDico["name"]!==""){
         fileDico["nbrMessage"]=this.statsConvService.calculNbrMessage(data)
       fileDico["currentStreak"]=this.statsConvService.calculCurrentStreak(data)
-      fileDico["maxStreak"]=this.statsConvService.calculMaxStreak(data, fileDico["currentStreak"], this.lastMessageUploadTimestamp) // DOIT IMPERATIVEMENT ETRE FAIT APRES CURRENTSTREAK
+      fileDico["maxStreak"]=this.statsConvService.calculMaxStreak(data, fileDico["currentStreak"]) // DOIT IMPERATIVEMENT ETRE FAIT APRES CURRENTSTREAK
       fileDico["maxFreeze"]=this.statsConvService.calculMaxFreeze(data)
       fileDico["isConvGroup"]=this.statsConvService.defineGroupBoolean(data);
       fileDico["nbrParticipant"]=data["participants"].length
