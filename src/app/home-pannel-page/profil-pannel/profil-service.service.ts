@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {OwnStatsService} from '../../../app/home-pannel-page/own-stats-pannel/own-stats.service';
 import {StatsConvService} from '../../../app/home-pannel-page/convs-pannel/stats-conv.service';
-import baseGenre from '../../../data/baseGenre.json';
-import baseGenre2 from '../../../data/baseGenre2.json';
+import * as baseGenre from '../../../data/baseGenre.json';
+import * as baseGenre2 from '../../../data/baseGenre2.json';
 
 @Injectable()
 export class ProfilServiceService {

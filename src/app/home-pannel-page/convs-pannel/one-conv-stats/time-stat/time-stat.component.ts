@@ -42,16 +42,16 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
   
   //ViewChild du graphe message par tranche horaire
   @ViewChild('hoursToSendGraph') hoursToSendGraph: ElementRef;
-  hoursToSendChart = [];
+  hoursToSendChart :any;
 
   //ViewChild du graphe somme message en fonction du temps
   @ViewChild('sumMessageGraph') sumMessageGraph: ElementRef;
-  sumMessageChart = [];
+  sumMessageChart :any;
   sumMessageData = [] //Je l'implémente pour gérer l'affichage de mes datas
   
   //ViewChild du graphe temps de réponse moyen
   @ViewChild('averageTimeToAnswerGraph') averageTimeToAnswerGraph: ElementRef;
-  averageTimeToAnswerChart = [];
+  averageTimeToAnswerChart :any;
   averageTimeToAnswerDisplay : any;
   
  
@@ -355,7 +355,7 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
             },
             tooltips: {
               callbacks: {
-                label: function(tooltipItem, data) {
+                label: function(tooltipItem :any, data) {
                     return Math.round(tooltipItem.yLabel * 10) / 10+'%';
                     
                 }
@@ -410,7 +410,7 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
             },
             tooltips:{
               callbacks: {
-                label: function(tooltipItem, data) {
+                label: function(tooltipItem :any, data) {
                     var label = data.datasets[tooltipItem.datasetIndex].label || ''
                     label += ': '+ Math.round(tooltipItem.yLabel * 10) / 1 ;
                     return label;

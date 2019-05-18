@@ -42,14 +42,14 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
 
   //ViewChild du message per user
   @ViewChild('nbMessagePerUserGraph') nbMessagePerUserGraph: ElementRef;
-  nbMessagePerUserChart = [];
+  nbMessagePerUserChart : any;
   backgroundColorNbMessage = [];
   nbMessagePerUserDisplay = false;
 
 
   //ViewChild de l'average message per user
   @ViewChild('averageMessagePerUserGraph') averageMessagePerUserGraph: ElementRef;
-  averageMessagePerUserChart = [];
+  averageMessagePerUserChart : any;
   averageMessagePerUserData :any;
   averageMessagePerUserHtml : any;
   
@@ -295,7 +295,7 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
             },
             tooltips:{
               callbacks: {
-                label: function(tooltipItem, data) {
+                label: function(tooltipItem :any, data) {
                     var label = data.datasets[tooltipItem.datasetIndex].label || ''
                     label += ': '+ Math.round(tooltipItem.xLabel * 10) / 10 ;
                     return label;

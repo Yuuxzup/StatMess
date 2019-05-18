@@ -56,7 +56,7 @@ export class ReactionsStatComponent implements OnInit, AfterViewInit {
   //Viewchild du graphe bâton
 
     @ViewChild('nbReactionPerUserGraph') nbReactionPerUserGraph: ElementRef;
-    nbReactionPerUserChart = [];
+    nbReactionPerUserChart : any;
     reactionDetailAdapt : any;
     backgroundColorReceive = [];
     backgroundColorSend = [];
@@ -268,7 +268,7 @@ Chart.defaults.global.plugins.deferred.yOffset = 100;
                 display : false
               }
             },
-            scale: {
+            scales: {
               angleLines : {
                 color : '#1A1837',
                 lineWidth : 0.1,
