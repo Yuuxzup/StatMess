@@ -97,48 +97,48 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
 
   //ViewChild du graphe bubble des conversations les plus importantes
   @ViewChild('bubbleConvGraph') bubbleConvGraph: ElementRef;
-  bubbleConvChart : any;
+  bubbleConvChart =[];
   radiusTop1 : number;
   bubbleConvFixed = {'labels':['top1 conv','top2 conv','top3 conv','top4 conv'],'data':[{x:0,y:0,r:this.radiusTop1},{x:0,y:0,r:1},{x:0,y:0,r:0.2},{x:0,y:0,r:0.2}]} //Mettre dans labels le nom des convs dans ce sens là 
-  colorBubble =['','','','']
+  colorBubble = ['', '', '','']
   //ViewChild du graphe bubble des conversations sort
   @ViewChild('bubbleConvSortGraph') bubbleConvSortGraph: ElementRef;
-  bubbleConvSortChart : any;
+  bubbleConvSortChart=[];
 
   //ViewChild du graphe d'évolution du nombre de message reçus envoyés par periode
   @ViewChild('nbrMessagePerPeriodGraph') nbrMessagePerPeriodGraph: ElementRef;
-  nbrMessagePerPeriodChart : any;
+  nbrMessagePerPeriodChart =[];
   nbrMessagePerPeriodData = {"sent":[], "receive":[]}
 
   //ViewChild du graphe d'évolution du nombre de conversations actives
   @ViewChild('nbrConvActivPerPeriodGraph') nbrConvActivPerPeriodGraph: ElementRef;
-  nbrConvActivPerPeriodChart : any;
+  nbrConvActivPerPeriodChart =[];
 
   //ViewChild du graphe d'évolution du nombre de genre des conversations actives
   @ViewChild('repartitionGenreActivePerPeriodGraph') repartitionGenreActivePerPeriodGraph: ElementRef;
-  repartitionGenreActivePerPeriodChart : any;
+  repartitionGenreActivePerPeriodChart =[];
 
   //ViewChild du graphe des best friends
   @ViewChild('bestFriendPerPeriodGraph') bestFriendPerPeriodGraph: ElementRef;
-  bestFriendPerPeriodChart : any;
+  bestFriendPerPeriodChart =[];
   
   //ViewChild du graphe radar
   @ViewChild('radarReacGraph') radarReacGraph: ElementRef;
-  radarReacChart : any;
+  radarReacChart =[]; 
   
   //ViewChild du graph répartition messages par temps
   @ViewChild('hoursISendGraph') hoursISendGraph: ElementRef;
-  hoursISendChart : any;
+  hoursISendChart =[];
   hoursArray = ['0h','1h','2h','3h','4h','5h','6h','7h','8h','9h','10h','11h','12h','13h','14h','15h','16h','17h','18h','19h','20h','21h','22h','23h'];
   hoursISendModify = [];
   sumMessages = 0;
 
 
   @ViewChild('repartitionTypeConvGraph') repartitionTypeConvGraph: ElementRef;
-  repartitionTypeConvChart : any;
+  repartitionTypeConvChart =[];
 
   @ViewChild('repartitionTypeMessageGraph') repartitionTypeMessageGraph: ElementRef;
-  repartitionTypeMessageChart : any;
+  repartitionTypeMessageChart =[];
 
   constructor(private elementRef: ElementRef, private ownStatsService : OwnStatsService) { }
 
