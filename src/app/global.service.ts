@@ -1,7 +1,7 @@
 import { Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs/Subject';
 import { ProfilServiceService } from './home-pannel-page/profil-pannel/profil-service.service';
+import { DeterminationService } from './home-pannel-page/profil-pannel/determination.service';
 import { OwnStatsService } from './home-pannel-page/own-stats-pannel/own-stats.service';
 import { StatsConvService } from './home-pannel-page/convs-pannel/stats-conv.service';
 
@@ -11,23 +11,8 @@ export class GlobalService {
   userName : any;
   lastMessageUploadTimestamp:any;
 
-  loadingSubject = new Subject<boolean>();
   private isLoading=false;
-  constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService) { }
-
-  emitLoadingSubject() {
-    console.log("On emit le loading à "+this.isLoading)
-    this.loadingSubject.next(this.isLoading);
-  }
-  emitLoadCompleted(){
-    console.log("On emit le load completeted")
-    this.isLoading=false;
-    this.emitLoadingSubject();
-  }
-  emitLoadBeginning(){
-    this.isLoading=true;
-    this.emitLoadingSubject();
-  }
+  constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService) { }
 
   findUserName(listFileDico : any){
     if (this.userName){
@@ -106,6 +91,37 @@ export class GlobalService {
     this.profilServiceService.calculScoreEntCon(listFileDico);
     this.profilServiceService.calculScoreTch(listFileDico);
     this.profilServiceService.calculScoreAtWork(listFileDico);
+
+    this.determinationService.determinationProfil(listFileDico);
+    let profilUser = this.determinationService.profilType
+
+    this.httpClient
+      .get<any>('https://statsmess.firebaseio.com/repartitionProfils.json')
+      .subscribe(
+        (response) => {
+          let profilRepar = response;
+          let profilToEdit;
+          let keyModified;
+          for(var k=0;k<Object.keys(profilRepar).length ;k++){
+            let key = Object.keys(profilRepar)[k]
+            if (profilRepar[key]["profil"]===profilUser){
+              profilToEdit=profilRepar[key]
+              keyModified=key
+            }
+          }
+          profilToEdit["occurence"]+=1
+          profilRepar[keyModified]=profilToEdit
+          this.httpClient.put('https://statsmess.firebaseio.com/repartitionProfils.json', profilRepar).subscribe(
+            () => {
+              console.log("compteur profil succes update")
+            },
+            (error) => {
+            }
+          );
+        },
+        (error) => {
+  })
+    
   }
 
   doCalculForOwnStats(listFileDico : any){
@@ -135,7 +151,6 @@ export class GlobalService {
     this.ownStatsService.calculLongestMessage(listFileDico);
     this.ownStatsService.calculBestReactionMessage(listFileDico);
     this.ownStatsService.calculNbMaxMessPer24(listFileDico);
-    this.ownStatsService.calculTimeOnMessenger(listFileDico);
   }
 
   doCalculForConv(listFileDico : any){
@@ -153,7 +168,7 @@ export class GlobalService {
       if (fileDico["name"]!==""){
         fileDico["nbrMessage"]=this.statsConvService.calculNbrMessage(data)
       fileDico["currentStreak"]=this.statsConvService.calculCurrentStreak(data)
-      fileDico["maxStreak"]=this.statsConvService.calculMaxStreak(data, fileDico["currentStreak"]) // DOIT IMPERATIVEMENT ETRE FAIT APRES CURRENTSTREAK
+      fileDico["maxStreak"]=this.statsConvService.calculMaxStreak(data, fileDico["currentStreak"], this.lastMessageUploadTimestamp) // DOIT IMPERATIVEMENT ETRE FAIT APRES CURRENTSTREAK
       fileDico["maxFreeze"]=this.statsConvService.calculMaxFreeze(data)
       fileDico["isConvGroup"]=this.statsConvService.defineGroupBoolean(data);
       fileDico["nbrParticipant"]=data["participants"].length
