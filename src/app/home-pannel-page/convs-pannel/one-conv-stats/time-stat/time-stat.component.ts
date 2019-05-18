@@ -2,8 +2,6 @@ import { Component, OnInit, Input, ElementRef, ViewChild, AfterViewInit } from '
 import { StatsConvService } from '../.././stats-conv.service';
 import { Chart, ChartOptions, ChartData } from 'chart.js';
 
-import * as ChartDataLabels  from 'chartjs-plugin-datalabels';
-
 import 'chartjs-plugin-datalabels';
 import 'chartjs-plugin-deferred';
 import '../../node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js';
