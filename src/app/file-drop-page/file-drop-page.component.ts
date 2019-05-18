@@ -18,11 +18,27 @@ export class FileDropPageComponent implements OnInit{
   loadingOk=false;
   nbrFichier : number;
   timer = 4000;
+  nbrVisite : any;
 
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService) { }
 
   ngOnInit(){
-    //On met à jour le compteur
+
+    //Création de la table profil
+    /*let listProfil=["INTJ", "INTP","ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"]
+    for (var k=0; k<listProfil.length; k++){
+      let profil={"profil":listProfil[k], "occurence":0}
+      this.httpClient.post('https://statsmess.firebaseio.com/repartitionProfils.json', profil).subscribe(
+        () => {
+          console.log("compteur "+"fileDrop"+" succes update")
+        },
+        (error) => {
+          console.log("can't log")
+        }
+      );
+    }*/
+
+    //Création de la table visites
     /*let listePage=["fileDrop", "home", "ownStat", "convStat", "profil", "cgu"]
 
     for (var k=0; k<listePage.length; k++){
@@ -53,6 +69,7 @@ export class FileDropPageComponent implements OnInit{
               keyModified=key
             }
           }
+          this.nbrVisite=compteurPage["nbrVisite"]
           compteurPage["nbrVisite"]+=1
           compteurPage["timeSpent"]+=0
           compteurVisites[keyModified]=compteurPage

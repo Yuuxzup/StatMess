@@ -1,6 +1,6 @@
 import { Injectable} from '@angular/core';
-import baseGenre from '../../../data/baseGenre.json';
-import baseGenre2 from '../../../data/baseGenre2.json';
+import * as baseGenre from '../../../data/baseGenre.json';
+import * as baseGenre2 from '../../../data/baseGenre2.json';
 
 @Injectable()
 export class OwnStatsService {

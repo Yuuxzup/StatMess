@@ -97,48 +97,48 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
 
   //ViewChild du graphe bubble des conversations les plus importantes
   @ViewChild('bubbleConvGraph') bubbleConvGraph: ElementRef;
-  bubbleConvChart = [];
+  bubbleConvChart : any;
   radiusTop1 : number;
   bubbleConvFixed = {'labels':['top1 conv','top2 conv','top3 conv','top4 conv'],'data':[{x:0,y:0,r:this.radiusTop1},{x:0,y:0,r:1},{x:0,y:0,r:0.2},{x:0,y:0,r:0.2}]} //Mettre dans labels le nom des convs dans ce sens là 
   colorBubble =['','','','']
   //ViewChild du graphe bubble des conversations sort
   @ViewChild('bubbleConvSortGraph') bubbleConvSortGraph: ElementRef;
-  bubbleConvSortChart = [];
+  bubbleConvSortChart : any;
 
   //ViewChild du graphe d'évolution du nombre de message reçus envoyés par periode
   @ViewChild('nbrMessagePerPeriodGraph') nbrMessagePerPeriodGraph: ElementRef;
-  nbrMessagePerPeriodChart = [];
+  nbrMessagePerPeriodChart : any;
   nbrMessagePerPeriodData = {"sent":[], "receive":[]}
 
   //ViewChild du graphe d'évolution du nombre de conversations actives
   @ViewChild('nbrConvActivPerPeriodGraph') nbrConvActivPerPeriodGraph: ElementRef;
-  nbrConvActivPerPeriodChart = [];
+  nbrConvActivPerPeriodChart : any;
 
   //ViewChild du graphe d'évolution du nombre de genre des conversations actives
   @ViewChild('repartitionGenreActivePerPeriodGraph') repartitionGenreActivePerPeriodGraph: ElementRef;
-  repartitionGenreActivePerPeriodChart = [];
+  repartitionGenreActivePerPeriodChart : any;
 
   //ViewChild du graphe des best friends
   @ViewChild('bestFriendPerPeriodGraph') bestFriendPerPeriodGraph: ElementRef;
-  bestFriendPerPeriodChart = [];
+  bestFriendPerPeriodChart : any;
   
   //ViewChild du graphe radar
   @ViewChild('radarReacGraph') radarReacGraph: ElementRef;
-  radarReacChart = [];
+  radarReacChart : any;
   
   //ViewChild du graph répartition messages par temps
   @ViewChild('hoursISendGraph') hoursISendGraph: ElementRef;
-  hoursISendChart = [];
+  hoursISendChart : any;
   hoursArray = ['0h','1h','2h','3h','4h','5h','6h','7h','8h','9h','10h','11h','12h','13h','14h','15h','16h','17h','18h','19h','20h','21h','22h','23h'];
   hoursISendModify = [];
   sumMessages = 0;
 
 
   @ViewChild('repartitionTypeConvGraph') repartitionTypeConvGraph: ElementRef;
-  repartitionTypeConvChart = [];
+  repartitionTypeConvChart : any;
 
   @ViewChild('repartitionTypeMessageGraph') repartitionTypeMessageGraph: ElementRef;
-  repartitionTypeMessageChart = [];
+  repartitionTypeMessageChart : any;
 
   constructor(private elementRef: ElementRef, private ownStatsService : OwnStatsService) { }
 
@@ -194,7 +194,7 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
     let indexTop2 = 2;
     let indexTop3 = 0;
     let indexTop4 = 3;
-    var c = document.getElementById("myCanvas");
+    var c = <HTMLCanvasElement> document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
 
     //Pour la bubble top 1
@@ -463,54 +463,54 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             display : 'auto',
             anchor: function(context) {
 							var value = context.dataset.data[context.dataIndex];
-							return 0 < value.y ? 'center' : 'center';
+							return 0 < value["y"] ? 'center' : 'center';
 						},
 						align: function(context) {
 							var value = context.dataset.data[context.dataIndex];
-							return 0 < value.y ? 'center' : 'center';
+							return 0 < value["y"] ? 'center' : 'center';
 						},
 						color: function(context) {
 							var value = context.dataset.data[context.dataIndex];
-							if(value.x==0){
+							if(value["x"]==0){
                 return('#E5EC00');
               }
-              if(value.x==0.031){
+              if(value["x"]==0.031){
                 return('#BEBEBE');
               }
-              if(value.x==0.025){
+              if(value["x"]==0.025){
                 return('#EC9838');
               }
-              if(value.x==-0.025){
+              if(value["x"]==-0.025){
                 return('#A46600');
               }
 						},
 						font: function(context){
               var value = context.dataset.data[context.dataIndex];
-							if(value.x==0){
+							if(value["x"]==0){
                 return{size:80};
               }
-              if(value.x==0.031){
+              if(value["x"]==0.031){
                 return{size:65};
               }
-              if(value.x==0.025){
+              if(value["x"]==0.025){
                 return{size:50};
               }
-              if(value.x==-0.025){
+              if(value["x"]==-0.025){
                 return{size:30};
               }
             },
 						
 						formatter: function(value) {
-							if(value.x==0){
+							if(value["x"]==0){
                 return(1);
               }
-              if(value.x==0.031){
+              if(value["x"]==0.031){
                 return(2);
               }
-              if(value.x==0.025){
+              if(value["x"]==0.025){
                 return(3);
               }
-              if(value.x==-0.025){
+              if(value["x"]==-0.025){
                 return(4);
               }
 						},
@@ -849,7 +849,7 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
         },
         tooltips: {
           callbacks: {
-            label: function(tooltipItem, data) {
+            label: function(tooltipItem :any, data) {
                 var label = data.datasets[tooltipItem.datasetIndex].label || ''
                 label += Math.round(tooltipItem.yLabel * 10) / 10 +' conversations';
                 return label;
@@ -1252,7 +1252,7 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             },
             tooltips: {
               callbacks: {
-                label: function(tooltipItem, data) {
+                label: function(tooltipItem :any, data) {
                     return (Math.round(tooltipItem.yLabel*100)/100)*100+'%';
                     
                 }

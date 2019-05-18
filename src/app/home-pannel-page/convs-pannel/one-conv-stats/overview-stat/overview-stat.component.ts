@@ -48,7 +48,7 @@ export class OverviewStatComponent implements OnInit, AfterViewInit {
 
   //ViewChild de l'influence des users
   @ViewChild('influenceUserGraph') influenceUserGraph: ElementRef;
-  influenceUserChart = [];
+  influenceUserChart : any;
   influenceUserAdapt : any;
   backgroundColorInfluence = [];
   sumScoreInfluence : any;
@@ -153,7 +153,7 @@ export class OverviewStatComponent implements OnInit, AfterViewInit {
                 color: '#FFFFFF',
               }
             },
-            scale: {
+            scales: {
                 gridLines : {
                   color : 'rgb(255,255,255,1)',
                   lineWidth : 0.1,
