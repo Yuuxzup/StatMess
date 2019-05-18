@@ -295,7 +295,7 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
             },
             tooltips:{
               callbacks: {
-                label: function(tooltipItem, data) {
+                label: function(tooltipItem :any, data) {
                     var label = data.datasets[tooltipItem.datasetIndex].label || ''
                     label += ': '+ Math.round(tooltipItem.xLabel * 10) / 10 ;
                     return label;

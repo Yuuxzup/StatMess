@@ -268,7 +268,7 @@ Chart.defaults.global.plugins.deferred.yOffset = 100;
                 display : false
               }
             },
-            scale: {
+            scales: {
               angleLines : {
                 color : '#1A1837',
                 lineWidth : 0.1,
