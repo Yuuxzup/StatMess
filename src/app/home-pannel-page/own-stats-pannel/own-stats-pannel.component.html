@@ -121,11 +121,12 @@
       <div class="borderModuleBottom">
         <div class="boxOverview">
           <div class="sideImgBoxOverview">
-            <img src="https://image.flaticon.com/icons/svg/134/134909.svg" class="icon"/>
+            <img src="https://image.flaticon.com/icons/svg/1236/1236903.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{nbrConversations}}</p>
-            <p class="descriptionBox">Conversations</p>
+            <p class="numberBox">{{nbMaxMessPer24.nbSent}}</p>
+            <p class="descriptionBox">Nombre maximum de messages envoyés en 24h</p>
+            <p>({{nbMaxMessPer24.dateSent | date:short}})</p>
           </div>
         </div>
       </div>
@@ -133,11 +134,12 @@
       <div class="borderModuleBottom">
         <div class="boxOverview">
           <div class="sideImgBoxOverview">
-            <img src="https://image.flaticon.com/icons/svg/123/123382.svg" class="icon"/>
+            <img src="https://image.flaticon.com/icons/svg/1040/1040218.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{statsGlobalesMessages.messagesSend}}</p>
-            <p class="descriptionBox">Messages envoyés</p>
+            <p class="numberBox">{{nbMaxMessPer24.nbReceived}}</p>
+            <p class="descriptionBox">Nombre maximum de messages reçus en 24h</p>
+            <p>({{nbMaxMessPer24.dateReceived | date:short}})</p>
           </div>
         </div>
       </div>
@@ -145,11 +147,11 @@
       <div class="borderModuleBottom">
         <div class="boxOverview">
           <div class="sideImgBoxOverview">
-            <img src="https://image.flaticon.com/icons/svg/179/179681.svg" class="icon"/>
+            <img src="https://image.flaticon.com/icons/svg/138/138295.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{statsGlobalesMessages.messagesReceived}}</p>
-            <p class="descriptionBox">Messages reçus</p>
+            <p class="numberBox">{{timeOnMessenger}}</p>
+            <p class="descriptionBox">Temps total passé sur messenger</p>
           </div>
         </div>
       </div>

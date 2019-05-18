@@ -30,6 +30,7 @@ export class OwnStatsService {
   longestMessage:any;
   bestReactionsMessage:any;
   nbMaxMessPer24:any;
+  timeOnMessenger:any;
 
   pinkColor= 'rgb(241,77,156)' ;
   blueColor = 'rgb(77,89,241)';
@@ -1391,8 +1392,47 @@ export class OwnStatsService {
     sentDate = sentDate.slice(0,15)
     receivedDate = receivedDate.slice(0,15)
 
+    this.nbMaxMessPer24={"nbSent" : maxSent, "dateSent" : sentDate, "nbReceived" : maxReceived, "dateReceived" : receivedDate}
     return {"nbSent" : maxSent, "dateSent" : sentDate, "nbReceived" : maxReceived, "dateReceived" : receivedDate}
   }
 
+  calculTimeOnMessenger(listFileDico : any){
+    if (this.timeOnMessenger){
+      return this.timeOnMessenger
+    }
+
+    let nbrCaracRead = 0
+    let nbrCaracWrite = 0
+    let user = this.userName
+    listFileDico.forEach(function(file){
+      let lMessage = file["content"]["messages"]
+      for (var k=0; k<lMessage.length;k++){
+        let message=lMessage[k]
+        if (message["content"]){
+          if (decodeURIComponent(escape(message["sender_name"]))===user){
+            nbrCaracWrite+=message["content"].length
+          } else {
+            nbrCaracRead+=message["content"].length
+          }
+        }  
+      }
+    })
+
+    let timeRead = (nbrCaracRead/(175*5))*60
+    let timeWrite = (nbrCaracRead/(60*5))*60
+    let timeTotal = (timeRead+timeWrite)*1.3
+
+
+    var j = Math.floor(timeTotal / 86400);
+    var h = Math.floor(timeTotal % 86400 / 3600);
+    var m = Math.floor(timeTotal % 86400 % 3600 / 60);
+    var s = Math.floor(timeTotal % 86400 % 3600 % 60);
+        
+    var jDisplay = j > 0 ? j + (j == 1 ? " jour, " : " jours, ") : "";
+    var hDisplay = h > 0 ? h + (h == 1 ? " heure" : " heures") : "";
+
+    this.timeOnMessenger=jDisplay + hDisplay
+    return jDisplay + hDisplay
+  }
   
 }
