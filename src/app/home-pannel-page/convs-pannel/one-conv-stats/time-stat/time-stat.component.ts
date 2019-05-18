@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { StatsConvService } from '../.././stats-conv.service';
-import { Chart, ChartOptions, ChartData } from 'chart.js';
+import { Chart } from 'chart.js';
 
 import 'chartjs-plugin-datalabels';
 import 'chartjs-plugin-deferred';
-import '../../node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js';
 
 @Component({
   selector: 'app-time-stat',
@@ -43,16 +42,16 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
   
   //ViewChild du graphe message par tranche horaire
   @ViewChild('hoursToSendGraph') hoursToSendGraph: ElementRef;
-  hoursToSendChart = [] ;
+  hoursToSendChart =[];
 
   //ViewChild du graphe somme message en fonction du temps
   @ViewChild('sumMessageGraph') sumMessageGraph: ElementRef;
-  sumMessageChart = [];
+  sumMessageChart =[];
   sumMessageData = [] //Je l'implémente pour gérer l'affichage de mes datas
   
   //ViewChild du graphe temps de réponse moyen
   @ViewChild('averageTimeToAnswerGraph') averageTimeToAnswerGraph: ElementRef;
-  averageTimeToAnswerChart = [];
+  averageTimeToAnswerChart =[];
   averageTimeToAnswerDisplay : any;
   
  
@@ -269,7 +268,7 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
 
      // Chart sur les heures des messages
 
-        this.hoursToSendChart = new Chart
+        this.hoursToSendChart.push(new Chart
         (this.hoursToSendGraph.nativeElement.getContext('2d'), {  
             plugins : {
               datalabels : {
@@ -284,7 +283,7 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
                 
                 data: this.hoursToSend['everyone'],
                 //Les couleurs peuvent être modifiées sur les variables globales définient plus haut
-                backgroundColor : this.copyHoursArray.fill(this.beginColorRgb) ,
+                backgroundColor : this.copyHoursArray.fill(this.beginColorRgb),
                 fill: false,
                 borderWidth : 1,
                 borderColor : 'rgb(0,0,0)' ,
@@ -365,12 +364,12 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
             }
             }
           }
-        );
+        ));
 
 
     //Chart sur la somme des messages par utilisateur
 
-        this.sumMessageChart = new Chart
+        this.sumMessageChart.push(new Chart
         (this.sumMessageGraph.nativeElement.getContext('2d'), {  
             type: 'line',
           data: {
@@ -453,11 +452,11 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
               }]
                   },
           }
-        });
+        }));
 
     // Chart sur le temps de réponse moyen
 
-        this.averageTimeToAnswerChart = new Chart
+        this.averageTimeToAnswerChart.push(new Chart
         (this.averageTimeToAnswerGraph.nativeElement.getContext('2d'), {  
             plugins : {
               datalabels : {
@@ -574,7 +573,7 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
             }
             }
           }
-        );
+        ));
   }
   // Tout le code qui suit jusqu'à return saida, est un code pour coder le gradient de couleur
 

@@ -134,6 +134,7 @@ export class StatsConvService {
 
   calculMaxFreeze(jsonContent : any){
     let currentDateTimeStamp = this.lastMessageUploadTimestamp
+    //console.log(currentDateTimeStamp);
     const numberMillisecondsInOneDay=1000*60*60*24;
     let reverseMessagesTab = jsonContent["messages"]
     let maxFreezeTimeTimeStamp = 0;

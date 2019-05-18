@@ -42,14 +42,14 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
 
   //ViewChild du message per user
   @ViewChild('nbMessagePerUserGraph') nbMessagePerUserGraph: ElementRef;
-  nbMessagePerUserChart = [];
+  nbMessagePerUserChart =[];
   backgroundColorNbMessage = [];
   nbMessagePerUserDisplay = false;
 
 
   //ViewChild de l'average message per user
   @ViewChild('averageMessagePerUserGraph') averageMessagePerUserGraph: ElementRef;
-  averageMessagePerUserChart = [];
+  averageMessagePerUserChart =[];
   averageMessagePerUserData :any;
   averageMessagePerUserHtml : any;
   
@@ -190,7 +190,7 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
                 formatter: (value, ctx) => {
                 let sum = 0;
                 let dataArr = ctx.chart.data.datasets[0].data;
-                dataArr.map((data: number) => { //Je ne trouve pas l'erreur
+                dataArr.map(data => {
                     sum += data;
                 });
                 let percentage = (value*100 / sum);
@@ -237,7 +237,7 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
 
   //Chart sur le nombre de caractère moyen par message
 
-        this.averageMessagePerUserChart.push( new Chart
+        this.averageMessagePerUserChart.push(new Chart
         (this.averageMessagePerUserGraph.nativeElement.getContext('2d'), {  
             type: 'horizontalBar',
           data: {
@@ -333,8 +333,8 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
                 fontColor : '#1A1837',
             },
             maxBarThickness : 60,  
-            //barPercentage : 1, Normalement ça marche
-            //categoryPercentage : 0.7, Normalement ça marche
+            barPercentage : 1,
+            categoryPercentage : 0.7,
             scaleLabel : {
               labelString : 'Participants',
               display : true,
@@ -344,7 +344,7 @@ export class MessagesStatComponent implements OnInit, AfterViewInit {
     },
 
           }
-        }))  ;    
+        }));      
   }
 
 
