@@ -125,7 +125,7 @@ export class FileDropPageComponent implements OnInit{
                   let nameTitle=decodeURIComponent(escape(JSON.parse(String((<FileReader>event.target).result))["title"]))
                   if (nameTitle!="Utilisateur de Facebook" && nameTitle!="undefined"){
                     let fileDico = {}
-                    let data = JSON.parse(String((<FileReader>event.target).result)))
+                    let data = JSON.parse(String((<FileReader>event.target).result))
                     if (data["participants"]){
                       fileDico["content"]=data
                       tempoListFilesDico.push(fileDico)
