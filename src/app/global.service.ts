@@ -17,7 +17,7 @@ export class GlobalService {
   constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService) { }
 
   emitLoadingSubject() {
-    console.log("On emit le loading Ã  "+this.isLoading)
+    console.log("On emit le loading à "+this.isLoading)
     this.loadingSubject.next(this.isLoading);
   }
   emitLoadCompleted(){

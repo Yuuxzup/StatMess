@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
-import { Chart } from 'chart.js';
 import {OwnStatsService} from './own-stats.service';
+import { Chart, ChartOptions } from 'chart.js';
 
 // Import plugins
 
@@ -14,38 +14,6 @@ import 'chartjs-plugin-deferred'; //plugin delay
   styleUrls: ['./own-stats-pannel.component.scss']
 })
 export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
-
-
-isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'randomMessage':true}
-  invertHide(id : string){
-    this.isHide[id] = !this.isHide[id];
-  }
-
-  goToMessenger() {
-  window.open("https://www.messenger.com/");
-  }
-
-  help(id : string){
-    
-    if(document.getElementById('help'+id).style.zIndex == '1'){
-      document.getElementById('help'+id).style.zIndex = '-1';
-      document.getElementById('graph'+id).style.zIndex = '1';
-    }
-    else{
-    document.getElementById('help'+id).style.zIndex = '1';
-    document.getElementById('graph'+id).style.zIndex = '0';
-    }
-  }
-
-  displayReaction(numberReaction : number){
-    if(numberReaction>0){
-      return true
-    }
-    else{
-      return false
-    }
-  }
-
 
   @Input() listFilesDico : any;
 
@@ -85,6 +53,8 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
   pinkColor= 'rgb(241,77,156)' ;
   blueColor = 'rgb(77,89,241)';
   indeterminedColor = '#1A1837';
+
+  isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'randomMessage':true}
   
 
   // A REMPLACER
@@ -101,10 +71,7 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
   bubbleConvChart =[];
   radiusTop1 : number;
   bubbleConvFixed = {'labels':['top1 conv','top2 conv','top3 conv','top4 conv'],'data':[{x:0,y:0,r:this.radiusTop1},{x:0,y:0,r:1},{x:0,y:0,r:0.2},{x:0,y:0,r:0.2}]} //Mettre dans labels le nom des convs dans ce sens là 
-  colorBubble = ['', '', '','']
-  //ViewChild du graphe bubble des conversations sort
-  @ViewChild('bubbleConvSortGraph') bubbleConvSortGraph: ElementRef;
-  bubbleConvSortChart=[];
+  colorBubble=[]
 
   //ViewChild du graphe d'évolution du nombre de message reçus envoyés par periode
   @ViewChild('nbrMessagePerPeriodGraph') nbrMessagePerPeriodGraph: ElementRef;
@@ -141,7 +108,8 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
   @ViewChild('repartitionTypeMessageGraph') repartitionTypeMessageGraph: ElementRef;
   repartitionTypeMessageChart =[];
 
-  constructor(private elementRef: ElementRef, private ownStatsService : OwnStatsService) { }
+  constructor(private elementRef: ElementRef, private ownStatsService : OwnStatsService) {
+  }
 
    ngOnInit() {
     this.isFileOpen=false;
@@ -199,7 +167,10 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
     let indexTop4 = 3;
     var c = <HTMLCanvasElement> document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
-
+    for (var i=0;i<4;i++){
+      this.colorBubble.push(ctx.createRadialGradient(0,0,0,0,0,0))
+    }
+  
     //Pour la bubble top 1
     let radiusTop1Vh = 15; //On a un rayon à peu près à 0.12 en scale classique 
     let radiusTop1Px = radiusTop1Vh*PxPerVh ;
@@ -301,8 +272,7 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
     let constSumMessages = 0;
     let constHoursISend = this.hoursISend
     let constHoursISendModify = [];
-    var i;
-    for(i=0;i<constHoursISend.length;i++){
+    for(var i=0;i<constHoursISend.length;i++){
       constSumMessages += constHoursISend[i];
     }
     this.sumMessages = constSumMessages;
@@ -324,7 +294,7 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
     Chart.defaults.global.plugins.deferred.yOffset = 150;
     
     //Graph répartition conversation groupe et une personne 
-    this.repartitionTypeConvChart = new Chart
+    this.repartitionTypeConvChart.push(new Chart
         (this.repartitionTypeConvGraph.nativeElement.getContext('2d'), {  
             type: 'doughnut',
             
@@ -385,9 +355,9 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             },
 
           }
-        });
+        }));
     // Graph répartition type de message (texte, vidéo, photo, liens)
-    this.repartitionTypeMessageChart = new Chart
+    this.repartitionTypeMessageChart.push(new Chart
         (this.repartitionTypeMessageGraph.nativeElement.getContext('2d'), {  
             type: 'doughnut',
             
@@ -448,11 +418,11 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             },
 
           }
-        });
+        }));
 
     // Chart bubble sur les conversations les plus importantes
     // NON AFFICHE POUR LE MOMENT
-    this.bubbleConvChart = new Chart(this.bubbleConvGraph.nativeElement.getContext('2d'),{ 
+    this.bubbleConvChart.push(new Chart(this.bubbleConvGraph.nativeElement.getContext('2d'),{ 
       type: 'bubble',
       data: {
         labels: this.dicoSortBubbleConv[this.selectedSort]['labels'],
@@ -580,33 +550,49 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             },
             labelColor: function(t, chart) {
               if(t.xLabel==0){
-                return(chart.data.datasets[1]['backgroundColor']);
+                //return(chart.data.datasets[1]['backgroundColor']);
+                return {
+                  backgroundColor :'#fff',
+                  borderColor : '#fff'
+                }
               }
               if(t.xLabel==0.031){
-                return(chart.data.datasets[2]['backgroundColor']);
+                //return(chart.data.datasets[2]['backgroundColor']);
+                return {
+                  backgroundColor : '#fff',
+                  borderColor : '#fff'
+                }
               }
               if(t.xLabel==0.025){
-                return(chart.data.datasets[3]['backgroundColor']);
+                //return(chart.data.datasets[3]['backgroundColor']);
+                return {
+                  backgroundColor : '#fff',
+                  borderColor : '#fff'
+                }
               }
               if(t.xLabel==-0.025){
-                return(chart.data.datasets[0]['backgroundColor']);
+                //return(chart.data.datasets[0]['backgroundColor']);
+                return {
+                  backgroundColor : '#fff',
+                  borderColor : '#fff'
+                }
               }
             },
           },          
           enabled: true, 
         },
         onClick: (e) => {
-          var element = this.bubbleConvChart.getElementAtEvent(e);
+          var element = this.bubbleConvChart[0].getElementAtEvent(e);
           if (element.length > 0) {
-            var datasetLabel = this.bubbleConvChart.config.data.datasets[element[0]._datasetIndex].label;
-            var data = this.bubbleConvChart.config.data.datasets[element[0]._datasetIndex].data[element[0]._index];
+            var datasetLabel = this.bubbleConvChart[0].config.data.datasets[element[0]._datasetIndex].label;
+            var data = this.bubbleConvChart[0].config.data.datasets[element[0]._datasetIndex].data[element[0]._index];
             let radiusTop1Vh = 15; //On a un rayon à peu près à 0.12 en scale classique 
             var w = window,
             d = document,
-            e = d.documentElement,
+            el = d.documentElement,
             g = d.getElementsByTagName('body')[0],
-            x = w.innerWidth || e.clientWidth || g.clientWidth,
-            y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+            x = w.innerWidth || el.clientWidth || g.clientWidth,
+            y = w.innerHeight|| el.clientHeight|| g.clientHeight;
             let PxPerVh = Math.round(y/100);
             let radiusTop1Px = radiusTop1Vh*PxPerVh ;
             let listeR = [radiusTop1Px, (radiusTop1Px)*0.65, (radiusTop1Px)*0.50, (radiusTop1Px)*0.25]
@@ -615,68 +601,10 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
           }
         }
       }
-    });
-
-    // Chart bubble sur les conversations sort
-    this.bubbleConvSortChart = new Chart(this.bubbleConvSortGraph.nativeElement.getContext('2d'),{  
-      plugins : {
-          datalabels : {
-            display : true,
-          }
-      },
-      type: 'bubble',
-      data: {
-        labels: this.dicoSortBubbleConv[this.selectedSort]['labels'],
-        datasets: [
-          { 
-            data: this.dicoSortBubbleConv[this.selectedSort]['data'],
-            //Les couleurs peuvent être modifiées sur les variables globales définient plus haut
-            backgroundColor : this.generateRandomColor(this.dicoSortBubbleConv[this.selectedSort]['data'].length),
-            fill: false,
-            borderWidth : 1,
-            borderColor : '#000000',
-          },
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins : {
-          datalabels : {
-            display : false,
-          }
-        },
-        title: {
-          display: false,
-          text: "Bubble conv graph"
-        },
-        legend: {
-          position: 'bottom',
-          display: false,
-          fullWidth: true,
-          labels: {
-            fontSize: 11
-          }
-        },
-        tooltips: {
-          enabled: true,
-        },
-        onClick: (e) => {
-          var element = this.bubbleConvSortChart.getElementAtEvent(e);
-          // If you click on at least 1 element ...
-          if (element.length > 0) {
-            var datasetLabel = this.bubbleConvSortChart.config.data.datasets[element[0]._datasetIndex].label;
-            var data = this.bubbleConvSortChart.config.data.datasets[element[0]._datasetIndex].data[element[0]._index];
-
-            var indiceClick = (data["x"]-2)/2
-            this.redirectBubble(indiceClick)
-          }
-        }
-      }
-    });
+    }));
 
     //Chart sur l'évolution du nombre de message reçus envoyés par periode
-    this.nbrMessagePerPeriodChart = new Chart(this.nbrMessagePerPeriodGraph.nativeElement.getContext('2d'),{  
+    this.nbrMessagePerPeriodChart.push(new Chart(this.nbrMessagePerPeriodGraph.nativeElement.getContext('2d'),{  
       type: 'line',
       data: {
         labels: this.nbrMessagePerPeriod[0],
@@ -766,17 +694,17 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
           }]
         },
       }
-    });
+    }));
 
 
     // Chart Evolution du nombre de conversations actives
-
-    this.nbrConvActivPerPeriodChart = new Chart(this.nbrConvActivPerPeriodGraph.nativeElement.getContext('2d'),{  
-      plugins : {
+    
+    this.nbrConvActivPerPeriodChart.push(new Chart(this.nbrConvActivPerPeriodGraph.nativeElement.getContext('2d'),{ 
+      /*plugins : {
         datalabels : {
           display : true,
         }
-      },
+      },*/
       type: 'bar',
       data: {
         labels: this.nbrConvActivePerPeriod[0],
@@ -859,13 +787,13 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             }
           },
         enabled: true, 
-        }
+        },
       }
-    });
+    }));
 
     // Chart Répartition genre par periode 
 
-    this.repartitionGenreActivePerPeriodChart = new Chart(this.repartitionGenreActivePerPeriodGraph.nativeElement.getContext('2d'), {  
+    this.repartitionGenreActivePerPeriodChart.push(new Chart(this.repartitionGenreActivePerPeriodGraph.nativeElement.getContext('2d'), {  
       type: 'bar',
       data: {
         labels: this.nbrCorrespondantPerPeriod["label"],
@@ -960,20 +888,20 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
           backgroundColor : 'rgba(0,0,0,0.8)', // Le 0.8 correspond à la transparence de la légende qui s'affiche quand on passe la souris dessus 
         },
       }
-    });
+    }));
 
 
     // Chart best friend par période
     let constNameBestFriend = this.bestCorrespondantPerPeriod["data"]['names'];
 
-    this.bestFriendPerPeriodChart = new Chart
+    this.bestFriendPerPeriodChart.push(new Chart
         (this.bestFriendPerPeriodGraph.nativeElement.getContext('2d'), {  
-            plugins : {
-              datalabels : {
-                display : false,
-              }
-            },
-            type: 'bar',
+          /*plugins : {
+            datalabels : {
+              display : false,
+            }
+          },*/  
+          type: 'bar',
           data: {
             labels: this.bestCorrespondantPerPeriod['labels'],
             datasets: [
@@ -1060,11 +988,11 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             }
             }
           }
-        );
+        ));
 
 // chart sur les réactions radar
 
-    this.radarReacChart = new Chart
+    this.radarReacChart.push(new Chart
     (this.radarReacGraph.nativeElement.getContext('2d'), {  
         type: 'radar',
         
@@ -1118,11 +1046,14 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             display : false
           }
         },
-        scale: {
-          angleLines : {
+        scales: {
+          /*angleLines : {
             color : 'rgb(0,0,0,1)',
             lineWidth : 0.2,
           },
+          pointLabels: {
+            fontSize: 25 //Augmente la taille des smileys
+          }, */
           gridLines : {
               color : 'rgb(0,0,0,1)',
               lineWidth : 0.2,
@@ -1132,9 +1063,6 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             maxTicksLimit : 3,
             max : this.maxDataRadar,
           },
-          pointLabels: {
-            fontSize: 25 //Augmente la taille des smileys
-          } 
         },
         
         title: {
@@ -1166,17 +1094,17 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
         },
 
       }
-    });
+    }));
 
     //Repartition messages par tranche horaire
     let constSumMessages = this.sumMessages;
-    this.hoursISendChart = new Chart
-        (this.hoursISendGraph.nativeElement.getContext('2d'), {  
-            plugins : {
-              datalabels : {
-                display : true,
-              }
-            },
+    this.hoursISendChart.push(new Chart
+        (this.hoursISendGraph.nativeElement.getContext('2d'), {   
+          /*plugins : {
+            datalabels : {
+              display : true,
+            }
+          },*/
           type: 'bar',
           data: {
             labels: this.hoursArray,
@@ -1264,7 +1192,7 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
             }
             }
           }
-        );
+        ));
   }
 
   randomInt(monint : number){
@@ -1294,5 +1222,33 @@ isHide = {'send':true,'receive':true,'reaction':true,'randomContact':true,'rando
     this.isFileOpen = false;
   }
 
-  
+  invertHide(id : string){
+    this.isHide[id] = !this.isHide[id];
+  }
+
+  goToMessenger() {
+  window.open("https://www.messenger.com/");
+  }
+
+  help(id : string){
+    
+    if(document.getElementById('help'+id).style.zIndex == '1'){
+      document.getElementById('help'+id).style.zIndex = '-1';
+      document.getElementById('graph'+id).style.zIndex = '1';
+    }
+    else{
+    document.getElementById('help'+id).style.zIndex = '1';
+    document.getElementById('graph'+id).style.zIndex = '0';
+    }
+  }
+
+  displayReaction(numberReaction : number){
+    if(numberReaction>0){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+
 }

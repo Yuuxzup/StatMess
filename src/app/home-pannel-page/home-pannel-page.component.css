@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
 .tPannel{
   display:flex;
   justify-content: space-between;
@@ -45,8 +48,6 @@
   display:none;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 figure.snip1477 {
   font-family: 'Raleway', Arial, sans-serif;
   position: relative;
