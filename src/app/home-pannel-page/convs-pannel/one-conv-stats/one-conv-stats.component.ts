@@ -89,7 +89,7 @@ export class OneConvStatsComponent implements OnInit {
       this.averageLengthOfMessagesPerUser = this.statsConvService.calculAverageLengthOfMessagesPerUser
       (jsonContent, this.nbMessagePerUser)
       this.currentStreak = this.statsConvService.calculCurrentStreak(jsonContent)
-      this.theMaxStreak = this.statsConvService.calculMaxStreak(jsonContent, this.currentStreak, this.currentStreak)
+      this.theMaxStreak = this.statsConvService.calculMaxStreak(jsonContent, this.currentStreak)
       this.maxFreeze = this.statsConvService.calculMaxFreeze(jsonContent)
       this.totalReactions = this.statsConvService.calculTotalReactions(jsonContent)
       this.reactionDetail = this.statsConvService.calculReactionDetail(jsonContent)

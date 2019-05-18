@@ -1,9 +1,12 @@
 import { Component, OnInit, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { StatsConvService } from '../.././stats-conv.service';
-import { Chart } from 'chart.js';
+import { Chart, ChartOptions, ChartData } from 'chart.js';
+
+import * as ChartDataLabels  from 'chartjs-plugin-datalabels';
 
 import 'chartjs-plugin-datalabels';
 import 'chartjs-plugin-deferred';
+import '../../node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js';
 
 @Component({
   selector: 'app-time-stat',
@@ -42,16 +45,16 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
   
   //ViewChild du graphe message par tranche horaire
   @ViewChild('hoursToSendGraph') hoursToSendGraph: ElementRef;
-  hoursToSendChart :any;
+  hoursToSendChart = [] ;
 
   //ViewChild du graphe somme message en fonction du temps
   @ViewChild('sumMessageGraph') sumMessageGraph: ElementRef;
-  sumMessageChart :any;
+  sumMessageChart = [];
   sumMessageData = [] //Je l'implémente pour gérer l'affichage de mes datas
   
   //ViewChild du graphe temps de réponse moyen
   @ViewChild('averageTimeToAnswerGraph') averageTimeToAnswerGraph: ElementRef;
-  averageTimeToAnswerChart :any;
+  averageTimeToAnswerChart = [];
   averageTimeToAnswerDisplay : any;
   
  
@@ -283,7 +286,7 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
                 
                 data: this.hoursToSend['everyone'],
                 //Les couleurs peuvent être modifiées sur les variables globales définient plus haut
-                backgroundColor : this.copyHoursArray.fill(this.beginColorRgb),
+                backgroundColor : this.copyHoursArray.fill(this.beginColorRgb) ,
                 fill: false,
                 borderWidth : 1,
                 borderColor : 'rgb(0,0,0)' ,

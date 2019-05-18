@@ -5,6 +5,7 @@ import { StatsConvService } from '../.././stats-conv.service';
 
 import 'chartjs-plugin-datalabels';
 import 'chartjs-plugin-deferred';
+import '../../node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js';
 
 @Component({
   selector: 'app-overview-stat',
@@ -48,7 +49,7 @@ export class OverviewStatComponent implements OnInit, AfterViewInit {
 
   //ViewChild de l'influence des users
   @ViewChild('influenceUserGraph') influenceUserGraph: ElementRef;
-  influenceUserChart : any;
+  influenceUserChart = [];
   influenceUserAdapt : any;
   backgroundColorInfluence = [];
   sumScoreInfluence : any;
@@ -121,7 +122,7 @@ export class OverviewStatComponent implements OnInit, AfterViewInit {
 
   //Chart sur l'influence des users
 
-        this.influenceUserChart = new Chart
+        this.influenceUserChart.push(new Chart
         (this.influenceUserGraph.nativeElement.getContext('2d'), {  
             type: 'polarArea',
             
@@ -196,7 +197,7 @@ export class OverviewStatComponent implements OnInit, AfterViewInit {
             },
 
           }
-        });
+        }));
   }
 
 // Tout le code qui suit jusqu'à return saida, est un code pour coder le gradient de couleur
