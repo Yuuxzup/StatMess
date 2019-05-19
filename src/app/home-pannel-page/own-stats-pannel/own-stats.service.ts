@@ -1303,6 +1303,7 @@ export class OwnStatsService {
             var w;
             for(w=0;w<7;w++){
               bestReactionMessage['typeReaction'][w][1]=0;
+              typeReac[w]=0;
             };
             bestReactionMessage['message']=message['content'];
             bestReactionMessage['numberReactions']=message['reactions'].length;
@@ -1312,12 +1313,12 @@ export class OwnStatsService {
             let positionReaction = {'\u00f0\u009f\u0091\u008e':0,'\u00f0\u009f\u0091\u008d':1,'\u00f0\u009f\u0098\u00a0':2,'\u00f0\u009f\u0098\u00a2':3,'\u00f0\u009f\u0098\u00ae':4,'\u00f0\u009f\u0098\u0086':5,'\u00f0\u009f\u0098\u008d':6};// Ordre des réactions : No / Yes / Grr / Pleure / Ouah / Ahah / Coeur
              //Permet de savoir où se situe la réaction dans 'typeReaction'
             message['reactions'].forEach(function(reaction){
-              let index = positionReaction[reaction['reaction']]
+              let index = positionReaction[reaction['reaction']];
               typeReac[index]+=1
             });
-            let fullType=[]
+            let fullType=[];
             Object.keys(positionReaction).forEach(function(reac){
-              fullType.push([decodeURIComponent(escape(reac)),typeReac[Object.keys(positionReaction).indexOf(reac)]])
+              fullType.push([decodeURIComponent(escape(reac)),typeReac[positionReaction[reac]]]);
             })
             bestReactionMessage['typeReaction']=fullType 
           }

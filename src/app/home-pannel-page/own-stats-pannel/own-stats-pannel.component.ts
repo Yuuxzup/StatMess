@@ -1005,7 +1005,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
             label :"Réaction envoyées",
             data: this.nbReactionsUser["dataSent"],
             //Les couleurs peuvent être modifiées sur les variables globales définient plus haut
-            backgroundColor: '#1A1837',
+            backgroundColor: 'rgba(26,24,55,0.8)',
             fill: true,
             borderWidth : 1,
             borderColor : 'rgb(0,0,0)' ,
@@ -1018,7 +1018,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
             data: this.nbReactionsUser["dataReceived"],
             label : "Réactions reçues",
             //Les couleurs peuvent être modifiées sur les variables globales définient plus haut
-            backgroundColor: 'rgb(250, 138, 47)' ,
+            backgroundColor: 'rgba(250, 138, 47,0.8)' ,
             fill: true,
             borderWidth : 1,
             borderColor : 'rgb(0,0,0)' ,
