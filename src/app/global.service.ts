@@ -24,13 +24,13 @@ export class GlobalService {
     });
     let i=0
     while (lUser.length!=1 && i<listFileDico.length){
-      i++
       let newLUser=[]
       listFileDico[i]["content"]["participants"].forEach(function(element) {
         if (lUser.indexOf(decodeURIComponent(escape(element["name"])))>-1){
           newLUser.push((decodeURIComponent(escape(element["name"]))))
         }})
       lUser=newLUser.slice()
+      i++
     }
     this.userName=lUser[0]
 

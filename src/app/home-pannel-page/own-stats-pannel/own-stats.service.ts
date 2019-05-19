@@ -52,13 +52,13 @@ export class OwnStatsService {
     });
     let i=0
     while (lUser.length!=1 && i<listFileDico.length){
-      i++
       let newLUser=[]
       listFileDico[i]["content"]["participants"].forEach(function(element) {
         if (lUser.indexOf(decodeURIComponent(escape(element["name"])))>-1){
           newLUser.push((decodeURIComponent(escape(element["name"]))))
         }})
       lUser=newLUser.slice()
+      i++
     }
     this.userName=lUser[0]
     return this.userName
@@ -335,9 +335,7 @@ export class OwnStatsService {
     let dateFin = new Date()
     
 
-    if (dateFin.getFullYear() - dateDebut.getFullYear() >10){
-      indicateur="year"
-    } else if (
+    if (
       (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
       ||
       (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
@@ -801,9 +799,7 @@ export class OwnStatsService {
     let dateFin = new Date()
     
 
-    if (dateFin.getFullYear() - dateDebut.getFullYear() >10){
-      indicateur="year"
-    } else if (
+    if (
       (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
       ||
       (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
@@ -904,9 +900,7 @@ export class OwnStatsService {
     let dateFin = new Date()
     
 
-    if (dateFin.getFullYear() - dateDebut.getFullYear() >10){
-      indicateur="year"
-    } else if (
+    if (
       (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
       ||
       (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
@@ -1040,9 +1034,7 @@ export class OwnStatsService {
     let dateFin = new Date()
     
 
-    if (dateFin.getFullYear() - dateDebut.getFullYear() >10){
-      indicateur="year"
-    } else if (
+    if (
       (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
       ||
       (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
@@ -1300,7 +1292,9 @@ export class OwnStatsService {
         let bestReactionMessage = {'message':"Vous n'avez pas reçu de réaction sur vos messages",'numberReactions':-1 ,'name':file['name'],'typeReaction':[ [decodeURIComponent(escape('\u00f0\u009f\u0091\u008e')),0],[decodeURIComponent(escape('\u00f0\u009f\u0091\u008d')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u00a0')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u00a2')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u00ae')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u0086')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u008d')),0] ]}; 
         let typeReac = [0,0,0,0,0,0,0]
         file["content"]["messages"].forEach(function(message){
+          
           if(decodeURIComponent(escape(message["sender_name"]))==user && message['reactions']!=undefined && message['reactions'].length>bestReactionMessage['numberReactions'] && message['content']!=undefined){
+            console.log("passage")
             var w;
             for(w=0;w<7;w++){
               bestReactionMessage['typeReaction'][w][1]=0;
@@ -1341,6 +1335,7 @@ export class OwnStatsService {
         indexMaxReaction = k;
       }
     }
+    console.log(bestReactionMessagePerConv[indexMaxReaction])
     bestReactionMessagePerConv[indexMaxReaction]['message']= decodeURIComponent(escape(bestReactionMessagePerConv[indexMaxReaction]['message']));
     this.bestReactionsMessage = bestReactionMessagePerConv[indexMaxReaction];
     return bestReactionMessagePerConv[indexMaxReaction]
