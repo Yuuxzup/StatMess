@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-home-pannel-page',
   templateUrl: './home-pannel-page.component.html',
-  styleUrls: ['./home-pannel-page.component.css']
+  styleUrls: ['./home-pannel-page.component.scss']
 })
 export class HomePannelPageComponent implements OnInit {
   @Input() listFilesDico:any;

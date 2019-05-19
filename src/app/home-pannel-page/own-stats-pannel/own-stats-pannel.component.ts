@@ -49,6 +49,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
   randomMessage : any;
   nbMaxMessPer24 : any;
   timeOnMessenger:any;
+  nbrSmileyEnvoye:any;
   
   pinkColor= 'rgb(241,77,156)' ;
   blueColor = 'rgb(77,89,241)';
@@ -147,6 +148,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     this.randomMessage = this.ownStatsService.calculRandomMessage(this.listFilesDico);
     this.nbMaxMessPer24 = this.ownStatsService.calculNbMaxMessPer24(this.listFilesDico);
     this.timeOnMessenger = this.ownStatsService.calculTimeOnMessenger(this.listFilesDico);
+    this.nbrSmileyEnvoye = this.ownStatsService.calculNbrSmileyEnvoye(this.listFilesDico);
 
     
     //Taille écran en px

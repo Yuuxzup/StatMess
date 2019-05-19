@@ -1,4 +1,4 @@
-<div *ngIf="!isFileOpen">
+<div [ngStyle]="{'display':isFileOpen ? 'None' : 'Block' }">
   <h1 style="text-align:center;">Vos statistiques</h1>
   <hr class="overview">
   <div class="kpiOverview">
@@ -159,11 +159,11 @@
       <div class="borderModuleBottom">
         <div class="boxOverview">
           <div class="sideImgBoxOverview">
-            <img src="https://image.flaticon.com/icons/svg/327/327006.svg" class="icon"/>
+            <img src="https://image.flaticon.com/icons/svg/742/742751.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{statsGlobalesMessages.caracParMessage}}</p>
-            <p class="descriptionBox">Caractères par message</p>
+            <p class="numberBox">{{nbrSmileyEnvoye.tous}}</p>
+            <p class="descriptionBox">Smileys envoyés</p>
           </div>
         </div>
       </div>
@@ -171,11 +171,11 @@
       <div class="borderModuleBottom">
         <div class="boxOverview">
           <div class="sideImgBoxOverview">
-            <img src="https://image.flaticon.com/icons/svg/1006/1006120.svg" class="icon"/>
+            <img src="https://image.flaticon.com/icons/svg/291/291212.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{bestFriend.name}}</p>
-            <p class="descriptionBox">Best friend</p>
+            <p class="numberBox">{{nbrSmileyEnvoye.coeur}}</p>
+            <p class="descriptionBox">Coeur envoyés</p>
           </div>
         </div>
       </div>
