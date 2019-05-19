@@ -997,7 +997,8 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     this.radarReacChart.push(new Chart
     (this.radarReacGraph.nativeElement.getContext('2d'), {  
         type: 'radar',
-        
+      
+      
       data: {
         labels: this.nbReactionsUser["labels"],
         
@@ -1007,7 +1008,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
             label :"Réaction envoyées",
             data: this.nbReactionsUser["dataSent"],
             //Les couleurs peuvent être modifiées sur les variables globales définient plus haut
-            backgroundColor: '#1A1837',
+            backgroundColor: 'rgba(26,24,55,0.8)',
             fill: true,
             borderWidth : 1,
             borderColor : 'rgb(0,0,0)' ,
@@ -1020,7 +1021,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
             data: this.nbReactionsUser["dataReceived"],
             label : "Réactions reçues",
             //Les couleurs peuvent être modifiées sur les variables globales définient plus haut
-            backgroundColor: 'rgb(250, 138, 47)' ,
+            backgroundColor: 'rgba(250, 138, 47,0.8)' ,
             fill: true,
             borderWidth : 1,
             borderColor : 'rgb(0,0,0)' ,
@@ -1052,9 +1053,6 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
           /*angleLines : {
             color : 'rgb(0,0,0,1)',
             lineWidth : 0.2,
-          },
-          pointLabels: {
-            fontSize: 25 //Augmente la taille des smileys
           }, */
           gridLines : {
               color : 'rgb(0,0,0,1)',

@@ -11,7 +11,6 @@
 
 .uploadZone{
   position:relative;
-  padding-top:47%;
 }
 
 .body{
@@ -156,10 +155,10 @@ html, body{
 }
 
 .untitled{	
-	position: absolute;
+	position: relative;
   overflow:hidden;
 	height: 95%;
-	width: 100%;
+	width: 102%;
   margin-left:-1%;
 	@keyframes rotateHue {
 		0%{ filter: hue-rotate(0deg); }
@@ -676,6 +675,7 @@ hr.overview{
 
 .compteur{
   display:flex;
+  margin-bottom:1%;
 }
 
 .compteur img{
