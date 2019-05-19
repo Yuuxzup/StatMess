@@ -1,5 +1,18 @@
 <div [ngStyle]="{'display':isFileOpen ? 'None' : 'Block' }">
-  <h1 style="text-align:center;">Vos statistiques</h1>
+  <div class="tooltipFirstRun" [ngStyle]="{'display':isOwnStatFirstRun? 'Block' : 'None' }">
+    <div class="enteteTooltip">
+      <h1>Statistiques globales de votre profil</h1>
+      <div class="close-container" (click)="closeTooltip()">
+        <div class="leftright"></div>
+        <div class="rightleft"></div>
+        <label class="close">close</label>
+      </div>
+    </div>
+    <p>Ipsam vero urbem Byzantiorum fuisse refertissimam atque ornatissimam signis quis ignorat? Quae illi, exhausti sumptibus bellisque maximis, cum omnis Mithridaticos impetus totumque Pontum armatum affervescentem in Asiam atque erumpentem, ore repulsum et cervicibus interclusum suis sustinerent, tum, inquam, Byzantii et postea signa illa et reliqua urbis ornanemta sanctissime custodita tenuerunt.</p>
+    
+  </div>
+
+  <h1 style="text-align:center;" class="reajustContent" id="title">Vos statistiques</h1>
   <hr class="overview">
   <div class="kpiOverview">
     <p class="subTitleOverview">14 nombres pour vous décrire</p>
@@ -324,7 +337,7 @@
       <hr class="messageTitle">
       <h4>StatMess vous suggère</h4>
       <div class="suggestBestContact">
-        <img class = "imgIcon" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
+        <img class = "imgPeople" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
         <h4 style="color:black;padding-left: 1vh; padding-right: 1vh;">{{suggestBestContact[0].name}}</h4>
       </div>
       <div class="suggestBestContactInfo">
@@ -356,7 +369,7 @@
       <button class="buttonRandomContact" *ngIf="isHide['randomContact']" mat-button (click)="invertHide('randomContact')">Générer votre contact inconnu</button>
       <div class="suggestRandomContactHide" *ngIf="!isHide['randomContact']">
         <div class="randomContact">
-          <img class = "imgIcon" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
+          <img class = "imgPeople" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
           <h4 style="color:black; padding-left: 1vh; padding-right: 1vh;">{{suggestRandomContact}}</h4>
         </div>
         <h4>Quel sera ton message ?</h4>
