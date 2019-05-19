@@ -1,4 +1,4 @@
-<div *ngIf="!isFileOpen">
+<div [ngStyle]="{'display':isFileOpen ? 'None' : 'Block' }">
   <h1 style="text-align:center;">Vos statistiques</h1>
   <hr class="overview">
   <div class="kpiOverview">
