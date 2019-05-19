@@ -20,6 +20,35 @@
   width:3vh;
 }
 
+.pannelHome h1{
+  background:#1A1837;
+  color:white;
+}
+
+.snipe1477{
+  box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+hr.overview{
+  display:block;
+  border:none;
+  height:1px;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  width : 100%;
+  margin : 2%;
+  margin-left: auto;
+	margin-right: auto;
+}
+
+.pannelHome{
+  text-align:center;
+  width: 102%;
+  margin-left: -1%;
+}
+
+
 .onePannelInSelector{
   display:flex;
   cursor:pointer;
