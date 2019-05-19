@@ -151,6 +151,7 @@ export class GlobalService {
     this.ownStatsService.calculLongestMessage(listFileDico);
     this.ownStatsService.calculBestReactionMessage(listFileDico);
     this.ownStatsService.calculNbMaxMessPer24(listFileDico);
+    this.ownStatsService.calculNbrSmileyEnvoye(listFileDico);
   }
 
   doCalculForConv(listFileDico : any){
