@@ -154,6 +154,7 @@ export class OverviewStatComponent implements OnInit, AfterViewInit {
               }
             },
             scales: {
+              display: false,
                 gridLines : {
                   color : 'rgb(255,255,255,1)',
                   lineWidth : 0.1,

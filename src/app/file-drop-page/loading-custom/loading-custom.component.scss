@@ -8,7 +8,7 @@
     height: 20vw;
     width: 20vw;
     border: 3px solid transparent;
-    border-top-color: #A04668;
+    border-top-color: #1A1837;
     top: 20%;
     left: 50%;
     margin: -30px;
@@ -25,7 +25,7 @@
     }
     
     &:before{
-      border-top-color: #254E70;
+      border-top-color: rgb(250, 138, 47);
       top: -12px;
       left: -12px;
       right: -12px;
@@ -34,7 +34,7 @@
     }
     
     &:after{
-      border-top-color: black;
+      border-top-color: rgb(250, 138, 47);
       top: 6px;
       left: 6px;
       right: 6px;
@@ -54,18 +54,50 @@
 }
 
 .text{
-      height: 30vh;
+    margin-top:0;
     text-align: center;
-    color: black;
+    background : #1A1837;
+    height: 15vh;
+    background: #1A1837;
+    margin-top: -2.1%;
+    margin-bottom: 5%;
+    width: 102%;
+    margin-left: -1%;
+    color:white;
 }
 
-h2 {
-  background-color: #EEEEEE;
+hr.overview{
+  display:block;
+  border:none;
+  height:1px;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  background: -moz-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  background: -ms-linear-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#EEEEEE), to(rgba(40, 37, 88, 0.815)));
+  width : 100%;
+  margin : 2%;
+  margin-left: auto;
+	margin-right: auto;
 }
 
-p{
+
+.spinner p{
   font-size: 5em;
   animation: inverseSpin 2s linear infinite;
   text-align: center;
-  font-family: Brush Script MT, Brush Script Std, cursive;
+  color : #1A1837;
+}
+
+.instruction{
+  margin-top:5%;
+  background : #1A1837;
+  color:white;
+  margin-left: -1.1%;
+  padding-left: 1%;
+  width: 104.3%;
+  padding-bottom: 1%;
+}
+
+.instruction p{
+  margin-top:0;
+  margin-bottom:0;
 }
