@@ -8,8 +8,8 @@
         <label class="close">close</label>
       </div>
     </div>
-    <p>Ipsam vero urbem Byzantiorum fuisse refertissimam atque ornatissimam signis quis ignorat? Quae illi, exhausti sumptibus bellisque maximis, cum omnis Mithridaticos impetus totumque Pontum armatum affervescentem in Asiam atque erumpentem, ore repulsum et cervicibus interclusum suis sustinerent, tum, inquam, Byzantii et postea signa illa et reliqua urbis ornanemta sanctissime custodita tenuerunt.</p>
-    
+    <p style="font-size: 1.3em;">- Retrouvez ici les informations concernant votre activité sur toutes vos conversations.</p>
+    <p style="margin-top:2%; font-size: 1.3em;">- Si vous ne comprenez pas un graphique, cliquez sur le <img style="height:4vh;" src="https://image.flaticon.com/icons/svg/254/254059.svg"/> pour avoir plus d'informations.</p>
   </div>
 
   <h1 style="text-align:center;">Vos statistiques</h1>
@@ -198,37 +198,58 @@
 
   <hr class="overview">
 
-  <div class="totalThreeCards">
-    <div class="threeCards freezeCard">
-      <div class="img"></div>
-      <div class="threeCardsSmiley">
-        <h2>{{freeze}}</h2>
+    <div class="totalThreeCards">
+    <div style="width: 15vw; margin-left: 20%;">
+      <div class="threeCards freezeCard">
+        <div class="img"></div>
+        <div class="threeCardsSmiley">
+          <h2>{{freeze}}</h2>
+        </div>
+        <div class="threeCardsText">
+          <p>{{indicateursFlammeFreezeStrike.nomConvFreeze}}</p>
+          <p>{{indicateursFlammeFreezeStrike.dicoData.maxFreeze}}</p>
+        </div>
       </div>
-      <div class="threeCardsText">
-        <p>{{indicateursFlammeFreezeStrike.nomConvFreeze}}</p>
-        <p>{{indicateursFlammeFreezeStrike.dicoData.maxFreeze}}</p>
-      </div>
-    </div>
-    <div class="threeCards fireCard">
-      <div class="img"></div>
-      <div class="threeCardsSmiley">
-        <h2>{{streak}}</h2>
-      </div>
-      <div class="threeCardsText">
-        <p>{{indicateursFlammeFreezeStrike.nomConvFlamme}}</p>
-        <p>{{indicateursFlammeFreezeStrike.dicoData.maxFlamme}}</p>
+      <div style="display:flex; height:8vh; padding-left: 2%;">
+          <img style="width: 2vw; height: 2vh; margin-left:0; margin-right:0;" src="https://image.flaticon.com/icons/svg/131/131917.svg"/>
+          <h5 style="margin-top:0;font-style: italic; color:#BFBFBF">Nombre maximum de jours sans parler</h5>
       </div>
     </div>
-    <div class="threeCards streakCard">
-      <div class="img"></div>
-      <div class="threeCardsSmiley">
-        <h2>{{maxStreak}}</h2>
+
+    <div style="width: 15vw; margin-right: 5%; margin-left: 5%;">
+      <div class="threeCards fireCard">
+        <div class="img"></div>
+        <div class="threeCardsSmiley">
+          <h2>{{streak}}</h2>
+        </div>
+        <div class="threeCardsText">
+          <p>{{indicateursFlammeFreezeStrike.nomConvFlamme}}</p>
+          <p>{{indicateursFlammeFreezeStrike.dicoData.maxFlamme}}</p>
+        </div>
       </div>
-      <div class="threeCardsText">
-        <p>{{indicateursFlammeFreezeStrike.nomConvStrike}}</p>
-        <p>{{indicateursFlammeFreezeStrike.dicoData.maxStrike}}</p>
+      <div style="display:flex; height:8vh; padding-left: 2%;">
+        <img style="width: 2vw; height: 2vh; margin-left:0; margin-right:1%;" src="https://image.flaticon.com/icons/svg/131/131917.svg"/>
+        <h5 style="margin-top:0;font-style: italic; color:#BFBFBF">Nombre de jours d'affilés pendant lesquels vous avez parlé à partir de maintenant</h5>
       </div>
     </div>
+
+    <div style="width: 15vw; margin-right: 20%;">
+      <div class="threeCards streakCard">
+        <div class="img"></div>
+        <div class="threeCardsSmiley">
+          <h2>{{maxStreak}}</h2>
+        </div>
+        <div class="threeCardsText">
+          <p>{{indicateursFlammeFreezeStrike.nomConvStrike}}</p>
+          <p>{{indicateursFlammeFreezeStrike.dicoData.maxStrike}}</p>
+        </div>
+      </div>
+      <div style="display:flex; height:8vh; padding-left: 2%; ">
+        <img style="width: 2vw; height: 2vh; margin-left:0; margin-right:1%;" src="https://image.flaticon.com/icons/svg/131/131917.svg"/>
+        <h5 style="margin-top:0;font-style: italic; color:#BFBFBF">Nombre maximum de jours d'affilés pendant lesquels vous avez parlé</h5>
+      </div>
+    </div>
+
   </div>
 
   <hr class="overview">
