@@ -20,9 +20,30 @@ export class FileDropPageComponent implements OnInit{
   timer = 4000;
   nbrVisite : any;
 
+  isRateMoment=false;
+
+  rating=0
+  isRated=false;
+  nbrVote=0;
+
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService) { }
 
   ngOnInit(){
+
+    this.httpClient.get<any[]>('https://statsmess.firebaseio.com/starRate.json').subscribe(
+      (response) => {
+        this.rating = response['mean']
+        let rateTab = response['ratingTab'];
+          
+        this.nbrVote = 0
+        for (var k=0; k<rateTab.length;k++){
+          this.nbrVote+=rateTab[k]
+        }
+      },
+      (error) => {
+    })
+
+    setTimeout(()=>{this.isRateMoment=true}, 180000)
 
     //Création de la table profil
     /*let listProfil=["INTJ", "INTP","ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"]
@@ -149,4 +170,48 @@ export class FileDropPageComponent implements OnInit{
     $('body').removeClass('modal-active');
   }
 
+  closeTooltip(){
+    this.isRateMoment=false;
+  }
+
+  rateStatMess(number : any){
+    this.rating=number;
+    
+    this.httpClient
+      .get<any[]>('https://statsmess.firebaseio.com/starRate.json')
+      .subscribe(
+        (response) => {
+          let rateDico = response;
+          console.log(rateDico)
+          let rateTab = rateDico['ratingTab'];
+          
+          let nbrVote = 1
+          let sum=number
+          for (var k=0; k<rateTab.length;k++){
+            nbrVote+=rateTab[k]
+            sum+=rateTab[k]*(k+1)
+          }
+
+          rateTab[number-1]+=1
+          let mean=sum/nbrVote
+          rateDico['ratingTab']=rateTab
+          rateDico['mean']=mean
+
+          this.httpClient.put('https://statsmess.firebaseio.com/starRate.json', rateDico).subscribe(
+            () => {
+              console.log("Rating maj success")
+            },
+            (error) => {
+            }
+          );
+        },
+        (error) => {
+        })
+
+    this.isRated = true;
+    setTimeout(()=>{
+      this.closeTooltip();
+    }, 1500)
+    
+  }
 }
