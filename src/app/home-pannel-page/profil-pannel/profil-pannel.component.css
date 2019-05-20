@@ -20,17 +20,27 @@
   text-align: justify;
 }
 
+.textProfil b{
+  color:#1A1837;
+}
+
 .textProfil h2{
   text-align:center;
 }
 
 .mainProfil {
-  margin-top : 2vh;
   height:25vh;
-  width:100%;
-  background-image:linear-gradient(to top, transparent 63%, rgba(40, 37, 88, 0.815) 65%);
+  width: 20%;
+  border-radius: 100%;
+  margin-left: auto;
+  background-image: linear-gradient(to top, transparent 8%, #1A1837 65%);
   align-content: center;
   text-align: center;
+  margin-right: auto;
+}
+
+.mainProfil h2{
+  color :#1A1837;
 }
 
 img {

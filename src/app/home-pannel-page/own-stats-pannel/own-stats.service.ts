@@ -31,6 +31,7 @@ export class OwnStatsService {
   bestReactionsMessage:any;
   nbMaxMessPer24:any;
   timeOnMessenger:any;
+  nbrSmileyEnvoye:any;
 
   pinkColor= 'rgb(241,77,156)' ;
   blueColor = 'rgb(77,89,241)';
@@ -51,13 +52,13 @@ export class OwnStatsService {
     });
     let i=0
     while (lUser.length!=1 && i<listFileDico.length){
-      i++
       let newLUser=[]
       listFileDico[i]["content"]["participants"].forEach(function(element) {
         if (lUser.indexOf(decodeURIComponent(escape(element["name"])))>-1){
           newLUser.push((decodeURIComponent(escape(element["name"]))))
         }})
       lUser=newLUser.slice()
+      i++
     }
     this.userName=lUser[0]
     return this.userName
@@ -334,9 +335,7 @@ export class OwnStatsService {
     let dateFin = new Date()
     
 
-    if (dateFin.getFullYear() - dateDebut.getFullYear() >10){
-      indicateur="year"
-    } else if (
+    if (
       (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
       ||
       (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
@@ -800,9 +799,7 @@ export class OwnStatsService {
     let dateFin = new Date()
     
 
-    if (dateFin.getFullYear() - dateDebut.getFullYear() >10){
-      indicateur="year"
-    } else if (
+    if (
       (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
       ||
       (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
@@ -903,9 +900,7 @@ export class OwnStatsService {
     let dateFin = new Date()
     
 
-    if (dateFin.getFullYear() - dateDebut.getFullYear() >10){
-      indicateur="year"
-    } else if (
+    if (
       (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
       ||
       (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
@@ -1039,9 +1034,7 @@ export class OwnStatsService {
     let dateFin = new Date()
     
 
-    if (dateFin.getFullYear() - dateDebut.getFullYear() >10){
-      indicateur="year"
-    } else if (
+    if (
       (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
       ||
       (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
@@ -1299,10 +1292,13 @@ export class OwnStatsService {
         let bestReactionMessage = {'message':"Vous n'avez pas reçu de réaction sur vos messages",'numberReactions':-1 ,'name':file['name'],'typeReaction':[ [decodeURIComponent(escape('\u00f0\u009f\u0091\u008e')),0],[decodeURIComponent(escape('\u00f0\u009f\u0091\u008d')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u00a0')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u00a2')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u00ae')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u0086')),0],[decodeURIComponent(escape('\u00f0\u009f\u0098\u008d')),0] ]}; 
         let typeReac = [0,0,0,0,0,0,0]
         file["content"]["messages"].forEach(function(message){
+          
           if(decodeURIComponent(escape(message["sender_name"]))==user && message['reactions']!=undefined && message['reactions'].length>bestReactionMessage['numberReactions'] && message['content']!=undefined){
+            console.log("passage")
             var w;
             for(w=0;w<7;w++){
               bestReactionMessage['typeReaction'][w][1]=0;
+              typeReac[w]=0;
             };
             bestReactionMessage['message']=message['content'];
             bestReactionMessage['numberReactions']=message['reactions'].length;
@@ -1312,12 +1308,12 @@ export class OwnStatsService {
             let positionReaction = {'\u00f0\u009f\u0091\u008e':0,'\u00f0\u009f\u0091\u008d':1,'\u00f0\u009f\u0098\u00a0':2,'\u00f0\u009f\u0098\u00a2':3,'\u00f0\u009f\u0098\u00ae':4,'\u00f0\u009f\u0098\u0086':5,'\u00f0\u009f\u0098\u008d':6};// Ordre des réactions : No / Yes / Grr / Pleure / Ouah / Ahah / Coeur
              //Permet de savoir où se situe la réaction dans 'typeReaction'
             message['reactions'].forEach(function(reaction){
-              let index = positionReaction[reaction['reaction']]
+              let index = positionReaction[reaction['reaction']];
               typeReac[index]+=1
             });
-            let fullType=[]
+            let fullType=[];
             Object.keys(positionReaction).forEach(function(reac){
-              fullType.push([decodeURIComponent(escape(reac)),typeReac[Object.keys(positionReaction).indexOf(reac)]])
+              fullType.push([decodeURIComponent(escape(reac)),typeReac[positionReaction[reac]]]);
             })
             bestReactionMessage['typeReaction']=fullType 
           }
@@ -1340,6 +1336,7 @@ export class OwnStatsService {
         indexMaxReaction = k;
       }
     }
+    console.log(bestReactionMessagePerConv[indexMaxReaction])
     bestReactionMessagePerConv[indexMaxReaction]['message']= decodeURIComponent(escape(bestReactionMessagePerConv[indexMaxReaction]['message']));
     this.bestReactionsMessage = bestReactionMessagePerConv[indexMaxReaction];
     return bestReactionMessagePerConv[indexMaxReaction]
@@ -1442,4 +1439,36 @@ export class OwnStatsService {
     return jDisplay + hDisplay
   }
   
+  calculNbrSmileyEnvoye(listFileDico : any){
+    if (this.nbrSmileyEnvoye){
+      return this.nbrSmileyEnvoye
+    }
+
+    let nbrSmiley = {'tous':0, 'coeur':0}
+    let username = this.userName
+    listFileDico.forEach(function(file){
+      let lMessage=file["content"]["messages"]
+      for(var k=0;k<lMessage.length;k++){
+        let message=lMessage[k]
+        if(decodeURIComponent(escape(message["sender_name"])) == username && message["content"]){
+  
+          let txt = decodeURIComponent(escape(message["content"]))
+          let regexTotal = /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|[\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|[\ud83c[\ude32-\ude3a]|[\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])/g // Peut être amélioré
+          let regexCoeur = /💚|💛|🧡|💜|🖤|💝|💞|💟|❣|💙|💗|💖|💕|💓|❤|<3/g
+          let foundTotal = txt.match(regexTotal)
+          let foundCoeur = txt.match(regexCoeur)
+          if(foundTotal){
+            nbrSmiley['tous'] += foundTotal.length
+          }
+          if(foundCoeur){
+            nbrSmiley['coeur'] += foundCoeur.length
+          }
+        }
+      }
+    })
+  
+    console.log(nbrSmiley)
+    this.nbrSmileyEnvoye = nbrSmiley
+    return nbrSmiley
+  }
 }

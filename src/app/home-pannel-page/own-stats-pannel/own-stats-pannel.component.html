@@ -1,4 +1,4 @@
-<div *ngIf="!isFileOpen">
+<div [ngStyle]="{'display':isFileOpen ? 'None' : 'Block' }">
   <h1 style="text-align:center;">Vos statistiques</h1>
   <hr class="overview">
   <div class="kpiOverview">
@@ -159,11 +159,11 @@
       <div class="borderModuleBottom">
         <div class="boxOverview">
           <div class="sideImgBoxOverview">
-            <img src="https://image.flaticon.com/icons/svg/327/327006.svg" class="icon"/>
+            <img src="https://image.flaticon.com/icons/svg/742/742751.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{statsGlobalesMessages.caracParMessage}}</p>
-            <p class="descriptionBox">Caractères par message</p>
+            <p class="numberBox">{{nbrSmileyEnvoye.tous}}</p>
+            <p class="descriptionBox">Smileys envoyés</p>
           </div>
         </div>
       </div>
@@ -171,11 +171,11 @@
       <div class="borderModuleBottom">
         <div class="boxOverview">
           <div class="sideImgBoxOverview">
-            <img src="https://image.flaticon.com/icons/svg/1006/1006120.svg" class="icon"/>
+            <img src="https://image.flaticon.com/icons/svg/291/291212.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{bestFriend.name}}</p>
-            <p class="descriptionBox">Best friend</p>
+            <p class="numberBox">{{nbrSmileyEnvoye.coeur}}</p>
+            <p class="descriptionBox">Coeur envoyés</p>
           </div>
         </div>
       </div>
@@ -511,7 +511,7 @@
     </div>
     <div class="sideImg">
       <div class="helpText" id="helpConversationsByTime">
-          <p style="color:#ffffff; font-size: 80%;margin-top: 3%;">Chaque bar <b style="color:#FA8A2F">orange</b> indique le nombre de conversations que vous avez eues pendant la période de temps indiquée en bas</p>
+          <p style="color:#ffffff; font-size: 80%;margin-top: 3%;">Chaque barre <b style="color:#FA8A2F">orange</b> indique le nombre de conversations que vous avez eues pendant la période de temps indiquée en bas</p>
           <div class="arrow_box" id="nbrConvPerTimeArrow">
             <h3>Le temps est affiché selon la date de votre premier message</h3>
             <p>Soit par jour</p>
@@ -533,11 +533,11 @@
     </div>
     <div class="sideImg">
       <div class="helpText" id="helpGenderByTime">
-          <p style="color:#ffffff; font-size: 50%;margin-top: 3%;">La bar <b style="color:rgb(241,77,156)">rose</b> indique le nombre de filles que à qui vous avez parlées pendant la période de temps indiquée en bas</p>
+          <p style="color:#ffffff; font-size: 50%;margin-top: 3%;">La barre <b style="color:rgb(241,77,156)">rose</b> indique le nombre de filles que à qui vous avez parlées pendant la période de temps indiquée en bas</p>
           <hr class="overview">
-          <p style="color:#ffffff; font-size: 50%">La bar <b style="color:rgb(77,89,241)">bleu</b> indique le nombre de garçons à qui vous avez parlés pendant la période de temps indiquée en bas</p>
+          <p style="color:#ffffff; font-size: 50%">La barre <b style="color:rgb(77,89,241)">bleu</b> indique le nombre de garçons à qui vous avez parlés pendant la période de temps indiquée en bas</p>
           <hr class="overview">
-          <p style="color:#ffffff; font-size: 50%">La bar <b style="color:#1A1837">bleu foncé</b> indique le nombre d'individus indéterminés à qui vous avez parlés pendant la période de temps indiquée en bas (page facebook ou prénom non référencé dans nos bases de données)</p>
+          <p style="color:#ffffff; font-size: 50%">La barre <b style="color:#1A1837">bleu foncé</b> indique le nombre d'individus indéterminés à qui vous avez parlés pendant la période de temps indiquée en bas (page facebook ou prénom non référencé dans nos bases de données)</p>
           <div class="arrow_box" id="nbrGenderPerTimeArrow">
             <h3>Le temps est affiché selon la date de votre premier message</h3>
             <p>Soit par jour</p>
@@ -604,9 +604,9 @@
     </div>
     <div class="sideImg">
       <div class="helpText" id="helpMessagesPerTime" style="text-align:center">
-          <p style="color:#ffffff; font-size: 80%;margin-top:5%">Chaque bar <b style="color:#FA8A2F">orange</b> indique le pourcentage de messages envoyés dans la tranche horaire indiquée en bas</p>
+          <p style="color:#ffffff; font-size: 80%;margin-top:5%">Chaque barre <b style="color:#FA8A2F">orange</b> indique le pourcentage de messages envoyés dans la tranche horaire indiquée en bas</p>
           <hr class="overview">
-          <p style="color:#ffffff; font-size: 80%;margin-top:1%">Exemple: si la bar <b style="color:#FA8A2F">orange</b> est à 20% sur l'horaire 14h, cela veut dire que vous avez envoyé 20% de vos messages entre 14h et 15h</p> 
+          <p style="color:#ffffff; font-size: 80%;margin-top:1%">Exemple: si la barre <b style="color:#FA8A2F">orange</b> est à 20% sur l'horaire 14h, cela veut dire que vous avez envoyé 20% de vos messages entre 14h et 15h</p> 
       </div>
       <div *ngIf="hoursISendChart " class="graph" id="graphMessagesPerTime">
         <canvas class="statChart" #hoursISendGraph id="hoursISendGraph">{{ hoursISendChart }}</canvas>
