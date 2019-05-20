@@ -82,7 +82,6 @@ b {
   margin-left: auto;
   margin-right: auto;
   vertical-align: middle;
-  font-family: Brush Script MT, Brush Script Std, cursive;
 }
 
 .fullKPI h1{
@@ -93,7 +92,6 @@ b {
   width: 100%;
   text-align: -webkit-center;
   padding-block-start: 25%;
-  font-family: Brush Script MT, Brush Script Std, cursive;
 }
 
 .lineKPI{
