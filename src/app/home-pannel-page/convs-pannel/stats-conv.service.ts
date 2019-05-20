@@ -5,11 +5,21 @@ import { Injectable } from '@angular/core';
 export class StatsConvService {
   userName:any;
   lastMessageUploadTimestamp:any;
+  firstRun=true;
+  isOneConvStatFirstRun=true;
   constructor() { }
 
   //********************************************************************//
   //*********************//STATS POUR PREVISU//*************************//
   //********************************************************************//
+
+  switchBooleanFirstRun(){
+    this.firstRun=false;
+  }
+
+  switchBooleanFirstRunOne(){
+    this.isOneConvStatFirstRun=false;
+  }
 
   findUserName(listFileDico : any){
     if (this.userName){
