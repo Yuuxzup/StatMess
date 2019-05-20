@@ -1,7 +1,7 @@
 <div [ngStyle]="{'display':isFileOpen ? 'None' : 'Block' }">
   <div class="tooltipFirstRun" [ngStyle]="{'display':isOwnStatFirstRun? 'Block' : 'None' }">
     <div class="enteteTooltip">
-      <h1>Statistiques globales de votre profil</h1>
+      <h1>Mes statistiques globales</h1>
       <div class="close-container" (click)="closeTooltip()">
         <div class="leftright"></div>
         <div class="rightleft"></div>
@@ -9,7 +9,10 @@
       </div>
     </div>
     <p style="font-size: 1.3em;">- Retrouvez ici les informations concernant votre activité sur toutes vos conversations.</p>
-    <p style="margin-top:2%; font-size: 1.3em;">- Si vous ne comprenez pas un graphique, cliquez sur le <img style="height:4vh;" src="https://image.flaticon.com/icons/svg/254/254059.svg"/> pour avoir plus d'informations.</p>
+    <div style="display:flex;">
+      <p style="margin-top:2%; font-size: 1.3em;">- Si vous ne comprenez pas un graphique, cliquez sur le </p><img style="height:4vh; margin-top: 1%; width: 2vw; margin-right: 0; margin-left: 1%; margin-bottom: 0; " src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+    </div> 
+    <p style="font-size: 1.3em;">pour avoir plus d'informations.</p>
   </div>
 
   <h1 style="text-align:center;">Vos statistiques</h1>
