@@ -50,6 +50,8 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
   nbMaxMessPer24 : any;
   timeOnMessenger:any;
   nbrSmileyEnvoye:any;
+
+  isOwnStatFirstRun:any;
   
   pinkColor= 'rgb(241,77,156)' ;
   blueColor = 'rgb(77,89,241)';
@@ -114,6 +116,15 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
 
    ngOnInit() {
     this.isFileOpen=false;
+    this.isOwnStatFirstRun=this.ownStatsService.firstRun
+    if(!this.isOwnStatFirstRun){
+      let title = document.getElementById("title")
+      title.classList.remove('reajustContent');
+    }
+    setTimeout(()=>{
+      this.closeTooltip();
+    }, 10000)
+    
     this.selectedSort="nbrMessage"
 
     //CALCULS DES VARIABLES
@@ -138,7 +149,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     this.userAverageAnswerTime = this.ownStatsService.calculUserAverageAnswerTime(this.listFilesDico);
     this.bestFriend = this.ownStatsService.calculBestFriend(this.listFilesDico);
     this.percentInterlocuteursGenre = this.ownStatsService.calculPercentInterlocuteursGenre(this.listFilesDico);
-    this.genreMostConvIsWoman = this.percentInterlocuteursGenre["genre"]==="fille"
+    this.genreMostConvIsWoman = this.percentInterlocuteursGenre["genre"]==="filles"
     this.repartionTypeDeConv = this.ownStatsService.calculRepartionTypeDeConv(this.listFilesDico);
     this.repartionTypeMessage = this.ownStatsService.calculRepartionTypeMessage(this.listFilesDico);
     this.suggestBestContact = this.ownStatsService.calculSuggestBestContact(this.listFilesDico);
@@ -1249,6 +1260,13 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     else{
       return false
     }
+  }
+
+  closeTooltip(){
+    this.ownStatsService.switchBooleanFirstRun()
+    this.isOwnStatFirstRun=false;
+    let title = document.getElementById("title")
+    title.classList.remove('reajustContent');
   }
 
 }

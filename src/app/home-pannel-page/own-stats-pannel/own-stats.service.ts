@@ -37,8 +37,13 @@ export class OwnStatsService {
   blueColor = 'rgb(77,89,241)';
   indeterminedColor = '#1A1837';
 
+  firstRun = true;
+
   constructor() { }
 
+  switchBooleanFirstRun(){
+    this.firstRun=false;
+  }
   //***************************************************************//
   //POUR EVITER DE DEVOIR TOUJOURS PASSER LE USER EN PARAM
   //ON PEUT IMAGINER VIRER CA DANS UN AUTRE SERVICE GLOBAL PLUS TARD
