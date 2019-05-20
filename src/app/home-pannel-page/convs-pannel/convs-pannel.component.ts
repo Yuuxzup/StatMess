@@ -18,11 +18,18 @@ export class ConvsPannelComponent implements OnInit {
   //Variable pour savoir si on est dans une stat ou dans le navigateur de stat
   isStats : boolean;
   fileConvToDisplay : any;
+  isConvStatFirstRun=true;
 
   constructor(private statsConvService: StatsConvService) { }
 
   ngOnInit() {
     this.isStats= false;
+    this.isConvStatFirstRun=this.statsConvService.firstRun
+    this.statsConvService.switchBooleanFirstRun()
+    setTimeout(()=>{
+      //this.closeTooltip();
+    }, 10000)
+
     this.statsConvService.findUserName(this.listFilesDico)
     //On remplit le tableau de la vue à partir de l'enseble des fichiers
     let listFiltered=[]
@@ -134,5 +141,10 @@ export class ConvsPannelComponent implements OnInit {
   onSubmit(i : number){
     this.isStats=true;
     this.fileConvToDisplay = this.listFilesDico[i]
+  }
+
+  closeTooltip(){
+    this.statsConvService.switchBooleanFirstRun()
+    this.isConvStatFirstRun=false;
   }
 }

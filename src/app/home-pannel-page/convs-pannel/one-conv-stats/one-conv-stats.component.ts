@@ -12,7 +12,7 @@ import 'chartjs-plugin-deferred';
 @Component({
   selector: 'app-one-conv-stats',
   templateUrl: './one-conv-stats.component.html',
-  styleUrls: ['./one-conv-stats.component.css']
+  styleUrls: ['./one-conv-stats.component.scss']
 })
 export class OneConvStatsComponent implements OnInit {
 
@@ -46,9 +46,17 @@ export class OneConvStatsComponent implements OnInit {
   isReactions :any;
   isAutres : any;
 
+  isOneConvStatFirstRun=true;
+
   constructor(private statsConvService : StatsConvService) { }
 
   ngOnInit() {
+    this.isOneConvStatFirstRun=this.statsConvService.isOneConvStatFirstRun
+    this.statsConvService.switchBooleanFirstRunOne()
+    setTimeout(()=>{
+      //this.closeTooltip();
+    }, 10000)
+
     this.calculStats(this.fileConvToDisplay["content"])
 
     //ON COMMENCE SUR L'OVERVIEW
@@ -107,6 +115,11 @@ export class OneConvStatsComponent implements OnInit {
       this.nbParticipants = this.statsConvService.nbParticipants(jsonContent)
       this.nbMessages = this.statsConvService.nbMessages(jsonContent)
       this.dateCreationConv = this.statsConvService.dateCreationConv(jsonContent)
+  }
+
+  closeTooltip(){
+    this.statsConvService.switchBooleanFirstRunOne()
+    this.isOneConvStatFirstRun=false;
   }
 }
 
