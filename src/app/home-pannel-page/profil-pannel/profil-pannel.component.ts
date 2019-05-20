@@ -32,6 +32,7 @@ export class ProfilPannelComponent implements OnInit {
   styleTch:any;
   styleRie:any;
   styleTauHum:any;
+  stylePro:any;
 
   listSlider:any;
 
@@ -56,7 +57,8 @@ export class ProfilPannelComponent implements OnInit {
     this.scoreSolExp = this.profilServiceService.calculScoreSolExp(this.listFilesDico);
     this.scoreConCur = this.profilServiceService.calculScoreConCur(this.listFilesDico);
     this.scoreEgoAlt = this.profilServiceService.calculScoreEgoAlt(this.listFilesDico);
-    this.scorePro = this.profilServiceService.calculScorePro(this.listFilesDico);
+    this.scorePro = Math.floor((((this.profilServiceService.calculScorePro(this.listFilesDico)+this.profilServiceService.calculScoreAtWork(this.listFilesDico))/2)*100+100)/2);
+    this.stylePro = "conic-gradient( #E67E22 0 "+this.scorePro+"%, #EEEEEE 0)"
     this.scoreInf = this.profilServiceService.calculScoreInf(this.listFilesDico);
     this.scoreBla = Math.floor((this.profilServiceService.calculScoreBla(this.listFilesDico)*100+100)/2);
     this.styleBla = "conic-gradient( #E67E22 0 "+this.scoreBla+"%, #EEEEEE 0)"
@@ -67,32 +69,28 @@ export class ProfilPannelComponent implements OnInit {
     this.scoreEntCon = this.profilServiceService.calculScoreEntCon(this.listFilesDico);
     this.scoreTch = Math.floor((this.profilServiceService.calculScoreTch(this.listFilesDico)*100+100)/2);
     this.styleTch = "conic-gradient( #E67E22 0 "+this.scoreTch+"%, #EEEEEE 0)"
-    this.scoreAtWork = this.profilServiceService.calculScoreAtWork(this.listFilesDico);
 
     this.listSlider=[
-      {"min":"Reservé","max":"Bavard","value":this.scoreResBav*100,"listInformations":["Votre nombre de caractères durant la dernière période de deux mois", "Le délai entre deux utilisations de Messenger", "Le nombre de conversations où vous parlez plus que votre correspondant"]},
+      {"min":"Reservé","max":"Bavard","value":this.scoreResBav*100,"listInformations":["Votre nombre de messages", "Votre tendance à utiliser souvent Messenger", "Le nombre de conversations où vous parlez plus que votre correspondant"]},
 
-      {"min":"Fidèle","max":"Extra-social","value":this.scoreFidExt*100,"listInformations":["La répartition de vos conversations récurrentes", "Votre nombre de conversation duo", "Votre nombre de conversation de groupe", "La proportion de nouveaux contacts d'une période à une autre", "La taille moyenne de vos groupes"]},
+      {"min":"Fidèle","max":"Extra-social","value":this.scoreFidExt*100,"listInformations":["Vos contacts récurrents", "Votre nombre de conversations duo", "Votre nombre de conversations de groupe", "Votre tendance à parler à de nouvelles personnes", "La taille de vos groupes"]},
 
       {"min":"Lève tôt","max":"Lève tard","value":this.scoreCoucheLeve["Levé"]*100,"listInformations":["La répartition horaire de vos messages"]},
 
       {"min":"Couche tôt","max":"Couche tard","value":this.scoreCoucheLeve["Couché"]*100,"listInformations":["La répartition horaire de vos messages"]},
 
-      {"min":"Spontané","max":"Réfléchi","value":this.scoreSpoRef*100,"listInformations":["La longueur moyenne de vos messages", "Le nombre de messages d'affilé moyen", "Votre temps de réponse"]},
+      {"min":"Spontané","max":"Réfléchi","value":this.scoreSpoRef*100,"listInformations":["La longueur de vos messages", "Votre tendance à envoyer des messages d'affilé", "Votre temps de réponse"]},
 
-      {"min":"Solennel","max":"Expressif","value":this.scoreSolExp*100,"listInformations":["Le nombre moyen de smileys par message", "La ponctuation utilisée", "Les réactions que vous envoyez"]},
+      {"min":"Solennel","max":"Expressif","value":this.scoreSolExp*100,"listInformations":["Le nombre de smileys dans vos messages", "La ponctuation utilisée", "Les réactions que vous envoyez"]},
       
       {"min":"Confiant","max":"Curieux","value":this.scoreConCur*100,"listInformations":["Le nombre de questions que vous posez"]},
 
-      {"min":"Egoiste","max":"Altruiste","value":this.scoreEgoAlt*100,"listInformations":["Votre propension à parler de vous ou à écouter l'autre"]},
+      {"min":"Egoiste","max":"Altruiste","value":this.scoreEgoAlt*100,"listInformations":["Votre tendance à parler de vous ou à écouter l'autre"]},
 
-      {"min":"Looser","max":"Influenceur","value":this.scoreInf*100,"listInformations":["Votre nombre de messages", "La longueur de vos messages", "Les reactions reçues à vos messages", "Et bien sûr votre potentiel profond"]},
+      {"min":"Looser","max":"Influenceur","value":this.scoreInf*100,"listInformations":["Votre nombre de messages", "La longueur de vos messages", "Les reactions reçues", "Et bien sûr votre potentiel profond"]},
 
-      {"min":"Rigolo","max":"Professionnel","value":this.scorePro*100,"listInformations":["La proportion de réactions sérieuses contre celles non sérieuses envoyées","La proportion de réactions sérieuses contre celles non sérieuses reçues"]},
+      {"min":"Entreprenant","max":"Convoité","value":this.scoreEntCon*100,"listInformations":["Nombre de premiers pas effectués", "Nombre de conversations où vous parlez plus que l'autre", "Votre temps de réponse", "Si vous réagissez plus aux messages de l'autre que lui/elle"]}
 
-      {"min":"Entreprenant","max":"Convoité","value":this.scoreEntCon*100,"listInformations":["Nombre de premiers pas effectués", "Nombre de conversations où vous parlez plus que l'autre", "Votre temps de réponse", "Les réactions que vous recevez par rapport à celles envoyées"]},
-
-      {"min":"Lazy at work","max":"Serious at work","value":this.scoreAtWork*100,"listInformations":["Comparaison de votre activité le week end et celle sur vos heures de travail", "On a aussi bien sûr appelé votre boss"]},
     ]
   }
 
