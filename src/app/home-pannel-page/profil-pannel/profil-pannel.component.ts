@@ -6,7 +6,7 @@ import {DomSanitizer} from '@angular/platform-browser'
 @Component({
   selector: 'app-profil-pannel',
   templateUrl: './profil-pannel.component.html',
-  styleUrls: ['./profil-pannel.component.css']
+  styleUrls: ['./profil-pannel.component.scss']
 })
 export class ProfilPannelComponent implements OnInit {
 
@@ -39,10 +39,17 @@ export class ProfilPannelComponent implements OnInit {
   profilUser:any;
   dataForText:any;
 
+  isProfilFirstRun=true;
+
 
   constructor(private profilServiceService : ProfilServiceService, private determinationService : DeterminationService,  private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.isProfilFirstRun=this.profilServiceService.firstRun
+    this.profilServiceService.switchBooleanFirstRun()
+    setTimeout(()=>{
+      //this.closeTooltip();
+    }, 10000)
     this.calculDataForSlider();
     this.determineProfil();
   }
@@ -97,5 +104,10 @@ export class ProfilPannelComponent implements OnInit {
   determineProfil(){
     this.profilUser = this.determinationService.determinationProfil(this.listFilesDico);
     this.dataForText = this.determinationService.createDataForText(this.profilUser);
+  }
+
+  closeTooltip(){
+    this.profilServiceService.switchBooleanFirstRun()
+    this.isProfilFirstRun=false;
   }
 }

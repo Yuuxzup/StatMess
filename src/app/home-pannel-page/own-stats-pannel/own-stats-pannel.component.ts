@@ -116,13 +116,10 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
 
    ngOnInit() {
     this.isFileOpen=false;
-    this.isOwnStatFirstRun=this.ownStatsService.firstRun
-    if(!this.isOwnStatFirstRun){
-      let title = document.getElementById("title")
-      title.classList.remove('reajustContent');
-    }
+    this.isOwnStatFirstRun=this.ownStatsService.firstRun 
+    this.ownStatsService.switchBooleanFirstRun()
     setTimeout(()=>{
-      this.closeTooltip();
+      //this.closeTooltip();
     }, 10000)
     
     this.selectedSort="nbrMessage"
@@ -1265,8 +1262,6 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
   closeTooltip(){
     this.ownStatsService.switchBooleanFirstRun()
     this.isOwnStatFirstRun=false;
-    let title = document.getElementById("title")
-    title.classList.remove('reajustContent');
   }
 
 }
