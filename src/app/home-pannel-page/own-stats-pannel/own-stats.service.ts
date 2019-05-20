@@ -1226,7 +1226,7 @@ export class OwnStatsService {
         if(listFileDico[numberConv]["content"]["messages"][i]['content']!=undefined){
           let constMessage = decodeURIComponent(escape(listFileDico[numberConv]["content"]["messages"][i]['content']));
           if(listFileDico[numberConv]["content"]["messages"][i]["sender_name"]==user && numberMessage !=0 && constMessage.length>5 && constMessage.slice(0, 5)!='Dites' && Math.abs(listFileDico[numberConv]["content"]["messages"][i]["timestamp_ms"]-listFileDico[numberConv]["content"]["messages"][i-1]["timestamp_ms"])>3600000){
-            return([decodeURIComponent(escape(listFileDico[numberConv]["content"]["messages"][i]["content"])),'Message que vous avez envoyé à '+listFileDico[numberConv]["content"]["title"]]);
+            return([decodeURIComponent(escape(listFileDico[numberConv]["content"]["messages"][i]["content"])),'Message que vous avez envoyé à '+decodeURIComponent(escape(listFileDico[numberConv]["content"]["title"]))]);
           }
         }
       }
@@ -1234,7 +1234,7 @@ export class OwnStatsService {
     var w;
     for(w=0;w<listFileDico[numberConv]["content"]["messages"].length;w++){
       if(listFileDico[numberConv]["content"]["messages"][w]["content"]!=undefined && decodeURIComponent(escape(listFileDico[numberConv]["content"]["messages"][w]["sender_name"]))==user  && decodeURIComponent(escape(listFileDico[numberConv]["content"]["messages"][w]["content"])).slice(0, 5)!='Dites'  ){
-        return([decodeURIComponent(escape(listFileDico[numberConv]["content"]["messages"][w]["content"])),'Message que vous avez envoyé à '+listFileDico[numberConv]["content"]["title"]])
+        return([decodeURIComponent(escape(listFileDico[numberConv]["content"]["messages"][w]["content"])),'Message que vous avez envoyé à '+decodeURIComponent(escape(listFileDico[numberConv]["content"]["title"]))])
       }
     }
     return(['Hey tu vas bien ?','Message généré aléatoirement'])
