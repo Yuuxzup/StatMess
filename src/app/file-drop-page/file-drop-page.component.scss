@@ -114,14 +114,13 @@ p {
   display:flex;
   text-align : center;
   justify-content: space-between;
-  margin-top:5%;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
   margin-bottom:2%;
 }
 
 .logoLinkedin{
-  height:6vh;
+  height:4vh;
 }
 
 .oneLinkedin{
@@ -129,6 +128,10 @@ p {
   cursor:pointer;
   height:13%;
   
+}
+
+.oneLinkedin h3{
+  font-size:1em;
 }
 
 
@@ -687,7 +690,7 @@ hr.overview{
 // Select button 
 
 .buttonSelect {
-  background-color: rgb(250, 138, 47); /* Green */
+  background-color: rgb(250, 138, 47); 
   border: none;
   color: white;
   padding: 1% 2%;
@@ -717,7 +720,7 @@ hr.overview{
 ////
 /// Star Rating
 /// @group components
-/// @author Dami√°n Muti
+/// @author Dami·n Muti
 ////
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400');

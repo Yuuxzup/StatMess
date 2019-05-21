@@ -116,14 +116,16 @@ label{
   position: -webkit-sticky;
   position: sticky;
   left: 5%;
-  width: 40%;
   color: #fff;
   top: 10vh;
   padding: 1%;
   transition-property: opacity;
   transition-duration: 1s;
   transition-timing-function: linear;
-  margin-bottom: -12%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-bottom: -15%;
 }
 
 .enteteTooltip h1{
