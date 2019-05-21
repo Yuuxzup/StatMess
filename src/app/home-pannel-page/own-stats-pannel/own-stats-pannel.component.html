@@ -416,12 +416,15 @@
   <hr class="overview">
   <div class="subTitleOverview">Podium des conversations</div>
   <hr class="overview">
-
-  <select [(ngModel)]="selectedSort" (ngModelChange)="ngAfterViewInit()" id="selectionButton">
-      <option value="nbrMessage">Number of messages</option>
-      <option value="nbrParticipant">Number of participants</option>
-      <option value="maxStreak">Max streak</option>
-  </select>
+  <div class="selectDivision">
+    <p>Sélectionnez le critère pour créer le podium de vos conversations.</p>
+    <select style="cursor:pointer; margin-bottom:0.5%;" [(ngModel)]="selectedSort" (ngModelChange)="ngAfterViewInit()" id="selectionButton">
+        <option value="nbrMessage">Nombre de messages</option>
+        <option value="nbrParticipant">Nombre de participants</option>
+        <option value="maxStreak">Éclairs</option>
+    </select>
+      <h5 style="margin-top:0; margin-bottom:0; font-style: italic; color:white">Une fois le critère séléctionné, cliquez sur la bulle de la conversation pour avoir plus de détails.</h5>
+  </div>
   <div class="galaxy">
       <div *ngIf="bubbleConvChart" class="graph">
         <canvas class="statChart" #bubbleConvGraph id="bubbleConvGraph">{{ bubbleConvChart }}</canvas>
@@ -504,7 +507,7 @@
 
     <div class="twoCards">
       <div class="sideText">
-        <p>Répartition du type de messages</p>
+        <p>Répartition du type de messages reçus</p>
         <img class = "imgHelp" (click)="help('TypeMessages')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
       </div>   
       <div class="sideImg">
