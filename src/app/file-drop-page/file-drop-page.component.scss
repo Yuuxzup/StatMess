@@ -163,7 +163,7 @@ $color: #1A1837;
 $font: 'Abril Fatface', sans-serif;
 
 $slides: 4;
-$images: url(https://unsplash.it/g/1500/2200?image=838) url(https://unsplash.it/g/1500/1000?image=1078) url(https://unsplash.it/g/1500/1000?image=1077)  url(https://unsplash.it/g/1500/1200?image=345);
+$images: url(https://zupimages.net/up/19/21/e49r.png) url(https://zupimages.net/up/19/21/i9wr.png) url(https://zupimages.net/up/19/21/m0l3.png)   url(https://zupimages.net/up/19/21/0pur.png);
 
 html, body{
 	width: 100vw;
@@ -303,14 +303,13 @@ html, body{
 		top: 50%;
 		left: 50%;
 		transform: translate3d(-50%,-50%,0);
-		color: white;
+    color: white;
 		font-family: $font;
 		line-height: 0.8;
 		letter-spacing: -0.025em;
 		z-index: 2;
-		opacity: 1;
 		text-shadow: 0 0 0.5em rgba($color,0.25);
-		mix-blend-mode: lighten;
+		//mix-blend-mode: lighten;
 		span{
 			display: block;
 			font-size: 15vmin;
