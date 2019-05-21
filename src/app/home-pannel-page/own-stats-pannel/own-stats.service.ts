@@ -1299,7 +1299,6 @@ export class OwnStatsService {
         file["content"]["messages"].forEach(function(message){
           
           if(decodeURIComponent(escape(message["sender_name"]))==user && message['reactions']!=undefined && message['reactions'].length>bestReactionMessage['numberReactions'] && message['content']!=undefined){
-            console.log("passage")
             var w;
             for(w=0;w<7;w++){
               bestReactionMessage['typeReaction'][w][1]=0;
@@ -1342,7 +1341,9 @@ export class OwnStatsService {
       }
     }
     console.log(bestReactionMessagePerConv[indexMaxReaction])
-    bestReactionMessagePerConv[indexMaxReaction]['message']= decodeURIComponent(escape(bestReactionMessagePerConv[indexMaxReaction]['message']));
+    if (bestReactionMessagePerConv[indexMaxReaction]['message']!="Vous n'avez pas reçu de réaction sur vos messages"){
+      bestReactionMessagePerConv[indexMaxReaction]['message']= decodeURIComponent(escape(bestReactionMessagePerConv[indexMaxReaction]['message']));
+    }
     this.bestReactionsMessage = bestReactionMessagePerConv[indexMaxReaction];
     return bestReactionMessagePerConv[indexMaxReaction]
 
