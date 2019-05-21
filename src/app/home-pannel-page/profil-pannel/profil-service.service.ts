@@ -28,8 +28,14 @@ export class ProfilServiceService {
   pinkColor= 'rgb(241,77,156)' ;
   blueColor = 'rgb(77,89,241)';
 
+  firstRun = true;
+
   constructor(private ownStatsService : OwnStatsService, private statsConvService : StatsConvService) { }
 
+  switchBooleanFirstRun(){
+    this.firstRun=false;
+  }
+  
   // Ici : Reservé = -1 et Bavard = +1
   calculScoreResBav(listFileDico : any){
     if (this.scoreResBav){
