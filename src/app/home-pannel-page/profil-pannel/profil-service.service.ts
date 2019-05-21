@@ -44,8 +44,11 @@ export class ProfilServiceService {
     //Corps de la fonction
  
     var scoreCaracParPeriod =this.sousCalculTotalCaracLastPeriod(listFileDico)
+    console.log("scoreCaracParPeriod : ok - " + scoreCaracParPeriod)
     var scoreTempsEntre2Mess =this.sousCalculTempsEntreDeuxMess(listFileDico)
+    console.log("scoreTempsEntre2Mess : ok - " + scoreTempsEntre2Mess)
     var scoreDominationConv =this.sousCalculNbConvDominees(listFileDico)
+    console.log("scoreDominationConv : ok - " + scoreDominationConv)
 
     let scoreLocal = (scoreCaracParPeriod + scoreTempsEntre2Mess + scoreDominationConv)/3
     
@@ -62,9 +65,14 @@ export class ProfilServiceService {
     //Corps de la fonction, on coefficiente dans scoreLocal
  
     let scoreRepStreaks = this.sousCalculRepartitionStreaks (listFileDico)
+    console.log("scoreRepStreaks : ok - " + scoreRepStreaks)
     let scoreNbConvDuoGrp = this.sousCalculNbConvDuoAndGroupPerPeriod (listFileDico)
+    console.log("scoreNbConvDuoGrp : ok - " + scoreNbConvDuoGrp)
     let scoreNbNewContacts = this.sousCalculNbDeNewContactPerPeriod (listFileDico)
+    console.log("scoreNbNewContacts : ok - " + scoreNbNewContacts)
     let scoreTailleGrp = this.sousCalculMoyenneTailleGroup (listFileDico)
+    console.log("scoreTailleGrp : ok - " + scoreTailleGrp)
+
 
     let scoreLocal = (2*scoreRepStreaks + 2*scoreNbConvDuoGrp[0] + 2*scoreNbConvDuoGrp[1] + 2*scoreNbNewContacts + scoreTailleGrp)/9
     
@@ -80,8 +88,11 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreLongueurMess =this.sousCalculMoyenneLongueurMess (listFileDico)
+    console.log("scoreLongueurMess : ok - " + scoreLongueurMess)
     let scoreMessDaffile =this.sousCalculMoyenneNbMessDaffile (listFileDico)
+    console.log("scoreMessDaffile : ok - " + scoreMessDaffile)
     let scoreTempsReponse =this.sousCalculTempsReponse (listFileDico)
+    console.log("scoreTempsReponse : ok - " + scoreTempsReponse)
     
     let scoreLocal = (scoreLongueurMess + scoreMessDaffile + scoreTempsReponse)/3
 
@@ -97,8 +108,11 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreSmiley = this.sousCalculNbMoyenSmileyPerMess (listFileDico)
+    console.log("scoreSmiley : ok - " + scoreSmiley)
     let scorePonctu = this.sousCalculPonctuationDetect (listFileDico)
+    console.log("scorePonctu : ok - " + scorePonctu)
     let scoreReact = this.sousCalculTotalSentReactions (listFileDico)
+    console.log("scoreReact : ok - " + scoreReact)
 
     let scoreLocal = (scoreSmiley + scorePonctu + scoreReact)/3
     
@@ -162,6 +176,8 @@ export class ProfilServiceService {
     scoreLocal = (nbInterro/nbMessEnvoyes - ref)/ecartMax
   }
     
+    console.log("scoreConcur : ok - " + scoreLocal)
+
     this.scoreConCur = scoreLocal
     return scoreLocal
   }
@@ -232,6 +248,8 @@ export class ProfilServiceService {
       scoreLocal = (ref - nbConvOuEgoDominant/nbTotalConvComptees)/ecartMax
     }
     
+    console.log("scoreEgoAlt : ok - " + scoreLocal)
+
     this.scoreEgoAlt = scoreLocal
     return scoreLocal
   }
@@ -364,6 +382,8 @@ export class ProfilServiceService {
 
     let scoreLocal = (scoreReacRecues + scoreReacEnvoy)/2
     
+    console.log("scorePro : ok - " + scoreLocal)
+
     this.scorePro = scoreLocal
     return scoreLocal
   }
@@ -458,6 +478,8 @@ export class ProfilServiceService {
       scoreLocal = (influenceUser - ref)/ecartMax
     }
 
+    console.log("scoreInf : ok - " + scoreLocal)
+
     this.scoreInf = scoreLocal
     return scoreLocal
   }
@@ -470,7 +492,9 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreReac = this.sousCalculReactionsRire(listFileDico,"bla")
+    console.log("scoreReac : ok - " + scoreReac)
     let scoreWords = this.sousCalculLolWords(listFileDico,"bla")
+    console.log("scoreWords : ok - " + scoreWords)
 
     let scoreLocal = (scoreReac + 2*scoreWords)/3
     
@@ -487,7 +511,9 @@ export class ProfilServiceService {
     let exempleTrucARenvoyer = NaN;
 
     let scoreReac = this.sousCalculReactionsRire(listFileDico,"rie")
+    console.log("scoreReac rie : ok - " + scoreReac)
     let scoreWords = this.sousCalculLolWords(listFileDico,"rie")
+    console.log("scoreWords rie : ok - " + scoreWords)
 
     let scoreLocal = (scoreReac + 2*scoreWords)/3
     
@@ -503,9 +529,13 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreFirstMess = this.sousCalculConvFirstMessSent(listFileDico)
+    console.log("scoreFirstMess : ok - " + scoreFirstMess)
     let scoreNbCarac = this.sousCalculDominationNbCarac(listFileDico)
+    console.log("scoreNbCarac : ok - " + scoreNbCarac)
     let scoreTempsRep = this.sousCalculComparaisonTempsRep(listFileDico)
+    console.log("scoreTempsRep : ok - " + scoreTempsRep)
     let scoreNbReac = this.sousCalculComparaisonNbReactions(listFileDico)
+    console.log("scoreNbReac : ok - " + scoreNbReac)
 
     let scoreLocal = (scoreFirstMess + scoreNbCarac + scoreTempsRep + scoreNbReac)/4
     
@@ -529,6 +559,8 @@ export class ProfilServiceService {
 
     let scoreLocal = (scoreConv + scoreCarac + scoreBestFriend)/3
     
+    console.log("scoreTch : ok - " + scoreLocal)
+
     this.scoreTch = scoreLocal
     return scoreLocal
   }
@@ -583,7 +615,7 @@ export class ProfilServiceService {
       scoreLocal = rapport
     }
     
-    //console.log("score loc " + scoreLocal)
+    console.log("scoreAtWork : ok - " + scoreLocal)
     this.scoreAtWork = scoreLocal
     return scoreLocal
   }
@@ -666,7 +698,7 @@ export class ProfilServiceService {
     let dicoScoreLocal = {"Levé" : scoreHeureLeve, "Couché" : scoreHeureCouche}
 
     this.scoreCoucheLeve = dicoScoreLocal
-    //console.log(dicoScoreLocal)
+    console.log("scoreCoucheLeve : ok - " + dicoScoreLocal["Levé"] + " levé et couché " + dicoScoreLocal["Couché"])
     return dicoScoreLocal
   }
 

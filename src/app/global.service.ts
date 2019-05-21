@@ -136,37 +136,37 @@ export class GlobalService {
 
   doCalculForProfil(listFileDico : any){
     console.log("Launching calcul for : findUserName")
-    this.profilServiceService.findUserName(listFileDico);
+    console.log("findUserName = " + this.profilServiceService.findUserName(listFileDico))
     console.log("Launching calcul for : findUserSex")
-    this.profilServiceService.findUserSex(listFileDico);
+    console.log("findUserSex = " + this.profilServiceService.findUserSex(listFileDico))
     console.log("Launching calcul for : calculScoreResBav")
-    this.profilServiceService.calculScoreResBav(listFileDico);
+    console.log("calculScoreResBav = " +    this.profilServiceService.calculScoreResBav(listFileDico))
     console.log("Launching calcul for : calculScoreFidExt")
-    this.profilServiceService.calculScoreFidExt(listFileDico);
+    console.log("calculScoreFidExt = " +    this.profilServiceService.calculScoreFidExt(listFileDico))
     console.log("Launching calcul for : calculScoreCoucheLeve")
-    this.profilServiceService.calculScoreCoucheLeve(listFileDico);
+    console.log("calculScoreCoucheLeve = " +    this.profilServiceService.calculScoreCoucheLeve(listFileDico))
     console.log("Launching calcul for : calculScoreSpoRef")
-    this.profilServiceService.calculScoreSpoRef(listFileDico);
+    console.log("calculScoreSpoRef = " +    this.profilServiceService.calculScoreSpoRef(listFileDico))
     console.log("Launching calcul for : calculScoreSolExp")
-    this.profilServiceService.calculScoreSolExp(listFileDico);
+    console.log("calculScoreSolExp = " +    this.profilServiceService.calculScoreSolExp(listFileDico))
     console.log("Launching calcul for : calculScoreConCur")
-    this.profilServiceService.calculScoreConCur(listFileDico);
+    console.log("calculScoreConCur = " +    this.profilServiceService.calculScoreConCur(listFileDico))
     console.log("Launching calcul for : calculScoreEgoAlt")
-    this.profilServiceService.calculScoreEgoAlt(listFileDico);
+    console.log("calculScoreEgoAlt = " +    this.profilServiceService.calculScoreEgoAlt(listFileDico))
     console.log("Launching calcul for : calculScorePro")
-    this.profilServiceService.calculScorePro(listFileDico);
+    console.log("calculScorePro = " +    this.profilServiceService.calculScorePro(listFileDico))
     console.log("Launching calcul for : calculScoreInf")
-    this.profilServiceService.calculScoreInf(listFileDico);
+    console.log("calculScoreInf = " +    this.profilServiceService.calculScoreInf(listFileDico))
     console.log("Launching calcul for : calculScoreBla")
-    this.profilServiceService.calculScoreBla(listFileDico);
+    console.log("calculScoreBla = " +    this.profilServiceService.calculScoreBla(listFileDico))
     console.log("Launching calcul for : calculScoreRie")
-    this.profilServiceService.calculScoreRie(listFileDico);
+    console.log("calculScoreRie = " +    this.profilServiceService.calculScoreRie(listFileDico))
     console.log("Launching calcul for : calculScoreEntCon")
-    this.profilServiceService.calculScoreEntCon(listFileDico);
+    console.log("calculScoreEntCon = " +   this.profilServiceService.calculScoreEntCon(listFileDico))
     console.log("Launching calcul for : calculScoreTch")
-    this.profilServiceService.calculScoreTch(listFileDico);
+    console.log("calculScoreTch = " +    this.profilServiceService.calculScoreTch(listFileDico))
     console.log("Launching calcul for : calculScoreAtWork")
-    this.profilServiceService.calculScoreAtWork(listFileDico);
+    console.log("calculScoreAtWork = " +    this.profilServiceService.calculScoreAtWork(listFileDico))
 
     this.determinationService.determinationProfil(listFileDico);
     console.log("Launching calcul for : determinationProfil")
