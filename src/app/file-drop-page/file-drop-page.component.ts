@@ -30,7 +30,7 @@ export class FileDropPageComponent implements OnInit{
 
   ngOnInit(){
 
-    this.httpClient.get<any[]>('https://statsmess.firebaseio.com/starRate.json').subscribe(
+    this.httpClient.get<any[]>(this.globalService.nameDB+'starRate.json').subscribe(
       (response) => {
         this.rating = response['mean']
         let rateTab = response['ratingTab'];
@@ -44,39 +44,9 @@ export class FileDropPageComponent implements OnInit{
     })
 
     setTimeout(()=>{this.isRateMoment=true}, 180000)
-
-    //Création de la table profil
-    /*let listProfil=["INTJ", "INTP","ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"]
-    for (var k=0; k<listProfil.length; k++){
-      let profil={"profil":listProfil[k], "occurence":0}
-      this.httpClient.post('https://statsmess.firebaseio.com/repartitionProfils.json', profil).subscribe(
-        () => {
-          console.log("compteur "+"fileDrop"+" succes update")
-        },
-        (error) => {
-          console.log("can't log")
-        }
-      );
-    }*/
-
-    //Création de la table visites
-    /*let listePage=["fileDrop", "home", "ownStat", "convStat", "profil", "cgu"]
-
-    for (var k=0; k<listePage.length; k++){
-      let oneCompteur={"idPage":listePage[k], "nbrVisite":0, "timeSpent":0}
-
-      this.httpClient.post('https://statsmess.firebaseio.com/compteurVisites.json', oneCompteur).subscribe(
-              () => {
-                console.log("compteur "+"fileDrop"+" succes update")
-              },
-              (error) => {
-              }
-            );
-    }*/
           
-
     this.httpClient
-      .get<any[]>('https://statsmess.firebaseio.com/compteurVisites.json')
+      .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
       .subscribe(
         (response) => {
           let idPage = "fileDrop"
@@ -94,7 +64,7 @@ export class FileDropPageComponent implements OnInit{
           compteurPage["nbrVisite"]+=1
           compteurPage["timeSpent"]+=0
           compteurVisites[keyModified]=compteurPage
-          this.httpClient.put('https://statsmess.firebaseio.com/compteurVisites.json', compteurVisites).subscribe(
+          this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
             () => {
               console.log("compteur "+idPage+" succes update")
             },
@@ -178,7 +148,7 @@ export class FileDropPageComponent implements OnInit{
     this.rating=number;
     
     this.httpClient
-      .get<any[]>('https://statsmess.firebaseio.com/starRate.json')
+      .get<any[]>(this.globalService.nameDB+'starRate.json')
       .subscribe(
         (response) => {
           let rateDico = response;
@@ -197,7 +167,7 @@ export class FileDropPageComponent implements OnInit{
           rateDico['ratingTab']=rateTab
           rateDico['mean']=mean
 
-          this.httpClient.put('https://statsmess.firebaseio.com/starRate.json', rateDico).subscribe(
+          this.httpClient.put(this.globalService.nameDB+'starRate.json', rateDico).subscribe(
             () => {
               console.log("Rating maj success")
             },

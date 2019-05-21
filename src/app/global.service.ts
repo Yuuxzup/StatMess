@@ -10,9 +10,69 @@ import { StatsConvService } from './home-pannel-page/convs-pannel/stats-conv.ser
 export class GlobalService {
   userName : any;
   lastMessageUploadTimestamp:any;
+  nameDB:any;
 
   private isLoading=false;
   constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService) { }
+
+  defineDB(){
+    let loc = document.location.href;
+    this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' : 'https://statmess-trunk.firebaseio.com/';
+
+    /*
+    //Création de la table profil
+    let listProfil=["INTJ", "INTP","ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"]
+    for (var k=0; k<listProfil.length; k++){
+      let profil={"profil":listProfil[k], "occurence":0}
+      this.httpClient.post('https://statmess-trunk.firebaseio.com/repartitionProfils.json', profil).subscribe(
+        () => {
+          console.log("compteur "+"fileDrop"+" succes update")
+        },
+        (error) => {
+          console.log("can't log")
+        }
+      );
+    }
+
+    //Création de la table visites
+    let listePage=["fileDrop", "home", "ownStat", "convStat", "profil", "cgu"]
+
+    for (var k=0; k<listePage.length; k++){
+      let oneCompteur={"idPage":listePage[k], "nbrVisite":0, "timeSpent":0}
+
+      this.httpClient.post('https://statmess-trunk.firebaseio.com/compteurVisites.json', oneCompteur).subscribe(
+              () => {
+                console.log("compteur "+"fileDrop"+" succes update")
+              },
+              (error) => {
+              }
+            );
+    }
+
+    //Création de la table visiteur
+    let oneUser ={"date": new Date(), "name": "Paul Tondereau", "number":1}
+    this.httpClient.post('https://statmess-trunk.firebaseio.com/oneUser.json', oneUser).subscribe(
+      () => {
+        console.log("Rating maj success")
+      },
+      (error) => {
+      }
+    );
+
+
+    //Création de la table starRate
+    let rateDico={}
+    rateDico['ratingTab']=[0,0,0,0,0]
+    rateDico['mean']=0
+
+    this.httpClient.post('https://statmess-trunk.firebaseio.com/starRate.json', rateDico).subscribe(
+      () => {
+        console.log("Rating maj success")
+      },
+      (error) => {
+      }
+    );*/
+  }
 
   findUserName(listFileDico : any){
     if (this.userName){
@@ -39,7 +99,7 @@ export class GlobalService {
 
     var listUser = []
     this.httpClient
-      .get<any[]>('https://statsmess.firebaseio.com/oneUser.json')
+      .get<any[]>(this.nameDB+'oneUser.json')
       .subscribe(
         (response) => {
           listUser = response;
@@ -53,7 +113,7 @@ export class GlobalService {
             }
           }
           if (!alreadyIn){
-            this.httpClient.post('https://statsmess.firebaseio.com/oneUser.json', oneUser).subscribe(
+            this.httpClient.post(this.nameDB+'oneUser.json', oneUser).subscribe(
             () => {
               //console.log("succes update with add")
             },
@@ -61,7 +121,7 @@ export class GlobalService {
             }
           );
           } else {
-            this.httpClient.put('https://statsmess.firebaseio.com/oneUser.json', listUser).subscribe(
+            this.httpClient.put(this.nameDB+'oneUser.json', listUser).subscribe(
               () => {
                 //console.log("succes update")
               },
@@ -113,7 +173,7 @@ export class GlobalService {
     let profilUser = this.determinationService.profilType
 
     this.httpClient
-      .get<any>('https://statsmess.firebaseio.com/repartitionProfils.json')
+      .get<any>(this.nameDB+'repartitionProfils.json')
       .subscribe(
         (response) => {
           let profilRepar = response;
@@ -128,7 +188,7 @@ export class GlobalService {
           }
           profilToEdit["occurence"]+=1
           profilRepar[keyModified]=profilToEdit
-          this.httpClient.put('https://statsmess.firebaseio.com/repartitionProfils.json', profilRepar).subscribe(
+          this.httpClient.put(this.nameDB+'repartitionProfils.json', profilRepar).subscribe(
             () => {
               console.log("compteur profil succes update")
             },
