@@ -677,13 +677,12 @@ hr.overview{
 }
 
 .compteur{
-  display: flex;
-  width: 15vw;
   justify-content: space-around;
 }
 
 .compteur img{
   width:2vw;
+  height:2vw;
 }
 
 
@@ -720,7 +719,7 @@ hr.overview{
 ////
 /// Star Rating
 /// @group components
-/// @author Damián Muti
+/// @author Damiï¿½n Muti
 ////
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400');
@@ -850,7 +849,6 @@ $rating-icons-paths: (
 .indicators .rating-holder {
   pointer-events: none;
   display: inline-block;
-  padding: toem(10px) toem(30px);
   margin: 0 10px;
   background-color: #1A1837;
   border-radius: toem(25px);
@@ -869,10 +867,9 @@ $rating-icons-paths: (
 .indicators{
   display: flex;
   margin: auto;
-  width: 30vw;
-  background: white;
+  width: 40vw;
   justify-content: space-around;
-  color: black;
+  color: white;
   padding: 0.7%;
   border-radius: 1%;
 }
