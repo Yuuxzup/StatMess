@@ -20,42 +20,33 @@ export class FileDropPageComponent implements OnInit{
   timer = 4000;
   nbrVisite : any;
 
+  isRateMoment=false;
+
+  rating=0
+  isRated=false;
+  nbrVote=0;
+
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService) { }
 
   ngOnInit(){
 
-    //Création de la table profil
-    /*let listProfil=["INTJ", "INTP","ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"]
-    for (var k=0; k<listProfil.length; k++){
-      let profil={"profil":listProfil[k], "occurence":0}
-      this.httpClient.post('https://statsmess.firebaseio.com/repartitionProfils.json', profil).subscribe(
-        () => {
-          console.log("compteur "+"fileDrop"+" succes update")
-        },
-        (error) => {
-          console.log("can't log")
-        }
-      );
-    }*/
-
-    //Création de la table visites
-    /*let listePage=["fileDrop", "home", "ownStat", "convStat", "profil", "cgu"]
-
-    for (var k=0; k<listePage.length; k++){
-      let oneCompteur={"idPage":listePage[k], "nbrVisite":0, "timeSpent":0}
-
-      this.httpClient.post('https://statsmess.firebaseio.com/compteurVisites.json', oneCompteur).subscribe(
-              () => {
-                console.log("compteur "+"fileDrop"+" succes update")
-              },
-              (error) => {
-              }
-            );
-    }*/
+    this.httpClient.get<any[]>(this.globalService.nameDB+'starRate.json').subscribe(
+      (response) => {
+        this.rating = response['mean']
+        let rateTab = response['ratingTab'];
           
+        this.nbrVote = 0
+        for (var k=0; k<rateTab.length;k++){
+          this.nbrVote+=rateTab[k]
+        }
+      },
+      (error) => {
+    })
 
+    setTimeout(()=>{this.isRateMoment=true}, 180000)
+          
     this.httpClient
-      .get<any[]>('https://statsmess.firebaseio.com/compteurVisites.json')
+      .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
       .subscribe(
         (response) => {
           let idPage = "fileDrop"
@@ -73,7 +64,7 @@ export class FileDropPageComponent implements OnInit{
           compteurPage["nbrVisite"]+=1
           compteurPage["timeSpent"]+=0
           compteurVisites[keyModified]=compteurPage
-          this.httpClient.put('https://statsmess.firebaseio.com/compteurVisites.json', compteurVisites).subscribe(
+          this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
             () => {
               console.log("compteur "+idPage+" succes update")
             },
@@ -149,4 +140,48 @@ export class FileDropPageComponent implements OnInit{
     $('body').removeClass('modal-active');
   }
 
+  closeTooltip(){
+    this.isRateMoment=false;
+  }
+
+  rateStatMess(number : any){
+    this.rating=number;
+    
+    this.httpClient
+      .get<any[]>(this.globalService.nameDB+'starRate.json')
+      .subscribe(
+        (response) => {
+          let rateDico = response;
+          console.log(rateDico)
+          let rateTab = rateDico['ratingTab'];
+          
+          let nbrVote = 1
+          let sum=number
+          for (var k=0; k<rateTab.length;k++){
+            nbrVote+=rateTab[k]
+            sum+=rateTab[k]*(k+1)
+          }
+
+          rateTab[number-1]+=1
+          let mean=sum/nbrVote
+          rateDico['ratingTab']=rateTab
+          rateDico['mean']=mean
+
+          this.httpClient.put(this.globalService.nameDB+'starRate.json', rateDico).subscribe(
+            () => {
+              console.log("Rating maj success")
+            },
+            (error) => {
+            }
+          );
+        },
+        (error) => {
+        })
+
+    this.isRated = true;
+    setTimeout(()=>{
+      this.closeTooltip();
+    }, 1500)
+    
+  }
 }

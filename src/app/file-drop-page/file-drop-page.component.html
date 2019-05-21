@@ -1,3 +1,23 @@
+<div class="popupToRate" *ngIf="isRateMoment">
+  <div class="close-container" (click)="closeTooltip()">
+    <div class="leftright"></div>
+    <div class="rightleft"></div>
+    <label class="close">close</label>
+  </div>
+  <h1 style="margin-left: 11%;" *ngIf="!isRated">Donnez votre avis !</h1>
+  <p *ngIf="!isRated">Que pensez vous de StatMess ?</p>
+  <div class="rating-holder">
+    <div *ngIf="!isRated" class="c-rating c-rating--big" data-rating-value="0">
+      <button (click)=rateStatMess(1)>1</button>
+      <button (click)=rateStatMess(2)>2</button>
+      <button (click)=rateStatMess(3)>3</button>
+      <button (click)=rateStatMess(4)>4</button>
+      <button (click)=rateStatMess(5)>5</button>
+    </div>
+  </div>
+  <p *ngIf="isRated" style="margin-top: 9%;font-size: 3em;">Merci !</p>
+</div>
+
 <div class="untitled" *ngIf="!isZipLoaded && !isLoading">
 	<div class="untitled__slides">
 		<div class="untitled__slide">
@@ -38,6 +58,22 @@
   
   <div class="bienvenue">
     <h1>Bienvenue sur Statmess</h1>
+    <div class="indicators">
+      <div class="compteur">
+        <img src="https://image.flaticon.com/icons/svg/69/69379.svg"/>
+        <p style="margin-top: 6%;">Cette page a été visitée <b>{{nbrVisite}}</b> fois</p>
+      </div>
+      <div class="rating-holder">
+        <div class="c-rating c-rating--big" data-rating-value="4.5">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+        </div>
+      </div>
+      <p>({{nbrVote}})</p>
+  </div>
     <hr class="overview">
     <p>Notre site vous permet d’analyser l’ensemble de vos messages pour en faire ressortir la personne que vous êtes vraiment.</p>
     <p style="padding-bottom:1%">Vous pourrez explorer des statistiques liées à vos conversations, voir les chiffres clés qui vous caractérisent ou encore en apprendre plus sur vous-même à travers l’élaboration de votre profil Messenger.</p>
@@ -187,11 +223,6 @@
       </a>
     </div>
 
-  </div>
-
-  <div class="compteur">
-    <img src="https://image.flaticon.com/icons/svg/69/69379.svg"/>
-    <p style="margin-top:0.9%; margin-left: 0.5%;">Cette page a été visitée <b>{{nbrVisite}}</b> fois</p>
   </div>
 </div>
 

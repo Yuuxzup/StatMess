@@ -128,14 +128,13 @@ p {
   display:flex;
   text-align : center;
   justify-content: space-between;
-  margin-top:5%;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
   margin-bottom:2%;
 }
 
 .logoLinkedin{
-  height:6vh;
+  height:4vh;
 }
 
 .oneLinkedin{
@@ -143,6 +142,10 @@ p {
   cursor:pointer;
   height:13%;
   
+}
+
+.oneLinkedin h3{
+  font-size:1em;
 }
 
 
@@ -633,6 +636,7 @@ html,body {
 
 .bienvenue h1{
   padding-top:1%;
+  margin-bottom: 2vh;
 }
 
 hr.overview{
@@ -687,8 +691,9 @@ hr.overview{
 }
 
 .compteur{
-  display:flex;
-  margin-bottom:1%;
+  display: flex;
+  width: 15vw;
+  justify-content: space-around;
 }
 
 .compteur img{
@@ -699,7 +704,7 @@ hr.overview{
 // Select button 
 
 .buttonSelect {
-  background-color: rgb(250, 138, 47); /* Green */
+  background-color: rgb(250, 138, 47); 
   border: none;
   color: white;
   padding: 1% 2%;
@@ -721,4 +726,258 @@ hr.overview{
 
 .buttonSelect:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+//STAR RATE
+
+
+////
+/// Star Rating
+/// @group components
+/// @author Damián Muti
+////
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400');
+
+///
+$rating-min-value: 0 !default;
+///
+$rating-max-value: 5 !default;
+///
+$rating-steps-value: .25 !default;
+///
+$rating-color-empty: '%23ddd' !default;
+///
+$rating-color-full: gold !default;
+///
+$rating-color-hover: grey !default;
+/// This variable is a map containing the "d" attribute of each of the SVG icons
+$rating-icons-paths: (
+  quarter: 'M196.208 415.2v-224.8l-139.504 20.272 100.944 98.384-23.84 138.928z',
+  half: 'M258.672 64l-62.384 126.4-139.504 20.272 100.944 98.384-23.84 138.928 124.768-65.6v-318.4z',
+  three-quarters: 'M321.616 190.496l-0.656-0.096-62.384-126.4-62.384 126.4-139.504 20.272 100.944 98.384-23.84 138.928 124.768-65.6 63.024 33.136z',
+  full: 'M457.888 210.672l-139.504-20.272-62.384-126.4-62.384 126.4-139.504 20.272 100.944 98.384-23.84 138.928 124.768-65.6 124.768 65.6-23.84-138.928c0 0 100.944-98.384 100.944-98.384z'
+);
+
+/// Creates a dynamic list of values that increment each .25 from 0 to 5
+/// @return {list} 
+@function rating-values() {
+  $rating-values: ();
+
+  @for $i from $rating-min-value through ($rating-max-value / $rating-steps-value) {
+    $rating-value: abs($i * $rating-steps-value);
+    $rating-values: append($rating-values, $rating-value, 'comma');
+  }
+
+  @return $rating-values;
+}
+
+/// Generates an SVG with a given fill color depending on the type of icon passed as parameter. The SVG string is scaped for cross-browser support.
+/// @param {string} $icon - Type of icon. Accepted values: `quarter`, `half`, `three-quarters` or `full`.
+/// @param {color} $color - Passes the fill color of the SVG icon that is being generated. Note: Hexa color values must be escaped for cross-browser support.
+/// @return {string} background value.
+@function get-icon($icon, $color) {
+  @if not index(quarter half three-quarters full, $icon) {
+    @error "Interaction type must be either `quarter`, `half`, `three-quarters` or `full`.";
+  }
+  
+  @return url('data:image/svg+xml;utf8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22' + $color + '%22%20d%3D%22' + map-get($rating-icons-paths, $icon) + '%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E') center / cover no-repeat;
+}
+
+@mixin c-rating($star-size: 20px, $star-element: button, $interaction-type: representative) {
+  @if not index(clickable representative, $interaction-type) {
+    @error "Interaction type must be either `clickable` or `representative`.";
+  }
+  
+  #{$star-element} {
+    display: inline-block;
+    float: left;
+    width: $star-size;
+    height: $star-size;
+    border: 0;
+    text-indent: -9999px;
+    outline: none;
+    background: get-icon(full, $rating-color-empty);
+
+    @if $interaction-type == clickable {
+      cursor: pointer;
+      transition: background 0.25s ease;
+      
+      // Override background images on hover state
+      &:hover,
+      &:hover ~ #{$star-element} {
+        background: get-icon(full, $rating-color-empty) !important;
+      }
+    }
+  }
+  
+  // Override background images on hover state
+  @if $interaction-type == clickable {
+    &:hover {
+      #{$star-element} {
+        background: get-icon(full, $rating-color-hover) !important;
+      }
+    }
+  }
+
+  @each $rating-value in rating-values() {
+    // Get the next higher integer.
+    $rating-value-ceil: ceil($rating-value);
+
+    &[data-rating-value="#{$rating-value}"] {
+      #{$star-element}:nth-child(-n+#{$rating-value-ceil}) {
+        background: get-icon(full, $rating-color-full);
+      }
+
+      #{$star-element}:nth-child(#{$rating-value-ceil}) {
+        // Evaluate which fraction of a star this value is and add the proper background
+        @if str-slice("#{$rating-value}", 2, 4) == '.25' {
+          background: get-icon(quarter, $rating-color-full), get-icon(full, $rating-color-empty)
+        }
+        @else if str-slice("#{$rating-value}", 2, 4) == '.5' {
+          background: get-icon(half, $rating-color-full), get-icon(full, $rating-color-empty)
+        }
+        @else if str-slice("#{$rating-value}", 2, 4) == '.75' {
+          background: get-icon(three-quarters, $rating-color-full), get-icon(full, $rating-color-empty)
+        }
+      }
+    }
+  }
+}
+
+/*
+ * General styles.
+ * Not necessary for the component to work
+*/
+
+/// Convert to EMs function
+/// @param {number} target - The value to be converted
+/// @param {number} context [$msuxf-font-size] The base font size
+/// @return {em} value
+@function toem($target, $context: 16px) {
+  @if $target == 0 {
+    @return 0
+  }
+
+  @return $target / $context+0em;
+}
+.indicators .rating-holder {
+  pointer-events: none;
+  display: inline-block;
+  padding: toem(10px) toem(30px);
+  margin: 0 10px;
+  background-color: #1A1837;
+  border-radius: toem(25px);
+  box-sizing: border-box;
+}
+
+.c-rating {
+  @include c-rating(toem(20px), button, clickable);
+
+  &--big {
+    font-size: 150%;
+    margin-top: 10%;
+  }
+}
+
+.indicators{
+  display: flex;
+  margin: auto;
+  width: 30vw;
+  background: white;
+  justify-content: space-around;
+  color: black;
+  padding: 0.7%;
+  border-radius: 1%;
+}
+
+.popupToRate{
+  z-index: 500;
+  position: -webkit-sticky;
+  position: sticky;
+  width: 60%;
+  height: 40vh;
+  font-size: -webkit-xxx-large;
+  text-align: center;
+  margin: auto;
+  background: #1A1837;
+  color: white;
+  top: 26%;
+  margin-bottom: -21%;
+  border: 2px solid white;
+}
+
+.popupToRate .rating-holder {
+  display: inline-block;
+  margin: 0 10px;
+  background-color: #1A1837;
+  border-radius: toem(25px);
+  box-sizing: border-box;
+}
+
+.popupToRate .rating-holder .c-rating button{
+  width: 5.25em;
+  height: 5.25em;
+}
+
+//close popup
+$softorange: #F4A259;
+$tomatored: #F25C66;
+$mediumblu: #1E272D;
+
+.close-container{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  float: right;
+  margin-right: 5%;
+}
+
+.leftright{
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+}
+
+.rightleft{
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all .3s ease-in;
+}
+
+label{
+  color: white;
+  font-family: Helvetica, Arial, sans-serif; 
+  font-size: .6em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .3s ease-in;
+  opacity: 0;
+}
+.close{
+  position: absolute;
+  margin-top: 5%;
+  margin-left: -5%;
+}
+
+.close-container:hover .leftright{
+  transform: rotate(-45deg);
+  background-color: $tomatored;
+}
+.close-container:hover .rightleft{
+  transform: rotate(45deg);
+  background-color: $tomatored;
+}
+.close-container:hover label{
+  opacity: 1;
 }
