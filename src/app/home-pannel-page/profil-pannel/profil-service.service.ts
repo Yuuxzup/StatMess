@@ -521,8 +521,11 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreConv = this.sousCalculSexualiteConv(listFileDico)
+    console.log("ScoreConv: " + scoreConv)
     let scoreCarac = this.sousCalculSexualiteSommeCarac(listFileDico)
+    console.log("ScoreCarac: " + scoreCarac)
     let scoreBestFriend = this.sousCalculSexualiteBestFriend(listFileDico)
+    console.log("ScoreBestFriend: " + scoreBestFriend)
 
     let scoreLocal = (scoreConv + scoreCarac + scoreBestFriend)/3
     
