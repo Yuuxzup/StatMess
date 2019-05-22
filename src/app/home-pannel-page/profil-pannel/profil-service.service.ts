@@ -730,7 +730,7 @@ export class ProfilServiceService {
 
     this.userSex = this.findOneSex(this.userName)
     if(this.userSex == "i"){
-      //console.log("ATTENTION VOTRE SEXE EST INDETERMINE")
+      console.log("ATTENTION VOTRE SEXE EST INDETERMINE")
     }
     return this.userSex
   }
@@ -1810,6 +1810,9 @@ sousCalculSexualiteConv(listFileDico : any){
   if(rapportSexeOppose > ref + ecartMax){
     scoreLocal = 1
   }
+  else if(rapportSexeOppose == 0){
+    scoreLocal = 0
+  }
   else if(rapportSexeOppose < ref - ecartMax){
     scoreLocal = -1
   }
@@ -1870,6 +1873,9 @@ sousCalculSexualiteSommeCarac(listFileDico : any){
   if(rapportSexeOppose > ref + ecartMax){
     scoreLocal = 1
   }
+  else if(rapportSexeOppose == 0){
+    scoreLocal = 0
+  }
   else if(rapportSexeOppose < ref - ecartMax){
     scoreLocal = -1
   }
@@ -1917,6 +1923,9 @@ sousCalculSexualiteBestFriend(listFileDico : any){
 
   if(rapportSexeOppose > ref + ecartMax){
     scoreLocal = 1
+  }
+  else if(rapportSexeOppose == 0){
+    scoreLocal = 0
   }
   else if(rapportSexeOppose < ref - ecartMax){
     scoreLocal = -1
