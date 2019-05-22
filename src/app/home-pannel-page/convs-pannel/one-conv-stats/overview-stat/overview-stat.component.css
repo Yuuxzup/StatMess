@@ -84,7 +84,7 @@ h2 {
   height:20%;
   padding-right:10%;
   padding-left:10%;
-  padding-top: 1.5%;
+  padding-top: 3%;
 }
 
 .threeCards {
@@ -171,7 +171,7 @@ h2 {
 }
 .infoBox p{
   margin-bottom:1vh;
-  margin-top:-2%;
+  margin-top:-0.2%;
 }
 
 .infoBox h5{
