@@ -1961,7 +1961,7 @@ calculSexualiteGrp(setUser : any){
 findOneSex(name : any){
 
     let sex = "i"
-    let dicoSex = this.calculSexualiteGrp([name])
+    let dicoSex = this.calculSexualiteGrp(new Set(name))
     if(dicoSex["m"]){
       sex = "m"
     }
