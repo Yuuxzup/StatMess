@@ -853,8 +853,8 @@ export class ProfilServiceService {
 
   listFileDico.forEach(function(file){
 
-      let longueur = file["content"]["messages"].length
-      let k = 0
+      let longueur = file["content"]["messages"].length;
+      let k = 0;
 
 // On fait d'abord un grand tableau des temps d'envois depuis deux mois
 
@@ -864,7 +864,9 @@ export class ProfilServiceService {
         }
         k +=1
       }
-  })
+  });
+  console.log('tab temps envoie')
+  console.log(tabDesTempsDenvoi);
 // On le trie du plus petit au plus grand
   tabDesTempsDenvoi.sort(function(a, b) {
    return a - b;
@@ -880,8 +882,11 @@ export class ProfilServiceService {
     if(tabDesTempsDenvoi[i+1]-tabDesTempsDenvoi[i] > CinqMinEnMs && tabDesTempsDenvoi[i+1]-tabDesTempsDenvoi[i] < SeptHeureEnMs ){
       sommeDesDelais += tabDesTempsDenvoi[i+1]-tabDesTempsDenvoi[i]
       nbDeDelais += 1
+      console.log('if nb de delais')
     }
   }
+
+  console.log('nbde delais: '+nbDeDelais)
 
   var ref = 60
   var ecartMax = 60  // Wolf : 36, Tond : 35, Hugo : 30
@@ -1944,6 +1949,7 @@ calculSexualiteGrp(setUser : any){
       setUser.forEach(function(oneUser){
         let prenom1 = oneUser.split(" ")[0].toLowerCase()
         let prenom2 = oneUser.split(" ")[0].replace("é","e").replace("è","e").replace("ê","e").replace("ë","e").replace("ï","i").replace("î","i").replace("É","E")
+      
         if(Object.keys(baseGenre).indexOf(prenom1)!=-1){
           dicoCompt[baseGenre[prenom1]["02_genre"][0]]+=1
         } else if (baseGenre2["f"].indexOf(prenom2)!=-1){
@@ -1961,7 +1967,7 @@ calculSexualiteGrp(setUser : any){
 findOneSex(name : any){
 
     let sex = "i"
-    let dicoSex = this.calculSexualiteGrp(new Set(name))
+    let dicoSex = this.calculSexualiteGrp(new Set([name]));
     if(dicoSex["m"]){
       sex = "m"
     }
