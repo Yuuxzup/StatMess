@@ -52,17 +52,26 @@ export class OwnStatsService {
       return this.userName;
     }
     let lUser= []
-    listFileDico[0]["content"]["participants"].forEach(function(element) {
-      lUser.push(decodeURIComponent(escape(element["name"])))
-    });
+    let currentInd=0;
+    while (currentInd<listFileDico.length && lUser.length===0){
+      if (listFileDico[currentInd]["content"]["is_still_participant"]===true){
+        listFileDico[currentInd]["content"]["participants"].forEach(function(element) {
+          lUser.push(decodeURIComponent(escape(element["name"])))
+        });
+      } else {
+        currentInd+=1
+      }
+    }
     let i=0
     while (lUser.length!=1 && i<listFileDico.length){
-      let newLUser=[]
-      listFileDico[i]["content"]["participants"].forEach(function(element) {
-        if (lUser.indexOf(decodeURIComponent(escape(element["name"])))>-1){
-          newLUser.push((decodeURIComponent(escape(element["name"]))))
-        }})
-      lUser=newLUser.slice()
+      if (listFileDico[i]["content"]["is_still_participant"]===true){
+        let newLUser=[]
+        listFileDico[i]["content"]["participants"].forEach(function(element) {
+          if (lUser.indexOf(decodeURIComponent(escape(element["name"])))>-1){
+            newLUser.push((decodeURIComponent(escape(element["name"]))))
+          }})
+        lUser=newLUser.slice()
+      }
       i++
     }
     this.userName=lUser[0]

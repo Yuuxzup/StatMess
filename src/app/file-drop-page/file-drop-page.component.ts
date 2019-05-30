@@ -106,6 +106,7 @@ export class FileDropPageComponent implements OnInit{
                   setTimeout(()=>{
                     this.listFilesDico = this.globalService.fillInfoInListFile(tempoListFilesDico)
                     this.globalService.findUserName(this.listFilesDico);
+                    console.log("username :"+this.globalService.findUserName(this.listFilesDico));
                     this.globalService.doCalculForOwnStats(this.listFilesDico)
                     this.globalService.doCalculForConv(this.listFilesDico)
                     this.globalService.doCalculForProfil(this.listFilesDico)

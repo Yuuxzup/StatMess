@@ -76,20 +76,29 @@ export class GlobalService {
 
   findUserName(listFileDico : any){
     if (this.userName){
-      return
+      return this.userName
     }
     let lUser= []
-    listFileDico[0]["content"]["participants"].forEach(function(element) {
-      lUser.push(decodeURIComponent(escape(element["name"])))
-    });
+    let currentInd=0;
+    while (currentInd<listFileDico.length && lUser.length===0){
+      if (listFileDico[currentInd]["content"]["is_still_participant"]===true){
+        listFileDico[currentInd]["content"]["participants"].forEach(function(element) {
+          lUser.push(decodeURIComponent(escape(element["name"])))
+        });
+      } else {
+        currentInd+=1
+      }
+    }
     let i=0
     while (lUser.length!=1 && i<listFileDico.length){
-      let newLUser=[]
-      listFileDico[i]["content"]["participants"].forEach(function(element) {
-        if (lUser.indexOf(decodeURIComponent(escape(element["name"])))>-1){
-          newLUser.push((decodeURIComponent(escape(element["name"]))))
-        }})
-      lUser=newLUser.slice()
+      if (listFileDico[i]["content"]["is_still_participant"]===true){
+        let newLUser=[]
+        listFileDico[i]["content"]["participants"].forEach(function(element) {
+          if (lUser.indexOf(decodeURIComponent(escape(element["name"])))>-1){
+            newLUser.push((decodeURIComponent(escape(element["name"]))))
+          }})
+        lUser=newLUser.slice()
+      }
       i++
     }
     this.userName=lUser[0]
@@ -132,6 +141,7 @@ export class GlobalService {
         },
         (error) => {
         }) 
+    return this.userName
   }
 
   doCalculForProfil(listFileDico : any){
@@ -203,59 +213,59 @@ export class GlobalService {
 
   doCalculForOwnStats(listFileDico : any){
     console.log("Launching calcul for : findUserName")
-    this.ownStatsService.findUserName(listFileDico)
+    console.log("findUserName = " + this.ownStatsService.findUserName(listFileDico))
     console.log("Launching calcul for : calculBubbleConv")
-    this.ownStatsService.calculBubbleConv(listFileDico); //USELESS
+    console.log("calculBubbleConv = " + this.ownStatsService.calculBubbleConv(listFileDico)); //USELESS
     console.log("Launching calcul for : calculHoursISend")
-    this.ownStatsService.calculHoursISend(listFileDico)
+    console.log("calculHoursISend = " + this.ownStatsService.calculHoursISend(listFileDico))
     console.log("Launching calcul for : calculNbrMessagePerPeriod")
-    this.ownStatsService.calculNbrMessagePerPeriod(listFileDico)
+    console.log("calculNbrMessagePerPeriod = " + this.ownStatsService.calculNbrMessagePerPeriod(listFileDico))
     console.log("Launching calcul for : calculStatsGlobalesMessages")
-    this.ownStatsService.calculStatsGlobalesMessages(listFileDico)
+    console.log("calculStatsGlobalesMessages = " + this.ownStatsService.calculStatsGlobalesMessages(listFileDico))
     console.log("Launching calcul for : calculNbInterlocuteurs")
-    this.ownStatsService.calculNbInterlocuteurs(listFileDico)
+    console.log("calculNbInterlocuteurs = " + this.ownStatsService.calculNbInterlocuteurs(listFileDico))
     console.log("Launching calcul for : calculNbReactionsUser")
-    this.ownStatsService.calculNbReactionsUser(listFileDico)
+    console.log("calculNbReactionsUser = " + this.ownStatsService.calculNbReactionsUser(listFileDico))
     console.log("Launching calcul for : calculNbCaracParMessUser")
-    this.ownStatsService.calculNbCaracParMessUser(listFileDico)
+    console.log("calculNbCaracParMessUser = " + this.ownStatsService.calculNbCaracParMessUser(listFileDico))
     console.log("Launching calcul for : calculNbConvFirstMessSent")
-    this.ownStatsService.calculNbConvFirstMessSent(listFileDico)
+    console.log("calculNbConvFirstMessSent = " + this.ownStatsService.calculNbConvFirstMessSent(listFileDico))
     console.log("Launching calcul for : calculPodiumConvLesPlusActives")
-    this.ownStatsService.calculPodiumConvLesPlusActives(listFileDico)
+    console.log("calculPodiumConvLesPlusActives = " + this.ownStatsService.calculPodiumConvLesPlusActives(listFileDico))
     console.log("Launching calcul for : calculFirstConvUser")
-    this.ownStatsService.calculFirstConvUser(listFileDico)
+    console.log("calculFirstConvUser = " + this.ownStatsService.calculFirstConvUser(listFileDico))
     console.log("Launching calcul for : calculIndicateursFlammeFreezeStrike")
-    this.ownStatsService.calculIndicateursFlammeFreezeStrike(listFileDico)
+    console.log("calculIndicateursFlammeFreezeStrike = " + this.ownStatsService.calculIndicateursFlammeFreezeStrike(listFileDico))
     console.log("Launching calcul for : calculDicoSortBubbleConv")
-    this.ownStatsService.calculDicoSortBubbleConv(listFileDico); //USELESS
+    console.log("calculDicoSortBubbleConv = " + this.ownStatsService.calculDicoSortBubbleConv(listFileDico)); //USELESS
     console.log("Launching calcul for : calculNbrConvActivePerPeriod")
-    this.ownStatsService.calculNbrConvActivePerPeriod(listFileDico);
+    console.log("calculNbrConvActivePerPeriod = " + this.ownStatsService.calculNbrConvActivePerPeriod(listFileDico));
     console.log("Launching calcul for : calculNbrCorrespondantPerPeriod")
-    this.ownStatsService.calculNbrCorrespondantPerPeriod(listFileDico);
+    console.log("calculNbrCorrespondantPerPeriod = " + this.ownStatsService.calculNbrCorrespondantPerPeriod(listFileDico));
     console.log("Launching calcul for : calculBestCorrespondantPerPeriod")
-    this.ownStatsService.calculBestCorrespondantPerPeriod(listFileDico);
+    console.log("calculBestCorrespondantPerPeriod = " + this.ownStatsService.calculBestCorrespondantPerPeriod(listFileDico));
     console.log("Launching calcul for : calculUserAverageAnswerTime")
-    this.ownStatsService.calculUserAverageAnswerTime(listFileDico);
+    console.log("calculUserAverageAnswerTime = " + this.ownStatsService.calculUserAverageAnswerTime(listFileDico));
     console.log("Launching calcul for : calculBestFriend")
-    this.ownStatsService.calculBestFriend(listFileDico);
+    console.log("calculBestFriend = " + this.ownStatsService.calculBestFriend(listFileDico));
     console.log("Launching calcul for : calculPercentInterlocuteursGenre")
-    this.ownStatsService.calculPercentInterlocuteursGenre(listFileDico);
+    console.log("calculPercentInterlocuteursGenre = " + this.ownStatsService.calculPercentInterlocuteursGenre(listFileDico));
     console.log("Launching calcul for : calculRepartionTypeDeConv")
-    this.ownStatsService.calculRepartionTypeDeConv(listFileDico);
+    console.log("calculRepartionTypeDeConv = " + this.ownStatsService.calculRepartionTypeDeConv(listFileDico));
     console.log("Launching calcul for : calculRepartionTypeMessage")
-    this.ownStatsService.calculRepartionTypeMessage(listFileDico);
+    console.log("calculRepartionTypeMessage = " + this.ownStatsService.calculRepartionTypeMessage(listFileDico));
     console.log("Launching calcul for : calculSuggestBestContact")
-    this.ownStatsService.calculSuggestBestContact(listFileDico);
+    console.log("calculSuggestBestContact = " + this.ownStatsService.calculSuggestBestContact(listFileDico));
     console.log("Launching calcul for : calculRandomContact")
-    this.ownStatsService.calculRandomContact(listFileDico);
+    console.log("calculRandomContact = " + this.ownStatsService.calculRandomContact(listFileDico));
     console.log("Launching calcul for : calculLongestMessage")
-    this.ownStatsService.calculLongestMessage(listFileDico);
+    console.log("calculLongestMessage = " + this.ownStatsService.calculLongestMessage(listFileDico));
     console.log("Launching calcul for : calculBestReactionMessage")
-    this.ownStatsService.calculBestReactionMessage(listFileDico);
+    console.log("calculBestReactionMessage = " + this.ownStatsService.calculBestReactionMessage(listFileDico));
     console.log("Launching calcul for : calculNbMaxMessPer24")
-    this.ownStatsService.calculNbMaxMessPer24(listFileDico);
+    console.log("calculNbMaxMessPer24 = " + this.ownStatsService.calculNbMaxMessPer24(listFileDico));
     console.log("Launching calcul for : calculNbrSmileyEnvoye")
-    this.ownStatsService.calculNbrSmileyEnvoye(listFileDico);
+    console.log("calculNbrSmileyEnvoye = " + this.ownStatsService.calculNbrSmileyEnvoye(listFileDico));
   }
 
   doCalculForConv(listFileDico : any){
