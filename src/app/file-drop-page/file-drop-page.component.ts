@@ -144,7 +144,7 @@ export class FileDropPageComponent implements OnInit{
     this.isRateMoment=false;
   }
 
-  rateStatMess(number : any){
+  rateSightMess(number : any){
     this.rating=number;
     
     this.httpClient
