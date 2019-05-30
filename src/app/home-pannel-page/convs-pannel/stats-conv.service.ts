@@ -23,7 +23,7 @@ export class StatsConvService {
 
   findUserName(listFileDico : any){
     if (this.userName){
-      return
+      return this.userName
     }
     let lUser= []
     let currentInd=0;
@@ -49,6 +49,7 @@ export class StatsConvService {
       i++
     }
     this.userName=lUser[0]
+    return this.userName
   }
 
   findLastMessageUploadTimestamp(listFileDico : any){
