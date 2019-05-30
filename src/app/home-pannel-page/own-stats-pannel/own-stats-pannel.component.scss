@@ -228,8 +228,8 @@ img {
 }
 
 .numberBox{
-  color : rgba(40, 37, 88, 0.815);
-  height:3vw;
+  color : #1A1837;
+  height:15%;
   font-weight : bold;
   font-size : 1.5em;
   text-align : center;
@@ -341,7 +341,7 @@ hr.messageTitleBottom{
   width : 63vw;
   height : 63vh;
   position : absolute;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.8);
   color : #D5D22E ;
   font-size : 5vh;
   z-index : -1;
@@ -351,7 +351,7 @@ hr.messageTitleBottom{
   width : 38.8vw;
   height : 63vh;
   position : absolute;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.8);
   color : #D5D22E ;
   font-size : 5vh;
   z-index : -1;
@@ -480,13 +480,8 @@ h2 {
   text-align: center;
 }
 
-
 .imgDestinataire{
-  height: 12%;
-}
-
-.imgIcon{
-  height: 35%;
+  height: 45%;
 }
 
 .imgIcon{
@@ -497,12 +492,34 @@ h2 {
   height : 35%;
 }
 
+.imgPeople{
+  height:8%;
+}
+
 .imgLength{
   height : 35%;
 }
 
 .buttonMessage{
   margin-top : 1%;
+}
+
+.selectDivision{
+  background:#1A1837;
+  color:white;
+  text-align:center;
+}
+
+.selectDivision p{
+  font-size: 1.2em;
+  padding-top: 0.5%;
+  margin-bottom: 1%;
+}
+
+.buttonMessage:hover {
+  background-color: rgb(250, 138, 47); 
+  color: #1A1837;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 #messageHide{
@@ -860,5 +877,87 @@ lastDateSuggestBestContact{
 	margin-left: -33px;
 }
 
+.enteteTooltip{
+  display:flex
+}
 
+$softorange: #F4A259;
+$tomatored: #F25C66;
+$mediumblu: #1E272D;
 
+.close-container{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.leftright{
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+}
+
+.rightleft{
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all .3s ease-in;
+}
+
+label{
+  color: white;
+  font-family: Helvetica, Arial, sans-serif; 
+  font-size: .6em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .3s ease-in;
+  opacity: 0;
+}
+.close{
+  margin: 60px 0 0 5px;
+  position: absolute;
+}
+
+.close-container:hover .leftright{
+  transform: rotate(-45deg);
+  background-color: $tomatored;
+}
+.close-container:hover .rightleft{
+  transform: rotate(45deg);
+  background-color: $tomatored;
+}
+.close-container:hover label{
+  opacity: 1;
+}
+
+.tooltipFirstRun{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgba(26,24,55,0.9);
+  z-index: 10;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 5%;
+  color: #fff;
+  top: 10vh;
+  padding: 1%;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+  margin-bottom:-11%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.enteteTooltip h1{
+  width:90%
+}

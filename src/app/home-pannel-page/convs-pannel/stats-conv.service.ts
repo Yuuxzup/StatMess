@@ -5,11 +5,21 @@ import { Injectable } from '@angular/core';
 export class StatsConvService {
   userName:any;
   lastMessageUploadTimestamp:any;
+  firstRun=true;
+  isOneConvStatFirstRun=true;
   constructor() { }
 
   //********************************************************************//
   //*********************//STATS POUR PREVISU//*************************//
   //********************************************************************//
+
+  switchBooleanFirstRun(){
+    this.firstRun=false;
+  }
+
+  switchBooleanFirstRunOne(){
+    this.isOneConvStatFirstRun=false;
+  }
 
   findUserName(listFileDico : any){
     if (this.userName){
@@ -21,13 +31,13 @@ export class StatsConvService {
     });
     let i=0
     while (lUser.length!=1 && i<listFileDico.length){
-      i++
       let newLUser=[]
       listFileDico[i]["content"]["participants"].forEach(function(element) {
         if (lUser.indexOf(decodeURIComponent(escape(element["name"])))>-1){
           newLUser.push((decodeURIComponent(escape(element["name"]))))
         }})
       lUser=newLUser.slice()
+      i++
     }
     this.userName=lUser[0]
   }
@@ -134,6 +144,7 @@ export class StatsConvService {
 
   calculMaxFreeze(jsonContent : any){
     let currentDateTimeStamp = this.lastMessageUploadTimestamp
+    //console.log(currentDateTimeStamp);
     const numberMillisecondsInOneDay=1000*60*60*24;
     let reverseMessagesTab = jsonContent["messages"]
     let maxFreezeTimeTimeStamp = 0;

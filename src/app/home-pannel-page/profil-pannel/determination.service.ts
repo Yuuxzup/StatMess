@@ -44,7 +44,6 @@ export class DeterminationService {
 
       default:
         this.dataForText={"name":"Default", "time":32, "test":43}
-        console.log('Sacré Roublaw, you know what I mean');
     }
 
     return this.dataForText

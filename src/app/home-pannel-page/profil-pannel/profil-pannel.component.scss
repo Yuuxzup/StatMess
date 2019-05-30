@@ -1,0 +1,195 @@
+.listSlider {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 2vh;
+}
+
+.textProfil{
+  width:70%;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2.5%;
+  margin-bottom:2vh;
+}
+
+.textProfil p{
+  text-align: justify;
+}
+
+.textProfil b{
+  color:#1A1837;
+}
+
+.textProfil h2{
+  text-align:center;
+}
+
+.mainProfil {
+  height:25vh;
+  width: 20%;
+  border-radius: 100%;
+  margin-left: auto;
+  background-image: linear-gradient(to top, transparent 8%, #1A1837 65%);
+  align-content: center;
+  text-align: center;
+  margin-right: auto;
+  margin-top: 1%;
+}
+
+.mainProfil h2{
+  color :#1A1837;
+  font-size:2.5em;
+}
+
+img {
+  height : 16vh;
+  margin-top : 2vh;
+  width: 16vh; 
+  margin-right:auto;
+  margin-left:auto;
+  border-radius: 1000px;
+}
+
+b {
+  color : rgba(40, 37, 88, 0.815);
+  font-size:1.2em;
+  font-style: italic;
+}
+
+.fullKPI{
+  width: 8vw;
+  height: 8vw;
+  border-radius: 50%;
+  padding: 0.5vw;
+}
+
+.KPI{
+  width: 100%;
+  height: 100%;
+  background-color: #212F3D;
+  border-radius: 50%;
+}
+
+.fullKPI p{
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  font-size: 1.3em;
+  color: lightblue;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+}
+
+.fullKPI h1{
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  font-size: 1.3em;
+  color: white;
+  width: 100%;
+  text-align: -webkit-center;
+  padding-block-start: 25%;
+}
+
+.lineKPI{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4%;
+  margin-bottom: 4vh;
+}
+
+.enteteTooltip{
+  display:flex
+}
+
+$softorange: #F4A259;
+$tomatored: #F25C66;
+$mediumblu: #1E272D;
+
+.close-container{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.leftright{
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+}
+
+.rightleft{
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all .3s ease-in;
+}
+
+label{
+  color: white;
+  font-family: Helvetica, Arial, sans-serif; 
+  font-size: .6em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .3s ease-in;
+  opacity: 0;
+}
+.close{
+  margin: 60px 0 0 5px;
+  position: absolute;
+}
+
+.close-container:hover .leftright{
+  transform: rotate(-45deg);
+  background-color: $tomatored;
+}
+.close-container:hover .rightleft{
+  transform: rotate(45deg);
+  background-color: $tomatored;
+}
+.close-container:hover label{
+  opacity: 1;
+}
+
+.tooltipFirstRun{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgba(26,24,55,0.9);
+  z-index: 10;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 5%;
+  color: #fff;
+  top: 10vh;
+  padding: 1%;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+  margin-bottom: -12%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.enteteTooltip h1{
+  width:90%
+}
+
+.reajustContent{
+  margin-top: -18vh;
+}

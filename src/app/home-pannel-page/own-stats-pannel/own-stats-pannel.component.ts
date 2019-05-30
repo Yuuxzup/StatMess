@@ -49,6 +49,9 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
   randomMessage : any;
   nbMaxMessPer24 : any;
   timeOnMessenger:any;
+  nbrSmileyEnvoye:any;
+
+  isOwnStatFirstRun:any;
   
   pinkColor= 'rgb(241,77,156)' ;
   blueColor = 'rgb(77,89,241)';
@@ -113,6 +116,12 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
 
    ngOnInit() {
     this.isFileOpen=false;
+    this.isOwnStatFirstRun=this.ownStatsService.firstRun 
+    this.ownStatsService.switchBooleanFirstRun()
+    setTimeout(()=>{
+      //this.closeTooltip();
+    }, 10000)
+    
     this.selectedSort="nbrMessage"
 
     //CALCULS DES VARIABLES
@@ -137,7 +146,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     this.userAverageAnswerTime = this.ownStatsService.calculUserAverageAnswerTime(this.listFilesDico);
     this.bestFriend = this.ownStatsService.calculBestFriend(this.listFilesDico);
     this.percentInterlocuteursGenre = this.ownStatsService.calculPercentInterlocuteursGenre(this.listFilesDico);
-    this.genreMostConvIsWoman = this.percentInterlocuteursGenre["genre"]==="fille"
+    this.genreMostConvIsWoman = this.percentInterlocuteursGenre["genre"]==="filles"
     this.repartionTypeDeConv = this.ownStatsService.calculRepartionTypeDeConv(this.listFilesDico);
     this.repartionTypeMessage = this.ownStatsService.calculRepartionTypeMessage(this.listFilesDico);
     this.suggestBestContact = this.ownStatsService.calculSuggestBestContact(this.listFilesDico);
@@ -147,6 +156,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     this.randomMessage = this.ownStatsService.calculRandomMessage(this.listFilesDico);
     this.nbMaxMessPer24 = this.ownStatsService.calculNbMaxMessPer24(this.listFilesDico);
     this.timeOnMessenger = this.ownStatsService.calculTimeOnMessenger(this.listFilesDico);
+    this.nbrSmileyEnvoye = this.ownStatsService.calculNbrSmileyEnvoye(this.listFilesDico);
 
     
     //Taille écran en px
@@ -995,7 +1005,8 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     this.radarReacChart.push(new Chart
     (this.radarReacGraph.nativeElement.getContext('2d'), {  
         type: 'radar',
-        
+      
+      
       data: {
         labels: this.nbReactionsUser["labels"],
         
@@ -1005,7 +1016,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
             label :"Réaction envoyées",
             data: this.nbReactionsUser["dataSent"],
             //Les couleurs peuvent être modifiées sur les variables globales définient plus haut
-            backgroundColor: '#1A1837',
+            backgroundColor: 'rgba(26,24,55,0.8)',
             fill: true,
             borderWidth : 1,
             borderColor : 'rgb(0,0,0)' ,
@@ -1018,7 +1029,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
             data: this.nbReactionsUser["dataReceived"],
             label : "Réactions reçues",
             //Les couleurs peuvent être modifiées sur les variables globales définient plus haut
-            backgroundColor: 'rgb(250, 138, 47)' ,
+            backgroundColor: 'rgba(250, 138, 47,0.8)' ,
             fill: true,
             borderWidth : 1,
             borderColor : 'rgb(0,0,0)' ,
@@ -1050,9 +1061,6 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
           /*angleLines : {
             color : 'rgb(0,0,0,1)',
             lineWidth : 0.2,
-          },
-          pointLabels: {
-            fontSize: 25 //Augmente la taille des smileys
           }, */
           gridLines : {
               color : 'rgb(0,0,0,1)',
@@ -1249,6 +1257,11 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     else{
       return false
     }
+  }
+
+  closeTooltip(){
+    this.ownStatsService.switchBooleanFirstRun()
+    this.isOwnStatFirstRun=false;
   }
 
 }

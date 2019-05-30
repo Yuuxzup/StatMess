@@ -1,6 +1,5 @@
 import { Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs/Subject';
 import { ProfilServiceService } from './home-pannel-page/profil-pannel/profil-service.service';
 import { DeterminationService } from './home-pannel-page/profil-pannel/determination.service';
 import { OwnStatsService } from './home-pannel-page/own-stats-pannel/own-stats.service';
@@ -11,23 +10,68 @@ import { StatsConvService } from './home-pannel-page/convs-pannel/stats-conv.ser
 export class GlobalService {
   userName : any;
   lastMessageUploadTimestamp:any;
+  nameDB:any;
 
-  loadingSubject = new Subject<boolean>();
   private isLoading=false;
   constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService) { }
 
-  emitLoadingSubject() {
-    console.log("On emit le loading � "+this.isLoading)
-    this.loadingSubject.next(this.isLoading);
-  }
-  emitLoadCompleted(){
-    console.log("On emit le load completeted")
-    this.isLoading=false;
-    this.emitLoadingSubject();
-  }
-  emitLoadBeginning(){
-    this.isLoading=true;
-    this.emitLoadingSubject();
+  defineDB(){
+    let loc = document.location.href;
+    this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' : 'https://statmess-trunk.firebaseio.com/';
+
+    /*
+    //Création de la table profil
+    let listProfil=["INTJ", "INTP","ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"]
+    for (var k=0; k<listProfil.length; k++){
+      let profil={"profil":listProfil[k], "occurence":0}
+      this.httpClient.post('https://statmess-trunk.firebaseio.com/repartitionProfils.json', profil).subscribe(
+        () => {
+          console.log("compteur "+"fileDrop"+" succes update")
+        },
+        (error) => {
+          console.log("can't log")
+        }
+      );
+    }
+
+    //Création de la table visites
+    let listePage=["fileDrop", "home", "ownStat", "convStat", "profil", "cgu"]
+
+    for (var k=0; k<listePage.length; k++){
+      let oneCompteur={"idPage":listePage[k], "nbrVisite":0, "timeSpent":0}
+
+      this.httpClient.post('https://statmess-trunk.firebaseio.com/compteurVisites.json', oneCompteur).subscribe(
+              () => {
+                console.log("compteur "+"fileDrop"+" succes update")
+              },
+              (error) => {
+              }
+            );
+    }
+
+    //Création de la table visiteur
+    let oneUser ={"date": new Date(), "name": "Paul Tondereau", "number":1}
+    this.httpClient.post('https://statmess-trunk.firebaseio.com/oneUser.json', oneUser).subscribe(
+      () => {
+        console.log("Rating maj success")
+      },
+      (error) => {
+      }
+    );
+
+
+    //Création de la table starRate
+    let rateDico={}
+    rateDico['ratingTab']=[0,0,0,0,0]
+    rateDico['mean']=0
+
+    this.httpClient.post('https://statmess-trunk.firebaseio.com/starRate.json', rateDico).subscribe(
+      () => {
+        console.log("Rating maj success")
+      },
+      (error) => {
+      }
+    );*/
   }
 
   findUserName(listFileDico : any){
@@ -40,13 +84,13 @@ export class GlobalService {
     });
     let i=0
     while (lUser.length!=1 && i<listFileDico.length){
-      i++
       let newLUser=[]
       listFileDico[i]["content"]["participants"].forEach(function(element) {
         if (lUser.indexOf(decodeURIComponent(escape(element["name"])))>-1){
           newLUser.push((decodeURIComponent(escape(element["name"]))))
         }})
       lUser=newLUser.slice()
+      i++
     }
     this.userName=lUser[0]
 
@@ -55,7 +99,7 @@ export class GlobalService {
 
     var listUser = []
     this.httpClient
-      .get<any[]>('https://statsmess.firebaseio.com/oneUser.json')
+      .get<any[]>(this.nameDB+'oneUser.json')
       .subscribe(
         (response) => {
           listUser = response;
@@ -69,7 +113,7 @@ export class GlobalService {
             }
           }
           if (!alreadyIn){
-            this.httpClient.post('https://statsmess.firebaseio.com/oneUser.json', oneUser).subscribe(
+            this.httpClient.post(this.nameDB+'oneUser.json', oneUser).subscribe(
             () => {
               //console.log("succes update with add")
             },
@@ -77,7 +121,7 @@ export class GlobalService {
             }
           );
           } else {
-            this.httpClient.put('https://statsmess.firebaseio.com/oneUser.json', listUser).subscribe(
+            this.httpClient.put(this.nameDB+'oneUser.json', listUser).subscribe(
               () => {
                 //console.log("succes update")
               },
@@ -91,28 +135,45 @@ export class GlobalService {
   }
 
   doCalculForProfil(listFileDico : any){
-    this.profilServiceService.findUserName(listFileDico);
-    this.profilServiceService.findUserSex(listFileDico);
-    this.profilServiceService.calculScoreResBav(listFileDico);
-    this.profilServiceService.calculScoreFidExt(listFileDico);
-    this.profilServiceService.calculScoreCoucheLeve(listFileDico);
-    this.profilServiceService.calculScoreSpoRef(listFileDico);
-    this.profilServiceService.calculScoreSolExp(listFileDico);
-    this.profilServiceService.calculScoreConCur(listFileDico);
-    this.profilServiceService.calculScoreEgoAlt(listFileDico);
-    this.profilServiceService.calculScorePro(listFileDico);
-    this.profilServiceService.calculScoreInf(listFileDico);
-    this.profilServiceService.calculScoreBla(listFileDico);
-    this.profilServiceService.calculScoreRie(listFileDico);
-    this.profilServiceService.calculScoreEntCon(listFileDico);
-    this.profilServiceService.calculScoreTch(listFileDico);
-    this.profilServiceService.calculScoreAtWork(listFileDico);
+    console.log("Launching calcul for : findUserName")
+    console.log("findUserName = " + this.profilServiceService.findUserName(listFileDico))
+    console.log("Launching calcul for : findUserSex")
+    console.log("findUserSex = " + this.profilServiceService.findUserSex(listFileDico))
+    console.log("Launching calcul for : calculScoreResBav")
+    console.log("calculScoreResBav = " +    this.profilServiceService.calculScoreResBav(listFileDico))
+    console.log("Launching calcul for : calculScoreFidExt")
+    console.log("calculScoreFidExt = " +    this.profilServiceService.calculScoreFidExt(listFileDico))
+    console.log("Launching calcul for : calculScoreCoucheLeve")
+    console.log("calculScoreCoucheLeve = " +    this.profilServiceService.calculScoreCoucheLeve(listFileDico))
+    console.log("Launching calcul for : calculScoreSpoRef")
+    console.log("calculScoreSpoRef = " +    this.profilServiceService.calculScoreSpoRef(listFileDico))
+    console.log("Launching calcul for : calculScoreSolExp")
+    console.log("calculScoreSolExp = " +    this.profilServiceService.calculScoreSolExp(listFileDico))
+    console.log("Launching calcul for : calculScoreConCur")
+    console.log("calculScoreConCur = " +    this.profilServiceService.calculScoreConCur(listFileDico))
+    console.log("Launching calcul for : calculScoreEgoAlt")
+    console.log("calculScoreEgoAlt = " +    this.profilServiceService.calculScoreEgoAlt(listFileDico))
+    console.log("Launching calcul for : calculScorePro")
+    console.log("calculScorePro = " +    this.profilServiceService.calculScorePro(listFileDico))
+    console.log("Launching calcul for : calculScoreInf")
+    console.log("calculScoreInf = " +    this.profilServiceService.calculScoreInf(listFileDico))
+    console.log("Launching calcul for : calculScoreBla")
+    console.log("calculScoreBla = " +    this.profilServiceService.calculScoreBla(listFileDico))
+    console.log("Launching calcul for : calculScoreRie")
+    console.log("calculScoreRie = " +    this.profilServiceService.calculScoreRie(listFileDico))
+    console.log("Launching calcul for : calculScoreEntCon")
+    console.log("calculScoreEntCon = " +   this.profilServiceService.calculScoreEntCon(listFileDico))
+    console.log("Launching calcul for : calculScoreTch")
+    console.log("calculScoreTch = " +    this.profilServiceService.calculScoreTch(listFileDico))
+    console.log("Launching calcul for : calculScoreAtWork")
+    console.log("calculScoreAtWork = " +    this.profilServiceService.calculScoreAtWork(listFileDico))
 
     this.determinationService.determinationProfil(listFileDico);
+    console.log("Launching calcul for : determinationProfil")
     let profilUser = this.determinationService.profilType
 
     this.httpClient
-      .get<any>('https://statsmess.firebaseio.com/repartitionProfils.json')
+      .get<any>(this.nameDB+'repartitionProfils.json')
       .subscribe(
         (response) => {
           let profilRepar = response;
@@ -127,7 +188,7 @@ export class GlobalService {
           }
           profilToEdit["occurence"]+=1
           profilRepar[keyModified]=profilToEdit
-          this.httpClient.put('https://statsmess.firebaseio.com/repartitionProfils.json', profilRepar).subscribe(
+          this.httpClient.put(this.nameDB+'repartitionProfils.json', profilRepar).subscribe(
             () => {
               console.log("compteur profil succes update")
             },
@@ -141,33 +202,60 @@ export class GlobalService {
   }
 
   doCalculForOwnStats(listFileDico : any){
+    console.log("Launching calcul for : findUserName")
     this.ownStatsService.findUserName(listFileDico)
+    console.log("Launching calcul for : calculBubbleConv")
     this.ownStatsService.calculBubbleConv(listFileDico); //USELESS
+    console.log("Launching calcul for : calculHoursISend")
     this.ownStatsService.calculHoursISend(listFileDico)
+    console.log("Launching calcul for : calculNbrMessagePerPeriod")
     this.ownStatsService.calculNbrMessagePerPeriod(listFileDico)
+    console.log("Launching calcul for : calculStatsGlobalesMessages")
     this.ownStatsService.calculStatsGlobalesMessages(listFileDico)
+    console.log("Launching calcul for : calculNbInterlocuteurs")
     this.ownStatsService.calculNbInterlocuteurs(listFileDico)
+    console.log("Launching calcul for : calculNbReactionsUser")
     this.ownStatsService.calculNbReactionsUser(listFileDico)
+    console.log("Launching calcul for : calculNbCaracParMessUser")
     this.ownStatsService.calculNbCaracParMessUser(listFileDico)
+    console.log("Launching calcul for : calculNbConvFirstMessSent")
     this.ownStatsService.calculNbConvFirstMessSent(listFileDico)
+    console.log("Launching calcul for : calculPodiumConvLesPlusActives")
     this.ownStatsService.calculPodiumConvLesPlusActives(listFileDico)
+    console.log("Launching calcul for : calculFirstConvUser")
     this.ownStatsService.calculFirstConvUser(listFileDico)
+    console.log("Launching calcul for : calculIndicateursFlammeFreezeStrike")
     this.ownStatsService.calculIndicateursFlammeFreezeStrike(listFileDico)
+    console.log("Launching calcul for : calculDicoSortBubbleConv")
     this.ownStatsService.calculDicoSortBubbleConv(listFileDico); //USELESS
+    console.log("Launching calcul for : calculNbrConvActivePerPeriod")
     this.ownStatsService.calculNbrConvActivePerPeriod(listFileDico);
+    console.log("Launching calcul for : calculNbrCorrespondantPerPeriod")
     this.ownStatsService.calculNbrCorrespondantPerPeriod(listFileDico);
+    console.log("Launching calcul for : calculBestCorrespondantPerPeriod")
     this.ownStatsService.calculBestCorrespondantPerPeriod(listFileDico);
+    console.log("Launching calcul for : calculUserAverageAnswerTime")
     this.ownStatsService.calculUserAverageAnswerTime(listFileDico);
+    console.log("Launching calcul for : calculBestFriend")
     this.ownStatsService.calculBestFriend(listFileDico);
+    console.log("Launching calcul for : calculPercentInterlocuteursGenre")
     this.ownStatsService.calculPercentInterlocuteursGenre(listFileDico);
+    console.log("Launching calcul for : calculRepartionTypeDeConv")
     this.ownStatsService.calculRepartionTypeDeConv(listFileDico);
+    console.log("Launching calcul for : calculRepartionTypeMessage")
     this.ownStatsService.calculRepartionTypeMessage(listFileDico);
+    console.log("Launching calcul for : calculSuggestBestContact")
     this.ownStatsService.calculSuggestBestContact(listFileDico);
+    console.log("Launching calcul for : calculRandomContact")
     this.ownStatsService.calculRandomContact(listFileDico);
+    console.log("Launching calcul for : calculLongestMessage")
     this.ownStatsService.calculLongestMessage(listFileDico);
+    console.log("Launching calcul for : calculBestReactionMessage")
     this.ownStatsService.calculBestReactionMessage(listFileDico);
+    console.log("Launching calcul for : calculNbMaxMessPer24")
     this.ownStatsService.calculNbMaxMessPer24(listFileDico);
-    this.ownStatsService.calculTimeOnMessenger(listFileDico);
+    console.log("Launching calcul for : calculNbrSmileyEnvoye")
+    this.ownStatsService.calculNbrSmileyEnvoye(listFileDico);
   }
 
   doCalculForConv(listFileDico : any){
@@ -175,6 +263,7 @@ export class GlobalService {
   }
 
   fillInfoInListFile(listFileDicoNotFilled : any){
+    console.log("Launching fillInfoInListFile")
     this.statsConvService.findLastMessageUploadTimestamp(listFileDicoNotFilled);
     let newListFileDicoFilled = []
     for (var k=0; k<listFileDicoNotFilled.length; k++){

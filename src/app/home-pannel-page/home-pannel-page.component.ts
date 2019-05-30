@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-home-pannel-page',
   templateUrl: './home-pannel-page.component.html',
-  styleUrls: ['./home-pannel-page.component.css']
+  styleUrls: ['./home-pannel-page.component.scss']
 })
 export class HomePannelPageComponent implements OnInit {
   @Input() listFilesDico:any;
@@ -22,7 +22,7 @@ export class HomePannelPageComponent implements OnInit {
   ngOnInit() {
     this.timeLastSwitch=(new Date()).getTime()
     this.httpClient
-      .get<any[]>('https://statsmess.firebaseio.com/compteurVisites.json')
+      .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
       .subscribe(
         (response) => {
           let idPage = "home"
@@ -39,7 +39,7 @@ export class HomePannelPageComponent implements OnInit {
           compteurPage["nbrVisite"]+=1
           compteurPage["timeSpent"]+=0
           compteurVisites[keyModified]=compteurPage
-          this.httpClient.put('https://statsmess.firebaseio.com/compteurVisites.json', compteurVisites).subscribe(
+          this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
             () => {
               console.log("compteur "+idPage+" succes update")
             },
@@ -57,7 +57,7 @@ export class HomePannelPageComponent implements OnInit {
     }
     if(this.isMyStats){
       this.httpClient
-        .get<any[]>('https://statsmess.firebaseio.com/compteurVisites.json')
+        .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
         .subscribe(
           (response) => {
             let idPage="ownStat"
@@ -74,7 +74,7 @@ export class HomePannelPageComponent implements OnInit {
             compteurPage["nbrVisite"]+=1
             compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
             compteurVisites[keyModified]=compteurPage
-            this.httpClient.put('https://statsmess.firebaseio.com/compteurVisites.json', compteurVisites).subscribe(
+            this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
               () => {
                 console.log("compteur "+idPage+" succes update")
                 this.timeLastSwitch=new Date().getTime()
@@ -88,7 +88,7 @@ export class HomePannelPageComponent implements OnInit {
     }
     if(this.isMyConvs){
       this.httpClient
-        .get<any[]>('https://statsmess.firebaseio.com/compteurVisites.json')
+        .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
         .subscribe(
           (response) => {
             let idPage="convStat"
@@ -105,7 +105,7 @@ export class HomePannelPageComponent implements OnInit {
             compteurPage["nbrVisite"]+=1
             compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
             compteurVisites[keyModified]=compteurPage
-            this.httpClient.put('https://statsmess.firebaseio.com/compteurVisites.json', compteurVisites).subscribe(
+            this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
               () => {
                 console.log("compteur "+idPage+" succes update")
                 this.timeLastSwitch=new Date().getTime()
@@ -119,7 +119,7 @@ export class HomePannelPageComponent implements OnInit {
     }
     if(this.isMyProfil){
       this.httpClient
-        .get<any[]>('https://statsmess.firebaseio.com/compteurVisites.json')
+        .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
         .subscribe(
           (response) => {
             let idPage="profil"
@@ -136,7 +136,7 @@ export class HomePannelPageComponent implements OnInit {
             compteurPage["nbrVisite"]+=1
             compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
             compteurVisites[keyModified]=compteurPage
-            this.httpClient.put('https://statsmess.firebaseio.com/compteurVisites.json', compteurVisites).subscribe(
+            this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
               () => {
                 console.log("compteur "+idPage+" succes update")
                 this.timeLastSwitch=new Date().getTime()

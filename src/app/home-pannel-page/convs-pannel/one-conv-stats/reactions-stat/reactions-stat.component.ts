@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
-import { Chart, ChartOptions, ChartData } from 'chart.js';
+import { Chart } from 'chart.js';
 import { StatsConvService } from '../.././stats-conv.service';
 
 // Import les plugins 
@@ -56,7 +56,7 @@ export class ReactionsStatComponent implements OnInit, AfterViewInit {
   //Viewchild du graphe bâton
 
     @ViewChild('nbReactionPerUserGraph') nbReactionPerUserGraph: ElementRef;
-    nbReactionPerUserChart = [];
+    nbReactionPerUserChart =[];
     reactionDetailAdapt : any;
     backgroundColorReceive = [];
     backgroundColorSend = [];
@@ -269,10 +269,13 @@ Chart.defaults.global.plugins.deferred.yOffset = 100;
               }
             },
             scales: {
-              angleLines : {
+              /*angleLines : {
                 color : '#1A1837',
                 lineWidth : 0.1,
               },
+              pointLabels: {
+                fontSize: 25 //Augmente la taille des smileys
+              }, */
               gridLines : {
                   color : '#1A1837',
                   lineWidth : 0.1,
@@ -282,9 +285,7 @@ Chart.defaults.global.plugins.deferred.yOffset = 100;
                 maxTicksLimit : 3,
                 max : this.maxDataRadar,
               },
-              pointLabels: {
-                fontSize: 25 //Augmente la taille des smileys
-              }
+              
             },
             
             title: {

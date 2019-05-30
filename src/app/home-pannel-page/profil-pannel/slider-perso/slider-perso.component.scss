@@ -47,9 +47,8 @@ mat-slider {
 }
 
 .oneSlider p {
-  width: 11%;
+  width: 15%;
   text-align: center;
-  font-family: Brush Script MT, Brush Script Std, cursive;
   background-color: #212F3D;
   border-radius: 30px;
   color: white;
@@ -113,7 +112,7 @@ mat-slider {
 }
 
 //Couleur des dot
-::ng-deep .sliderLeft .igx-slider--disabled .igx-slider__thumb-from .dot,{
+::ng-deep .sliderLeft .igx-slider--disabled .igx-slider__thumb-from .dot{
   background:blue;
 }
 
@@ -130,8 +129,8 @@ mat-slider {
     display: inline-block;
     cursor: pointer;
     z-index: 90;
-    width: 2vw;
-    height: 2vw;
+    width: 3vw;
+    height: 3vw;
     border: none;
     border-radius: 50%;
     padding: 0;

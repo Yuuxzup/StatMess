@@ -5,7 +5,6 @@ import { StatsConvService } from '../.././stats-conv.service';
 
 import 'chartjs-plugin-datalabels';
 import 'chartjs-plugin-deferred';
-import '../../node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js';
 
 @Component({
   selector: 'app-overview-stat',
@@ -49,7 +48,7 @@ export class OverviewStatComponent implements OnInit, AfterViewInit {
 
   //ViewChild de l'influence des users
   @ViewChild('influenceUserGraph') influenceUserGraph: ElementRef;
-  influenceUserChart = [];
+  influenceUserChart =[];
   influenceUserAdapt : any;
   backgroundColorInfluence = [];
   sumScoreInfluence : any;
@@ -155,6 +154,7 @@ export class OverviewStatComponent implements OnInit, AfterViewInit {
               }
             },
             scales: {
+              display: false,
                 gridLines : {
                   color : 'rgb(255,255,255,1)',
                   lineWidth : 0.1,

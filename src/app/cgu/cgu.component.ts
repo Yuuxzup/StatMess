@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-cgu',
@@ -8,11 +9,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CguComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private globalService : GlobalService) { }
 
   ngOnInit() {
     this.httpClient
-      .get<any[]>('https://statsmess.firebaseio.com/compteurVisites.json')
+      .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
       .subscribe(
         (response) => {
           let idPage = "cgu"
@@ -29,7 +30,7 @@ export class CguComponent implements OnInit {
           compteurPage["nbrVisite"]+=1
           compteurPage["timeSpent"]+=0
           compteurVisites[keyModified]=compteurPage
-          this.httpClient.put('https://statsmess.firebaseio.com/compteurVisites.json', compteurVisites).subscribe(
+          this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
             () => {
               console.log("compteur "+idPage+" succes update")
             },

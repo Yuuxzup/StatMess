@@ -1,7 +1,7 @@
 <div class="fullBoxSlider">
   <div class="constantSlider">
     <div class="oneSlider" style="width:94%">
-      <p>{{labelMin}}</p>
+      <p style="font-size: 1.2em;padding: 1%;margin-top: 1%; margin-right:5%;">{{labelMin}}</p>
       
       <div class="container" class="sliderLeft" *ngIf="isLeft">
           <igx-slider id="slider" [type]="sliderType.RANGE" [minValue]="-100" [maxValue]="100" [(ngModel)]="priceRange" disabled="true"></igx-slider>
@@ -10,7 +10,7 @@
           <igx-slider id="slider" [type]="sliderType.RANGE" [minValue]="-100" [maxValue]="100" [(ngModel)]="priceRange" disabled="true"></igx-slider>
       </div>
 
-      <p>{{labelMax}}</p>
+      <p style="font-size: 1.2em;padding: 1%;margin-top: 1%; margin-left:5%;">{{labelMax}}</p>
     </div>
       <button (click)="invertInfos()" class="nav-tgl" id="buttonSpan-{{index}}" type="button">
         <span aria-hidden="true"></span>

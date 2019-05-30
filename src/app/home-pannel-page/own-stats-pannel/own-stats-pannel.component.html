@@ -1,4 +1,20 @@
-<div *ngIf="!isFileOpen">
+<div [ngStyle]="{'display':isFileOpen ? 'None' : 'Block' }">
+  <div class="tooltipFirstRun" [ngStyle]="{'display':isOwnStatFirstRun? 'Block' : 'None' }">
+    <div class="enteteTooltip">
+      <h1>Mes statistiques globales</h1>
+      <div class="close-container" (click)="closeTooltip()">
+        <div class="leftright"></div>
+        <div class="rightleft"></div>
+        <label class="close">close</label>
+      </div>
+    </div>
+    <p style="font-size: 1.3em;">- Retrouvez ici les informations concernant votre activité sur toutes vos conversations.</p>
+    <div style="display:flex;">
+      <p style="margin-top:2%; font-size: 1.3em;">- Si vous ne comprenez pas un graphique, cliquez sur le </p><img style="height:4vh; margin-top: 1%; width: 2vw; margin-right: 0; margin-left: 1%; margin-bottom: 0; " src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
+    </div> 
+    <p style="font-size: 1.3em;">pour avoir plus d'informations.</p>
+  </div>
+
   <h1 style="text-align:center;">Vos statistiques</h1>
   <hr class="overview">
   <div class="kpiOverview">
@@ -150,7 +166,7 @@
             <img src="https://image.flaticon.com/icons/svg/138/138295.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{timeOnMessenger}}</p>
+            <p style="margin-bottom:15%;" class="numberBox">{{timeOnMessenger}}</p>
             <p class="descriptionBox">Temps total passé sur messenger</p>
           </div>
         </div>
@@ -159,11 +175,11 @@
       <div class="borderModuleBottom">
         <div class="boxOverview">
           <div class="sideImgBoxOverview">
-            <img src="https://image.flaticon.com/icons/svg/327/327006.svg" class="icon"/>
+            <img src="https://image.flaticon.com/icons/svg/742/742751.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{statsGlobalesMessages.caracParMessage}}</p>
-            <p class="descriptionBox">Caractères par message</p>
+            <p class="numberBox">{{nbrSmileyEnvoye.tous}}</p>
+            <p class="descriptionBox">Smileys envoyés</p>
           </div>
         </div>
       </div>
@@ -171,11 +187,11 @@
       <div class="borderModuleBottom">
         <div class="boxOverview">
           <div class="sideImgBoxOverview">
-            <img src="https://image.flaticon.com/icons/svg/1006/1006120.svg" class="icon"/>
+            <img src="https://image.flaticon.com/icons/svg/291/291212.svg" class="icon"/>
           </div>
           <div class="sideTextBoxOverview">
-            <p class="numberBox">{{bestFriend.name}}</p>
-            <p class="descriptionBox">Best friend</p>
+            <p class="numberBox">{{nbrSmileyEnvoye.coeur}}</p>
+            <p class="descriptionBox">Coeur envoyés</p>
           </div>
         </div>
       </div>
@@ -185,37 +201,58 @@
 
   <hr class="overview">
 
-  <div class="totalThreeCards">
-    <div class="threeCards freezeCard">
-      <div class="img"></div>
-      <div class="threeCardsSmiley">
-        <h2>{{freeze}}</h2>
+    <div class="totalThreeCards">
+    <div style="width: 15vw; margin-left: 20%;">
+      <div class="threeCards freezeCard">
+        <div class="img"></div>
+        <div class="threeCardsSmiley">
+          <h2>{{freeze}}</h2>
+        </div>
+        <div class="threeCardsText">
+          <p>{{indicateursFlammeFreezeStrike.nomConvFreeze}}</p>
+          <p>{{indicateursFlammeFreezeStrike.dicoData.maxFreeze}}</p>
+        </div>
       </div>
-      <div class="threeCardsText">
-        <p>{{indicateursFlammeFreezeStrike.nomConvFreeze}}</p>
-        <p>{{indicateursFlammeFreezeStrike.dicoData.maxFreeze}}</p>
-      </div>
-    </div>
-    <div class="threeCards fireCard">
-      <div class="img"></div>
-      <div class="threeCardsSmiley">
-        <h2>{{streak}}</h2>
-      </div>
-      <div class="threeCardsText">
-        <p>{{indicateursFlammeFreezeStrike.nomConvFlamme}}</p>
-        <p>{{indicateursFlammeFreezeStrike.dicoData.maxFlamme}}</p>
+      <div style="display:flex; height:8vh; padding-left: 2%;">
+          <img style="width: 2vw; height: 2vh; margin-left:0; margin-right:0;" src="https://image.flaticon.com/icons/svg/131/131917.svg"/>
+          <h5 style="margin-top:0;font-style: italic; color:#BFBFBF">Nombre maximum de jours sans parler</h5>
       </div>
     </div>
-    <div class="threeCards streakCard">
-      <div class="img"></div>
-      <div class="threeCardsSmiley">
-        <h2>{{maxStreak}}</h2>
+
+    <div style="width: 15vw; margin-right: 5%; margin-left: 5%;">
+      <div class="threeCards fireCard">
+        <div class="img"></div>
+        <div class="threeCardsSmiley">
+          <h2>{{streak}}</h2>
+        </div>
+        <div class="threeCardsText">
+          <p>{{indicateursFlammeFreezeStrike.nomConvFlamme}}</p>
+          <p>{{indicateursFlammeFreezeStrike.dicoData.maxFlamme}}</p>
+        </div>
       </div>
-      <div class="threeCardsText">
-        <p>{{indicateursFlammeFreezeStrike.nomConvStrike}}</p>
-        <p>{{indicateursFlammeFreezeStrike.dicoData.maxStrike}}</p>
+      <div style="display:flex; height:8vh; padding-left: 2%;">
+        <img style="width: 2vw; height: 2vh; margin-left:0; margin-right:1%;" src="https://image.flaticon.com/icons/svg/131/131917.svg"/>
+        <h5 style="margin-top:0;font-style: italic; color:#BFBFBF">Nombre de jours d'affilés pendant lesquels vous avez parlé à partir de maintenant</h5>
       </div>
     </div>
+
+    <div style="width: 15vw; margin-right: 20%;">
+      <div class="threeCards streakCard">
+        <div class="img"></div>
+        <div class="threeCardsSmiley">
+          <h2>{{maxStreak}}</h2>
+        </div>
+        <div class="threeCardsText">
+          <p>{{indicateursFlammeFreezeStrike.nomConvStrike}}</p>
+          <p>{{indicateursFlammeFreezeStrike.dicoData.maxStrike}}</p>
+        </div>
+      </div>
+      <div style="display:flex; height:8vh; padding-left: 2%; ">
+        <img style="width: 2vw; height: 2vh; margin-left:0; margin-right:1%;" src="https://image.flaticon.com/icons/svg/131/131917.svg"/>
+        <h5 style="margin-top:0;font-style: italic; color:#BFBFBF">Nombre maximum de jours d'affilés pendant lesquels vous avez parlé</h5>
+      </div>
+    </div>
+
   </div>
 
   <hr class="overview">
@@ -324,17 +361,17 @@
       <hr class="messageTitle">
       <h4>StatMess vous suggère</h4>
       <div class="suggestBestContact">
-        <img class = "imgIcon" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
+        <img class = "imgPeople" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
         <h4 style="color:black;padding-left: 1vh; padding-right: 1vh;">{{suggestBestContact[0].name}}</h4>
       </div>
       <div class="suggestBestContactInfo">
         <div id="nbrMessageSuggestBestContact"  >
-          <img class = "imgIcon" src="https://image.flaticon.com/icons/svg/149/149063.svg"/>
+          <img class = "imgIcon" style="height:35%;" src="https://image.flaticon.com/icons/svg/149/149063.svg"/>
           <h5>Nombre de messages</h5>
           <h4>{{suggestBestContact[0].nbrMessage}}</h4>
         </div>
         <div id="lastDateSuggestBestContact">
-          <img class = "imgIcon" src="https://image.flaticon.com/icons/svg/148/148977.svg"/>
+          <img class = "imgIcon" style="height:35%;" src="https://image.flaticon.com/icons/svg/148/148977.svg"/>
           <h5>Dernier message</h5>
           <h4>{{suggestBestContact[1]| date:'medium'}}</h4>
         </div>
@@ -356,7 +393,7 @@
       <button class="buttonRandomContact" *ngIf="isHide['randomContact']" mat-button (click)="invertHide('randomContact')">Générer votre contact inconnu</button>
       <div class="suggestRandomContactHide" *ngIf="!isHide['randomContact']">
         <div class="randomContact">
-          <img class = "imgIcon" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
+          <img class = "imgPeople" src="https://image.flaticon.com/icons/svg/1256/1256650.svg"/>
           <h4 style="color:black; padding-left: 1vh; padding-right: 1vh;">{{suggestRandomContact}}</h4>
         </div>
         <h4>Quel sera ton message ?</h4>
@@ -379,12 +416,15 @@
   <hr class="overview">
   <div class="subTitleOverview">Podium des conversations</div>
   <hr class="overview">
-
-  <select [(ngModel)]="selectedSort" (ngModelChange)="ngAfterViewInit()" id="selectionButton">
-      <option value="nbrMessage">Number of messages</option>
-      <option value="nbrParticipant">Number of participants</option>
-      <option value="maxStreak">Max streak</option>
-  </select>
+  <div class="selectDivision">
+    <p>Sélectionnez le critère pour créer le podium de vos conversations.</p>
+    <select style="cursor:pointer; margin-bottom:0.5%;" [(ngModel)]="selectedSort" (ngModelChange)="ngAfterViewInit()" id="selectionButton">
+        <option value="nbrMessage">Nombre de messages</option>
+        <option value="nbrParticipant">Nombre de participants</option>
+        <option value="maxStreak">Éclairs</option>
+    </select>
+      <h5 style="margin-top:0; margin-bottom:0; font-style: italic; color:white">Une fois le critère séléctionné, cliquez sur la bulle de la conversation pour avoir plus de détails.</h5>
+  </div>
   <div class="galaxy">
       <div *ngIf="bubbleConvChart" class="graph">
         <canvas class="statChart" #bubbleConvGraph id="bubbleConvGraph">{{ bubbleConvChart }}</canvas>
@@ -467,7 +507,7 @@
 
     <div class="twoCards">
       <div class="sideText">
-        <p>Répartition du type de messages</p>
+        <p>Répartition du type de messages reçus</p>
         <img class = "imgHelp" (click)="help('TypeMessages')" src="https://image.flaticon.com/icons/svg/254/254059.svg"/>
       </div>   
       <div class="sideImg">
@@ -511,7 +551,7 @@
     </div>
     <div class="sideImg">
       <div class="helpText" id="helpConversationsByTime">
-          <p style="color:#ffffff; font-size: 80%;margin-top: 3%;">Chaque bar <b style="color:#FA8A2F">orange</b> indique le nombre de conversations que vous avez eues pendant la période de temps indiquée en bas</p>
+          <p style="color:#ffffff; font-size: 80%;margin-top: 3%;">Chaque barre <b style="color:#FA8A2F">orange</b> indique le nombre de conversations que vous avez eues pendant la période de temps indiquée en bas</p>
           <div class="arrow_box" id="nbrConvPerTimeArrow">
             <h3>Le temps est affiché selon la date de votre premier message</h3>
             <p>Soit par jour</p>
@@ -533,11 +573,11 @@
     </div>
     <div class="sideImg">
       <div class="helpText" id="helpGenderByTime">
-          <p style="color:#ffffff; font-size: 50%;margin-top: 3%;">La bar <b style="color:rgb(241,77,156)">rose</b> indique le nombre de filles que à qui vous avez parlées pendant la période de temps indiquée en bas</p>
+          <p style="color:#ffffff; font-size: 50%;margin-top: 3%;">La barre <b style="color:rgb(241,77,156)">rose</b> indique le nombre de filles que à qui vous avez parlées pendant la période de temps indiquée en bas</p>
           <hr class="overview">
-          <p style="color:#ffffff; font-size: 50%">La bar <b style="color:rgb(77,89,241)">bleu</b> indique le nombre de garçons à qui vous avez parlés pendant la période de temps indiquée en bas</p>
+          <p style="color:#ffffff; font-size: 50%">La barre <b style="color:rgb(77,89,241)">bleu</b> indique le nombre de garçons à qui vous avez parlés pendant la période de temps indiquée en bas</p>
           <hr class="overview">
-          <p style="color:#ffffff; font-size: 50%">La bar <b style="color:#1A1837">bleu foncé</b> indique le nombre d'individus indéterminés à qui vous avez parlés pendant la période de temps indiquée en bas (page facebook ou prénom non référencé dans nos bases de données)</p>
+          <p style="color:#ffffff; font-size: 50%">La barre <b style="color:#1A1837">bleu foncé</b> indique le nombre d'individus indéterminés à qui vous avez parlés pendant la période de temps indiquée en bas (page facebook ou prénom non référencé dans nos bases de données)</p>
           <div class="arrow_box" id="nbrGenderPerTimeArrow">
             <h3>Le temps est affiché selon la date de votre premier message</h3>
             <p>Soit par jour</p>
@@ -604,9 +644,9 @@
     </div>
     <div class="sideImg">
       <div class="helpText" id="helpMessagesPerTime" style="text-align:center">
-          <p style="color:#ffffff; font-size: 80%;margin-top:5%">Chaque bar <b style="color:#FA8A2F">orange</b> indique le pourcentage de messages envoyés dans la tranche horaire indiquée en bas</p>
+          <p style="color:#ffffff; font-size: 80%;margin-top:5%">Chaque barre <b style="color:#FA8A2F">orange</b> indique le pourcentage de messages envoyés dans la tranche horaire indiquée en bas</p>
           <hr class="overview">
-          <p style="color:#ffffff; font-size: 80%;margin-top:1%">Exemple: si la bar <b style="color:#FA8A2F">orange</b> est à 20% sur l'horaire 14h, cela veut dire que vous avez envoyé 20% de vos messages entre 14h et 15h</p> 
+          <p style="color:#ffffff; font-size: 80%;margin-top:1%">Exemple: si la barre <b style="color:#FA8A2F">orange</b> est à 20% sur l'horaire 14h, cela veut dire que vous avez envoyé 20% de vos messages entre 14h et 15h</p> 
       </div>
       <div *ngIf="hoursISendChart " class="graph" id="graphMessagesPerTime">
         <canvas class="statChart" #hoursISendGraph id="hoursISendGraph">{{ hoursISendChart }}</canvas>

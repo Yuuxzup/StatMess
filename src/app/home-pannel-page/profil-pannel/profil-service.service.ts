@@ -28,8 +28,14 @@ export class ProfilServiceService {
   pinkColor= 'rgb(241,77,156)' ;
   blueColor = 'rgb(77,89,241)';
 
+  firstRun = true;
+
   constructor(private ownStatsService : OwnStatsService, private statsConvService : StatsConvService) { }
 
+  switchBooleanFirstRun(){
+    this.firstRun=false;
+  }
+  
   // Ici : Reservé = -1 et Bavard = +1
   calculScoreResBav(listFileDico : any){
     if (this.scoreResBav){
@@ -38,8 +44,11 @@ export class ProfilServiceService {
     //Corps de la fonction
  
     var scoreCaracParPeriod =this.sousCalculTotalCaracLastPeriod(listFileDico)
+    console.log("scoreCaracParPeriod : ok - " + scoreCaracParPeriod)
     var scoreTempsEntre2Mess =this.sousCalculTempsEntreDeuxMess(listFileDico)
+    console.log("scoreTempsEntre2Mess : ok - " + scoreTempsEntre2Mess)
     var scoreDominationConv =this.sousCalculNbConvDominees(listFileDico)
+    console.log("scoreDominationConv : ok - " + scoreDominationConv)
 
     let scoreLocal = (scoreCaracParPeriod + scoreTempsEntre2Mess + scoreDominationConv)/3
     
@@ -56,9 +65,14 @@ export class ProfilServiceService {
     //Corps de la fonction, on coefficiente dans scoreLocal
  
     let scoreRepStreaks = this.sousCalculRepartitionStreaks (listFileDico)
+    console.log("scoreRepStreaks : ok - " + scoreRepStreaks)
     let scoreNbConvDuoGrp = this.sousCalculNbConvDuoAndGroupPerPeriod (listFileDico)
+    console.log("scoreNbConvDuoGrp : ok - " + scoreNbConvDuoGrp)
     let scoreNbNewContacts = this.sousCalculNbDeNewContactPerPeriod (listFileDico)
+    console.log("scoreNbNewContacts : ok - " + scoreNbNewContacts)
     let scoreTailleGrp = this.sousCalculMoyenneTailleGroup (listFileDico)
+    console.log("scoreTailleGrp : ok - " + scoreTailleGrp)
+
 
     let scoreLocal = (2*scoreRepStreaks + 2*scoreNbConvDuoGrp[0] + 2*scoreNbConvDuoGrp[1] + 2*scoreNbNewContacts + scoreTailleGrp)/9
     
@@ -74,8 +88,11 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreLongueurMess =this.sousCalculMoyenneLongueurMess (listFileDico)
+    console.log("scoreLongueurMess : ok - " + scoreLongueurMess)
     let scoreMessDaffile =this.sousCalculMoyenneNbMessDaffile (listFileDico)
+    console.log("scoreMessDaffile : ok - " + scoreMessDaffile)
     let scoreTempsReponse =this.sousCalculTempsReponse (listFileDico)
+    console.log("scoreTempsReponse : ok - " + scoreTempsReponse)
     
     let scoreLocal = (scoreLongueurMess + scoreMessDaffile + scoreTempsReponse)/3
 
@@ -91,8 +108,11 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreSmiley = this.sousCalculNbMoyenSmileyPerMess (listFileDico)
+    console.log("scoreSmiley : ok - " + scoreSmiley)
     let scorePonctu = this.sousCalculPonctuationDetect (listFileDico)
+    console.log("scorePonctu : ok - " + scorePonctu)
     let scoreReact = this.sousCalculTotalSentReactions (listFileDico)
+    console.log("scoreReact : ok - " + scoreReact)
 
     let scoreLocal = (scoreSmiley + scorePonctu + scoreReact)/3
     
@@ -156,6 +176,8 @@ export class ProfilServiceService {
     scoreLocal = (nbInterro/nbMessEnvoyes - ref)/ecartMax
   }
     
+    console.log("scoreConcur : ok - " + scoreLocal)
+
     this.scoreConCur = scoreLocal
     return scoreLocal
   }
@@ -226,6 +248,8 @@ export class ProfilServiceService {
       scoreLocal = (ref - nbConvOuEgoDominant/nbTotalConvComptees)/ecartMax
     }
     
+    console.log("scoreEgoAlt : ok - " + scoreLocal)
+
     this.scoreEgoAlt = scoreLocal
     return scoreLocal
   }
@@ -358,6 +382,8 @@ export class ProfilServiceService {
 
     let scoreLocal = (scoreReacRecues + scoreReacEnvoy)/2
     
+    console.log("scorePro : ok - " + scoreLocal)
+
     this.scorePro = scoreLocal
     return scoreLocal
   }
@@ -452,6 +478,8 @@ export class ProfilServiceService {
       scoreLocal = (influenceUser - ref)/ecartMax
     }
 
+    console.log("scoreInf : ok - " + scoreLocal)
+
     this.scoreInf = scoreLocal
     return scoreLocal
   }
@@ -464,7 +492,9 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreReac = this.sousCalculReactionsRire(listFileDico,"bla")
+    console.log("scoreReac : ok - " + scoreReac)
     let scoreWords = this.sousCalculLolWords(listFileDico,"bla")
+    console.log("scoreWords : ok - " + scoreWords)
 
     let scoreLocal = (scoreReac + 2*scoreWords)/3
     
@@ -481,7 +511,9 @@ export class ProfilServiceService {
     let exempleTrucARenvoyer = NaN;
 
     let scoreReac = this.sousCalculReactionsRire(listFileDico,"rie")
+    console.log("scoreReac rie : ok - " + scoreReac)
     let scoreWords = this.sousCalculLolWords(listFileDico,"rie")
+    console.log("scoreWords rie : ok - " + scoreWords)
 
     let scoreLocal = (scoreReac + 2*scoreWords)/3
     
@@ -497,9 +529,13 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreFirstMess = this.sousCalculConvFirstMessSent(listFileDico)
+    console.log("scoreFirstMess : ok - " + scoreFirstMess)
     let scoreNbCarac = this.sousCalculDominationNbCarac(listFileDico)
+    console.log("scoreNbCarac : ok - " + scoreNbCarac)
     let scoreTempsRep = this.sousCalculComparaisonTempsRep(listFileDico)
+    console.log("scoreTempsRep : ok - " + scoreTempsRep)
     let scoreNbReac = this.sousCalculComparaisonNbReactions(listFileDico)
+    console.log("scoreNbReac : ok - " + scoreNbReac)
 
     let scoreLocal = (scoreFirstMess + scoreNbCarac + scoreTempsRep + scoreNbReac)/4
     
@@ -515,11 +551,16 @@ export class ProfilServiceService {
     //Corps de la fonction
 
     let scoreConv = this.sousCalculSexualiteConv(listFileDico)
+    console.log("ScoreConv: " + scoreConv)
     let scoreCarac = this.sousCalculSexualiteSommeCarac(listFileDico)
+    console.log("ScoreCarac: " + scoreCarac)
     let scoreBestFriend = this.sousCalculSexualiteBestFriend(listFileDico)
+    console.log("ScoreBestFriend: " + scoreBestFriend)
 
     let scoreLocal = (scoreConv + scoreCarac + scoreBestFriend)/3
     
+    console.log("scoreTch : ok - " + scoreLocal)
+
     this.scoreTch = scoreLocal
     return scoreLocal
   }
@@ -574,7 +615,7 @@ export class ProfilServiceService {
       scoreLocal = rapport
     }
     
-    //console.log("score loc " + scoreLocal)
+    console.log("scoreAtWork : ok - " + scoreLocal)
     this.scoreAtWork = scoreLocal
     return scoreLocal
   }
@@ -657,7 +698,7 @@ export class ProfilServiceService {
     let dicoScoreLocal = {"Levé" : scoreHeureLeve, "Couché" : scoreHeureCouche}
 
     this.scoreCoucheLeve = dicoScoreLocal
-    //console.log(dicoScoreLocal)
+    console.log("scoreCoucheLeve : ok - " + dicoScoreLocal["Levé"] + " levé et couché " + dicoScoreLocal["Couché"])
     return dicoScoreLocal
   }
 
@@ -689,7 +730,7 @@ export class ProfilServiceService {
 
     this.userSex = this.findOneSex(this.userName)
     if(this.userSex == "i"){
-      //console.log("ATTENTION VOTRE SEXE EST INDETERMINE")
+      console.log("ATTENTION VOTRE SEXE EST INDETERMINE")
     }
     return this.userSex
   }
@@ -812,8 +853,8 @@ export class ProfilServiceService {
 
   listFileDico.forEach(function(file){
 
-      let longueur = file["content"]["messages"].length
-      let k = 0
+      let longueur = file["content"]["messages"].length;
+      let k = 0;
 
 // On fait d'abord un grand tableau des temps d'envois depuis deux mois
 
@@ -823,7 +864,9 @@ export class ProfilServiceService {
         }
         k +=1
       }
-  })
+  });
+  console.log('tab temps envoie')
+  console.log(tabDesTempsDenvoi);
 // On le trie du plus petit au plus grand
   tabDesTempsDenvoi.sort(function(a, b) {
    return a - b;
@@ -839,8 +882,11 @@ export class ProfilServiceService {
     if(tabDesTempsDenvoi[i+1]-tabDesTempsDenvoi[i] > CinqMinEnMs && tabDesTempsDenvoi[i+1]-tabDesTempsDenvoi[i] < SeptHeureEnMs ){
       sommeDesDelais += tabDesTempsDenvoi[i+1]-tabDesTempsDenvoi[i]
       nbDeDelais += 1
+      console.log('if nb de delais')
     }
   }
+
+  console.log('nbde delais: '+nbDeDelais)
 
   var ref = 60
   var ecartMax = 60  // Wolf : 36, Tond : 35, Hugo : 30
@@ -1769,6 +1815,9 @@ sousCalculSexualiteConv(listFileDico : any){
   if(rapportSexeOppose > ref + ecartMax){
     scoreLocal = 1
   }
+  else if(rapportSexeOppose == 0){
+    scoreLocal = 0
+  }
   else if(rapportSexeOppose < ref - ecartMax){
     scoreLocal = -1
   }
@@ -1829,6 +1878,9 @@ sousCalculSexualiteSommeCarac(listFileDico : any){
   if(rapportSexeOppose > ref + ecartMax){
     scoreLocal = 1
   }
+  else if(rapportSexeOppose == 0){
+    scoreLocal = 0
+  }
   else if(rapportSexeOppose < ref - ecartMax){
     scoreLocal = -1
   }
@@ -1877,6 +1929,9 @@ sousCalculSexualiteBestFriend(listFileDico : any){
   if(rapportSexeOppose > ref + ecartMax){
     scoreLocal = 1
   }
+  else if(rapportSexeOppose == 0){
+    scoreLocal = 0
+  }
   else if(rapportSexeOppose < ref - ecartMax){
     scoreLocal = -1
   }
@@ -1894,6 +1949,7 @@ calculSexualiteGrp(setUser : any){
       setUser.forEach(function(oneUser){
         let prenom1 = oneUser.split(" ")[0].toLowerCase()
         let prenom2 = oneUser.split(" ")[0].replace("é","e").replace("è","e").replace("ê","e").replace("ë","e").replace("ï","i").replace("î","i").replace("É","E")
+      
         if(Object.keys(baseGenre).indexOf(prenom1)!=-1){
           dicoCompt[baseGenre[prenom1]["02_genre"][0]]+=1
         } else if (baseGenre2["f"].indexOf(prenom2)!=-1){
@@ -1911,7 +1967,7 @@ calculSexualiteGrp(setUser : any){
 findOneSex(name : any){
 
     let sex = "i"
-    let dicoSex = this.calculSexualiteGrp([name])
+    let dicoSex = this.calculSexualiteGrp(new Set([name]));
     if(dicoSex["m"]){
       sex = "m"
     }
