@@ -7,6 +7,7 @@ export class StatsConvService {
   lastMessageUploadTimestamp:any;
   firstRun=true;
   isOneConvStatFirstRun=true;
+
   constructor() { }
 
   //********************************************************************//

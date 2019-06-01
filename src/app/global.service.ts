@@ -9,7 +9,6 @@ import { StatsConvService } from './home-pannel-page/convs-pannel/stats-conv.ser
 @Injectable()
 export class GlobalService {
   userName : any;
-  lastMessageUploadTimestamp:any;
   nameDB:any;
 
   private isLoading=false;
@@ -214,6 +213,8 @@ export class GlobalService {
   doCalculForOwnStats(listFileDico : any){
     console.log("Launching calcul for : findUserName")
     console.log("findUserName = " + this.ownStatsService.findUserName(listFileDico))
+    console.log("Launching calcul for : determineListDateAndIndic")
+    this.ownStatsService.determineListDateAndIndic(listFileDico);
     console.log("Launching calcul for : calculBubbleConv")
     console.log("calculBubbleConv = " + this.ownStatsService.calculBubbleConv(listFileDico)); //USELESS
     console.log("Launching calcul for : calculHoursISend")

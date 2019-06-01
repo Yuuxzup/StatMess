@@ -33,6 +33,9 @@ export class OwnStatsService {
   timeOnMessenger:any;
   nbrSmileyEnvoye:any;
 
+  listDate:any;
+  indicateur:any;
+
   pinkColor= 'rgb(241,77,156)' ;
   blueColor = 'rgb(77,89,241)';
   indeterminedColor = '#1A1837';
@@ -77,6 +80,82 @@ export class OwnStatsService {
     this.userName=lUser[0]
     return this.userName
   }
+
+  determineListDateAndIndic(listFileDico : any){
+    //On determine en quelle unité on veut notre graphe
+    let indicateur=""
+    //On va fixer la date de début au premier message envoyé ou reçu
+    let timeStampDebut = (new Date()).getTime();
+    listFileDico.forEach(function(file){
+      timeStampDebut=Math.min(timeStampDebut,file["content"]["messages"][file["content"]["messages"].length-1]["timestamp_ms"])
+    })
+
+    let dateDebut = new Date(timeStampDebut)
+    let lastMessageTs = 0
+    for(var k=0;k<listFileDico.length;k++){
+      lastMessageTs=Math.max(lastMessageTs,listFileDico[k]["content"]["messages"][0]["timestamp_ms"])
+    }
+    let dateFin = new Date(lastMessageTs)
+
+
+    if (
+      (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
+      ||
+      (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
+      ||
+      (dateFin.getFullYear() - dateDebut.getFullYear() >1)){ //Plus d'une année de différence
+      indicateur="month"
+    } else{
+      indicateur="day"
+    }
+    this.indicateur=indicateur
+
+    //On initialise nos liste de données en fonction de l'indicateur
+    let listDate = []
+    let currentDate = dateDebut
+    listDate.push(this.transformDate(currentDate, indicateur))
+    while (!this.estDatesEgales(currentDate, dateFin, indicateur)){
+      if (indicateur==="day"){
+        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate()+1)
+      }
+      if (indicateur==="month"){
+        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth()+1,1)
+      }
+      if (indicateur==="year"){
+        currentDate = new Date(currentDate.getFullYear()+1,currentDate.getMonth(),currentDate.getDate())
+      }
+      listDate.push(this.transformDate(currentDate, indicateur))
+    }
+    console.log(listDate)
+    this.listDate=listDate
+  }
+
+  transformDate( myDate : Date, indicateur : any){
+    if (indicateur === "day"){
+      let correspondanceMonth=["Janv", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
+      return myDate.getDate()+" "+correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
+    } 
+    if (indicateur === "week"){
+      return
+    }
+    if (indicateur === "month"){
+      let correspondanceMonth=["Janv", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
+      return correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
+    }
+  }
+
+  estDatesEgales(date1 : Date, date2 : Date, indicateur){
+    if (indicateur === "day"){
+      return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
+    } 
+    if (indicateur === "week"){
+      return
+    }
+    if (indicateur === "month"){
+      return date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
+    }
+  }
+
   //***************************************************************//
 
   calculBubbleConv(listFileDico : any){
@@ -337,77 +416,15 @@ export class OwnStatsService {
     if (this.nbrMessagePerPeriod){
       return this.nbrMessagePerPeriod;
     }
-    //On determine en quelle unité on veut notre graphe
-    let indicateur=""
-      //On va fixer la date de début au premier message envoyé ou reçu
-    let timeStampDebut = (new Date()).getTime();
-    listFileDico.forEach(function(file){
-      timeStampDebut=Math.min(timeStampDebut,file["content"]["messages"][file["content"]["messages"].length-1]["timestamp_ms"])
-    })
-    
-    let dateDebut = new Date(timeStampDebut)
-    let dateFin = new Date()
-    
 
-    if (
-      (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
-      ||
-      (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
-      ||
-      (dateFin.getFullYear() - dateDebut.getFullYear() >1)){ //Plus d'une année de différence
-      indicateur="month"
-    } else{
-      indicateur="day"
-    }
-    
-    //On initialise nos liste de données en fonction de l'indicateur
-    let listDate = []
-    let currentDate = dateDebut
-    listDate.push(transformDate(currentDate, indicateur))
-    while (!estDatesEgales(currentDate, dateFin, indicateur)){
-      if (indicateur==="day"){
-        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate()+1)
-      }
-      if (indicateur==="month"){
-        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth()+1,currentDate.getDate())
-      }
-      if (indicateur==="year"){
-        currentDate = new Date(currentDate.getFullYear()+1,currentDate.getMonth()+1,currentDate.getDate()+1)
-      }
-      listDate.push(transformDate(currentDate, indicateur))
-    } 
     let listeNbrMessage = []
-    listDate.forEach(function(elt){
+    this.listDate.forEach(function(elt){
       listeNbrMessage.push({"sent":0, "receive":0})
     })
 
-    function transformDate( myDate : Date, indicateur : any){
-      if (indicateur === "day"){
-        let correspondanceMonth=["Janv", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
-        return myDate.getDate()+" "+correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
-      } 
-      if (indicateur === "week"){
-        return
-      }
-      if (indicateur === "month"){
-        let correspondanceMonth=["Janv", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
-        return correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
-      }
-    }
-
-    function estDatesEgales(date1 : Date, date2 : Date, indicateur){
-      if (indicateur === "day"){
-        return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
-      } 
-      if (indicateur === "week"){
-        return
-      }
-      if (indicateur === "month"){
-        return date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
-      }
-    }
     let userName=this.userName
-    listFileDico.forEach(function(file){
+    for (var f=0; f<listFileDico.length;f++){
+      let file=listFileDico[f]
       let jsonContent=file["content"]
 
       jsonContent["messages"].reverse()
@@ -415,18 +432,14 @@ export class OwnStatsService {
       jsonContent["messages"].reverse()
       for (var k=0; k<jsonContent["messages"].length;k++){
         if (decodeURIComponent(escape(jsonContent["messages"][k]["sender_name"]))===userName){
-          listeNbrMessage[listDate.indexOf(transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),indicateur))]["sent"]+=1
+          listeNbrMessage[this.listDate.indexOf(this.transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),this.indicateur))]["sent"]+=1
         } else {
-          if (listDate.indexOf(transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),indicateur))===-1){
-            ////console.log(transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),indicateur))
-
-          }
-          listeNbrMessage[listDate.indexOf(transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),indicateur))]["receive"]+=1
+          listeNbrMessage[this.listDate.indexOf(this.transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),this.indicateur))]["receive"]+=1
         }
       }
-    });
-    this.nbrMessagePerPeriod = [listDate, listeNbrMessage]
-    return [listDate, listeNbrMessage]
+    };
+    this.nbrMessagePerPeriod = [this.listDate, listeNbrMessage]
+    return [this.listDate, listeNbrMessage]
   }
 
     calculStatsGlobalesMessages(listFileDico : any){
@@ -801,84 +814,17 @@ export class OwnStatsService {
     if (this.nbrConvActivePerPeriod){
       return this.nbrConvActivePerPeriod;
     }
-    //On determine en quelle unité on veut notre graphe
-    let indicateur=""
-      //On va fixer la date de début au premier message envoyé ou reçu
-    let timeStampDebut = (new Date()).getTime();
-    listFileDico.forEach(function(file){
-      timeStampDebut=Math.min(timeStampDebut,file["content"]["messages"][file["content"]["messages"].length-1]["timestamp_ms"])
-    })
-    
-    let dateDebut = new Date(timeStampDebut)
-    let dateFin = new Date()
-    
-
-    if (
-      (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
-      ||
-      (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
-      ||
-      (dateFin.getFullYear() - dateDebut.getFullYear() >1)){ //Plus d'une année de différence
-      indicateur="month"
-    } else{
-      indicateur="day"
-    }
-    //console.log(indicateur)
-
-    //On initialise nos liste de données en fonction de l'indicateur
-    let listDate = []
-    let currentDate = dateDebut
-    listDate.push(transformDate(currentDate, indicateur))
-
-    while (!estDatesEgales(currentDate, dateFin, indicateur)){
-      if (indicateur==="day"){
-        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate()+1)
-      }
-      if (indicateur==="month"){
-        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth()+1,currentDate.getDate())
-      }
-      if (indicateur==="year"){
-        currentDate = new Date(currentDate.getFullYear()+1,currentDate.getMonth()+1,currentDate.getDate()+1)
-      }
-      listDate.push(transformDate(currentDate, indicateur))
-  } 
-
-  function transformDate( myDate : Date, indicateur : any){
-    if (indicateur === "day"){
-      let correspondanceMonth=["Janv", "Feb", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
-      return myDate.getDate()+" "+correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
-    } 
-    if (indicateur === "week"){
-      return
-    }
-    if (indicateur === "month"){
-      let correspondanceMonth=["Janv", "Feb", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
-      return correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
-    }
-  }
-
-  function estDatesEgales(date1 : Date, date2 : Date, indicateur){
-    if (indicateur === "day"){
-      return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
-    } 
-    if (indicateur === "week"){
-      return
-    }
-    if (indicateur === "month"){
-      return date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
-    }
-  }
-
     //Partie propre à la fonction en elle même
 
     let listeNbrConvActive = []
-    listDate.forEach(function(elt){
+    this.listDate.forEach(function(elt){
       listeNbrConvActive.push(0)
     })
 
-    listFileDico.forEach(function(file){
+    for (var f=0; f<listFileDico.length; f++){
+      let file=listFileDico[f]
       let oneConvDicoActivite=[]
-      listDate.forEach(function(elt){
+      this.listDate.forEach(function(elt){
         oneConvDicoActivite.push(0)
       })
 
@@ -888,96 +834,28 @@ export class OwnStatsService {
       let lMessages=jsonContent["messages"].slice() //Liste des messages du premier au dernier
       jsonContent["messages"].reverse()
       for (var k=0; k<jsonContent["messages"].length;k++){
-        oneConvDicoActivite[listDate.indexOf(transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),indicateur))]+=1
+        oneConvDicoActivite[this.listDate.indexOf(this.transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),this.indicateur))]+=1
       }
-      for(var k=0; k<listDate.length;k++){
+      for(var k=0; k<this.listDate.length;k++){
         listeNbrConvActive[k]+=Math.min(1,oneConvDicoActivite[k])
       }
-    });
-    this.nbrConvActivePerPeriod = [listDate, listeNbrConvActive]
-    return [listDate, listeNbrConvActive]
+    };
+    this.nbrConvActivePerPeriod = [this.listDate, listeNbrConvActive]
+    return [this.listDate, listeNbrConvActive]
   }
 
   calculNbrCorrespondantPerPeriod(listFileDico : any){
     if (this.nbrCorrespondantPerPeriod){
       return this.nbrCorrespondantPerPeriod;
     }
-    //On determine en quelle unité on veut notre graphe
-    let indicateur=""
-      //On va fixer la date de début au premier message envoyé ou reçu
-    let timeStampDebut = (new Date()).getTime();
-    listFileDico.forEach(function(file){
-      timeStampDebut=Math.min(timeStampDebut,file["content"]["messages"][file["content"]["messages"].length-1]["timestamp_ms"])
-    })
-    
-    let dateDebut = new Date(timeStampDebut)
-    let dateFin = new Date()
-    
-
-    if (
-      (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
-      ||
-      (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
-      ||
-      (dateFin.getFullYear() - dateDebut.getFullYear() >1)){ //Plus d'une année de différence
-      indicateur="month"
-    } else{
-      indicateur="day"
-    }
-    //console.log(indicateur)
-
-    //On initialise nos liste de données en fonction de l'indicateur
-    let listDate = []
-    let currentDate = dateDebut
-    listDate.push(transformDate(currentDate, indicateur))
-
-    while (!estDatesEgales(currentDate, dateFin, indicateur)){
-      if (indicateur==="day"){
-        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate()+1)
-      }
-      if (indicateur==="month"){
-        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth()+1,currentDate.getDate())
-      }
-      if (indicateur==="year"){
-        currentDate = new Date(currentDate.getFullYear()+1,currentDate.getMonth()+1,currentDate.getDate()+1)
-      }
-      listDate.push(transformDate(currentDate, indicateur))
-  } 
-
-  function transformDate( myDate : Date, indicateur : any){
-    if (indicateur === "day"){
-      let correspondanceMonth=["Janv", "Feb", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
-      return myDate.getDate()+" "+correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
-    } 
-    if (indicateur === "week"){
-      return
-    }
-    if (indicateur === "month"){
-      let correspondanceMonth=["Janv", "Feb", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
-      return correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
-    }
-  }
-
-  function estDatesEgales(date1 : Date, date2 : Date, indicateur){
-    if (indicateur === "day"){
-      return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
-    } 
-    if (indicateur === "week"){
-      return
-    }
-    if (indicateur === "month"){
-      return date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
-    }
-  }
-
-    //Partie propre à la fonction en elle même
 
     let listeCorrespondant = []
-    listDate.forEach(function(elt){
+    this.listDate.forEach(function(elt){
       listeCorrespondant.push(new Set())
     })
 
-    listFileDico.forEach(function(file){
+    for (var f=0; f<listFileDico.length; f++){
+      let file=listFileDico[f]
       if (!file["isConvGroup"]){
         let jsonContent=file["content"]
         let lUser=[]
@@ -991,11 +869,11 @@ export class OwnStatsService {
         for (var k=0; k<jsonContent["messages"].length;k++){
           for (var i=0; i<lUser.length;i++){
             let nameUser = lUser[i]
-            listeCorrespondant[listDate.indexOf(transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),indicateur))].add(nameUser)
+            listeCorrespondant[this.listDate.indexOf(this.transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),this.indicateur))].add(nameUser)
           }
         }
       }
-    });
+    };
     let listeNbrMPerPeriod=[]
     let listeNbrFPerPeriod=[]
     let listeNbrIPerPeriod=[]
@@ -1028,93 +906,26 @@ export class OwnStatsService {
     ////console.log(setTrouves.size/(setNonTrouves.size+setTrouves.size)+"% trouvé")
     ////console.log(setNonTrouves)
     ////console.log({"label":[listDate],"data":{"m":listeNbrMPerPeriod,"f":listeNbrFPerPeriod,"i":listeNbrIPerPeriod}})
-    this.nbrCorrespondantPerPeriod = {"label":listDate,"data":{"m":listeNbrMPerPeriod,"f":listeNbrFPerPeriod,"i":listeNbrIPerPeriod}}
-    return {"label":listDate,"data":{"m":listeNbrMPerPeriod,"f":listeNbrFPerPeriod,"i":listeNbrIPerPeriod}}
+    this.nbrCorrespondantPerPeriod = {"label":this.listDate,"data":{"m":listeNbrMPerPeriod,"f":listeNbrFPerPeriod,"i":listeNbrIPerPeriod}}
+    return {"label":this.listDate,"data":{"m":listeNbrMPerPeriod,"f":listeNbrFPerPeriod,"i":listeNbrIPerPeriod}}
   }
 
   calculBestCorrespondantPerPeriod(listFileDico : any){
     if (this.bestCorrespondantPerPeriod){
       return this.bestCorrespondantPerPeriod;
     }
-    //On determine en quelle unité on veut notre graphe
-    let indicateur=""
-      //On va fixer la date de début au premier message envoyé ou reçu
-    let timeStampDebut = (new Date()).getTime();
-    listFileDico.forEach(function(file){
-      timeStampDebut=Math.min(timeStampDebut,file["content"]["messages"][file["content"]["messages"].length-1]["timestamp_ms"])
-    })
-    
-    let dateDebut = new Date(timeStampDebut)
-    let dateFin = new Date()
-    
-
-    if (
-      (dateFin.getMonth() - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===0) //Même année 3 mois d'écart
-      ||
-      (dateFin.getMonth()+11 - dateDebut.getMonth() >=3) && (dateFin.getFullYear() - dateDebut.getFullYear() ===1) //Année différente 3 mois d'écart
-      ||
-      (dateFin.getFullYear() - dateDebut.getFullYear() >1)){ //Plus d'une année de différence
-      indicateur="month"
-    } else{
-      indicateur="day"
-    }
-
-    //On initialise nos liste de données en fonction de l'indicateur
-    let listDate = []
-    let currentDate = dateDebut
-    listDate.push(transformDate(currentDate, indicateur))
-
-    while (!estDatesEgales(currentDate, dateFin, indicateur)){
-      if (indicateur==="day"){
-        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate()+1)
-      }
-      if (indicateur==="month"){
-        currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth()+1,currentDate.getDate())
-      }
-      if (indicateur==="year"){
-        currentDate = new Date(currentDate.getFullYear()+1,currentDate.getMonth()+1,currentDate.getDate()+1)
-      }
-      listDate.push(transformDate(currentDate, indicateur))
-  } 
-
-  function transformDate( myDate : Date, indicateur : any){
-    if (indicateur === "day"){
-      let correspondanceMonth=["Janv", "Feb", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
-      return myDate.getDate()+" "+correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
-    } 
-    if (indicateur === "week"){
-      return
-    }
-    if (indicateur === "month"){
-      let correspondanceMonth=["Janv", "Feb", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"]
-      return correspondanceMonth[myDate.getMonth()]+" "+String(myDate.getFullYear()).substring(2)
-    }
-  }
-
-  function estDatesEgales(date1 : Date, date2 : Date, indicateur){
-    if (indicateur === "day"){
-      return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
-    } 
-    if (indicateur === "week"){
-      return
-    }
-    if (indicateur === "month"){
-      return date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()
-    }
-  }
-
-    //Partie propre à la fonction en elle même
 
     let bestCorrespondant = []
-    listDate.forEach(function(elt){
+    this.listDate.forEach(function(elt){
       bestCorrespondant.push({"name":"", "nbrMessages":0})
     })
 
-    listFileDico.forEach(function(file){
+    for (var f=0; f<listFileDico.length; f++){
+      let file=listFileDico[f]
       if (!file["isConvGroup"]){
         let jsonContent=file["content"]
         let nbrMessagesThisPeriod=[]
-        for (var k =0;k<listDate.length;k++){
+        for (var k =0;k<this.listDate.length;k++){
           nbrMessagesThisPeriod.push(0)
         }
         jsonContent["messages"].reverse()
@@ -1122,7 +933,7 @@ export class OwnStatsService {
         jsonContent["messages"].reverse()
         for (var k=0; k<jsonContent["messages"].length;k++){
           if(jsonContent["messages"][k]["content"]){
-          nbrMessagesThisPeriod[listDate.indexOf(transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),indicateur))]+= jsonContent["messages"][k]["content"].length // Modif wolf
+          nbrMessagesThisPeriod[this.listDate.indexOf(this.transformDate(new Date(jsonContent["messages"][k]["timestamp_ms"]),this.indicateur))]+= jsonContent["messages"][k]["content"].length // Modif wolf
           }
         }
 
@@ -1133,7 +944,7 @@ export class OwnStatsService {
           }
         }
       }
-    });
+    };
 
 
     let listeNamesPerPeriod=[]
@@ -1168,8 +979,8 @@ export class OwnStatsService {
     ////console.log(setTrouves.size/(setNonTrouves.size+setTrouves.size)+"% trouvé")
     ////console.log(setNonTrouves)
     ////console.log({"label":[listDate],"data":{"m":listeNbrMPerPeriod,"f":listeNbrFPerPeriod,"i":listeNbrIPerPeriod}})
-    this.bestCorrespondantPerPeriod = {"labels":listDate,"data":{"names":listeNamesPerPeriod,"nbrMessages":listeNbrMessagesPerPeriod,"gendersColor":listeGenderColorPerPeriod}}
-    return {"labels":listDate,"data":{"names":listeNamesPerPeriod,"nbrMessages":listeNbrMessagesPerPeriod,"gendersColor":listeGenderColorPerPeriod}}
+    this.bestCorrespondantPerPeriod = {"labels":this.listDate,"data":{"names":listeNamesPerPeriod,"nbrMessages":listeNbrMessagesPerPeriod,"gendersColor":listeGenderColorPerPeriod}}
+    return {"labels":this.listDate,"data":{"names":listeNamesPerPeriod,"nbrMessages":listeNbrMessagesPerPeriod,"gendersColor":listeGenderColorPerPeriod}}
   };
 
 
@@ -1481,8 +1292,6 @@ export class OwnStatsService {
         }
       }
     })
-  
-    console.log(nbrSmiley)
     this.nbrSmileyEnvoye = nbrSmiley
     return nbrSmiley
   }
