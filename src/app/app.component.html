@@ -3,11 +3,11 @@
       <div class="cover">
          <div class="button-container-2" (click)="launch()">
           <span class="mas">
-            <h1 class="launchText">StatMess</h1>
+            <h1 class="launchText">SightMess</h1>
             <p>Lancez vous</p>
           </span>
           <button type="button" name="Hover" >
-            <h1 class="launchText">StatMess</h1>
+            <h1 class="launchText">SightMess</h1>
             <p>Lancez vous</p>
           </button>
         </div>
@@ -17,7 +17,7 @@
 
     <div *ngIf="isReady">
       <div class="horizontalBar">
-        <h1 style="font-size : 3vh; margin-top:auto; margin-bottom:auto; margin-left:1%;">StatMess</h1>
+        <h1 style="font-size : 3vh; margin-top:auto; margin-bottom:auto; margin-left:1%;">SightMess</h1>
       </div>
       <div class="cguPage" *ngIf="isCguVisible">
         <div class="wrapper" (click)="showHideCgu()">
@@ -35,7 +35,7 @@
         <app-file-drop-page></app-file-drop-page>
       </div>
       <div class="footer" *ngIf="!isCguVisible">
-        <h1 (click)="showHideCgu()" class="CGU">Condition générales d'utilisation</h1>
+        <h1 (click)="showHideCgu()" class="CGU">Conditions générales d'utilisation</h1>
       </div>
     </div>
 </div>
