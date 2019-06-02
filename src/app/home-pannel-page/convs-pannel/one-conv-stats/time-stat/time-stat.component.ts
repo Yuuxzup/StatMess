@@ -184,7 +184,7 @@ export class TimeStatComponent implements OnInit, AfterViewInit {
       let isUserHereAverageTime = false;
       var w;
       for(w=0;w<3;w++){
-        if(items[w][0]===constMainUser){
+        if(items[items.length-1 - w][0]===constMainUser){
           isUserHereAverageTime = true;
           constAverageTimeToAnswerToDisplay['labels'].push('Vous');
           constAverageTimeToAnswerToDisplay['data'].push(items[items.length-1-w][1]);
