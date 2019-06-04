@@ -133,10 +133,10 @@ $col) {
   letter-spacing: 1px;
 
  button {
+  height: 10vh;
   width: 101%;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  font-size: 20px;
   letter-spacing: 1px;
 
   @include button(#102A54,
@@ -162,7 +162,6 @@ $col) {
   width: 100%;
   height: 25vh;
   font-weight: 300;
-  font-size: 20px;
   overflow: hidden;
   background-color: white;
 }
