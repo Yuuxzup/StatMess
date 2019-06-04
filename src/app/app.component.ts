@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from './global.service';
 
+
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -9,6 +11,8 @@ import { GlobalService } from './global.service';
 export class AppComponent implements OnInit {
   isReady=false;
   isCguVisible=false;
+
+  
 
   constructor(private globalService:GlobalService) { }
 
@@ -25,3 +29,7 @@ export class AppComponent implements OnInit {
     this.isCguVisible=!this.isCguVisible
   }
 }
+
+
+
+

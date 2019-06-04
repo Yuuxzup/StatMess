@@ -130,14 +130,10 @@ $col) {
   overflow: hidden;
   border: 1px solid #000;
   transition: 0.5s;
-  letter-spacing: 1px;
 
  button {
-  width: 101%;
-  font-family: 'Lato', sans-serif;
   font-weight: 300;
   font-size: 20px;
-  letter-spacing: 1px;
 
   @include button(#102A54,
   "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png",
