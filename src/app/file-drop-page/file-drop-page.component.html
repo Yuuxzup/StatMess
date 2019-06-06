@@ -232,7 +232,7 @@
 </div>
 
 <!--Component de loading-->
-<app-loading-custom *ngIf="isLoading &&!loadingOk" [valeurChargement]="loadingPercent"></app-loading-custom>
+<app-loading-custom *ngIf="isLoading &&!loadingOk" [valeurChargement]="loadingPercent" style="overflow-x: hidden; overflow-y: hidden"></app-loading-custom>
 
 <!--Component principal avec les 3 pannels-->
 <app-home-pannel-page *ngIf="loadingOk"
