@@ -1,23 +1,45 @@
 <div class="page">
     <div *ngIf="!isReady">
       <div class="cover">
+        <div class="logoSightMess">
+          <img src="https://zupimages.net/up/19/23/hxet.png"/>
+        </div>
          <div class="button-container-2" (click)="launch()">
-          <span class="mas">
-            <h1 class="launchText">StatMess</h1>
-            <p>Lancez vous</p>
+          <span class="mas" >
+            <h1 class="launchText">Lancez Vous</h1>
           </span>
-          <button type="button" name="Hover" >
-            <h1 class="launchText">StatMess</h1>
-            <p>Lancez vous</p>
+          <button style="padding: 0;" type="button" name="Hover" >
+            <h1 style="letter-spacing: 16px; font-style:italic;" class="launchText"><b style="font-weight:300; font-family: 'Roboto';">Sight</b><b style="font-weight:600; font-family: 'Roboto'">Mess</b></h1>
           </button>
         </div>
-        <h2 class="version">Version α</h2>
+        <div class="TestBox">
+          <p style="margin-left: 1%; text-align:left; font-size: 30px; margin-top:0; color:white; ">Ils ont testé :</p>
+        </div>
+        <ul id="c"> 
+		
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Un très beau site, des informations intéressantes : je recommande vivement !</p><p class="dateAvis">20/06/2019</p></div></li>
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Beau travail je me suis régalé !</p><p class="dateAvis">20/06/2019</p></div></li>
+                              
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Un dossier facebook un peu long à obtenir mais ça valait le coup c'était symmpa !</p><p class="dateAvis">20/06/2019</p></div></li>
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">C'est comme de la chantilly avec des fraises, on aime et on RECOMMANDE !!</p><p class="dateAvis">20/06/2019</p></div></li>
+                      
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Site intéressant. J'ai cliqué  sur la pub pour vous soutenir, suivez moi sur ma chaîne youtube.</p><p class="dateAvis">20/06/2019</p></div></li>
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Je suis tombé ici par hasard, j'ai vraiment craqué sur le profil linkedin de Hugo Pillet, on pourrait avoir son numéro ?</p><p class="dateAvis">20/06/2019</p></div></li>
+
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Ma femme me l'a recommandé durant un acte sexuel, vraiment je ne regrète pas, ma vie a changé depuis.</p><p class="dateAvis">20/06/2019</p></div></li>
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Mieux que le Coca Cola dans une bouteille en verre</p><p class="dateAvis">20/06/2019</p></div></li>
+
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">J'ai lancé le site sans internet, parce que ma maman a débranché la box, et vraiment c'était cool.</p><p class="dateAvis">20/06/2019</p></div></li>
+            <li><img src="https://zupimages.net/up/19/23/6a29.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Salut, comment on fait pour avoir son dossier facebook ?</p><p class="dateAvis">20/06/2019</p></div></li>
+            
+        
+          </ul>
       </div>
     </div>
 
     <div *ngIf="isReady">
       <div class="horizontalBar">
-        <h1 style="font-size : 3vh; margin-top:auto; margin-bottom:auto; margin-left:1%;">StatMess</h1>
+        <h1 style="font-size : 3vh; margin-top:auto; margin-bottom:auto; margin-left:1%;">SightMess</h1>
       </div>
       <div class="cguPage" *ngIf="isCguVisible">
         <div class="wrapper" (click)="showHideCgu()">
@@ -35,7 +57,7 @@
         <app-file-drop-page></app-file-drop-page>
       </div>
       <div class="footer" *ngIf="!isCguVisible">
-        <h1 (click)="showHideCgu()" class="CGU">Condition générales d'utilisation</h1>
+        <h1 (click)="showHideCgu()" class="CGU">Conditions générales d'utilisation</h1>
       </div>
     </div>
 </div>

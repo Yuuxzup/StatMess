@@ -139,7 +139,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     this.podiumConvLesPlusActives = this.ownStatsService.calculPodiumConvLesPlusActives(this.listFilesDico)
     this.firstConvUser = this.ownStatsService.calculFirstConvUser(this.listFilesDico)
     this.indicateursFlammeFreezeStrike = this.ownStatsService.calculIndicateursFlammeFreezeStrike(this.listFilesDico)
-    this.dicoSortBubbleConv = this.ownStatsService.calculDicoSortBubbleConv(this.listFilesDico);
+    this.dicoSortBubbleConv = this.ownStatsService.calculDicoSortBubbleConv(this.listFilesDico);  //USELESS
     this.nbrConvActivePerPeriod = this.ownStatsService.calculNbrConvActivePerPeriod(this.listFilesDico);
     this.nbrCorrespondantPerPeriod = this.ownStatsService.calculNbrCorrespondantPerPeriod(this.listFilesDico);
     this.bestCorrespondantPerPeriod = this.ownStatsService.calculBestCorrespondantPerPeriod(this.listFilesDico);

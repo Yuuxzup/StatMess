@@ -5,14 +5,14 @@
     <label class="close">close</label>
   </div>
   <h1 style="margin-left: 11%;" *ngIf="!isRated">Donnez votre avis !</h1>
-  <p *ngIf="!isRated">Que pensez vous de StatMess ?</p>
+  <p *ngIf="!isRated">Que pensez vous de SightMess ?</p>
   <div class="rating-holder">
     <div *ngIf="!isRated" class="c-rating c-rating--big" data-rating-value="0">
-      <button (click)=rateStatMess(1)>1</button>
-      <button (click)=rateStatMess(2)>2</button>
-      <button (click)=rateStatMess(3)>3</button>
-      <button (click)=rateStatMess(4)>4</button>
-      <button (click)=rateStatMess(5)>5</button>
+      <button (click)=rateSightMess(1)>1</button>
+      <button (click)=rateSightMess(2)>2</button>
+      <button (click)=rateSightMess(3)>3</button>
+      <button (click)=rateSightMess(4)>4</button>
+      <button (click)=rateSightMess(5)>5</button>
     </div>
   </div>
   <p *ngIf="isRated" style="margin-top: 9%;font-size: 3em;">Merci !</p>
@@ -23,8 +23,13 @@
 		<div class="untitled__slide">
 			<div class="untitled__slideBg"></div>
 			<div class="untitled__slideContent">
+<<<<<<< HEAD
 				<span>Explorez</span> 
 				<span>vos stats</span>
+=======
+				<span>Bienvenue sur</span> 
+				<span>SightMess</span>
+>>>>>>> master
 			</div>
 		</div>
 		<div class="untitled__slide">
@@ -57,7 +62,7 @@
 <div class="uploadZone" *ngIf="!isZipLoaded && !isLoading">
   
   <div class="bienvenue">
-    <h1>Bienvenue sur Statmess</h1>
+    <h1>Bienvenue sur SightMess</h1>
     <div class="indicators">
       <div class="compteur">
         <img src="https://image.flaticon.com/icons/svg/148/148718.svg"/>
@@ -101,7 +106,7 @@
       <h3>Fonctionne sans internet</h3>
       <p>Nous ne stockons aucune de vos données personnelles.</p>
       <p>Seul vous avez accès aux informations affichées.</p> 
-      <p>Statmess fonctionne localement, vous pouvez donc couper Internet !</p>
+      <p>SightMess fonctionne localement, vous pouvez donc couper Internet !</p>
     </div>
   </div>
   <div class="lancezV">
@@ -164,12 +169,14 @@
         <h1>4. Extraire votre dossier</h1>
         <hr class="overview">
         <p style="margin-bottom:1%">Rendez-vous dans votre dossier “Téléchargements” et <b>décompressez</b> facebook-PrenomNom.zip.</p>
-        <p style="margin-bottom:1%">Vous pouvez utiliser pour cela n’importe quel logiciel de décompression, par exemple <a class="clickHere" href="https://www.7-zip.fr/" target="_blank">7zip</a>. </p>
+        <p style="margin-bottom:1%">Vous pouvez utiliser pour cela n’importe quel logiciel de décompression, par exemple : </p>
+        <p>- <a class="clickHere" href="https://www.7-zip.fr/" target="_blank">7zip</a> sur Windows.</p>
+        <p>- <a class="clickHere" href="https://itunes.apple.com/fr/app/the-unarchiver/id425424353?mt=12" target="_blank">Unarchiver</a> sur Mac.</p>
       </div>
     </div>
     <div class="oneStep">
       <div class="textSide2" style="margin-right:1%">
-        <h1>5. Lancez l'analyse Statmess !</h1>
+        <h1>5. Lancez l'analyse SightMess !</h1>
         <hr class="overview">
         <p>Vous n’avez plus qu’à sélectionner votre dossier</p>
         <p>Et... <b>C’est parti !</b></p>
@@ -181,14 +188,14 @@
       </div>
     </div>
     <div style="box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-      <h1>Enjoy StatMess !</h1>
+      <h1>Enjoy SightMess !</h1>
       <hr class="overview">
       <p style="text-align:left">PS : Sur Chrome, vous aurez ce message, c'est normal !</p>
       <div class="imgSide">
         <img src="https://zupimages.net/up/19/21/3kzt.png" class="imageTutorial" style="margin-top:3%; margin-bottom:3%; height:15%; width:50%"/>
       </div>
       <p style="text-align:center">Nous vous souhaitons une bonne utilisation et n'oubliez pas de donner votre avis.</p>
-      <p style="text-align:right; margin-top:2%; margin-bottom:1%; margin-right:3%">L'équipe StatMess</p>
+      <p style="text-align:right; margin-top:2%; margin-bottom:1%; margin-right:3%">L'équipe SightMess</p>
     </div>
   </div>
       </div>
@@ -206,7 +213,7 @@
     <hr class="overview">
     <p>Nous sommes trois étudiants de l’Ecole Centrale de Marseille. À l’origine, ce projet nous est venu par le constat que nous passions tous de longues heures sur Messenger, et pourtant nous ne savions pas combien. Nous ne savions pas qui étaient les personnes les plus influentes sur nos conversations, quelles étaient les personnes à qui nous parlions le plus à travers le temps, ou encore ce que nos habitudes de conversations pouvaient dire de nous. Nous avons alors cherché à donner sens à nos données Facebook, qui, sans algorithme, étaient illisibles.</p>
     <p>Ce projet n’a pas vocation à faire de l’argent, mais simplement de partager l’analyse que nous avons faite de nos messages et faire sourire en formalisant des informations que l’utilisateur ne pouvait que supposer par le passé.</p>
-    <p style="padding-bottom:2%">Si vous avez une quelconque remarque sur notre site, que vous l’avez apprécié ou détesté, ou que vous trouvez un bug ou une amélioration possible, n’hésitez pas à nous écrire à <a href="mailto:statsmess@gmail.com">statsmess@gmail.com</a> ! Nous serons ravis de vous lire.</p>
+    <p style="padding-bottom:2%">Si vous avez une quelconque remarque sur notre site, que vous l’avez apprécié ou détesté, ou que vous trouvez un bug ou une amélioration possible, n’hésitez pas à nous écrire à <a href="mailto:contact.sightmess@gmail.com">contact.sightmess@gmail.com</a> ! Nous serons ravis de vous lire.</p>
     <div class="linkedinBox">
       <a href="https://www.linkedin.com/in/hugo-pillet-a29689152/" style="text-decoration:none;" target="_blank">
       <div class="oneLinkedin">
