@@ -11,7 +11,7 @@ import { GlobalService } from './global.service';
 export class AppComponent implements OnInit {
   isReady=false;
   isCguVisible=false;
-  timer = 4000;
+  timer = 8000;
 
   
 
@@ -29,10 +29,10 @@ export class AppComponent implements OnInit {
   var max = document.getElementById('c').getElementsByTagName("li").length;
  
 	document.getElementById('c').getElementsByTagName("li")[i].style.opacity="1";
-  document.getElementById('c').getElementsByTagName("li")[i].style.left="0";
+  document.getElementById('c').getElementsByTagName("li")[i].style.left="0%";
 
   document.getElementById('c').getElementsByTagName("li")[i+1].style.opacity="1";
-  document.getElementById('c').getElementsByTagName("li")[i+1].style.left="75%";
+  document.getElementById('c').getElementsByTagName("li")[i+1].style.left="25%";
   
   setInterval(function(){ 
     
