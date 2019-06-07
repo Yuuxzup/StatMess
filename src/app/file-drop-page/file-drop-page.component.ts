@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StatsConvService } from '../home-pannel-page/convs-pannel/stats-conv.service';
 import { GlobalService } from '../global.service';
 import { HttpClient } from '@angular/common/http';
-import $ from 'jquery';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-file-drop-page',
