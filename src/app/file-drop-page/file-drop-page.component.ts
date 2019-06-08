@@ -21,6 +21,7 @@ export class FileDropPageComponent implements OnInit{
   nbrVisite : any;
 
   isRateMoment=false;
+  isCguVisible=false;
 
   rating=0
   isRated=false;
@@ -183,5 +184,9 @@ export class FileDropPageComponent implements OnInit{
       this.closeTooltip();
     }, 1500)
     
+  }
+
+  showHideCgu(){
+    this.isCguVisible=!this.isCguVisible;
   }
 }

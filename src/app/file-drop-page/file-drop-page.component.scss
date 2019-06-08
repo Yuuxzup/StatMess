@@ -157,7 +157,7 @@ p {
 .wrapper {
   position: relative;
   height: 71vh;
-  width: 100vw;
+  width: 101vw;
   margin-left: -1vw;
   overflow: hidden;
 }
@@ -1098,4 +1098,113 @@ label{
 }
 .close-container:hover label{
   opacity: 1;
+}
+
+.footer p{
+  font-size: 100%;
+}
+
+.cguPage .buttonBack{
+  background-color: white;
+  width: 100px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #1A1837;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.buttonBack:hover .Icon span{
+  background:#FA8A2F;
+}
+
+.footer h1{
+  background: -webkit-linear-gradient(#fa8a2f, #d6571c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: right;
+  margin-right: 20px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  font-size: 1em;
+  margin-bottom:0.1%;
+}
+
+// Button Back 
+
+$ease: cubic-bezier(.2,1,.3,1);
+  
+.wrappercgu {
+  position: absolute;
+  margin-left:5%;
+  transform: translate(-50%, -50%);
+  margin-top:2.2%;
+  
+  svg {
+    width: 100px;
+    height: 9vh;
+    margin: 0 2rem;
+    cursor: pointer;
+    overflow: visible;
+    polygon, path {
+      transition: all 0.5s $ease;
+      fill : #1A1837;
+    }
+    &:hover polygon, &:hover path {
+      transition: all 1s $ease;
+      fill: rgb(250, 138, 47);
+    }
+      
+    &:hover .arrow {
+      animation: arrow-anim 2.5s $ease infinite;
+    }
+    &:hover .arrow-fixed {
+      animation: arrow-fixed-anim 2.5s $ease infinite;
+    }
+  }
+}
+
+@keyframes arrow-anim {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	5% {
+		transform: translateX(-0.1rem);
+	}
+	100% {
+		transform: translateX(1rem);
+		opacity: 0;
+	}
+}
+
+@keyframes arrow-fixed-anim {
+	5% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 0.4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.CGU:hover {
+  cursor:pointer;
+  
+}
+
+.footer{
+  background-color: #1A1837;
+  text-align: right;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 100;
+}
+
+.footer p{
+  font-size: 100%;
 }
