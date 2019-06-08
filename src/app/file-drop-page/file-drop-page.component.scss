@@ -163,7 +163,7 @@ $color: #1A1837;
 $font: 'Abril Fatface', sans-serif;
 
 $slides: 4;
-$images: url(https://zupimages.net/up/19/23/8mj2.png) url(https://zupimages.net/up/19/23/8mj2.png) url(https://zupimages.net/up/19/23/8mj2.png)   url(https://zupimages.net/up/19/21/0pur.png);
+$images: url(https://zupimages.net/up/19/23/n74d.png) url(https://zupimages.net/up/19/23/n74d.png) url(https://zupimages.net/up/19/23/n74d.png)   url(https://zupimages.net/up/19/21/0pur.png);
 
 html, body{
 	width: 100vw;
@@ -286,7 +286,7 @@ html, body{
 		background-size: cover;
 		background-position: center;
 		background-color: $color;
-		background-blend-mode: hard-light;
+		background-blend-mode: none;
 		opacity: 1;
 		z-index: -1;
 		@keyframes bgInOut{
