@@ -152,172 +152,294 @@ p {
 
 
 
-//Carossel 
+//Carossel
 
-$t: 2.5s;
-$e1: cubic-bezier(0.8, 0.00, 0.1, 1);
-$e2: cubic-bezier(0.600, 0.040, 0.980, 0.335);
-$er: linear;
-
-$color: #1A1837;
-$font: 'Abril Fatface', sans-serif;
-
-$slides: 4;
-$images: url(https://zupimages.net/up/19/21/e49r.png) url(https://zupimages.net/up/19/21/i9wr.png) url(https://zupimages.net/up/19/21/m0l3.png)   url(https://zupimages.net/up/19/21/0pur.png);
-
-html, body{
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
+.wrapper {
+  position: relative;
+  height: 71vh;
+  width: 100vw;
+  margin-left: -1vw;
+  overflow: hidden;
 }
 
-.untitled{	
-	position: relative;
-  overflow:hidden;
-	height: 57%;
-	width: 102%;
-  margin-left:-1%;
-	@keyframes rotateHue {
-		0%{ filter: hue-rotate(0deg); }
-		20%{ filter: hue-rotate(0deg); }
-		25%{ filter: hue-rotate(90deg); }
-		45%{ filter: hue-rotate(90deg); }
-		50%{ filter: hue-rotate(180deg); }
-		70%{ filter: hue-rotate(180deg); }
-		75%{ filter: hue-rotate(270deg); }
-		95%{ filter: hue-rotate(270deg); }
-		100%{ filter: hue-rotate(360deg); }
-	}
-	animation: rotateHue infinite $t*$slides*2 linear;
-	animation-delay: $t/4;
-	
-	&__shutters{
-		position: absolute;
-		height: 150vmax;
-		width: 150vmax;
-		left: calc(50% - 75vmax);
-		top: calc(50% - 75vmax);
-		pointer-events: none;
-		z-index: 2;
-		@keyframes rotateFrame{
-			0%{ transform: rotate(0deg);}
-			100%{ transform: rotate(180deg);}
-		}
-		animation: rotateFrame $t*4 $er infinite;
+.slideshow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-50%);
 
-		&:before, &:after{
-			content: '';
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			left: 50%;
-			transform: translate3d(-50%, 0, 0);
-			background-color: $color;
-			pointer-events: auto;
-		}
-		&:before{
-			bottom: 50%;
-			@keyframes openTop{
-				0%{ transform: translate3d(-50%, 0, 0); animation-timing-function: $e1; }
-				40%{ transform: translate3d(-50%, -65vmax, 0); animation-timing-functon: $e2; }
-				70%{ transform: translate3d(-50%, -65vmax, 0); animation-timing-functon: $e2; }
-				100%{ transform: translate3d(-50%, 0, 0); animation-timing-function: $e2; }
-			}
-			animation: openTop $t*2 infinite;
-		}
-		&:after{
-			top: 50%;
-			@keyframes openBottom{
-				0%{ transform: translate3d(-50%, 0, 0); animation-timing-function: $e1; }
-				40%{ transform: translate3d(-50%, 65vmax, 0); animation-timing-functon: $e2; }
-				70%{ transform: translate3d(-50%, 65vmax, 0); animation-timing-functon: $e2; }
-				100%{ transform: translate3d(-50%, 0, 0); animation-timing-function: $e2; }
-			}
-			animation: openBottom $t*2 infinite;
-		}
-	}
-	
-	&__slides{
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		top: 0;
-		left: 0;
-		background-color: $color;
-	}
-	&__slide{
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		opacity: 0;
-		@keyframes showHideSlide{
-			0%{
-				opacity: 1; 
-				pointer-events: auto;
-				z-index: 1;
-			}
-			#{100% / $slides}{
-				opacity: 0;
-				pointer-events: none;
-				z-index: -1;
-			}
-			100%{
-				opacity: 0;
-				pointer-events: none;
-				z-index: -1;
-			}
-		}
-		animation: showHideSlide infinite $t*$slides*2 steps(1);
-		@for $i from 1 through $slides{
-			&:nth-child(#{$i}){ 
-				animation-delay: $t * ($i - 1) * 2;
-				.untitled__slideBg{
-					background-image: nth($images, $i);
-				}
-			}	
-		}
-	}
-	&__slideBg{
-		position: relative;
-		height: 100%;
-		width: 100%;
-		top: 0;
-		left: 0;
-		background-size: cover;
-		background-position: center;
-		background-color: $color;
-		background-blend-mode: hard-light;
-		opacity: 1;
-		z-index: -1;
-		@keyframes bgInOut{
-			0%{ transform: rotate(-45deg) scale(1.1); animation-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000);}
-			33%{ transform: rotate(0deg);}
-			50%{ transform: rotate(0deg); }
-			66%{ transform: rotate(0deg); animation-timing-function: cubic-bezier(0.895, 0.030, 0.685, 0.220); }
-			100%{ transform: rotate(45deg) scale(0.9);}
-		}
-		animation: bgInOut $t*4 -$t*2 infinite; 
-	}
-	&__slideContent{
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate3d(-50%,-50%,0);
-    color: white;
-		font-family: $font;
-		line-height: 0.8;
-		letter-spacing: -0.025em;
-		z-index: 2;
-		text-shadow: 0 0 0.5em rgba($color,0.25);
-		//mix-blend-mode: lighten;
-		span{
-			display: block;
-			font-size: 15vmin;
-		}
-	}
+  &--hero {
+    z-index: 3;
+    left: 0;
+    top: 50%;
+    // width: 100%;
+    height: 85%;
+    transform: translateY(-50%) skewY(-10deg);
+    transform-origin: center;
+    overflow: hidden;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+
+    .slides {
+      position: absolute;
+      left: 0;
+      top: -10%;
+      width: 100vw;
+      height: 100vh;
+      animation: 11s slideshow-hero-mobile -3s infinite;
+    }
+
+    .slide1 {
+      background-image: url(http://ptondereau.perso.centrale-marseille.fr/images/ownstat_car.png);
+      animation: 20s slides-set-1 -0.1s infinite;
+    }
+    .slide2 {
+      background-image: url(http://ptondereau.perso.centrale-marseille.fr/images/conv_car.png);
+      animation: 20s slides-set-2 -0.1s infinite;
+    }
+    .slide3 {
+      background-image: url(http://ptondereau.perso.centrale-marseille.fr/images/profil_car.png);
+      animation: 20s slides-set-3 -0.1s infinite;
+    }
+
+    @media (min-width: 600px) {
+      left: 50%;
+      top: 0;
+      width: 67%;
+      height: 100%;
+      transform: translateX(-50%) skewX(-10deg);
+
+      .slides {
+        top: 0;
+        left: -25%;
+        height: 100%;
+        animation: 11s slideshow-hero -3s infinite;
+      }
+    }
+  }
+
+  &--contrast {
+    z-index: 1;
+    width: 100%;
+    height: 50%;
+    transform: none;
+    
+    .slide {
+      // filter: blur(3px);
+    }
+
+    &--before {
+      left: 0;
+
+      .slides {
+        width: 100vw;
+      }
+    }
+
+    &--after {
+      z-index: 2;
+      left: auto;
+      right: 0;
+
+      .slides {
+        width: 100vw;
+        left: auto;
+        right: 0;
+      }
+    }
+
+    .slides {
+      animation: 10s slideshow-contrast -5s infinite;
+    }
+
+    .slide1 {
+      background-image: linear-gradient(to bottom, rgba(200,200,75,0.25) 0, rgba(200,75,75,0.5) 100%), url(http://ptondereau.perso.centrale-marseille.fr/images/ownstat_car.png);
+      // background-image: url(../img/slideshow/hero-1.jpg);
+      animation: 20s slides-set-1 -0.2s infinite;
+    }
+    .slide2 {
+      background-image: linear-gradient(to bottom, rgba(200,200,75,0.25) 0, rgba(200,75,75,0.5) 100%), url(http://ptondereau.perso.centrale-marseille.fr/images/conv_car.png);
+      // background-image: url(../img/slideshow/hero-2.jpg);
+      animation: 20s slides-set-2 -0.2s infinite;
+    }
+    .slide3 {
+      background-image: linear-gradient(to bottom, rgba(200,200,75,0.25) 0, rgba(200,75,75,0.5) 100%), url(http://ptondereau.perso.centrale-marseille.fr/images/profil_car.png);
+      // background-image: url(../img/slideshow/hero-3.jpg);
+      animation: 20s slides-set-3 -0.2s infinite;
+    }
+
+    &--after {
+      top: auto;
+      bottom: 0;
+
+      .slides {
+        animation: 13s slideshow-contrast -13s infinite;
+      }
+      .slide {
+        background-position: right;
+      }
+      .slide1 {
+        animation: 20s slides-set-1 infinite;
+      }
+      .slide2 {
+        animation: 20s slides-set-2 infinite;
+      }
+      .slide3 {
+        animation: 20s slides-set-3 infinite;
+      }
+    }
+
+    @media (min-width: 600px) {
+      width: 50%;
+      height: 100%;
+
+      &--after {
+        top: 0;
+        bottom: auto;
+
+        .slides {
+          width: 50vw;
+        }
+      }
+    }
+  }
 }
 
+.slides,
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
+@keyframes slideshow-hero-mobile {
+  0% {
+    transform: scale(1) skewY(10deg);
+  }
+  50% {
+    transform: scale(1.05) skewY(10deg);
+  }
+  100% {
+    transform: scale(1) skewY(10deg);
+  }
+}
+
+@keyframes slideshow-hero {
+  0% {
+    transform: scale(1) skewX(10deg);
+  }
+  50% {
+    transform: scale(1.05) skewX(10deg);
+  }
+  100% {
+    transform: scale(1) skewX(10deg);
+  }
+}
+
+@keyframes slideshow-contrast {
+  0% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slides-set-1 {
+  0% {
+    opacity: 1;
+    // transform: translateY(0);
+    transform: scale(1);
+  }
+  31% {
+    opacity: 1;
+    // transform: translateY(0);
+    transform: scale(1);
+  }
+  34% {
+    opacity: 0;
+    // transform: translateY(100px);
+    transform: scale(1.05);
+  }
+  97% {
+    opacity: 0;
+    // transform: translateY(-100px);
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    // transform: translateY(0);
+    transform: scale(1);
+  }
+}
+@keyframes slides-set-2 {
+  0% {
+    opacity: 0;
+    // transform: translateY(-100px);
+    transform: scale(1.05);
+  }
+  31% {
+    opacity: 0;
+    // transform: translateY(-100px);
+    transform: scale(1.05);
+  }
+  34% {
+    opacity: 1;
+    // transform: translateY(0);
+    transform: scale(1);
+  }
+  64% {
+    opacity: 1;
+    // transform: translateY(0);
+    transform: scale(1);
+  }
+  67% {
+    opacity: 0;
+    // transform: translateY(100px);
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    // transform: translateY(100px);
+    transform: scale(1.05);
+  }
+}
+@keyframes slides-set-3 {
+  0% {
+    opacity: 0;
+    // transform: translateY(-100px);
+    transform: scale(1.05);
+  }
+  64% {
+    opacity: 0;
+    // transform: translateY(-100px);
+    transform: scale(1.05);
+  }
+  67% {
+    opacity: 1;
+    // transform: translateY(0);
+    transform: scale(1);
+  }
+  97% {
+    opacity: 1;
+    // transform: translateY(0);
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    // transform: translateY(100px);
+    transform: scale(1.05);
+  }
+}
 
 
 // Demo only

@@ -18,41 +18,61 @@
   <p *ngIf="isRated" style="margin-top: 9%;font-size: 3em;">Merci !</p>
 </div>
 
-<div class="untitled" *ngIf="!isZipLoaded && !isLoading">
+<!--<div class="untitled" *ngIf="!isZipLoaded && !isLoading">
 	<div class="untitled__slides">
 		<div class="untitled__slide">
 			<div class="untitled__slideBg"></div>
 			<div class="untitled__slideContent">
-				<span>Bienvenue sur</span> 
-				<span>SightMess</span>
+				<span>Bienvenue sur SightMess</span>
 			</div>
 		</div>
 		<div class="untitled__slide">
 			<div class="untitled__slideBg"></div>
 			<div class="untitled__slideContent">
-				
-				<span>Version</span> 
-				<span>Test</span>
+				<span>Analysez vos statistiques messenger...</span>
 			</div>
 		</div>
 		<div class="untitled__slide">
 			<div class="untitled__slideBg"></div>
 			<div class="untitled__slideContent">
-				<span>Donnez vos</span> 
-				<span>Avis</span>
+				<span>Explorez vos conversations...</span>
 			</div>
 		</div>
 		<div class="untitled__slide">
 			<div class="untitled__slideBg"></div>
 			<div class="untitled__slideContent">
-				<span>Bisous</span> 
-				<span>Les potes</span>
+				<span>Découvrez qui vous êtes...</span> 
 			</div>
 		</div>
 	</div>
 	<div class="untitled__shutters"></div>
-</div>
+</div>-->
 
+<div class="wrapper" *ngIf="!isZipLoaded && !isLoading">
+  <div class="slideshows">
+    <div class="slideshow slideshow--hero">
+      <div class="slides">
+        <div class="slide slide1"></div>
+        <div class="slide slide2"></div>
+        <div class="slide slide3"></div>
+      </div>
+    </div>
+    <div class="slideshow slideshow--contrast slideshow--contrast--before">
+      <div class="slides">
+        <div class="slide slide1"></div>
+        <div class="slide slide2"></div>
+        <div class="slide slide3"></div>
+      </div>
+    </div>
+    <div class="slideshow slideshow--contrast slideshow--contrast--after">
+      <div class="slides">
+        <div class="slide slide1"></div>
+        <div class="slide slide2"></div>
+        <div class="slide slide3"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="uploadZone" *ngIf="!isZipLoaded && !isLoading">
   
