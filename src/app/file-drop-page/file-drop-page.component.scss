@@ -188,7 +188,7 @@ html, body{
 		95%{ filter: hue-rotate(270deg); }
 		100%{ filter: hue-rotate(360deg); }
 	}
-	animation: rotateHue infinite $t*$slides*2 linear;
+	animation: rotateHue infinite $t*$slides*2 none;
 	animation-delay: $t/4;
 	
 	&__shutters{
