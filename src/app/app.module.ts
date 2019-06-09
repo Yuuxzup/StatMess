@@ -32,13 +32,11 @@ import { SliderPersoComponent } from './home-pannel-page/profil-pannel/slider-pe
 import { ProfilServiceService } from './home-pannel-page/profil-pannel/profil-service.service';
 import { DeterminationService } from './home-pannel-page/profil-pannel/determination.service';
 import { CguComponent } from './cgu/cgu.component';
-
-
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   imports:[BrowserModule, FormsModule, ReactiveFormsModule,MaterialModule, HttpClientModule, NgbModule, IgxInputGroupModule,
-		IgxSliderModule],
+		IgxSliderModule, AngularFontAwesomeModule],
   declarations: [ AppComponent, FileDropPageComponent, HomePannelPageComponent, LoadingCustomComponent, ProfilPannelComponent, ConvsPannelComponent, OwnStatsPannelComponent, PrevisuConvComponent, OneConvStatsComponent, OverviewStatComponent, MessagesStatComponent, TimeStatComponent, ReactionsStatComponent, AutresStatComponent, SliderPersoComponent, CguComponent],
   bootstrap:    [ AppComponent ],
   providers: [StatsConvService, OwnStatsService, GlobalService, ProfilServiceService, DeterminationService]

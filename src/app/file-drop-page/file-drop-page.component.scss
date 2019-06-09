@@ -191,7 +191,7 @@ p {
     }
 
     .slide1 {
-      background-image: url("/assets/img/ownstat_car.png");
+      background-image: url("/assets/img/ownstat_car.jpg");
       animation: 20s slides-set-1 -0.1s infinite;
     }
     .slide2 {
@@ -250,11 +250,11 @@ p {
     }
 
     .slides {
-      animation: 10s slideshow-contrast -5s infinite;
+      animation: 10s slideshow-contrast -5s infinite; 
     }
 
     .slide1 {
-      background-image: linear-gradient(to bottom, rgba(200,200,75,0.25) 0, rgba(200,75,75,0.5) 100%), url("/assets/img/ownstat_car.png");
+      background-image: linear-gradient(to bottom, rgba(200,200,75,0.25) 0, rgba(200,75,75,0.5) 100%), url("/assets/img/ownstat_car.jpg");
       // background-image: url(../img/slideshow/hero-1.jpg);
       animation: 20s slides-set-1 -0.2s infinite;
     }
@@ -755,7 +755,7 @@ html,body {
 }
 
 .bienvenue h1{
-  padding-top:1%;
+  padding-top:2%;
   margin-bottom: 2vh;
 }
 
@@ -1195,10 +1195,8 @@ $ease: cubic-bezier(.2,1,.3,1);
 }
 
 .footer{
-  background-color: #1A1837;
   text-align: right;
   color: white;
-  position: fixed;
   width: 100%;
   bottom: 0px;
   z-index: 100;
@@ -1206,4 +1204,119 @@ $ease: cubic-bezier(.2,1,.3,1);
 
 .footer p{
   font-size: 100%;
+}
+
+//Reseaux
+
+.social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -10px;
+
+  &__button {
+    margin: 10px 5px 0;
+  }
+}
+
+$social-button-radius: 70px;
+$social-button-icon-size: 0.4;
+$social-button-background: #fff;
+$social-button-active-color: #fff;
+$social-button-transition-time: 0.3s;
+
+$social-button-colors: (
+  "mail": #0072c6,
+  "facebook": #3b5999,
+  "linkedin": #0077b5,
+  "github": #6e5494,
+  "codepen": #212121,
+  "steam": #7da10e,
+  "snapchat":#eec900,
+  "twitter": #55acee,
+  "instagram": #e4405f,
+  "npmjs": #c12127
+);
+
+.social-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  width: $social-button-radius;
+  height: $social-button-radius;
+  text-decoration: none;
+
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-radius: 100%;
+    background: $social-button-background;
+    text-align: center;
+  }
+
+  i,
+  svg {
+    position: relative;
+    z-index: 1;
+    transition: $social-button-transition-time;
+  }
+
+  i {
+    font-size: $social-button-radius * $social-button-icon-size;
+  }
+
+  svg {
+    height: percentage($social-button-icon-size);
+    width: percentage($social-button-icon-size);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    transition: $social-button-transition-time;
+  }
+
+  &:focus,
+  &:hover {
+    color: $social-button-active-color;
+
+    &::after {
+      width: 100%;
+      height: 100%;
+      margin-left: -50%;
+    }
+  }
+
+  @each $name, $color in $social-button-colors {
+    &--#{$name} {
+      color: $color;
+
+      &::after {
+        background: $color;
+      }
+    }
+  }
+}
+
+.oneCrea h1{
+  width:20vw;
+}
+
+.listCrea{
+  display: flex;
+  width: 70vw;
+  margin: auto;
+  justify-content: center;
 }
