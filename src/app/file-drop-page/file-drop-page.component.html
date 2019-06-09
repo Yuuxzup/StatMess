@@ -18,224 +18,233 @@
   <p *ngIf="isRated" style="margin-top: 9%;font-size: 3em;">Merci !</p>
 </div>
 
-<div class="untitled" *ngIf="!isZipLoaded && !isLoading">
-	<div class="untitled__slides">
-		<div class="untitled__slide">
-			<div class="untitled__slideBg"></div>
-			<div class="untitled__slideContent">
-				<span>Explorez</span> 
-				<span>vos stats</span>
-			</div>
-		</div>
-		<div class="untitled__slide">
-			<div class="untitled__slideBg"></div>
-			<div class="untitled__slideContent">
-				
-				<span>Version</span> 
-				<span>Test</span>
-			</div>
-		</div>
-		<div class="untitled__slide">
-			<div class="untitled__slideBg"></div>
-			<div class="untitled__slideContent">
-				<span>Donnez vos</span> 
-				<span>Avis</span>
-			</div>
-		</div>
-		<div class="untitled__slide">
-			<div class="untitled__slideBg"></div>
-			<div class="untitled__slideContent">
-				<span>Bisous</span> 
-				<span>Les potes</span>
-			</div>
-		</div>
-	</div>
-	<div class="untitled__shutters"></div>
-</div>
-
-
-<div class="uploadZone" *ngIf="!isZipLoaded && !isLoading">
-  
-  <div class="bienvenue">
-    <h1>Bienvenue sur SightMess</h1>
-    <div class="indicators">
-      <div class="compteur">
-        <img src="https://image.flaticon.com/icons/svg/148/148718.svg"/>
-        <p style="text-align:center;">Cette page a été visitée <b style="color:rgb(250, 138, 47);">{{nbrVisite}}</b> fois</p>
-      </div>
-      <div>
-        <p>Vos notes</p>
-        <div style="display:flex">
-          <div class="rating-holder">
-            <div class="c-rating c-rating--big" data-rating-value="4.5">
-              <button>1</button>
-              <button>2</button>
-              <button>3</button>
-              <button>4</button>
-              <button>5</button>
-            </div>
-          </div>
-          <p style="margin-top:auto;">({{nbrVote}})</p>
+<div [ngStyle]="{'display':isCguVisible ? 'None' : 'Block' }">
+  <div class="wrapper" *ngIf="!isZipLoaded && !isLoading">
+    <div class="slideshows">
+      <div class="slideshow slideshow--hero">
+        <div class="slides">
+          <div class="slide slide1"></div>
+          <div class="slide slide2"></div>
+          <div class="slide slide3"></div>
         </div>
       </div>
-  </div>
-    <hr class="overview">
-    <p>Notre site vous permet d’analyser l’ensemble de vos messages pour en faire ressortir la personne que vous êtes vraiment.</p>
-    <p style="padding-bottom:1%">Vous pourrez explorer des statistiques liées à vos conversations, voir les chiffres clés qui vous caractérisent ou encore en apprendre plus sur vous-même à travers l’élaboration de votre profil Messenger.</p>
-  </div>
-  <div class="listIcone">
-    <div class="card">
-      <img src="https://image.flaticon.com/icons/svg/889/889101.svg"/>
-      <h3>Fonctionne avec Messenger</h3>
-      <p>Obtenez vos messages depuis Facebook et explorez toutes vos conversations.</p>
-    </div>
-    <div class="card">
-      <img src="https://image.flaticon.com/icons/svg/138/138349.svg"/>
-      <h3>Trois panels complémentaires</h3>
-      <p>-Analysez vos conversations</p>
-      <p>-Obtenez vos caractéristiques propres</p>
-      <p>-Découvrez votre profil Messenger</p>
-    </div>
-    <div class="card">
-      <img src="https://image.flaticon.com/icons/svg/1661/1661966.svg"/>
-      <h3>Fonctionne sans internet</h3>
-      <p>Nous ne stockons aucune de vos données personnelles.</p>
-      <p>Seul vous avez accès aux informations affichées.</p> 
-      <p>SightMess fonctionne localement, vous pouvez donc couper Internet !</p>
+      <div class="slideshow slideshow--contrast slideshow--contrast--before">
+        <div class="slides">
+          <div class="slide slide1"></div>
+          <div class="slide slide2"></div>
+          <div class="slide slide3"></div>
+        </div>
+      </div>
+      <div class="slideshow slideshow--contrast slideshow--contrast--after">
+        <div class="slides">
+          <div class="slide slide1"></div>
+          <div class="slide slide2"></div>
+          <div class="slide slide3"></div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="lancezV">
-    <h1>Analyser mes messages</h1>
-    <hr class="overview">
-    <p>Cliquez sur le bouton ci-dessous et selectionnez votre dossier Facebook pour commencer l'analyse</p>
-    <p>Vous n'avez pas encore votre dossier ? <a class="clickHere" (click)="showTutorial()">Cliquez ici</a> pour l'obtenir
+
+  <div class="uploadZone" *ngIf="!isZipLoaded && !isLoading">
     
-  </div>
-
-  <div id="modal-container" (click)="hideTutorial()">
-    <div class="modal-background">
-      <div class="modal">
-        <div class="tutorial">
-          <div class="oneStep">
-            <div class="textSide2" style="margin-right:1%" >
-              <h1>1. Accéder à vos informations Facebook.</h1>
-              <hr class="overview">
-              <p>La première étape est d'accéder à la page <b>"Vos informations Facebook"</b> accessible via <a class="clickHere" href="https://www.facebook.com/settings?tab=your_facebook_information" target="_blank">ce lien</a>.</p>
-              <p>Vous pouvez également la rejoindre depuis vos paramètres Facebook.</p>
+    <div class="bienvenue">
+      <h1>Bienvenue sur SightMess</h1>
+      <div class="indicators">
+        <div class="compteur">
+          <img src="/assets/img/logo_oeil.svg"/>
+          <p style="text-align:center;">Cette page a été visitée <b style="color:rgb(250, 138, 47);">{{nbrVisite}}</b> fois</p>
+        </div>
+        <div>
+          <p>Vos notes</p>
+          <div style="display:flex">
+            <div class="rating-holder">
+              <div class="c-rating c-rating--big" data-rating-value="4.5">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+              </div>
             </div>
-            <div class="imgSide">
-              <img src="https://zupimages.net/up/19/21/muyw.png"
-              class="imageTutorial2"/>
-            </div>
+            <p style="margin-top:auto;">({{nbrVote}})</p>
           </div>
-    <div class="oneStep">
-      <div class="imgSide">
-        <img src="https://zupimages.net/up/19/21/svdi.png" 
-        class="imageTutorial2"/>
-      </div>
-      <div class="textSide2" style="margin-left:1%">
-        <h1>2. Sélectionner vos messages.</h1>
-        <hr class="overview">
-        <p style="margin-bottom:2%">Etape par étape : </p>
-        <p style="margin-bottom:1%">Format - <b>Mettre "JSON"</b></p>
-        <p style="margin-bottom:1%">Qualités des photos - <b>Mettre "Faible"</b></p>
-        <p style="margin-bottom:1%">Cliquez sur "Tout déselectionner" puis <b>cochez "Messages"</b></p>
-        <p>Vous pouvez appuyer sur <b>"Créer un fichier"</b> !</p>
-      </div>
+        </div>
     </div>
-    <div class="oneStep">
-      <div class="textSide2" style="margin-right:1%">
-        <h1>3. Téléchargez vos messages.</h1>
-        <hr class="overview">
-        <p>Après avoir attendu que Facebook créé votre dossier, vous pouvez télécharger vos messages ! <b>Vous serez notifié.</b></p>
-      </div>
-      <div class="imgSide">
-        <img src="https://zupimages.net/up/19/20/wed0.png" class="imageTutorial2"/>
-        <img src="https://zupimages.net/up/19/21/y1qr.png" id="flecheBas"/>
-        <img src="https://zupimages.net/up/19/20/g6x6.png" class="imageTutorial2"/>
-      </div>
-    </div>
-    <div class="oneStep">
-      <div class="imgSide">
-        <img src="https://zupimages.net/up/19/21/nfhf.png" 
-        class="imageTutorial2"/>
-      </div>
-      <div class="textSide2" style="margin-left:1%">
-        <h1>4. Extraire votre dossier</h1>
-        <hr class="overview">
-        <p style="margin-bottom:1%">Rendez-vous dans votre dossier “Téléchargements” et <b>décompressez</b> facebook-PrenomNom.zip.</p>
-        <p style="margin-bottom:1%">Vous pouvez utiliser pour cela n’importe quel logiciel de décompression, par exemple : </p>
-        <p>- <a class="clickHere" href="https://www.7-zip.fr/" target="_blank">7zip</a> sur Windows.</p>
-        <p>- <a class="clickHere" href="https://itunes.apple.com/fr/app/the-unarchiver/id425424353?mt=12" target="_blank">Unarchiver</a> sur Mac.</p>
-      </div>
-    </div>
-    <div class="oneStep">
-      <div class="textSide2" style="margin-right:1%">
-        <h1>5. Lancez l'analyse SightMess !</h1>
-        <hr class="overview">
-        <p>Vous n’avez plus qu’à sélectionner votre dossier</p>
-        <p>Et... <b>C’est parti !</b></p>
-      </div>
-      <div class="imgSide">
-        <img src="https://zupimages.net/up/19/21/7rvj.png" id="boutonUpload"/>
-        <img src="https://zupimages.net/up/19/21/y1qr.png" id="flecheBas"/>
-        <img src="https://zupimages.net/up/19/21/2sj6.png" class="imageTutorial2"/>
-      </div>
-    </div>
-    <div style="box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-      <h1>Enjoy SightMess !</h1>
       <hr class="overview">
-      <p style="text-align:left">PS : Sur Chrome, vous aurez ce message, c'est normal !</p>
-      <div class="imgSide">
-        <img src="https://zupimages.net/up/19/21/3kzt.png" class="imageTutorial" style="margin-top:3%; margin-bottom:3%; height:15%; width:50%"/>
-      </div>
-      <p style="text-align:center">Nous vous souhaitons une bonne utilisation et n'oubliez pas de donner votre avis.</p>
-      <p style="text-align:right; margin-top:2%; margin-bottom:1%; margin-right:3%">L'équipe SightMess</p>
+      <p>Notre site vous permet d’analyser l’ensemble de vos messages pour en faire ressortir la personne que vous êtes vraiment.</p>
+      <p style="padding-bottom:1%">Vous pourrez explorer des statistiques liées à vos conversations, voir les chiffres clés qui vous caractérisent ou encore en apprendre plus sur vous-même à travers l’élaboration de votre profil Messenger.</p>
     </div>
-  </div>
+    <div class="listIcone">
+      <div class="card">
+        <img src="/assets/img/logo_messenger.svg"/>
+        <h3>Fonctionne avec Messenger</h3>
+        <p>Obtenez vos messages depuis Facebook et explorez toutes vos conversations.</p>
+      </div>
+      <div class="card">
+        <img src="/assets/img/logo_stats.svg"/>
+        <h3>Trois panels complémentaires</h3>
+        <p>-Analysez vos conversations</p>
+        <p>-Obtenez vos caractéristiques propres</p>
+        <p>-Découvrez votre profil Messenger</p>
+      </div>
+      <div class="card">
+        <img src="/assets/img/logo_wireless.svg"/>
+        <h3>Fonctionne sans internet</h3>
+        <p>Nous ne stockons aucune de vos données personnelles.</p>
+        <p>Seul vous avez accès aux informations affichées.</p> 
+        <p>SightMess fonctionne localement, vous pouvez donc couper Internet !</p>
       </div>
     </div>
-  </div>
-
-  <input class="dropButton" type='file' (change)="onSelectFile($event)" webkitdirectory >
-  
-	<button class="buttonSelect">Selectionner votre dossier</button>
-	
-
-
-  <div class="qsn">
-    <h2 style="text-align:center; padding-top:1%">Qui sommes nous ?</h2>
-    <hr class="overview">
-    <p>Nous sommes trois étudiants de l’Ecole Centrale de Marseille. À l’origine, ce projet nous est venu par le constat que nous passions tous de longues heures sur Messenger, et pourtant nous ne savions pas combien. Nous ne savions pas qui étaient les personnes les plus influentes sur nos conversations, quelles étaient les personnes à qui nous parlions le plus à travers le temps, ou encore ce que nos habitudes de conversations pouvaient dire de nous. Nous avons alors cherché à donner sens à nos données Facebook, qui, sans algorithme, étaient illisibles.</p>
-    <p>Ce projet n’a pas vocation à faire de l’argent, mais simplement de partager l’analyse que nous avons faite de nos messages et faire sourire en formalisant des informations que l’utilisateur ne pouvait que supposer par le passé.</p>
-    <p style="padding-bottom:2%">Si vous avez une quelconque remarque sur notre site, que vous l’avez apprécié ou détesté, ou que vous trouvez un bug ou une amélioration possible, n’hésitez pas à nous écrire à <a href="mailto:contact.sightmess@gmail.com">contact.sightmess@gmail.com</a> ! Nous serons ravis de vous lire.</p>
-    <div class="linkedinBox">
-      <a href="https://www.linkedin.com/in/hugo-pillet-a29689152/" style="text-decoration:none;" target="_blank">
-      <div class="oneLinkedin">
-        <img src="https://image.flaticon.com/icons/svg/124/124011.svg" class="logoLinkedin">
-        <h3 style="margin-top:1%; color:black;  font-weight:unset;">Hugo Pillet</h3>
-      </div>
-      </a>
-      <a href="https://www.linkedin.com/in/paul-tondereau-674552150/" style="text-decoration:none;" target="_blank">
-      <div class="oneLinkedin">
-        <img src="https://image.flaticon.com/icons/svg/124/124011.svg" class="logoLinkedin">
-        <h3 style="margin-top:1%; color:black; text-decoration:none; font-weight:unset; ">Paul Tondereau</h3>
-      </div>
-      </a>
-      <a href="https://www.linkedin.com/in/paulwlf/" style="text-decoration:none;" target="_blank">
-      <div class="oneLinkedin">
-        <img src="https://image.flaticon.com/icons/svg/124/124011.svg" class="logoLinkedin">
-        <h3 style="margin-top:1%; color:black; text-decoration:none; font-weight:unset; ">Paul Wolf</h3>
-      </div>
-      </a>
+    <div class="lancezV">
+      <h1>Analyser mes messages</h1>
+      <hr class="overview">
+      <p>Cliquez sur le bouton ci-dessous et selectionnez votre dossier Facebook pour commencer l'analyse</p>
+      <p>Vous n'avez pas encore votre dossier ? <a class="clickHere" (click)="showTutorial()">Cliquez ici</a> pour l'obtenir
+      
     </div>
 
+    <div id="modal-container" (click)="hideTutorial()">
+      <div class="modal-background">
+        <div class="modal">
+          <div class="tutorial">
+            <div class="oneStep">
+              <div class="textSide2" style="margin-right:1%" >
+                <h1>1. Accéder à vos informations Facebook.</h1>
+                <hr class="overview">
+                <p>La première étape est d'accéder à la page <b>"Vos informations Facebook"</b> accessible via <a class="clickHere" href="https://www.facebook.com/settings?tab=your_facebook_information" target="_blank">ce lien</a>.</p>
+                <p>Vous pouvez également la rejoindre depuis vos paramètres Facebook.</p>
+              </div>
+              <div class="imgSide">
+                <img src="/assets/img/tutoriel1.png"
+                class="imageTutorial2"/>
+              </div>
+            </div>
+      <div class="oneStep">
+        <div class="imgSide">
+          <img src="/assets/img/tutoriel2.png" 
+          class="imageTutorial2"/>
+        </div>
+        <div class="textSide2" style="margin-left:1%">
+          <h1>2. Sélectionner vos messages.</h1>
+          <hr class="overview">
+          <p style="margin-bottom:2%">Etape par étape : </p>
+          <p style="margin-bottom:1%">Format - <b>Mettre "JSON"</b></p>
+          <p style="margin-bottom:1%">Qualités des photos - <b>Mettre "Faible"</b></p>
+          <p style="margin-bottom:1%">Cliquez sur "Tout déselectionner" puis <b>cochez "Messages"</b></p>
+          <p>Vous pouvez appuyer sur <b>"Créer un fichier"</b> !</p>
+        </div>
+      </div>
+      <div class="oneStep">
+        <div class="textSide2" style="margin-right:1%">
+          <h1>3. Téléchargez vos messages.</h1>
+          <hr class="overview">
+          <p>Après avoir attendu que Facebook créé votre dossier, vous pouvez télécharger vos messages ! <b>Vous serez notifié.</b></p>
+        </div>
+        <div class="imgSide">
+          <img src="/assets/img/tutoriel3.png" class="imageTutorial2"/>
+          <img src="/assets/img/tutoriel4.png" id="flecheBas"/>
+          <img src="/assets/img/tutoriel5.png" class="imageTutorial2"/>
+        </div>
+      </div>
+      <div class="oneStep">
+        <div class="imgSide">
+          <img src="/assets/img/tutoriel6.png" 
+          class="imageTutorial2"/>
+        </div>
+        <div class="textSide2" style="margin-left:1%">
+          <h1>4. Extraire votre dossier</h1>
+          <hr class="overview">
+          <p style="margin-bottom:1%">Rendez-vous dans votre dossier “Téléchargements” et <b>décompressez</b> facebook-PrenomNom.zip.</p>
+          <p style="margin-bottom:1%">Vous pouvez utiliser pour cela n’importe quel logiciel de décompression, par exemple : </p>
+          <p>- <a class="clickHere" href="https://www.7-zip.fr/" target="_blank">7zip</a> sur Windows.</p>
+          <p>- <a class="clickHere" href="https://itunes.apple.com/fr/app/the-unarchiver/id425424353?mt=12" target="_blank">Unarchiver</a> sur Mac.</p>
+        </div>
+      </div>
+      <div class="oneStep">
+        <div class="textSide2" style="margin-right:1%">
+          <h1>5. Lancez l'analyse SightMess !</h1>
+          <hr class="overview">
+          <p>Vous n’avez plus qu’à sélectionner votre dossier</p>
+          <p>Et... <b>C’est parti !</b></p>
+        </div>
+        <div class="imgSide">
+          <img src="/assets/img/tutoriel7.png" id="boutonUpload"/>
+          <img src="/assets/img/tutoriel4.png" id="flecheBas"/>
+          <img src="/assets/img/tutoriel8.png" class="imageTutorial2"/>
+        </div>
+      </div>
+      <div style="box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <h1>Enjoy SightMess !</h1>
+        <hr class="overview">
+        <p style="text-align:left">PS : Sur Chrome, vous aurez ce message, c'est normal !</p>
+        <div class="imgSide">
+          <img src="/assets/img/tutoriel9.png" class="imageTutorial" style="margin-top:3%; margin-bottom:3%; height:15%; width:50%"/>
+        </div>
+        <p style="text-align:center">Nous vous souhaitons une bonne utilisation et n'oubliez pas de donner votre avis.</p>
+        <p style="text-align:right; margin-top:2%; margin-bottom:1%; margin-right:3%">L'équipe SightMess</p>
+      </div>
+    </div>
+        </div>
+      </div>
+    </div>
+
+    <input class="dropButton" type='file' (change)="onSelectFile($event)" webkitdirectory >
+    
+    <button class="buttonSelect">Selectionner votre dossier</button>
+    
+    <img src="http://www.avocom971.fr/images2/bandeau-site-n.jpg" class="addGoogle" style="width:728px; height:90px; margin: auto; margin-top:3vh; margin-bottom: 3vh; display: block;"/>
+
+    <div class="qsn">
+      <h2 style="text-align:center; padding-top:1%">Qui sommes nous ?</h2>
+      <hr class="overview">
+      <p>Nous sommes trois étudiants de l’Ecole Centrale de Marseille. À l’origine, ce projet nous est venu par le constat que nous passions tous de longues heures sur Messenger, et pourtant nous ne savions pas combien. Nous ne savions pas qui étaient les personnes les plus influentes sur nos conversations, quelles étaient les personnes à qui nous parlions le plus à travers le temps, ou encore ce que nos habitudes de conversations pouvaient dire de nous. Nous avons alors cherché à donner sens à nos données Facebook, qui, sans algorithme, étaient illisibles.</p>
+      <p>Ce projet n’a pas vocation à faire de l’argent, mais simplement de partager l’analyse que nous avons faite de nos messages et faire sourire en formalisant des informations que l’utilisateur ne pouvait que supposer par le passé.</p>
+      <p style="padding-bottom:2%">Si vous avez une quelconque remarque sur notre site, que vous l’avez apprécié ou détesté, ou que vous trouvez un bug ou une amélioration possible, n’hésitez pas à nous écrire à <a href="mailto:contact.sightmess@gmail.com">contact.sightmess@gmail.com</a> ! Nous serons ravis de vous lire.</p>
+      <div class="linkedinBox">
+        <a href="https://www.linkedin.com/in/hugo-pillet-a29689152/" style="text-decoration:none;" target="_blank">
+        <div class="oneLinkedin">
+          <img src="/assets/img/logo_linkedin.svg" class="logoLinkedin">
+          <h3 style="margin-top:1%; color:black;  font-weight:unset;">Hugo Pillet</h3>
+        </div>
+        </a>
+        <a href="https://www.linkedin.com/in/paul-tondereau-674552150/" style="text-decoration:none;" target="_blank">
+        <div class="oneLinkedin">
+          <img src="/assets/img/logo_linkedin.svg" class="logoLinkedin">
+          <h3 style="margin-top:1%; color:black; text-decoration:none; font-weight:unset; ">Paul Tondereau</h3>
+        </div>
+        </a>
+        <a href="https://www.linkedin.com/in/paulwlf/" style="text-decoration:none;" target="_blank">
+        <div class="oneLinkedin">
+          <img src="/assets/img/logo_linkedin.svg" class="logoLinkedin">
+          <h3 style="margin-top:1%; color:black; text-decoration:none; font-weight:unset; ">Paul Wolf</h3>
+        </div>
+        </a>
+      </div>
+
+    </div>
   </div>
+
+  <!--Component de loading-->
+  <app-loading-custom *ngIf="isLoading &&!loadingOk" [valeurChargement]="loadingPercent" style="overflow-x: hidden; overflow-y: hidden"></app-loading-custom>
+
+  <!--Component principal avec les 3 pannels-->
+  <app-home-pannel-page *ngIf="loadingOk"
+    [listFilesDico]="listFilesDico"></app-home-pannel-page>
 </div>
 
-<!--Component de loading-->
-<app-loading-custom *ngIf="isLoading &&!loadingOk" [valeurChargement]="loadingPercent"></app-loading-custom>
+<div class="footer" *ngIf="!isCguVisible &&!loadingOk">
+  <h1 (click)="showHideCgu()" class="CGU">Conditions générales d'utilisation</h1>
+</div>
 
-<!--Component principal avec les 3 pannels-->
-<app-home-pannel-page *ngIf="loadingOk"
-  [listFilesDico]="listFilesDico"></app-home-pannel-page>
+<div class="cguPage" *ngIf="isCguVisible">
+  <div class="wrappercgu" (click)="showHideCgu()">
+    <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="prev" transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
+            <polygon class="arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+            <polygon class="arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+            <path d="M-1.48029737e-15,0.56157424 L-1.48029737e-15,16.1929159 L9.708,8.33860465 L-2.66453526e-15,0.56157424 L-1.48029737e-15,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
+        </g>
+    </svg>
+    </div>
+  <app-cgu></app-cgu>
+</div>

@@ -1,5 +1,5 @@
 p {
-  font-family:R 'Roboto', sans-serif;
+  font-family:'robotoReg', sans-serif;
 }
 
 
@@ -14,20 +14,6 @@ p {
   font-size: 2vh;
 }
 
-.footer{
-  background-color: #1A1837;
-  text-align: right;
-  color: white;
-  position: fixed;
-  width: 100%;
-  bottom: 0px;
-  z-index: 100;
-}
-
-.footer p{
-  font-size: 100%;
-}
-
 .main{
   width:98%;
   min-height:85.5vh;
@@ -39,7 +25,8 @@ p {
   background-color:  #EEEEEE;
   color: rgb(51, 51, 51);
   min-height:97vh;
-  font-family:'Roboto', sans-serif;
+  font-family:'robotoReg', sans-serif;
+  overflow: hidden;
 }
 
 .body{
@@ -47,7 +34,7 @@ p {
 }
 
 .cover {
-  background-image: url(https://zupimages.net/up/19/23/xcsm.jpg);
+  background-image: url("/assets/img/cover.jpg");
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center center; 
@@ -75,18 +62,6 @@ h1{
   font-size:3em;
 }
 
-.footer h1{
-  background: -webkit-linear-gradient(#fa8a2f, #d6571c);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: right;
-  margin-right: 20px;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
-  font-size: 1em;
-  margin-bottom:0.1%;
-}
-
 .button-container-2 p{
   background: -webkit-linear-gradient(rgb(250, 138, 47), rgb(214, 87, 28));
   -webkit-background-clip: text;
@@ -95,7 +70,6 @@ h1{
   margin-block-start: 0em;
   margin-block-end: 0em;
   font-size:1em;
-  
 }
 
 .rectLaunch:hover{
@@ -123,16 +97,17 @@ $col) {
   margin-right: auto;
   margin-left: auto;
   overflow: hidden;
-  border: 1px solid #fff;
   transition: 0.5s;
-  width: 390px;
+  width: 424px;
+  border-radius: 12px;
  
 
  button {
   font-weight: 300;
   font-size: 20px;
+  width: inherit;
 
-  @include button(#102A54,
+  @include button(white,
   "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png",
   3000%,
   100%,
@@ -182,20 +157,6 @@ $col) {
   -webkit-mask-position: 0 0;
   mask-position: 0 0;
  }
-}
-
-.cguPage .buttonBack{
-  background-color: white;
-  width: 100px;
-  padding: 10px;
-  border-radius: 20px;
-  border: 1px solid #1A1837;
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-.buttonBack:hover .Icon span{
-  background:#FA8A2F;
 }
 
 .Icon {
@@ -455,6 +416,12 @@ li > img{
   margin-top: 7%;
   margin-bottom: 1%;
   max-height: 400px;
+}
+
+.horizontalBar img{
+  width: 3.5vh;
+  height: 3.5vh;
+  margin-left: 1%;
 }
 
 

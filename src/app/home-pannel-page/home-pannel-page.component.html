@@ -1,34 +1,3 @@
-<div class="pannelSelector" style="display:none">
-  <div class="pannelWithIndic">
-    <div class="onePannelInSelector" (click)="switchPannel('home')">
-      <img src="https://requestreduce.org/images/logo-house-clipart-16.png">
-      <p>Home</p>
-    </div>
-    <div class="indicatorPannel {{isHome}}"></div>
-  </div>
-  <div class="pannelWithIndic">
-    <div class="onePannelInSelector" (click)="switchPannel('ownStats')">
-      <img src="https://image.flaticon.com/icons/png/512/57/57058.png">
-      <p>Mes stats</p>
-    </div>
-    <div class="indicatorPannel {{isMyStats}}"></div>
-  </div>
-   <div class="pannelWithIndic">
-    <div class="onePannelInSelector" (click)="switchPannel('statsConv')">
-      <img src="https://login.thedemandengine.net/Images/ShopWebsite/Message.png">
-      <p>Mes conversations</p>
-    </div>
-    <div class="indicatorPannel {{isMyConvs}}"></div>
-  </div>
-  <div class="pannelWithIndic">
-    <div class="onePannelInSelector" (click)="switchPannel('profil')">
-      <img src="https://images-eu.ssl-images-amazon.com/images/I/41J0uBGSfjL.png">
-      <p>Mon profil</p>
-    </div>
-    <div class="indicatorPannel {{isMyProfil}}"></div>
-  </div>
-</div>
-
 <div *ngIf="!isHome" class="wrapper" (click)="switchPannel('home')">
   <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g id="prev" transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
@@ -47,7 +16,7 @@
 
   <div class="tPannel">
     <figure class="snip1477" (click)="switchPannel('ownStats')">
-      <img src="https://image.flaticon.com/icons/svg/609/609120.svg" />
+      <img src="/assets/img/home_ownstat.svg" />
     <div class="title">
       <div>
         <h4>Stats globales</h4>
@@ -60,7 +29,7 @@
     </figure>
 
     <figure class="snip1477" (click)="switchPannel('statsConv')">
-      <img src="https://image.flaticon.com/icons/svg/608/608968.svg" />
+      <img src="/assets/img/home_conv.svg" />
     <div class="title">
       <div>
         <h4>Conversations</h4>
@@ -73,7 +42,7 @@
     </figure>
 
     <figure class="snip1477" (click)="switchPannel('profil')">
-      <img src="https://image.flaticon.com/icons/svg/417/417776.svg" />
+      <img src="/assets/img/home_profil.svg" />
     <div class="title">
       <div>
         <h4>Profil Messenger</h4>
@@ -86,8 +55,12 @@
     </figure>
   </div>
   <hr style="margin-bottom:0;" class="overview">
-</div>
 
+  <div style="display:flex; flex-wrap: wrap; padding-top: 3vh;">
+    <img src="http://www.avocom971.fr/images2/bandeau-site-n.jpg" class="addGoogle" style="width:728px; height:90px; margin: auto; display: block;"/>
+    <img src="http://www.avocom971.fr/images2/bandeau-site-n.jpg" class="addGoogle" style="width:728px; height:90px; margin: auto; display: block;"/>
+  </div>
+</div>
 
 <div class="mainPannel">
   <app-own-stats-pannel [listFilesDico]="listFilesDico" *ngIf="isMyStats"></app-own-stats-pannel>

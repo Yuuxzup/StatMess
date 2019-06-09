@@ -21,6 +21,7 @@ export class FileDropPageComponent implements OnInit{
   nbrVisite : any;
 
   isRateMoment=false;
+  isCguVisible=false;
 
   rating=0
   isRated=false;
@@ -106,12 +107,11 @@ export class FileDropPageComponent implements OnInit{
                   setTimeout(()=>{
                     this.listFilesDico = this.globalService.fillInfoInListFile(tempoListFilesDico)
                     this.globalService.findUserName(this.listFilesDico);
-                    console.log("username :"+this.globalService.findUserName(this.listFilesDico));
                     this.globalService.doCalculForOwnStats(this.listFilesDico)
                     this.globalService.doCalculForConv(this.listFilesDico)
                     this.globalService.doCalculForProfil(this.listFilesDico)
                     this.loadingOk=true;
-                    },3000)
+                    },5000)
                 }}
                 reader.onload = (event) => {
                   let nameTitle=decodeURIComponent(escape(JSON.parse(String((<FileReader>event.target).result))["title"]))
@@ -184,5 +184,9 @@ export class FileDropPageComponent implements OnInit{
       this.closeTooltip();
     }, 1500)
     
+  }
+
+  showHideCgu(){
+    this.isCguVisible=!this.isCguVisible;
   }
 }

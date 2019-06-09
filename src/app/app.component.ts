@@ -10,7 +10,6 @@ import { GlobalService } from './global.service';
 })
 export class AppComponent implements OnInit {
   isReady=false;
-  isCguVisible=false;
   timer = 8000;
 
   
@@ -75,10 +74,6 @@ export class AppComponent implements OnInit {
 
   launch(){
     this.isReady=true;
-  }
-
-  showHideCgu(){
-    this.isCguVisible=!this.isCguVisible
   }
 }
 

@@ -5,6 +5,14 @@
 @include igx-core();
 @include igx-theme($default-palette);
 
+@font-face {
+    font-family: 'robotoReg';
+    src: url('/assets/police/roboto/Roboto-Regular.ttf');
+}
+@font-face {
+    font-family: 'robotoLight';
+    src: url('/assets/police/roboto/Roboto-Light.ttf');
+}
 /* Add application styles & imports to this file! */
 body {
   margin-top:0px;
@@ -119,7 +127,7 @@ $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: orange;
+    background: #fa8a2f;
     border-radius: 10px;
 }
 
