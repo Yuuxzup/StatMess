@@ -44,7 +44,7 @@ export class FileDropPageComponent implements OnInit{
       (error) => {
     })
 
-    setTimeout(()=>{this.isRateMoment=true}, 180000)
+    setTimeout(()=>{this.isRateMoment=true}, 420000)
           
     this.httpClient
       .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
