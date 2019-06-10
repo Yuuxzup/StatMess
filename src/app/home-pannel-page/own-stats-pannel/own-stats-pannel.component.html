@@ -142,7 +142,7 @@
           <div class="sideTextBoxOverview">
             <p class="numberBox">{{nbMaxMessPer24.nbSent}}</p>
             <p class="descriptionBox">Nombre maximum de messages envoyés en 24h</p>
-            <p>({{nbMaxMessPer24.dateSent | date:short}})</p>
+            <p style="font-size: 0.7em;">({{nbMaxMessPer24.dateSent | date:short}})</p>
           </div>
         </div>
       </div>
@@ -155,7 +155,7 @@
           <div class="sideTextBoxOverview">
             <p class="numberBox">{{nbMaxMessPer24.nbReceived}}</p>
             <p class="descriptionBox">Nombre maximum de messages reçus en 24h</p>
-            <p>({{nbMaxMessPer24.dateReceived | date:short}})</p>
+            <p style="font-size: 0.7em;">({{nbMaxMessPer24.dateReceived | date:short}})</p>
           </div>
         </div>
       </div>
@@ -474,7 +474,7 @@
       <img class = "imgHelp" (click)="help('MessagesByTime')" src="/assets/img/logo_info.svg"/>
     </div>   
     <div class="sideImg">
-      <div class="helpText" id="helpMessagesByTime">
+      <div class="helpText" id="helpMessagesByTime" style="font-size: 1.8em;" >
         <p style="color:#ffffff; font-size: 80%;margin-top: 3%;">La courbe <b style="color:#FA8A2F">orange</b> indique le nombre de messages reçus en fonction du temps</p>
         <hr class="overview">
         <p style="color:#ffffff;font-size: 80%;">La courbe <b style="color:#1A1837">bleu foncé</b> indique le nombre de messages envoyés en fonction du temps</p>
@@ -497,7 +497,7 @@
       <img class = "imgHelp" (click)="help('ConversationsByTime')" src="/assets/img/logo_info.svg"/>
     </div>
     <div class="sideImg">
-      <div class="helpText" id="helpConversationsByTime">
+      <div class="helpText" id="helpConversationsByTime" style="font-size: 1.8em;">
           <p style="color:#ffffff; font-size: 80%;margin-top: 3%;">Chaque barre <b style="color:#FA8A2F">orange</b> indique le nombre de conversations que vous avez eues pendant la période de temps indiquée en bas</p>
           <div class="arrow_box" id="nbrConvPerTimeArrow">
             <h3>Le temps est affiché selon la date de votre premier message</h3>
@@ -519,7 +519,7 @@
       <img class = "imgHelp" (click)="help('GenderByTime')" src="/assets/img/logo_info.svg"/>
     </div>
     <div class="sideImg">
-      <div class="helpText" id="helpGenderByTime">
+      <div class="helpText" id="helpGenderByTime" style="font-size: 1.8em;">
           <p style="color:#ffffff; font-size: 50%;margin-top: 3%;">La barre <b style="color:rgb(241,77,156)">rose</b> indique le nombre de filles que à qui vous avez parlées pendant la période de temps indiquée en bas</p>
           <hr class="overview">
           <p style="color:#ffffff; font-size: 50%">La barre <b style="color:rgb(77,89,241)">bleu</b> indique le nombre de garçons à qui vous avez parlés pendant la période de temps indiquée en bas</p>
@@ -545,7 +545,7 @@
       <img class = "imgHelp" (click)="help('BestFriendsByTime')" src="/assets/img/logo_info.svg"/>
     </div>
     <div class="sideImg">
-      <div class="helpText" id="helpBestFriendsByTime">
+      <div class="helpText" id="helpBestFriendsByTime" style="font-size: 1.8em;">
           <p style="color:#ffffff; font-size: 50%;margin-top: 3%;">La barre indique le nombre de caractères envoyés à votre meilleur.e ami.e pendant la période indiquée en bas</p>
           <hr class="overview">
           <p style="color:#ffffff; font-size: 50%">Elle est <b style="color:rgb(241,77,156)">rose</b> si c'est une fille</p>
@@ -571,7 +571,7 @@
       <img class = "imgHelp" (click)="help('Reactions')" src="/assets/img/logo_info.svg"/>
     </div>
     <div class="sideImg">
-      <div class="helpText" id="helpReactions">
+      <div class="helpText" id="helpReactions" style="font-size: 1.8em;">
           <p style="color:#ffffff; font-size: 80%;margin-top:2%">Le <b style="color:#FA8A2F">orange</b> indique le nombre et le type de réactions que vous avez reçues</p>
           <p style="color:#ffffff; font-size: 80%;margin-top:2%">Le <b style="color:#1A1837">bleu foncé</b> indique le nombre et le type de réactions que vous avez envoyées</p>
           <div class="arrow_box" id="radarArrow">
@@ -590,7 +590,7 @@
       <img class = "imgHelp" (click)="help('MessagesPerTime')" src="/assets/img/logo_info.svg"/>
     </div>
     <div class="sideImg">
-      <div class="helpText" id="helpMessagesPerTime" style="text-align:center">
+      <div class="helpText" id="helpMessagesPerTime" style="text-align:centers; font-size: 1.8em;">
           <p style="color:#ffffff; font-size: 80%;margin-top:5%">Chaque barre <b style="color:#FA8A2F">orange</b> indique le pourcentage de messages envoyés dans la tranche horaire indiquée en bas</p>
           <hr class="overview">
           <p style="color:#ffffff; font-size: 80%;margin-top:1%">Exemple: si la barre <b style="color:#FA8A2F">orange</b> est à 20% sur l'horaire 14h, cela veut dire que vous avez envoyé 20% de vos messages entre 14h et 15h</p> 

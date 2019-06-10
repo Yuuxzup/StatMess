@@ -7,8 +7,8 @@
       </div>
       <div class="sideImg">
         <div class="helpText" id="helpNbrMessagePerTime">
-          <p>La courbe <b style="color:#FA8A2F">orange</b> indique votre pourcentage de messages envoyés par tranche horaire</p>
-          <p>Les bars <b style="color:#1A1837">bleu foncé</b> indiquent le pourcentage de messages envoyés de la conversation par tranche horaire</p>    
+          <p style="font-size:50%">La courbe <b style="color:#FA8A2F">orange</b> indique votre pourcentage de messages envoyés par tranche horaire</p>
+          <p style="font-size:50%">Les bars <b style="color:#1A1837">bleu foncé</b> indiquent le pourcentage de messages envoyés de la conversation par tranche horaire</p>    
         </div>
         <div *ngIf="hoursToSendChart" class="card-body p-1 m-0" style="position: relative; height: 95%; padding-top:2%;padding-bottom:3%;">
         <canvas class="statChart" #hoursToSendGraph id="graphNbrMessagePerTime">{{ hoursToSendChart }}</canvas>
@@ -25,15 +25,15 @@
       </div>
       <div class="sideImg">
         <div class="helpText" id="helpSumMessage">
-          <p style="font-size:45%;">Indique la somme des messages envoyés des participants de la conversation en fonction du temps</p>
-            <h3 style="font-size:45%; margin:auto; margin-bottom:0;">Si la conversation comporte plus de 5 personnes le graph affiche:</h3>
-            <p style="font-size:45%; margin:auto;">- Le top 5 des personnes écrivant le plus de caractères par messages</p> 
-            <p style="font-size:45%; margin:auto">- Vous en <b style="color:#FA8A2F">orange</b></p>
-            <p style="font-size:45%; margin:auto">- La moyenne de la conversation en <b style="color:#32CD32">vert</b></p> 
-            <h3 style="font-size:45%; margin-top:2%; margin-bottom:0">Le temps est affiché selon la date de votre premier message</h3>
-            <p style="margin-top:1%; font-size:45%;margin-top:0;margin-bottom:0;">- Soit par jour</p>
-            <p style="font-size:45%;margin-top:0;margin-bottom:0;">- Soit par mois : Sept 12 signifie Septembre 2012</p>
-            <p style="font-size:45%;margin-top:0;margin-bottom:0;">- Soit par année</p>
+          <p style="font-size:35%;">Indique la somme des messages envoyés des participants de la conversation en fonction du temps</p>
+            <h3 style="font-size:35%; margin:auto; margin-bottom:0;">Si la conversation comporte plus de 5 personnes le graph affiche:</h3>
+            <p style="font-size:35%; margin:auto;">- Le top 5 des personnes écrivant le plus de caractères par messages</p> 
+            <p style="font-size:35%; margin:auto">- Vous en <b style="color:#FA8A2F">orange</b></p>
+            <p style="font-size:35%; margin:auto">- La moyenne de la conversation en <b style="color:#32CD32">vert</b></p> 
+            <h3 style="font-size:35%; margin-top:2%; margin-bottom:0">Le temps est affiché selon la date de votre premier message</h3>
+            <p style="margin-top:1%; font-size:35%;margin-top:0;margin-bottom:0;">- Soit par jour</p>
+            <p style="font-size:35%;margin-top:0;margin-bottom:0;">- Soit par mois : Sept 12 signifie Septembre 2012</p>
+            <p style="font-size:35%;margin-top:0;margin-bottom:0;">- Soit par année</p>
                 
         </div>
         <div *ngIf="sumMessageChart" class="card-body p-1 m-0" style="position: relative; height: 100%; padding-top:1vh;padding-bottom:3%;">
