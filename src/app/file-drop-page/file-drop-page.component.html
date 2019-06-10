@@ -287,11 +287,11 @@
     [listFilesDico]="listFilesDico"></app-home-pannel-page>
 </div>
 
-<div class="footer" *ngIf="!isCguVisible &&!loadingOk">
+<div class="footer" *ngIf="!isCguVisible &&!isLoading">
   <h1 (click)="showHideCgu()" class="CGU">Conditions générales d'utilisation</h1>
 </div>
 
-<div class="cguPage" *ngIf="isCguVisible">
+<div class="cguPage" *ngIf="isCguVisible && !isLoading">
   <div class="wrappercgu" (click)="showHideCgu()">
     <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g id="prev" transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
