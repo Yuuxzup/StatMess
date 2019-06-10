@@ -148,6 +148,8 @@ export class GlobalService {
     console.log("findUserName = " + this.profilServiceService.findUserName(listFileDico))
     console.log("Launching calcul for : findUserSex")
     console.log("findUserSex = " + this.profilServiceService.findUserSex(listFileDico))
+    console.log("Launching calcul for : findLastMessageUploadTimestamp")
+    console.log("findLastMessageUploadTimestamp = " + this.profilServiceService.findLastMessageUploadTimestamp(listFileDico))
     console.log("Launching calcul for : calculScoreResBav")
     console.log("calculScoreResBav = " +    this.profilServiceService.calculScoreResBav(listFileDico))
     console.log("Launching calcul for : calculScoreFidExt")

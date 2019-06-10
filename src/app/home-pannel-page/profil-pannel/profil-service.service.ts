@@ -23,6 +23,7 @@ export class ProfilServiceService {
   scoreCoucheLeve : any;
   userName : any;
   userSex : any;
+  lastMessageUploadTimestamp : any;
   hoursISend : any;
 
   pinkColor= 'rgb(241,77,156)' ;
@@ -273,8 +274,8 @@ export class ProfilServiceService {
   let reactionUp = decodeURIComponent(escape('\u00f0\u009f\u0091\u008d'))
   let reactionDown = decodeURIComponent(escape('\u00f0\u009f\u0091\u008e'))
 
-    var now = new Date(Date.now());
-    var dateCible = new Date(Date.now());
+    var now = new Date(this.lastMessageUploadTimestamp);
+    var dateCible = new Date(this.lastMessageUploadTimestamp);
     if(now.getMonth() == 0 || now.getMonth() == 1){
       if(now.getMonth() == 0){
          dateCible.setMonth(10)
@@ -735,6 +736,14 @@ export class ProfilServiceService {
     return this.userSex
   }
 
+  findLastMessageUploadTimestamp(listFileDico : any){
+    if (this.lastMessageUploadTimestamp){
+      return this.lastMessageUploadTimestamp;
+    }
+    this.lastMessageUploadTimestamp = this.statsConvService.findLastMessageUploadTimestamp(listFileDico);
+    return this.lastMessageUploadTimestamp
+  }
+
 
 //    -----     -----    -----  SOUS CALCULS    -----    -----     -----
 
@@ -744,8 +753,8 @@ export class ProfilServiceService {
 
     var sommeCarac = 0
 
-    var now = new Date(Date.now());
-    var dateCible = new Date(Date.now());
+    var now = new Date(this.lastMessageUploadTimestamp);
+    var dateCible = new Date(this.lastMessageUploadTimestamp);
     if(now.getMonth() == 0 || now.getMonth() == 1){
       if(now.getMonth() == 0){
          dateCible.setMonth(10)
@@ -835,8 +844,8 @@ export class ProfilServiceService {
   var tabDesTempsDenvoi = []
   var username = this.userName
 
-    var now = new Date(Date.now());
-    var dateCible = new Date(Date.now());
+    var now = new Date(this.lastMessageUploadTimestamp);
+    var dateCible = new Date(this.lastMessageUploadTimestamp);
     if(now.getMonth() == 0 || now.getMonth() == 1){
       if(now.getMonth() == 0){
          dateCible.setMonth(10)
@@ -882,7 +891,6 @@ export class ProfilServiceService {
     if(tabDesTempsDenvoi[i+1]-tabDesTempsDenvoi[i] > CinqMinEnMs && tabDesTempsDenvoi[i+1]-tabDesTempsDenvoi[i] < SeptHeureEnMs ){
       sommeDesDelais += tabDesTempsDenvoi[i+1]-tabDesTempsDenvoi[i]
       nbDeDelais += 1
-      console.log('if nb de delais')
     }
   }
 
@@ -949,8 +957,8 @@ sousCalculNbConvDuoAndGroupPerPeriod(listFileDico : any){
   var nbConvDuo = 0
   var nbConvGroup = 0
 
-    var now = new Date(Date.now());
-    var dateCible = new Date(Date.now());
+    var now = new Date(this.lastMessageUploadTimestamp);
+    var dateCible = new Date(this.lastMessageUploadTimestamp);
     if(now.getMonth() == 0 || now.getMonth() == 1){
       if(now.getMonth() == 0){
          dateCible.setMonth(10)
@@ -1014,9 +1022,9 @@ sousCalculNbConvDuoAndGroupPerPeriod(listFileDico : any){
 // Prend volontairement en compte les nouveaux amis fb
 sousCalculNbDeNewContactPerPeriod(listFileDico : any){
 
-    var now = new Date(Date.now());
-    var dateCible2Month = new Date(Date.now());
-    var dateCible4Month = new Date(Date.now());
+    var now = new Date(this.lastMessageUploadTimestamp);
+    var dateCible2Month = new Date(this.lastMessageUploadTimestamp);
+    var dateCible4Month = new Date(this.lastMessageUploadTimestamp);
     if(now.getMonth() == 0 || now.getMonth() == 1){
       if(now.getMonth() == 0){
          dateCible2Month.setMonth(10)
@@ -1387,8 +1395,8 @@ sousCalculTotalSentReactions(listFileDico : any){
   let sommeMessRecus = 0
   let username = this.userName
 
-    var now = new Date(Date.now());
-    var dateCible = new Date(Date.now());
+    var now = new Date(this.lastMessageUploadTimestamp);
+    var dateCible = new Date(this.lastMessageUploadTimestamp);
     if(now.getMonth() == 0 || now.getMonth() == 1){
       if(now.getMonth() == 0){
          dateCible.setMonth(10)
