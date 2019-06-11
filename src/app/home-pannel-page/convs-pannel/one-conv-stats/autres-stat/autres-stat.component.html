@@ -3,19 +3,19 @@
     <div class="oneCard cardtopleft">
       <div class="sideText">
         <h2>Nombre de questions</h2>
-        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('Question')" src="/assets/img/logo_info.svg"/>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('Question')" src="./assets/img/logo_info.svg"/>
       </div>
       <div class="sideImg">
         <div class="helpText" id="helpQuestion">
           <p>Vous voulez de l'aide pour lire ?</p>       
         </div>
         <div id="graphQuestion" style="height:75%; padding-top:0.5%;">
-        <img style="height:20%;" src="/assets/img/logo_ask.svg"/>
+        <img style="height:20%;" src="./assets/img/logo_ask.svg"/>
         <p> {{nbreQuestionToPrintSum}} </p>
         <p> {{nbreQuestionToPrintAverage}} </p>
         <p> {{nbreQuestionsToPrintMax}} </p>
         <p> {{nbreQuestionsToPrintUser}} </p>
-        <img style="height:20%;" src="/assets/img/logo_ask.svg"/>
+        <img style="height:20%;" src="./assets/img/logo_ask.svg"/>
       </div>
       </div>  
     </div>
@@ -23,7 +23,7 @@
     <div class="oneCard cardtopright">
       <div class="sideText">
         <h2>Nombre de caractères</h2>
-        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('Book')" src="/assets/img/logo_info.svg"/>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('Book')" src="./assets/img/logo_info.svg"/>
       </div>
       <div class="sideImg">
         <div class="helpText" id="helpBook">
@@ -32,17 +32,17 @@
         </div>
         <div id="graphBook" class="explication">
           <div class="infoBox">
-            <img src="/assets/img/logo_txt.svg"/>
+            <img src="./assets/img/logo_txt.svg"/>
             <p>Caractères</p>
             <h5>{{bookStat['sumCaracteres']}}</h5>
           </div>
           <div class="infoBox">
-            <img src="/assets/img/logo_word.svg"/>
+            <img src="./assets/img/logo_word.svg"/>
             <p>Pages/participant</p>
             <h5>{{bookStat['averagePagesPerUser']}}</h5>
           </div>
           <div class="infoBox">
-            <img src="/assets/img/logo_fusee.svg"/>
+            <img src="./assets/img/logo_fusee.svg"/>
             <p>Vitesse</p>
             <h5>{{wordPerTimeToPrint}}</h5>
           </div>
@@ -50,7 +50,7 @@
       <hr style="margin-top:7%;" class="overview">
       <div class="explication" id="book">
         <div class="infoBox" id="infoBoxBook">
-          <img src="/assets/img/logo_book.svg"/>
+          <img src="./assets/img/logo_book.svg"/>
           <p style="margin-top: 1%;">Livre équivalent de la conversation</p>
         </div>
         <h5>{{bookStat['book']}}</h5>
@@ -65,7 +65,7 @@
     <div class="oneCard cardbotright">
       <div class="sideText">
         <h2>Distance</h2>
-        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('DistanceH')" src="/assets/img/logo_info.svg"/>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('DistanceH')" src="./assets/img/logo_info.svg"/>
       </div>
       <div class="sideImg">
         <div class="helpText" id="helpDistanceH">
@@ -74,12 +74,12 @@
         <div id="graphDistanceH" style="height:75%; padding-top:0.5%;">
         <div class="explication" id="distance">
           <div class="infoBox">
-            <img src="/assets/img/logo_distance.svg"/>
+            <img src="./assets/img/logo_distance.svg"/>
             <p>Distance parcourue</p>
             <h5>{{distanceStat['distanceTotal']}}</h5>
           </div>
           <div class="infoBox">
-            <img src="/assets/img/logo_fusee.svg"/>
+            <img src="./assets/img/logo_fusee.svg"/>
             <p>Vitesse</p>
             <h5>{{distancePerTimetoPrint}}</h5>
           </div>
@@ -91,7 +91,7 @@
     <div class="oneCard cardbotleft">
       <div class="sideText">
         <h2>Temps associés à la conversation</h2>
-        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('TimeHelp')" src="/assets/img/logo_info.svg"/>
+        <img class = "imgHelp" style="margin-top:0.55%" (click)="help('TimeHelp')" src="./assets/img/logo_info.svg"/>
       </div>
       <div class="sideImg">
         <div class="helpText" id="helpTimeHelp">
@@ -103,17 +103,17 @@
         <div id="graphTimeHelp" style="height:75%; padding-top:0.5%;">
         <div class="explication">
         <div class="infoTime">
-          <img src="/assets/img/logo_reading.svg"/>
+          <img src="./assets/img/logo_reading.svg"/>
           <hr class="overview">
           <p>Lire la conversation </p><h5>{{timeSpentTotal['read']}}</h5>
         </div>
         <div class="infoTime">
-          <img src="/assets/img/logo_readingpc.svg"/>
+          <img src="./assets/img/logo_readingpc.svg"/>
           <hr class="overview">
           <p>Écrire la conversation sur ordinateur </p><h5>{{timeSpentTotal['computer']}}</h5>
         </div>
         <div class="infoTime">
-          <img src="/assets/img/logo_writing.svg"/>
+          <img src="./assets/img/logo_writing.svg"/>
           <hr class="overview">
           <p>Écrire la conversation à la main </p><h5>{{timeSpentTotal['hand']}}</h5>
         </div>
