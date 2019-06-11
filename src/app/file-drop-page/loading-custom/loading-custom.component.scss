@@ -93,13 +93,14 @@ hr.overview{
 }
 
 .instruction{
-  margin-top:2.5%;
-  background : #1A1837;
-  color:white;
+  position: fixed;
+  margin-top: 2.5%;
+  background: #1A1837;
+  color: white;
   margin-left: -1.1%;
   padding-left: 1%;
   width: 101.1%;
-  padding-bottom: 1%;
+  bottom: 0px;
 }
 
 .instruction p{
