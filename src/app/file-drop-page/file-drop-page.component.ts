@@ -41,7 +41,7 @@ export class FileDropPageComponent implements OnInit{
           this.nbrVote+=rateTab[k]
         }
       },
-      (error) => {
+      (error) => { 
     })
 
     setTimeout(()=>{this.isRateMoment=true}, 420000)

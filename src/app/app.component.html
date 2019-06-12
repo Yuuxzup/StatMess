@@ -2,7 +2,7 @@
     <div *ngIf="!isReady">
       <div class="cover">
         <div class="logoSightMess">
-          <img src="/assets/img/logo_sightmess_bl.png"/>
+          <img src="./assets/img/logo_sightmess_bl.png"/>
         </div>
          <div class="button-container-2" (click)="launch()">
           <span class="mas" >
@@ -12,32 +12,12 @@
             <h1 style="letter-spacing: 16px; font-style:italic;" class="launchText"><b style="font-weight:300; font-family: 'robotoReg';">Sight</b><b style="font-weight:600; font-family: 'robotoReg'">Mess</b></h1>
           </button>
         </div>
-        <!--<div class="TestBox">
-          <p style="margin-left: 1%; text-align:left; font-size: 30px; margin-top:0; color:white; ">Ils ont testé :</p>
-        </div>
-        <ul id="c"> 
-		
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Un très beau site, des informations intéressantes : je recommande vivement !</p><p class="dateAvis">20/06/2019</p></div></li>
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Beau travail je me suis régalé !</p><p class="dateAvis">20/06/2019</p></div></li>
-                              
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Un dossier facebook un peu long à obtenir mais ça valait le coup c'était symmpa !</p><p class="dateAvis">20/06/2019</p></div></li>
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">C'est comme de la chantilly avec des fraises, on aime et on RECOMMANDE !!</p><p class="dateAvis">20/06/2019</p></div></li>
-                      
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Site intéressant. J'ai cliqué  sur la pub pour vous soutenir, suivez moi sur ma chaîne youtube.</p><p class="dateAvis">20/06/2019</p></div></li>
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Je suis tombé ici par hasard, j'ai vraiment craqué sur le profil linkedin de Hugo Pillet, on pourrait avoir son numéro ?</p><p class="dateAvis">20/06/2019</p></div></li>
 
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Ma femme me l'a recommandé durant un acte sexuel, vraiment je ne regrète pas, ma vie a changé depuis.</p><p class="dateAvis">20/06/2019</p></div></li>
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Mieux que le Coca Cola dans une bouteille en verre</p><p class="dateAvis">20/06/2019</p></div></li>
-
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">J'ai lancé le site sans internet, parce que ma maman a débranché la box, et vraiment c'était cool.</p><p class="dateAvis">20/06/2019</p></div></li>
-            <li><img src="/assets/img/pdp_hugo.jpg"/><div class="textAvis"><p class="nameAvis">Hugo Pillet</p><p class="avis">Salut, comment on fait pour avoir son dossier facebook ?</p><p class="dateAvis">20/06/2019</p></div></li>
-            
-        
-          </ul>-->
+        <div [ngStyle]="{'display':avisA ? 'Block' : 'None' }">
           <div class="container">
             <div class="card" style="left: 90px;top: 80px;">
-               <div class="card__image-container">
-                 <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/57280430_1236081799880880_7684476875216781312_n.jpg?_nc_cat=111&_nc_ht=scontent.fcdg1-1.fna&oh=128b9435a44c648a9287f5f8a428840d&oe=5D93F887" alt="">
+                <div class="card__image-container">
+                  <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/57280430_1236081799880880_7684476875216781312_n.jpg?_nc_cat=111&_nc_ht=scontent.fcdg1-1.fna&oh=128b9435a44c648a9287f5f8a428840d&oe=5D93F887" alt="">
               </div>
                 
                 <svg class="card__svg" viewBox="0 0 800 500">
@@ -46,17 +26,17 @@
                   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
                 </svg>
               
-               <div class="card__content">
-                 <h1 class="card__title">Paul Tondereau</h1>
-               <p>J'ai lancé le site sans internet, parce que ma maman a débranché la box, et vraiment c'était cool</p>
+                <div class="card__content">
+                  <h1 class="card__title">Paul Tondereau</h1>
+                <p>J'ai lancé le site sans internet, parce que ma maman a débranché la box, et vraiment c'était cool</p>
               </div>
             </div>
           </div>
 
           <div class="container">
             <div class="card" style="left: 243px;bottom: 80px;">
-               <div class="card__image-container">
-                 <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/20882649_1784857021554479_1603747138314449400_n.jpg?_nc_cat=103&_nc_ht=scontent.fcdg1-1.fna&oh=b533d1c1089ce0f9f3435f23098320f3&oe=5D5205E9" alt="">
+                <div class="card__image-container">
+                  <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/20882649_1784857021554479_1603747138314449400_n.jpg?_nc_cat=103&_nc_ht=scontent.fcdg1-1.fna&oh=b533d1c1089ce0f9f3435f23098320f3&oe=5D5205E9" alt="">
               </div>
                 
                 <svg class="card__svg" viewBox="0 0 800 500">
@@ -65,17 +45,17 @@
                   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
                 </svg>
               
-               <div class="card__content">
-                 <h1 class="card__title">Valentin Bonnier</h1>
-               <p>Ce site est une pure idée de génie ! J'ai découvert tellement de choses !</p>
+                <div class="card__content">
+                  <h1 class="card__title">Valentin Bonnier</h1>
+                <p>Ce site est une pure idée de génie ! J'ai découvert tellement de choses !</p>
               </div>
             </div>
           </div>
 
           <div class="container">
             <div class="card" style="right: 214px;bottom: 60px;">
-               <div class="card__image-container">
-                 <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/52136234_10215750779036726_81663979885166592_n.jpg?_nc_cat=103&_nc_ht=scontent.fcdg1-1.fna&oh=b1f7b63f1d53181a243640a5976f7d52&oe=5D550B34" alt="">
+                <div class="card__image-container">
+                  <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/52136234_10215750779036726_81663979885166592_n.jpg?_nc_cat=103&_nc_ht=scontent.fcdg1-1.fna&oh=b1f7b63f1d53181a243640a5976f7d52&oe=5D550B34" alt="">
               </div>
                 
                 <svg class="card__svg" viewBox="0 0 800 500">
@@ -84,17 +64,17 @@
                   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
                 </svg>
               
-               <div class="card__content">
-                 <h1 class="card__title">Hugo Pillet</h1>
-               <p>A la base j'étais juste curieux, maintenant c'est devenu un must ! Merci !</p>
+                <div class="card__content">
+                  <h1 class="card__title">Hugo Pillet</h1>
+                <p>A la base j'étais juste curieux, maintenant c'est devenu un must ! Merci !</p>
               </div>
             </div>
           </div>
 
           <div class="container">
             <div class="card" style="right: 110px;top: 80px;">
-               <div class="card__image-container">
-                 <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/40771171_2075305682785082_779381438595203072_n.jpg?_nc_cat=101&_nc_ht=scontent.fcdg1-1.fna&oh=a3fb45a5ff50d91da69a00565c3e9dbd&oe=5D93DF53" alt="">
+                <div class="card__image-container">
+                  <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/40771171_2075305682785082_779381438595203072_n.jpg?_nc_cat=101&_nc_ht=scontent.fcdg1-1.fna&oh=a3fb45a5ff50d91da69a00565c3e9dbd&oe=5D93DF53" alt="">
               </div>
                 
                 <svg class="card__svg" viewBox="0 0 800 500">
@@ -103,9 +83,88 @@
                   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
                 </svg>
               
-               <div class="card__content">
-                 <h1 class="card__title">Audrey Tordjmann</h1>
-               <p>Quel ne fût pas ma stupéfaction devant mon profil...</p>
+                <div class="card__content">
+                  <h1 class="card__title">Audrey Tordjmann</h1>
+                <p>Quelle ne fût pas ma stupéfaction devant mon profil...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div [ngStyle]="{'display':avisB ? 'Block' : 'None' }">
+            <div class="container">
+              <div class="card" style="left: 190px;top: 50px;">
+                  <div class="card__image-container">
+                    <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/48429148_2402544559786556_386611889171333120_n.jpg?_nc_cat=110&_nc_ht=scontent.fcdg1-1.fna&oh=19ae45cdbeb3dfb8324f40a373e183e9&oe=5D9F2067" alt="">
+                </div>
+                  
+                  <svg class="card__svg" viewBox="0 0 800 500">
+            
+                    <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+                    <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+                  </svg>
+                
+                  <div class="card__content">
+                    <h1 class="card__title">Paul Wolf</h1>
+                  <p>Bah franchement j'ai adoré, c'était top !</p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="container">
+              <div class="card" style="left: 103px;bottom: 140px;">
+                  <div class="card__image-container">
+                    <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/15672545_1831980463754306_795141872482928246_n.jpg?_nc_cat=107&_nc_ht=scontent.fcdg1-1.fna&oh=9d968fb05254fad869a357086050bee8&oe=5D8CC6FE" alt="">
+                </div>
+                  
+                  <svg class="card__svg" viewBox="0 0 800 500">
+            
+                    <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+                    <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+                  </svg>
+                
+                  <div class="card__content">
+                    <h1 class="card__title">Arthur Tondereau</h1>
+                  <p>Je ne m'attendais pas à ça, c'est pas mal</p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="container">
+              <div class="card" style="right: 114px;bottom:60px;">
+                  <div class="card__image-container">
+                    <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/61702595_10216752310113557_6428554637443334144_n.jpg?_nc_cat=102&_nc_ht=scontent.fcdg1-1.fna&oh=b0130e40a425f2c4550b6c7907953e39&oe=5D9E758E" alt="">
+                </div>
+                  
+                  <svg class="card__svg" viewBox="0 0 800 500">
+            
+                    <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+                    <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+                  </svg>
+                
+                  <div class="card__content">
+                    <h1 class="card__title">Cristina Grandjean</h1>
+                  <p>J'ai adoré !</p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="container">
+              <div class="card" style="right: 220px;top: 180px;">
+                  <div class="card__image-container">
+                    <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/32842180_1556713881121053_3901946095852322816_n.jpg?_nc_cat=110&_nc_ht=scontent.fcdg1-1.fna&oh=45019ff0ec42488173835961dd198734&oe=5D95EB93" alt="">
+                </div>
+                  
+                  <svg class="card__svg" viewBox="0 0 800 500">
+            
+                    <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+                    <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+                  </svg>
+                
+                  <div class="card__content">
+                    <h1 class="card__title">Matteo Lhommeau</h1>
+                  <p>Effectivement je suis plutôt du genre dragueur... Bien vu!</p>
+                </div>
               </div>
             </div>
           </div>
@@ -115,7 +174,7 @@
 
     <div *ngIf="isReady">
       <div class="horizontalBar">
-        <img class="logo" src="/assets/img/logoSightmess.png"/>
+        <img class="logo" src="./assets/img/logoSightmess.png"/>
         <h1 style="font-size : 3vh; margin-top:auto; margin-bottom:auto; margin-left:1%;">SightMess</h1>
       </div>
       <app-file-drop-page></app-file-drop-page>

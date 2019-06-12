@@ -12,11 +12,14 @@ export class AppComponent implements OnInit {
   isReady=false;
   timer = 8000;
 
+  avisA=true;
+  avisB=false;
   
 
   constructor(private globalService:GlobalService) { }
 
   ngOnInit(){
+    setTimeout(()=>{this.changeAvis()}, 7500)
     this.globalService.defineDB()
     console.log("BD on process : "+this.globalService.nameDB)
   }
@@ -74,6 +77,12 @@ export class AppComponent implements OnInit {
 
   launch(){
     this.isReady=true;
+  }
+
+  changeAvis(){
+    this.avisA=!this.avisA
+    this.avisB=!this.avisB
+    setTimeout(()=>{this.changeAvis()}, 7500)
   }
 }
 
