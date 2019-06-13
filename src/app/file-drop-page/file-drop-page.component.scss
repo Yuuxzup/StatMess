@@ -562,7 +562,7 @@ html,body {
   top:0;
   left:0;
   transform:scale(0);
-  z-index:1;
+  z-index:5;
   &.one {
     transform:scaleY(.01) scaleX(0);
     animation:unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
@@ -1013,7 +1013,7 @@ $rating-icons-paths: (
   position: -webkit-sticky;
   position: sticky;
   width: 60%;
-  height: 40vh;
+  height: 48vh;
   font-size: -webkit-xxx-large;
   text-align: center;
   margin: auto;
