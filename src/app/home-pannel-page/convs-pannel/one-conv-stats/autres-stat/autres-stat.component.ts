@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
-import { Chart } from 'chart.js';
 import { StatsConvService } from '../.././stats-conv.service';
 
 // Import les plugins
