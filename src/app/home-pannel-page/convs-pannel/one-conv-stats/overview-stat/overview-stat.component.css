@@ -129,7 +129,7 @@ h2 {
   bottom: 0;
   left: 0;
   right: 0;
-  background: url(https://i.f1g.fr/media/figaro/orig/2019/01/22/XVM7c94a5d8-1e71-11e9-a628-f5feed317e99.jpg) center center;
+  background: url("../../../../../assets/img/card_freeze.jpg") center center;
   opacity: .4;
   width: 100%;
   height: 100%;
@@ -142,7 +142,7 @@ h2 {
   bottom: 0;
   left: 0;
   right: 0;
-  background: url(https://66.media.tumblr.com/d3f3f6ec5459140e1c6f99b6cd22fa93/tumblr_og6xw27BVe1vr11fyo1_400.jpg) center center;
+  background: url("../../../../../assets/img/card_fire.jpg") center center;
   opacity: .4;
   width: 100%;
   height: 100%;
@@ -155,7 +155,7 @@ h2 {
   bottom: 0;
   left: 0;
   right: 0;
-  background: url(https://i.pinimg.com/originals/b5/64/dd/b564ddcc3c8886c9479b4f1275677781.jpg) center center;
+  background: url("../../../../../assets/img/card_strike.jpg") center center;
   opacity: .4;
   width: 100%;
   height: 100%;
