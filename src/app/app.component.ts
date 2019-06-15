@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   avisA=true;
   avisB=false;
   
+  
 
   constructor(private globalService:GlobalService) { }
 
