@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StatsConvService } from './stats-conv.service';
+import {GlobalService} from '../../global.service'
 
 @Component({
   selector: 'app-convs-pannel',
@@ -8,7 +9,7 @@ import { StatsConvService } from './stats-conv.service';
 })
 export class ConvsPannelComponent implements OnInit {
 
-  @Input() listFilesDico : any;
+  listFilesDico : any;
 
   //Variable pour les filtres et les tris
   filtreDico={text:"", listeStatus:{isConvGroup:true,isConvSolo:true}}
@@ -20,9 +21,10 @@ export class ConvsPannelComponent implements OnInit {
   fileConvToDisplay : any;
   isConvStatFirstRun=true;
 
-  constructor(private statsConvService: StatsConvService) { }
+  constructor(private statsConvService: StatsConvService, private globalService : GlobalService) { }
 
   ngOnInit() {
+    this.listFilesDico = this.globalService.listFileDicoFilled;
     this.isStats= false;
     this.isConvStatFirstRun=this.statsConvService.firstRun
     this.statsConvService.switchBooleanFirstRun()

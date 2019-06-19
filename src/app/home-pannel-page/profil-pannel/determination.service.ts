@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {ProfilServiceService} from './profil-service.service';
 
+
 @Injectable()
 export class DeterminationService {
 
   profilType:any;
   dataForText:any;
+  listFileDico : any;
 
   constructor(private profilServiceService : ProfilServiceService) { }
 

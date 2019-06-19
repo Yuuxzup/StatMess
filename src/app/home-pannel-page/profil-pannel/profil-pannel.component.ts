@@ -55,6 +55,7 @@ export class ProfilPannelComponent implements OnInit {
   }
 
   calculDataForSlider(){
+
     this.profilServiceService.findUserName(this.listFilesDico);
     this.profilServiceService.findUserSex(this.listFilesDico);
     this.profilServiceService.findLastMessageUploadTimestamp(this.listFilesDico);

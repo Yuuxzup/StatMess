@@ -10,6 +10,7 @@ import { StatsConvService } from './home-pannel-page/convs-pannel/stats-conv.ser
 export class GlobalService {
   userName : any;
   nameDB:any;
+  listFileDicoFilled:any;
 
   private isLoading=false;
   constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService) { }
@@ -275,6 +276,12 @@ export class GlobalService {
     this.statsConvService.findUserName(listFileDico)
   }
 
+  doCalcul(){
+    this.findUserName(this.listFileDicoFilled);
+    this.doCalculForOwnStats(this.listFileDicoFilled);
+    this.doCalculForConv(this.listFileDicoFilled);
+    this.doCalculForProfil(this.listFileDicoFilled);
+  }
   fillInfoInListFile(listFileDicoNotFilled : any){
     console.log("Launching fillInfoInListFile")
     this.statsConvService.findLastMessageUploadTimestamp(listFileDicoNotFilled);
@@ -295,6 +302,6 @@ export class GlobalService {
       newListFileDicoFilled.push(fileDico)
       } 
     }
-    return newListFileDicoFilled
+    this.listFileDicoFilled = newListFileDicoFilled;
   }
 }

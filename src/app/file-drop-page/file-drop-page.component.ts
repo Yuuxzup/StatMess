@@ -105,11 +105,7 @@ export class FileDropPageComponent implements OnInit{
                 amountTackled+=1;
                 if (amountTackled===filesAmount){
                   setTimeout(()=>{
-                    this.listFilesDico = this.globalService.fillInfoInListFile(tempoListFilesDico)
-                    this.globalService.findUserName(this.listFilesDico);
-                    this.globalService.doCalculForOwnStats(this.listFilesDico)
-                    this.globalService.doCalculForConv(this.listFilesDico)
-                    this.globalService.doCalculForProfil(this.listFilesDico)
+                    this.globalService.doCalcul()
                     this.loadingOk=true;
                     },5000)
                 }}

@@ -4,6 +4,7 @@ import * as baseGenre2 from '../../../data/baseGenre2.json';
 
 @Injectable()
 export class OwnStatsService {
+
   userName : any;
   bubbleConv : any;
   hoursISend : any;

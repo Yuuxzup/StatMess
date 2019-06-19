@@ -15,7 +15,7 @@
   </div>
 
   <div class="tPannel">
-    <figure class="snip1477" (click)="switchPannel('ownStats')">
+    <figure class="snip1477"  [routerLink]="['own-stats']">
       <img src="./assets/img/home_ownstat.svg" />
     <div class="title">
       <div>
@@ -25,10 +25,9 @@
     <figcaption>
       <p>Analysez vos statistiques personnelles sur tous vos messages.</p>
     </figcaption>
-    <a href="#"></a>
     </figure>
 
-    <figure class="snip1477" (click)="switchPannel('statsConv')">
+    <figure class="snip1477"  [routerLink]="['conv']">
       <img src="./assets/img/home_conv.svg" />
     <div class="title">
       <div>
@@ -38,10 +37,9 @@
     <figcaption>
       <p>Analysez chacune de vos conversations en détail.</p>
     </figcaption>
-    <a href="#"></a>
     </figure>
 
-    <figure class="snip1477" (click)="switchPannel('profil')">
+    <figure class="snip1477"  [routerLink]="['profil']">
       <img src="./assets/img/home_profil.svg" />
     <div class="title">
       <div>
@@ -51,7 +49,6 @@
     <figcaption>
       <p>Déterminez votre profil Messenger.</p>
     </figcaption>
-    <a href="#"></a>
     </figure>
   </div>
   <hr style="margin-bottom:0;" class="overview">
@@ -63,7 +60,5 @@
 </div>
 
 <div class="mainPannel">
-  <app-own-stats-pannel [listFilesDico]="listFilesDico" *ngIf="isMyStats"></app-own-stats-pannel>
-  <app-convs-pannel [listFilesDico]="listFilesDico" *ngIf="isMyConvs"></app-convs-pannel>
-  <app-profil-pannel [listFilesDico]="listFilesDico" *ngIf="isMyProfil"></app-profil-pannel>
+  <router-outlet></router-outlet>
 </div>
