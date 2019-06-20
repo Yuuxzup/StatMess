@@ -44,7 +44,9 @@ const appRoutes: Routes =[
   { path:'home/own-stats', component: OwnStatsPannelComponent},
   { path: 'home/conv', component: ConvsPannelComponent},
   { path:'home/profil', component: ProfilPannelComponent},
-  { path:'**', redirectTo:'home', pathMatch:'full'}
+  { path:'**', redirectTo:'home', pathMatch:'full'},
+  { path:'panels', component: HomePannelPageComponent},
+  { path:'loading', component: LoadingCustomComponent}
 
   
 ]
