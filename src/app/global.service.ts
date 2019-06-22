@@ -12,6 +12,7 @@ export class GlobalService {
   userName : any;
   nameDB:any;
   listFileDicoFilled:any;
+  loadingDone = false;
 
   private isLoading=false;
   constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService, private router: Router) { }
@@ -306,5 +307,9 @@ export class GlobalService {
     this.doCalculForOwnStats(this.listFileDicoFilled);
     this.doCalculForConv(this.listFileDicoFilled);
     this.doCalculForProfil(this.listFileDicoFilled);
+  }
+
+  updateLoading(){
+    this.loadingDone = true;
   }
 }

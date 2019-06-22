@@ -1,7 +1,9 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
 import {OwnStatsService} from './own-stats.service';
 import { Chart, ChartOptions } from 'chart.js';
-import {GlobalService} from '../../global.service'
+import {GlobalService} from '../../global.service';
+import {RouterModule,Router} from '@angular/router';
+
 
 // Import plugins
 
@@ -111,10 +113,15 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
   @ViewChild('repartitionTypeMessageGraph') repartitionTypeMessageGraph: ElementRef;
   repartitionTypeMessageChart =[];
 
-  constructor(private elementRef: ElementRef, private ownStatsService : OwnStatsService, private globalService : GlobalService) {
+  constructor(private elementRef: ElementRef, private ownStatsService : OwnStatsService, private globalService : GlobalService, private router : Router) {
   }
 
    ngOnInit() {
+
+    if(this.globalService.loadingDone=== false){
+      this.router.navigate(['../../home']);
+      alert("Veuillez sélectionner votre dossier à analyser afin d'accéder à cette page");
+    }
 
     this.isFileOpen=false;
     this.isOwnStatFirstRun=this.ownStatsService.firstRun 

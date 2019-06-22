@@ -41,14 +41,11 @@ import {Routes, RouterModule} from "@angular/router"
 const appRoutes: Routes =[
   { path: '', component: LandingComponent},
   { path: 'home', component: FileDropPageComponent},
-  { path:'home/own-stats', component: OwnStatsPannelComponent},
-  { path: 'home/conv', component: ConvsPannelComponent},
-  { path:'home/profil', component: ProfilPannelComponent},
-  { path:'**', redirectTo:'home', pathMatch:'full'},
+  { path:'panels/own-stats', component: OwnStatsPannelComponent},
+  { path: 'panels/conv', component: ConvsPannelComponent},
+  { path:'panels/profil', component: ProfilPannelComponent},
   { path:'panels', component: HomePannelPageComponent},
-  { path:'loading', component: LoadingCustomComponent}
-
-  
+  { path:'**', redirectTo:'home', pathMatch:'full'} 
 ]
 
 

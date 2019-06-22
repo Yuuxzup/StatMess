@@ -82,7 +82,6 @@ export class FileDropPageComponent implements OnInit{
 
   onSelectFile(event) {
   this.isLoading=true;
-  this.router.navigate(['loading'])
   let files = event.target.files;
   let newFiles = [];
   for (let i=0; i<files.length; i++) {
@@ -112,6 +111,8 @@ export class FileDropPageComponent implements OnInit{
                     this.globalService.fillInfoInListFile(tempoListFilesDico)
                     this.globalService.doCalcul()
                     this.loadingOk=true;
+                    this.globalService.updateLoading();
+                    this.router.navigate(['../panels'])
                     },5000)
                 }}
                 reader.onload = (event) => {
