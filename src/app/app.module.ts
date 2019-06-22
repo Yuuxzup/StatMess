@@ -50,7 +50,7 @@ const appRoutes: Routes =[
 
 
 @NgModule({
-  imports:[BrowserModule, FormsModule, ReactiveFormsModule,MaterialModule, HttpClientModule, NgbModule, IgxInputGroupModule,
+  imports:[BrowserModule.withServerTransition({ appId: 'serverApp' }), FormsModule, ReactiveFormsModule,MaterialModule, HttpClientModule, NgbModule, IgxInputGroupModule,
 		IgxSliderModule, AngularFontAwesomeModule, RouterModule.forRoot(appRoutes)],
   declarations: [ AppComponent, FileDropPageComponent, HomePannelPageComponent, LoadingCustomComponent, ProfilPannelComponent, ConvsPannelComponent, OwnStatsPannelComponent, PrevisuConvComponent, OneConvStatsComponent, OverviewStatComponent, MessagesStatComponent, TimeStatComponent, ReactionsStatComponent, AutresStatComponent, SliderPersoComponent, CguComponent, LandingComponent],
   bootstrap:    [ AppComponent ],

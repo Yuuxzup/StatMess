@@ -18,8 +18,8 @@ export class GlobalService {
   constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService, private router: Router) { }
 
   defineDB(){
-    let loc = document.location.href;
-    this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' : 'https://statmess-trunk.firebaseio.com/';
+    //let loc = document.location.href;
+    //this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' : 'https://statmess-trunk.firebaseio.com/';
 
     /*
     //Création de la table profil
