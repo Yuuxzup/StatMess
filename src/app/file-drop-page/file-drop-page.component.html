@@ -1,310 +1,484 @@
-<div class="horizontalBar">
-    <img class="logo" src="./assets/img/logoSightmess.png"/>
-    <h1 style="font-size : 3vh; margin-top:auto; margin-bottom:auto; margin-left:1%;">SightMess</h1>
+<div class="landing" *ngIf="!isReady">
+  <div class="cover">
+    <div class="logoSightMess">
+      <img src="./assets/img/logo_sightmess_bl.png"/>
+    </div>
+     <div class="button-container-2" (click)="launch()">
+      <span class="mas" >
+        <h1 class="launchText">Lancez Vous</h1>
+      </span>
+      <button style="padding: 0;" type="button" name="Hover" >
+        <h1 style="letter-spacing: 16px; font-style:italic;" class="launchText"><b style="font-weight:300; font-family: 'robotoReg';">Sight</b><b style="font-weight:600; font-family: 'robotoReg'">Mess</b></h1>
+      </button>
+    </div>
+
+    <!--<div [ngStyle]="{'display':avisA ? 'Block' : 'None' }">
+      <div class="container">
+        <div class="card" style="left: 90px;top: 80px;">
+            <div class="card__image-container">
+              <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/57280430_1236081799880880_7684476875216781312_n.jpg?_nc_cat=111&_nc_ht=scontent.fcdg1-1.fna&oh=128b9435a44c648a9287f5f8a428840d&oe=5D93F887" alt="">
+          </div>
+            
+            <svg class="card__svg" viewBox="0 0 800 500">
+      
+              <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+              <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+            </svg>
+          
+            <div class="card__content">
+              <h1 class="card__title">Paul Tondereau</h1>
+            <p>J'ai lancé le site sans internet, parce que ma maman a débranché la box, et vraiment c'était cool</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card" style="left: 243px;bottom: 80px;">
+            <div class="card__image-container">
+              <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/20882649_1784857021554479_1603747138314449400_n.jpg?_nc_cat=103&_nc_ht=scontent.fcdg1-1.fna&oh=b533d1c1089ce0f9f3435f23098320f3&oe=5D5205E9" alt="">
+          </div>
+            
+            <svg class="card__svg" viewBox="0 0 800 500">
+      
+              <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+              <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+            </svg>
+          
+            <div class="card__content">
+              <h1 class="card__title">Valentin Bonnier</h1>
+            <p>Ce site est une pure idée de génie ! J'ai découvert tellement de choses !</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card" style="right: 214px;bottom: 60px;">
+            <div class="card__image-container">
+              <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/52136234_10215750779036726_81663979885166592_n.jpg?_nc_cat=103&_nc_ht=scontent.fcdg1-1.fna&oh=b1f7b63f1d53181a243640a5976f7d52&oe=5D550B34" alt="">
+          </div>
+            
+            <svg class="card__svg" viewBox="0 0 800 500">
+      
+              <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+              <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+            </svg>
+          
+            <div class="card__content">
+              <h1 class="card__title">Hugo Pillet</h1>
+            <p>A la base j'étais juste curieux, maintenant c'est devenu un must ! Merci !</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card" style="right: 110px;top: 80px;">
+            <div class="card__image-container">
+              <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/40771171_2075305682785082_779381438595203072_n.jpg?_nc_cat=101&_nc_ht=scontent.fcdg1-1.fna&oh=a3fb45a5ff50d91da69a00565c3e9dbd&oe=5D93DF53" alt="">
+          </div>
+            
+            <svg class="card__svg" viewBox="0 0 800 500">
+      
+              <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+              <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+            </svg>
+          
+            <div class="card__content">
+              <h1 class="card__title">Audrey Tordjmann</h1>
+            <p>Quelle ne fût pas ma stupéfaction devant mon profil...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div [ngStyle]="{'display':avisB ? 'Block' : 'None' }">
+        <div class="container">
+          <div class="card" style="left: 190px;top: 50px;">
+              <div class="card__image-container">
+                <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/48429148_2402544559786556_386611889171333120_n.jpg?_nc_cat=110&_nc_ht=scontent.fcdg1-1.fna&oh=19ae45cdbeb3dfb8324f40a373e183e9&oe=5D9F2067" alt="">
+            </div>
+              
+              <svg class="card__svg" viewBox="0 0 800 500">
+        
+                <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+                <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+              </svg>
+            
+              <div class="card__content">
+                <h1 class="card__title">Paul Wolf</h1>
+              <p>Bah franchement j'ai adoré, c'était top !</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="card" style="left: 103px;bottom: 140px;">
+              <div class="card__image-container">
+                <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/15672545_1831980463754306_795141872482928246_n.jpg?_nc_cat=107&_nc_ht=scontent.fcdg1-1.fna&oh=9d968fb05254fad869a357086050bee8&oe=5D8CC6FE" alt="">
+            </div>
+              
+              <svg class="card__svg" viewBox="0 0 800 500">
+        
+                <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+                <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+              </svg>
+            
+              <div class="card__content">
+                <h1 class="card__title">Arthur Tondereau</h1>
+              <p>Je ne m'attendais pas à ça, c'est pas mal</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="card" style="right: 114px;bottom:60px;">
+              <div class="card__image-container">
+                <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/61702595_10216752310113557_6428554637443334144_n.jpg?_nc_cat=102&_nc_ht=scontent.fcdg1-1.fna&oh=b0130e40a425f2c4550b6c7907953e39&oe=5D9E758E" alt="">
+            </div>
+              
+              <svg class="card__svg" viewBox="0 0 800 500">
+        
+                <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+                <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+              </svg>
+            
+              <div class="card__content">
+                <h1 class="card__title">Cristina Grandjean</h1>
+              <p>J'ai adoré !</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="card" style="right: 220px;top: 180px;">
+              <div class="card__image-container">
+                <img class="card__image" src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.0-9/32842180_1556713881121053_3901946095852322816_n.jpg?_nc_cat=110&_nc_ht=scontent.fcdg1-1.fna&oh=45019ff0ec42488173835961dd198734&oe=5D95EB93" alt="">
+            </div>
+              
+              <svg class="card__svg" viewBox="0 0 800 500">
+        
+                <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+                <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+              </svg>
+            
+              <div class="card__content">
+                <h1 class="card__title">Matteo Lhommeau</h1>
+              <p>Effectivement je suis plutôt du genre dragueur... Bien vu!</p>
+            </div>
+          </div>
+        </div>
+      </div>-->
+
+  </div>
 </div>
 
-  <div class="popupToRate" *ngIf="isRateMoment">
-      <div class="close-container" (click)="closeTooltip()">
-        <div class="leftright"></div>
-        <div class="rightleft"></div>
-        <label class="close">close</label>
-      </div>
-      <h1 style="margin-left: 11%;" *ngIf="!isRated">Donnez votre avis !</h1>
-      <p *ngIf="!isRated">Que pensez vous de SightMess ?</p>
-      <div class="rating-holder">
-        <div *ngIf="!isRated" class="c-rating c-rating--big" data-rating-value="0">
-          <button (click)=rateSightMess(1)>1</button>
-          <button (click)=rateSightMess(2)>2</button>
-          <button (click)=rateSightMess(3)>3</button>
-          <button (click)=rateSightMess(4)>4</button>
-          <button (click)=rateSightMess(5)>5</button>
+<div class="explications" *ngIf="isReady">
+  <div class="horizontalBar">
+      <img class="logo" src="./assets/img/logoSightmess.png"/>
+      <h1 style="font-size : 3vh; margin-top:auto; margin-bottom:auto; margin-left:1%;">SightMess</h1>
+  </div>
+
+    <div class="popupToRate" *ngIf="isRateMoment">
+        <div class="close-container" (click)="closeTooltip()">
+          <div class="leftright"></div>
+          <div class="rightleft"></div>
+          <label class="close">close</label>
         </div>
-      </div>
-      <p *ngIf="isRated" style="margin-top: 9%;font-size: 3em;">Merci !</p>
-    </div>
-    
-    <div [ngStyle]="{'display':isCguVisible ? 'None' : 'Block' }">
-      <div class="wrapper" *ngIf="!isZipLoaded && !isLoading">
-        <div class="slideshows">
-          <div class="slideshow slideshow--hero">
-            <div class="slides">
-              <div class="slide slide1"></div>
-              <div class="slide slide2"></div>
-              <div class="slide slide3"></div>
-            </div>
-          </div>
-          <div class="slideshow slideshow--contrast slideshow--contrast--before">
-            <div class="slides">
-              <div class="slide slide1"></div>
-              <div class="slide slide2"></div>
-              <div class="slide slide3"></div>
-            </div>
-          </div>
-          <div class="slideshow slideshow--contrast slideshow--contrast--after">
-            <div class="slides">
-              <div class="slide slide1"></div>
-              <div class="slide slide2"></div>
-              <div class="slide slide3"></div>
-            </div>
+        <h1 style="margin-left: 11%;" *ngIf="!isRated">Donnez votre avis !</h1>
+        <p *ngIf="!isRated">Que pensez vous de SightMess ?</p>
+        <div class="rating-holder">
+          <div *ngIf="!isRated" class="c-rating c-rating--big" data-rating-value="0">
+            <button (click)=rateSightMess(1)>1</button>
+            <button (click)=rateSightMess(2)>2</button>
+            <button (click)=rateSightMess(3)>3</button>
+            <button (click)=rateSightMess(4)>4</button>
+            <button (click)=rateSightMess(5)>5</button>
           </div>
         </div>
+        <p *ngIf="isRated" style="margin-top: 9%;font-size: 3em;">Merci !</p>
       </div>
-    
-      <div class="uploadZone" *ngIf="!isZipLoaded && !isLoading">
-        
-        <div class="bienvenue">
-          <h1>Bienvenue sur SightMess</h1>
-          <div class="indicators">
-            <div class="compteur">
-              <img src="./assets/img/logo_oeil.svg"/>
-              <p style="text-align:center;">Cette page a été visitée <b style="color:rgb(250, 138, 47);">{{nbrVisite}}</b> fois</p>
-            </div>
-            <div>
-              <p>Vos notes</p>
-              <div style="display:flex">
-                <div class="rating-holder">
-                  <div class="c-rating c-rating--big" data-rating-value="4.5">
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>4</button>
-                    <button>5</button>
-                  </div>
-                </div>
-                <p style="margin-top:auto;">({{nbrVote}})</p>
+      
+      <div [ngStyle]="{'display':isCguVisible ? 'None' : 'Block' }">
+        <div class="wrapper" *ngIf="!isZipLoaded && !isLoading">
+          <div class="slideshows">
+            <div class="slideshow slideshow--hero">
+              <div class="slides">
+                <div class="slide slide1"></div>
+                <div class="slide slide2"></div>
+                <div class="slide slide3"></div>
               </div>
             </div>
-        </div>
-          <hr class="overview">
-          <p>Ce site vous permet d’analyser l’ensemble de vos messages pour en faire ressortir la personne que vous êtes vraiment.</p>
-          <p style="padding-bottom:1%">Vous pourrez explorer des statistiques liées à vos conversations, voir les chiffres clés qui vous caractérisent ou encore en apprendre plus sur vous-même à travers l’élaboration de votre profil Messenger.</p>
-        </div>
-        <div class="listIcone">
-          <div class="card">
-            <img src="./assets/img/logo_messenger.svg"/>
-            <h3>Fonctionne avec Messenger</h3>
-            <p>Obtenez vos messages depuis Facebook et explorez toutes vos conversations.</p>
-          </div>
-          <div class="card">
-            <img src="./assets/img/logo_stats.svg"/>
-            <h3>Trois panels complémentaires</h3>
-            <p>-Analysez vos conversations</p>
-            <p>-Obtenez vos caractéristiques propres</p>
-            <p>-Découvrez votre profil Messenger</p>
-          </div>
-          <div class="card">
-            <img src="./assets/img/logo_wireless.svg"/>
-            <h3>Fonctionne sans internet</h3>
-            <p>Nous ne stockons aucune de vos données personnelles.</p>
-            <p>Seul vous avez accès aux informations affichées.</p> 
-            <p>SightMess fonctionne localement, vous pouvez donc couper Internet !</p>
+            <div class="slideshow slideshow--contrast slideshow--contrast--before">
+              <div class="slides">
+                <div class="slide slide1"></div>
+                <div class="slide slide2"></div>
+                <div class="slide slide3"></div>
+              </div>
+            </div>
+            <div class="slideshow slideshow--contrast slideshow--contrast--after">
+              <div class="slides">
+                <div class="slide slide1"></div>
+                <div class="slide slide2"></div>
+                <div class="slide slide3"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="lancezV">
-          <h1>Analyser mes messages</h1>
-          <hr class="overview">
-          <p>Cliquez sur le bouton ci-dessous et selectionnez votre dossier Facebook pour commencer l'analyse</p>
-          <p>Vous n'avez pas encore votre dossier ? <a class="clickHere" (click)="showTutorial()">Cliquez ici</a> pour l'obtenir
+      
+        <div class="uploadZone" *ngIf="!isZipLoaded && !isLoading">
           
-        </div>
-    
-        <div id="modal-container" (click)="hideTutorial()">
-          <div class="modal-background">
-            <div class="modal">
-              <div class="tutorial">
-                <div class="oneStep">
-                  <div class="textSide2" style="margin-right:1%" >
-                    <h1>1. Accéder à vos informations Facebook.</h1>
-                    <hr class="overview">
-                    <p>La première étape est d'accéder à la page <b>"Vos informations Facebook"</b> accessible via <a class="clickHere" href="https://www.facebook.com/settings?tab=your_facebook_information" target="_blank">ce lien</a>.</p>
-                    <p>Vous pouvez également la rejoindre depuis vos paramètres Facebook.</p>
+          <div class="bienvenue">
+            <h1>Bienvenue sur SightMess</h1>
+            <div class="indicators">
+              <div class="compteur">
+                <img src="./assets/img/logo_oeil.svg"/>
+                <p style="text-align:center;">Cette page a été visitée <b style="color:rgb(250, 138, 47);">{{nbrVisite}}</b> fois</p>
+              </div>
+              <div>
+                <p>Vos notes</p>
+                <div style="display:flex">
+                  <div class="rating-holder">
+                    <div class="c-rating c-rating--big" data-rating-value="4.5">
+                      <button>1</button>
+                      <button>2</button>
+                      <button>3</button>
+                      <button>4</button>
+                      <button>5</button>
+                    </div>
                   </div>
-                  <div class="imgSide">
-                    <img src="./assets/img/tutoriel1.png"
-                    class="imageTutorial2"/>
-                  </div>
+                  <p style="margin-top:auto;">({{nbrVote}})</p>
                 </div>
-          <div class="oneStep">
-            <div class="imgSide">
-              <img src="./assets/img/tutoriel2.png" 
-              class="imageTutorial2"/>
-            </div>
-            <div class="textSide2" style="margin-left:1%">
-              <h1>2. Sélectionner vos messages.</h1>
-              <hr class="overview">
-              <p style="margin-bottom:2%">Etape par étape : </p>
-              <p style="margin-bottom:1%">Format - <b>Mettre "JSON"</b></p>
-              <p style="margin-bottom:1%">Qualités des photos - <b>Mettre "Faible"</b></p>
-              <p style="margin-bottom:1%">Cliquez sur "Tout déselectionner" puis <b>cochez "Messages"</b></p>
-              <p>Vous pouvez appuyer sur <b>"Créer un fichier"</b> !</p>
-            </div>
+              </div>
           </div>
-          <div class="oneStep">
-            <div class="textSide2" style="margin-right:1%">
-              <h1>3. Téléchargez vos messages.</h1>
-              <hr class="overview">
-              <p>Après avoir attendu que Facebook créé votre dossier, vous pouvez télécharger vos messages ! <b>Vous serez notifié.</b></p>
-            </div>
-            <div class="imgSide">
-              <img src="./assets/img/tutoriel3.png" class="imageTutorial2"/>
-              <img src="./assets/img/tutoriel4.png" id="flecheBas"/>
-              <img src="./assets/img/tutoriel5.png" class="imageTutorial2"/>
-            </div>
-          </div>
-          <div class="oneStep">
-            <div class="imgSide">
-              <img src="./assets/img/tutoriel6.png" 
-              class="imageTutorial2"/>
-            </div>
-            <div class="textSide2" style="margin-left:1%">
-              <h1>4. Extraire votre dossier</h1>
-              <hr class="overview">
-              <p style="margin-bottom:1%">Rendez-vous dans votre dossier “Téléchargements” et <b>décompressez</b> facebook-PrenomNom.zip.</p>
-              <p style="margin-bottom:1%">Vous pouvez utiliser pour cela n’importe quel logiciel de décompression, par exemple : </p>
-              <p>- <a class="clickHere" href="https://www.7-zip.fr/" target="_blank">7zip</a> sur Windows.</p>
-              <p>- <a class="clickHere" href="https://itunes.apple.com/fr/app/the-unarchiver/id425424353?mt=12" target="_blank">Unarchiver</a> sur Mac.</p>
-            </div>
-          </div>
-          <div class="oneStep">
-            <div class="textSide2" style="margin-right:1%">
-              <h1>5. Lancez l'analyse SightMess !</h1>
-              <hr class="overview">
-              <p>Vous n’avez plus qu’à sélectionner votre dossier</p>
-              <p>Et... <b>C’est parti !</b></p>
-            </div>
-            <div class="imgSide">
-              <img src="./assets/img/tutoriel7.png" id="boutonUpload"/>
-              <img src="./assets/img/tutoriel4.png" id="flecheBas"/>
-              <img src="./assets/img/tutoriel8.png" class="imageTutorial2"/>
-            </div>
-          </div>
-          <div style="box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-            <h1>Enjoy SightMess !</h1>
             <hr class="overview">
-            <p style="text-align:left">PS : Sur Chrome, vous aurez ce message, c'est normal !</p>
-            <div class="imgSide">
-              <img src="./assets/img/tutoriel9.png" class="imageTutorial" style="margin-top:3%; margin-bottom:3%; height:15%; width:50%"/>
-            </div>
-            <p style="text-align:center">Nous vous souhaitons une bonne utilisation et n'oubliez pas de donner votre avis.</p>
-            <p style="text-align:right; margin-top:2%; margin-bottom:1%; margin-right:3%">L'équipe SightMess</p>
+            <p>Ce site vous permet d’analyser l’ensemble de vos messages pour en faire ressortir la personne que vous êtes vraiment.</p>
+            <p style="padding-bottom:1%">Vous pourrez explorer des statistiques liées à vos conversations, voir les chiffres clés qui vous caractérisent ou encore en apprendre plus sur vous-même à travers l’élaboration de votre profil Messenger.</p>
           </div>
-        </div>
+          <div class="listIcone">
+            <div class="card">
+              <img src="./assets/img/logo_messenger.svg"/>
+              <h3>Fonctionne avec Messenger</h3>
+              <p>Obtenez vos messages depuis Facebook et explorez toutes vos conversations.</p>
             </div>
-          </div>
-        </div>
-    
-        <input class="dropButton" type='file' (change)="onSelectFile($event)" webkitdirectory >
-        
-        <button class="buttonSelect">Selectionner votre dossier</button>
-        
-        <img src="http://www.avocom971.fr/images2/bandeau-site-n.jpg" class="addGoogle" style="width:728px; height:90px; margin: auto; margin-top:3vh; margin-bottom: 3vh; display: block;"/>
-    
-        <div class="qsn">
-          <h2 style="text-align:center; padding-top:1%">Qui sommes nous ?</h2>
-          <hr class="overview">
-          <p>Nous sommes trois étudiants de l’Ecole Centrale de Marseille. À l’origine, ce projet nous est venu par le constat que nous passions tous de longues heures sur Messenger, et pourtant nous ne savions pas combien. Nous ne savions pas qui étaient les personnes les plus influentes sur nos conversations, quelles étaient les personnes à qui nous parlions le plus à travers le temps, ou encore ce que nos habitudes de conversations pouvaient dire de nous. Nous avons alors cherché à donner sens à nos données Facebook, qui, sans algorithme, étaient illisibles.</p>
-          <p>Ce projet n’a pas vocation à faire de l’argent, mais simplement de partager l’analyse que nous avons faite de nos messages et faire sourire en formalisant des informations que l’utilisateur ne pouvait que supposer par le passé.</p>
-          <p style="padding-bottom:2%">Si vous avez une quelconque remarque sur notre site, que vous l’avez apprécié ou détesté, ou que vous trouvez un bug ou une amélioration possible, n’hésitez pas à nous écrire à <a href="mailto:contact.sightmess@gmail.com">contact.sightmess@gmail.com</a> ! Nous serons ravis de vous lire.</p>
-          <!--<div class="linkedinBox">
-            <a href="https://www.linkedin.com/in/hugo-pillet-a29689152/" style="text-decoration:none;" target="_blank">
-            <div class="oneLinkedin">
-              <img src="./assets/img/logo_linkedin.svg" class="logoLinkedin">
-              <h3 style="margin-top:1%; color:black;  font-weight:unset;">Hugo Pillet</h3>
+            <div class="card">
+              <img src="./assets/img/logo_stats.svg"/>
+              <h3>Trois panels complémentaires</h3>
+              <p>-Analysez vos conversations</p>
+              <p>-Obtenez vos caractéristiques propres</p>
+              <p>-Découvrez votre profil Messenger</p>
             </div>
-            </a>
-            <a href="https://www.linkedin.com/in/paul-tondereau-674552150/" style="text-decoration:none;" target="_blank">
-            <div class="oneLinkedin">
-              <img src="./assets/img/logo_linkedin.svg" class="logoLinkedin">
-              <h3 style="margin-top:1%; color:black; text-decoration:none; font-weight:unset; ">Paul Tondereau</h3>
-            </div>
-            </a>
-            <a href="https://www.linkedin.com/in/paulwlf/" style="text-decoration:none;" target="_blank">
-            <div class="oneLinkedin">
-              <img src="./assets/img/logo_linkedin.svg" class="logoLinkedin">
-              <h3 style="margin-top:1%; color:black; text-decoration:none; font-weight:unset; ">Paul Wolf</h3>
-            </div>
-            </a>
-          </div>-->
-          <div class="listCrea">
-            <div class="oneCrea">
-              <h1>Hugo Pillet</h1>
-              <div class="social-buttons">
-                <a href="https://www.linkedin.com/in/hugo-pillet-a29689152/" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
-                  <span class="social-button__inner">
-                  <i class="fab fa-linkedin-in"></i>
-                  </span>
-                </a>
-                
-                <a href="https://www.facebook.com/hugo.pillet" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
-                  <span class="social-button__inner">
-                  <i class="fab fa-facebook-f"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="oneCrea">
-              <h1>Paul Tondereau</h1>
-              <div class="social-buttons">
-                <a href="https://www.linkedin.com/in/paul-tondereau-674552150/" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
-                  <span class="social-button__inner">
-                  <i class="fab fa-linkedin-in"></i>
-                  </span>
-                </a>
-                
-                <a href="https://www.facebook.com/paul.tondereau.5" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
-                  <span class="social-button__inner">
-                  <i class="fab fa-facebook-f"></i>
-                  </span>
-                </a>
-                
-                <a href="https://twitter.com/TondereauPaul?lang=fr" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--twitter" aria-label="CodePen">
-                  <span class="social-button__inner">
-                  <i class="fab fa-twitter"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="oneCrea">
-              <h1>Paul Wolf</h1>
-              <div class="social-buttons">
-                <a href="https://www.linkedin.com/in/paulwlf/" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
-                  <span class="social-button__inner">
-                  <i class="fab fa-linkedin-in"></i>
-                  </span>
-                </a>
-                
-                <a href="https://www.facebook.com/PaulWlff" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
-                  <span class="social-button__inner">
-                  <i class="fab fa-facebook-f"></i>
-                  </span>
-                </a>
-              </div>
+            <div class="card">
+              <img src="./assets/img/logo_wireless.svg"/>
+              <h3>Fonctionne sans internet</h3>
+              <p>Nous ne stockons aucune de vos données personnelles.</p>
+              <p>Seul vous avez accès aux informations affichées.</p> 
+              <p>SightMess fonctionne localement, vous pouvez donc couper Internet !</p>
             </div>
           </div>
+          <div class="lancezV">
+            <h1>Analyser mes messages</h1>
+            <hr class="overview">
+            <p>Cliquez sur le bouton ci-dessous et selectionnez votre dossier Facebook pour commencer l'analyse</p>
+            <p>Vous n'avez pas encore votre dossier ? <a class="clickHere" (click)="showTutorial()">Cliquez ici</a> pour l'obtenir
+            
+          </div>
+      
+          <div id="modal-container" (click)="hideTutorial()">
+            <div class="modal-background">
+              <div class="modal">
+                <div class="tutorial">
+                  <div class="oneStep">
+                    <div class="textSide2" style="margin-right:1%" >
+                      <h1>1. Accéder à vos informations Facebook.</h1>
+                      <hr class="overview">
+                      <p>La première étape est d'accéder à la page <b>"Vos informations Facebook"</b> accessible via <a class="clickHere" href="https://www.facebook.com/settings?tab=your_facebook_information" target="_blank">ce lien</a>.</p>
+                      <p>Vous pouvez également la rejoindre depuis vos paramètres Facebook.</p>
+                    </div>
+                    <div class="imgSide">
+                      <img src="./assets/img/tutoriel1.png"
+                      class="imageTutorial2"/>
+                    </div>
+                  </div>
+            <div class="oneStep">
+              <div class="imgSide">
+                <img src="./assets/img/tutoriel2.png" 
+                class="imageTutorial2"/>
+              </div>
+              <div class="textSide2" style="margin-left:1%">
+                <h1>2. Sélectionner vos messages.</h1>
+                <hr class="overview">
+                <p style="margin-bottom:2%">Etape par étape : </p>
+                <p style="margin-bottom:1%">Format - <b>Mettre "JSON"</b></p>
+                <p style="margin-bottom:1%">Qualités des photos - <b>Mettre "Faible"</b></p>
+                <p style="margin-bottom:1%">Cliquez sur "Tout déselectionner" puis <b>cochez "Messages"</b></p>
+                <p>Vous pouvez appuyer sur <b>"Créer un fichier"</b> !</p>
+              </div>
+            </div>
+            <div class="oneStep">
+              <div class="textSide2" style="margin-right:1%">
+                <h1>3. Téléchargez vos messages.</h1>
+                <hr class="overview">
+                <p>Après avoir attendu que Facebook créé votre dossier, vous pouvez télécharger vos messages ! <b>Vous serez notifié.</b></p>
+              </div>
+              <div class="imgSide">
+                <img src="./assets/img/tutoriel3.png" class="imageTutorial2"/>
+                <img src="./assets/img/tutoriel4.png" id="flecheBas"/>
+                <img src="./assets/img/tutoriel5.png" class="imageTutorial2"/>
+              </div>
+            </div>
+            <div class="oneStep">
+              <div class="imgSide">
+                <img src="./assets/img/tutoriel6.png" 
+                class="imageTutorial2"/>
+              </div>
+              <div class="textSide2" style="margin-left:1%">
+                <h1>4. Extraire votre dossier</h1>
+                <hr class="overview">
+                <p style="margin-bottom:1%">Rendez-vous dans votre dossier “Téléchargements” et <b>décompressez</b> facebook-PrenomNom.zip.</p>
+                <p style="margin-bottom:1%">Vous pouvez utiliser pour cela n’importe quel logiciel de décompression, par exemple : </p>
+                <p>- <a class="clickHere" href="https://www.7-zip.fr/" target="_blank">7zip</a> sur Windows.</p>
+                <p>- <a class="clickHere" href="https://itunes.apple.com/fr/app/the-unarchiver/id425424353?mt=12" target="_blank">Unarchiver</a> sur Mac.</p>
+              </div>
+            </div>
+            <div class="oneStep">
+              <div class="textSide2" style="margin-right:1%">
+                <h1>5. Lancez l'analyse SightMess !</h1>
+                <hr class="overview">
+                <p>Vous n’avez plus qu’à sélectionner votre dossier</p>
+                <p>Et... <b>C’est parti !</b></p>
+              </div>
+              <div class="imgSide">
+                <img src="./assets/img/tutoriel7.png" id="boutonUpload"/>
+                <img src="./assets/img/tutoriel4.png" id="flecheBas"/>
+                <img src="./assets/img/tutoriel8.png" class="imageTutorial2"/>
+              </div>
+            </div>
+            <div style="box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+              <h1>Enjoy SightMess !</h1>
+              <hr class="overview">
+              <p style="text-align:left">PS : Sur Chrome, vous aurez ce message, c'est normal !</p>
+              <div class="imgSide">
+                <img src="./assets/img/tutoriel9.png" class="imageTutorial" style="margin-top:3%; margin-bottom:3%; height:15%; width:50%"/>
+              </div>
+              <p style="text-align:center">Nous vous souhaitons une bonne utilisation et n'oubliez pas de donner votre avis.</p>
+              <p style="text-align:right; margin-top:2%; margin-bottom:1%; margin-right:3%">L'équipe SightMess</p>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+      
+          <input class="dropButton" type='file' (change)="onSelectFile($event)" webkitdirectory >
+          
+          <button class="buttonSelect">Selectionner votre dossier</button>
+          
+          <img src="http://www.avocom971.fr/images2/bandeau-site-n.jpg" class="addGoogle" style="width:728px; height:90px; margin: auto; margin-top:3vh; margin-bottom: 3vh; display: block;"/>
+      
+          <div class="qsn">
+            <h2 style="text-align:center; padding-top:1%">Qui sommes nous ?</h2>
+            <hr class="overview">
+            <p>Nous sommes trois étudiants de l’Ecole Centrale de Marseille. À l’origine, ce projet nous est venu par le constat que nous passions tous de longues heures sur Messenger, et pourtant nous ne savions pas combien. Nous ne savions pas qui étaient les personnes les plus influentes sur nos conversations, quelles étaient les personnes à qui nous parlions le plus à travers le temps, ou encore ce que nos habitudes de conversations pouvaient dire de nous. Nous avons alors cherché à donner sens à nos données Facebook, qui, sans algorithme, étaient illisibles.</p>
+            <p>Ce projet n’a pas vocation à faire de l’argent, mais simplement de partager l’analyse que nous avons faite de nos messages et faire sourire en formalisant des informations que l’utilisateur ne pouvait que supposer par le passé.</p>
+            <p style="padding-bottom:2%">Si vous avez une quelconque remarque sur notre site, que vous l’avez apprécié ou détesté, ou que vous trouvez un bug ou une amélioration possible, n’hésitez pas à nous écrire à <a href="mailto:contact.sightmess@gmail.com">contact.sightmess@gmail.com</a> ! Nous serons ravis de vous lire.</p>
+            <!--<div class="linkedinBox">
+              <a href="https://www.linkedin.com/in/hugo-pillet-a29689152/" style="text-decoration:none;" target="_blank">
+              <div class="oneLinkedin">
+                <img src="./assets/img/logo_linkedin.svg" class="logoLinkedin">
+                <h3 style="margin-top:1%; color:black;  font-weight:unset;">Hugo Pillet</h3>
+              </div>
+              </a>
+              <a href="https://www.linkedin.com/in/paul-tondereau-674552150/" style="text-decoration:none;" target="_blank">
+              <div class="oneLinkedin">
+                <img src="./assets/img/logo_linkedin.svg" class="logoLinkedin">
+                <h3 style="margin-top:1%; color:black; text-decoration:none; font-weight:unset; ">Paul Tondereau</h3>
+              </div>
+              </a>
+              <a href="https://www.linkedin.com/in/paulwlf/" style="text-decoration:none;" target="_blank">
+              <div class="oneLinkedin">
+                <img src="./assets/img/logo_linkedin.svg" class="logoLinkedin">
+                <h3 style="margin-top:1%; color:black; text-decoration:none; font-weight:unset; ">Paul Wolf</h3>
+              </div>
+              </a>
+            </div>-->
+            <div class="listCrea">
+              <div class="oneCrea">
+                <h1>Hugo Pillet</h1>
+                <div class="social-buttons">
+                  <a href="https://www.linkedin.com/in/hugo-pillet-a29689152/" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+                    <span class="social-button__inner">
+                    <i class="fab fa-linkedin-in"></i>
+                    </span>
+                  </a>
+                  
+                  <a href="https://www.facebook.com/hugo.pillet" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+                    <span class="social-button__inner">
+                    <i class="fab fa-facebook-f"></i>
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <div class="oneCrea">
+                <h1>Paul Tondereau</h1>
+                <div class="social-buttons">
+                  <a href="https://www.linkedin.com/in/paul-tondereau-674552150/" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+                    <span class="social-button__inner">
+                    <i class="fab fa-linkedin-in"></i>
+                    </span>
+                  </a>
+                  
+                  <a href="https://www.facebook.com/paul.tondereau.5" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+                    <span class="social-button__inner">
+                    <i class="fab fa-facebook-f"></i>
+                    </span>
+                  </a>
+                  
+                  <a href="https://twitter.com/TondereauPaul?lang=fr" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--twitter" aria-label="CodePen">
+                    <span class="social-button__inner">
+                    <i class="fab fa-twitter"></i>
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <div class="oneCrea">
+                <h1>Paul Wolf</h1>
+                <div class="social-buttons">
+                  <a href="https://www.linkedin.com/in/paulwlf/" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+                    <span class="social-button__inner">
+                    <i class="fab fa-linkedin-in"></i>
+                    </span>
+                  </a>
+                  
+                  <a href="https://www.facebook.com/PaulWlff" rel="noopener noreferrer" target="_blank" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+                    <span class="social-button__inner">
+                    <i class="fab fa-facebook-f"></i>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      
+        <!--Component de loading-->
+        <app-loading-custom *ngIf="isLoading &&!loadingOk" [valeurChargement]="loadingPercent" style="overflow-x: hidden; overflow-y: hidden"></app-loading-custom>
+      
+        <!--Component principal avec les 3 pannels-->
+        <router-outlet></router-outlet>
       </div>
-    
-      <!--Component de loading-->
-      <app-loading-custom *ngIf="isLoading &&!loadingOk" [valeurChargement]="loadingPercent" style="overflow-x: hidden; overflow-y: hidden"></app-loading-custom>
-    
-      <!--Component principal avec les 3 pannels-->
-      <router-outlet></router-outlet>
+      
+      <div class="footer" *ngIf="!isCguVisible &&!isLoading">
+        <h1 (click)="showHideCgu()" class="CGU">Conditions générales d'utilisation</h1>
+      </div>
+      
+      <div class="cguPage" *ngIf="isCguVisible && !isLoading">
+        <div class="wrappercgu" (click)="showHideCgu()">
+          <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g id="prev" transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
+                  <polygon class="arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+                  <polygon class="arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+                  <path d="M-1.48029737e-15,0.56157424 L-1.48029737e-15,16.1929159 L9.708,8.33860465 L-2.66453526e-15,0.56157424 L-1.48029737e-15,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
+              </g>
+          </svg>
+          </div>
+        <app-cgu></app-cgu>
+      </div>
     </div>
-    
-    <div class="footer" *ngIf="!isCguVisible &&!isLoading">
-      <h1 (click)="showHideCgu()" class="CGU">Conditions générales d'utilisation</h1>
-    </div>
-    
-    <div class="cguPage" *ngIf="isCguVisible && !isLoading">
-      <div class="wrappercgu" (click)="showHideCgu()">
-        <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <g id="prev" transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
-                <polygon class="arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                <polygon class="arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                <path d="M-1.48029737e-15,0.56157424 L-1.48029737e-15,16.1929159 L9.708,8.33860465 L-2.66453526e-15,0.56157424 L-1.48029737e-15,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
-            </g>
-        </svg>
-        </div>
-      <app-cgu></app-cgu>
-    </div>
-    

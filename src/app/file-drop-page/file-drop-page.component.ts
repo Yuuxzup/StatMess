@@ -28,6 +28,11 @@ export class FileDropPageComponent implements OnInit{
   isRated=false;
   nbrVote=0;
 
+  isReady=false;
+
+  avisA=true;
+  avisB=false;
+
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router) { }
 
   ngOnInit(){
@@ -190,5 +195,15 @@ export class FileDropPageComponent implements OnInit{
 
   showHideCgu(){
     this.isCguVisible=!this.isCguVisible;
+  }
+
+  launch(){
+    this.isReady=true;
+  }
+
+  changeAvis(){
+    this.avisA=!this.avisA
+    this.avisB=!this.avisB
+    setTimeout(()=>{this.changeAvis()}, 7500)
   }
 }

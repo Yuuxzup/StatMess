@@ -33,13 +33,12 @@ import { ProfilServiceService } from './home-pannel-page/profil-pannel/profil-se
 import { DeterminationService } from './home-pannel-page/profil-pannel/determination.service';
 import { CguComponent } from './cgu/cgu.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { LandingComponent } from './landing/landing.component';
-import {Routes, RouterModule} from "@angular/router"
+import { Routes, RouterModule } from "@angular/router"
 
 
 
 const appRoutes: Routes =[
-  { path: '', component: LandingComponent},
+  { path: '', component: FileDropPageComponent},
   { path: 'home', component: FileDropPageComponent},
   { path:'panels/own-stats', component: OwnStatsPannelComponent},
   { path: 'panels/conv', component: ConvsPannelComponent},
@@ -52,7 +51,7 @@ const appRoutes: Routes =[
 @NgModule({
   imports:[BrowserModule.withServerTransition({ appId: 'serverApp' }), FormsModule, ReactiveFormsModule,MaterialModule, HttpClientModule, NgbModule, IgxInputGroupModule,
 		IgxSliderModule, AngularFontAwesomeModule, RouterModule.forRoot(appRoutes)],
-  declarations: [ AppComponent, FileDropPageComponent, HomePannelPageComponent, LoadingCustomComponent, ProfilPannelComponent, ConvsPannelComponent, OwnStatsPannelComponent, PrevisuConvComponent, OneConvStatsComponent, OverviewStatComponent, MessagesStatComponent, TimeStatComponent, ReactionsStatComponent, AutresStatComponent, SliderPersoComponent, CguComponent, LandingComponent],
+  declarations: [ AppComponent, FileDropPageComponent, HomePannelPageComponent, LoadingCustomComponent, ProfilPannelComponent, ConvsPannelComponent, OwnStatsPannelComponent, PrevisuConvComponent, OneConvStatsComponent, OverviewStatComponent, MessagesStatComponent, TimeStatComponent, ReactionsStatComponent, AutresStatComponent, SliderPersoComponent, CguComponent],
   bootstrap:    [ AppComponent ],
   providers: [StatsConvService, OwnStatsService, GlobalService, ProfilServiceService, DeterminationService]
 })
