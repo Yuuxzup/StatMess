@@ -4,18 +4,15 @@ import { ProfilServiceService } from './home-pannel-page/profil-pannel/profil-se
 import { DeterminationService } from './home-pannel-page/profil-pannel/determination.service';
 import { OwnStatsService } from './home-pannel-page/own-stats-pannel/own-stats.service';
 import { StatsConvService } from './home-pannel-page/convs-pannel/stats-conv.service';
-import {RouterModule,Router} from '@angular/router';
 
 
 @Injectable()
 export class GlobalService {
   userName : any;
   nameDB:any;
-  listFileDicoFilled:any;
-  loadingDone = false;
 
   private isLoading=false;
-  constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService, private router: Router) { }
+  constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService) { }
 
   defineDB(){
     let loc = document.location.href;
@@ -278,7 +275,6 @@ export class GlobalService {
     this.statsConvService.findUserName(listFileDico)
   }
 
-  
   fillInfoInListFile(listFileDicoNotFilled : any){
     console.log("Launching fillInfoInListFile")
     this.statsConvService.findLastMessageUploadTimestamp(listFileDicoNotFilled);
@@ -299,17 +295,6 @@ export class GlobalService {
       newListFileDicoFilled.push(fileDico)
       } 
     }
-    this.listFileDicoFilled = newListFileDicoFilled;
-  }
-
-  doCalcul(){
-    this.findUserName(this.listFileDicoFilled);
-    this.doCalculForOwnStats(this.listFileDicoFilled);
-    this.doCalculForConv(this.listFileDicoFilled);
-    this.doCalculForProfil(this.listFileDicoFilled);
-  }
-
-  updateLoading(){
-    this.loadingDone = true;
+    return newListFileDicoFilled
   }
 }

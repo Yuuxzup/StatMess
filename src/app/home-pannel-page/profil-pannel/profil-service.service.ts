@@ -7,7 +7,6 @@ import * as baseGenre2 from '../../../data/baseGenre2.json';
 @Injectable()
 export class ProfilServiceService {
 
-  listFileDico : any;
   scoreResBav : any;
   scoreFidExt : any;
   scoreSpoRef : any;

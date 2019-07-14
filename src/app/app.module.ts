@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material-module'
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {APP_BASE_HREF} from '@angular/common';
 import { 
 	IgxInputGroupModule,
 	IgxSliderModule
@@ -33,28 +34,15 @@ import { ProfilServiceService } from './home-pannel-page/profil-pannel/profil-se
 import { DeterminationService } from './home-pannel-page/profil-pannel/determination.service';
 import { CguComponent } from './cgu/cgu.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AppRoutingModule } from './app-routing.module';
 import { LandingComponent } from './landing/landing.component';
-import {Routes, RouterModule} from "@angular/router"
-
-
-
-const appRoutes: Routes =[
-  { path: '', component: LandingComponent},
-  { path: 'home', component: FileDropPageComponent},
-  { path:'panels/own-stats', component: OwnStatsPannelComponent},
-  { path: 'panels/conv', component: ConvsPannelComponent},
-  { path:'panels/profil', component: ProfilPannelComponent},
-  { path:'panels', component: HomePannelPageComponent},
-  { path:'**', redirectTo:'home', pathMatch:'full'} 
-]
-
 
 @NgModule({
   imports:[BrowserModule, FormsModule, ReactiveFormsModule,MaterialModule, HttpClientModule, NgbModule, IgxInputGroupModule,
-		IgxSliderModule, AngularFontAwesomeModule, RouterModule.forRoot(appRoutes)],
+		IgxSliderModule, AngularFontAwesomeModule, AppRoutingModule],
   declarations: [ AppComponent, FileDropPageComponent, HomePannelPageComponent, LoadingCustomComponent, ProfilPannelComponent, ConvsPannelComponent, OwnStatsPannelComponent, PrevisuConvComponent, OneConvStatsComponent, OverviewStatComponent, MessagesStatComponent, TimeStatComponent, ReactionsStatComponent, AutresStatComponent, SliderPersoComponent, CguComponent, LandingComponent],
   bootstrap:    [ AppComponent ],
-  providers: [StatsConvService, OwnStatsService, GlobalService, ProfilServiceService, DeterminationService]
+  providers: [[{provide: APP_BASE_HREF, useValue: '/my/app'}], StatsConvService, OwnStatsService, GlobalService, ProfilServiceService, DeterminationService]
 })
 export class AppModule {}
 

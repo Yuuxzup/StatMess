@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
-import {RouterModule,Router} from '@angular/router';
-
 
 @Component({
   selector: 'app-landing',
@@ -15,16 +13,14 @@ export class LandingComponent implements OnInit {
 
   avisA=true;
   avisB=false;
-  
-  
 
-  constructor(private globalService:GlobalService, private router: Router) { }
+
+  constructor(private globalService:GlobalService) { }
 
   ngOnInit(){
     setTimeout(()=>{this.changeAvis()}, 7500)
     this.globalService.defineDB()
     console.log("BD on process : "+this.globalService.nameDB)
-
   }
 
   ngAfterViewInit(){
@@ -88,3 +84,7 @@ export class LandingComponent implements OnInit {
     setTimeout(()=>{this.changeAvis()}, 7500)
   }
 }
+
+
+
+

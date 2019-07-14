@@ -1,9 +1,10 @@
-<div *ngIf="!isReady">
+<div class="page">
+  <div *ngIf="!isReady">
     <div class="cover">
       <div class="logoSightMess">
         <img src="./assets/img/logo_sightmess_bl.png"/>
       </div>
-       <div class="button-container-2" [routerLink]="['home']">
+       <div class="button-container-2" (click)="launch()">
         <span class="mas" >
           <h1 class="launchText">Lancez Vous</h1>
         </span>
@@ -11,7 +12,7 @@
           <h1 style="letter-spacing: 16px; font-style:italic;" class="launchText"><b style="font-weight:300; font-family: 'robotoReg';">Sight</b><b style="font-weight:600; font-family: 'robotoReg'">Mess</b></h1>
         </button>
       </div>
-  
+
       <div [ngStyle]="{'display':avisA ? 'Block' : 'None' }">
         <div class="container">
           <div class="card" style="left: 90px;top: 80px;">
@@ -31,7 +32,7 @@
             </div>
           </div>
         </div>
-  
+
         <div class="container">
           <div class="card" style="left: 243px;bottom: 80px;">
               <div class="card__image-container">
@@ -50,7 +51,7 @@
             </div>
           </div>
         </div>
-  
+
         <div class="container">
           <div class="card" style="right: 214px;bottom: 60px;">
               <div class="card__image-container">
@@ -69,7 +70,7 @@
             </div>
           </div>
         </div>
-  
+
         <div class="container">
           <div class="card" style="right: 110px;top: 80px;">
               <div class="card__image-container">
@@ -89,7 +90,7 @@
           </div>
         </div>
       </div>
-  
+
       <div [ngStyle]="{'display':avisB ? 'Block' : 'None' }">
           <div class="container">
             <div class="card" style="left: 190px;top: 50px;">
@@ -109,7 +110,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="container">
             <div class="card" style="left: 103px;bottom: 140px;">
                 <div class="card__image-container">
@@ -128,7 +129,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="container">
             <div class="card" style="right: 114px;bottom:60px;">
                 <div class="card__image-container">
@@ -147,7 +148,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="container">
             <div class="card" style="right: 220px;top: 180px;">
                 <div class="card__image-container">
@@ -167,6 +168,14 @@
             </div>
           </div>
         </div>
-  
+
     </div>
   </div>
+
+  <div *ngIf="isReady">
+    <div class="horizontalBar">
+      <img class="logo" src="./assets/img/logoSightmess.png"/>
+      <h1 style="font-size : 3vh; margin-top:auto; margin-bottom:auto; margin-left:1%;">SightMess</h1>
+    </div>
+    <app-file-drop-page></app-file-drop-page>
+</div>

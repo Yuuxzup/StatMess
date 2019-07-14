@@ -3,7 +3,6 @@ import { StatsConvService } from '../home-pannel-page/convs-pannel/stats-conv.se
 import { GlobalService } from '../global.service';
 import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
-import {RouterModule,Router} from '@angular/router';
 
 @Component({
   selector: 'app-file-drop-page',
@@ -28,7 +27,7 @@ export class FileDropPageComponent implements OnInit{
   isRated=false;
   nbrVote=0;
 
-  constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router) { }
+  constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService) { }
 
   ngOnInit(){
 
@@ -76,12 +75,10 @@ export class FileDropPageComponent implements OnInit{
         },
         (error) => {
         })
-        
-        
   }
 
   onSelectFile(event) {
-  this.isLoading=true;
+  this.isLoading=true; 
   let files = event.target.files;
   let newFiles = [];
   for (let i=0; i<files.length; i++) {
@@ -108,11 +105,12 @@ export class FileDropPageComponent implements OnInit{
                 amountTackled+=1;
                 if (amountTackled===filesAmount){
                   setTimeout(()=>{
-                    this.globalService.fillInfoInListFile(tempoListFilesDico)
-                    this.globalService.doCalcul()
+                    this.listFilesDico = this.globalService.fillInfoInListFile(tempoListFilesDico)
+                    this.globalService.findUserName(this.listFilesDico);
+                    this.globalService.doCalculForOwnStats(this.listFilesDico)
+                    this.globalService.doCalculForConv(this.listFilesDico)
+                    this.globalService.doCalculForProfil(this.listFilesDico)
                     this.loadingOk=true;
-                    this.globalService.updateLoading();
-                    this.router.navigate(['../panels'])
                     },5000)
                 }}
                 reader.onload = (event) => {
