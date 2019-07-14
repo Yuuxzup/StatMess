@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StatsConvService } from './stats-conv.service';
-import {GlobalService} from '../../global.service';
-import {RouterModule,Router} from '@angular/router';
-
 
 @Component({
   selector: 'app-convs-pannel',
@@ -11,7 +8,7 @@ import {RouterModule,Router} from '@angular/router';
 })
 export class ConvsPannelComponent implements OnInit {
 
-  listFilesDico : any;
+  @Input() listFilesDico : any;
 
   //Variable pour les filtres et les tris
   filtreDico={text:"", listeStatus:{isConvGroup:true,isConvSolo:true}}
@@ -23,14 +20,9 @@ export class ConvsPannelComponent implements OnInit {
   fileConvToDisplay : any;
   isConvStatFirstRun=true;
 
-  constructor(private statsConvService: StatsConvService, private globalService : GlobalService, private router:Router) { }
+  constructor(private statsConvService: StatsConvService) { }
 
   ngOnInit() {
-    if(this.globalService.loadingDone=== false){
-      this.router.navigate(['../../home']);
-      alert("Veuillez sélectionner votre dossier à analyser afin d'accéder à cette page");
-    }
-    this.listFilesDico = this.globalService.listFileDicoFilled;
     this.isStats= false;
     this.isConvStatFirstRun=this.statsConvService.firstRun
     this.statsConvService.switchBooleanFirstRun()

@@ -1,9 +1,6 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
 import {OwnStatsService} from './own-stats.service';
 import { Chart, ChartOptions } from 'chart.js';
-import {GlobalService} from '../../global.service';
-import {RouterModule,Router} from '@angular/router';
-
 
 // Import plugins
 
@@ -18,7 +15,8 @@ import 'chartjs-plugin-deferred'; //plugin delay
 })
 export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
 
-  listFilesDico : any;
+  @Input() listFilesDico : any;
+
   userName : any;
   bubbleConv : any;
   hoursISend : any;
@@ -113,16 +111,10 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
   @ViewChild('repartitionTypeMessageGraph') repartitionTypeMessageGraph: ElementRef;
   repartitionTypeMessageChart =[];
 
-  constructor(private elementRef: ElementRef, private ownStatsService : OwnStatsService, private globalService : GlobalService, private router : Router) {
+  constructor(private elementRef: ElementRef, private ownStatsService : OwnStatsService) {
   }
 
    ngOnInit() {
-
-    if(this.globalService.loadingDone=== false){
-      this.router.navigate(['../../home']);
-      alert("Veuillez sélectionner votre dossier à analyser afin d'accéder à cette page");
-    }
-
     this.isFileOpen=false;
     this.isOwnStatFirstRun=this.ownStatsService.firstRun 
     this.ownStatsService.switchBooleanFirstRun()
@@ -133,7 +125,6 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     this.selectedSort="nbrMessage"
 
     //CALCULS DES VARIABLES
-    this.listFilesDico = this.globalService.listFileDicoFilled;
     this.ownStatsService.findUserName(this.listFilesDico)
     this.userName= this.ownStatsService.userName;
     this.nbrConversations=this.listFilesDico.length

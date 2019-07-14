@@ -1,7 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { GlobalService } from '../global.service'
 import { HttpClient } from '@angular/common/http';
-import {RouterModule,Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-pannel-page',
@@ -18,13 +17,9 @@ export class HomePannelPageComponent implements OnInit {
 
   timeLastSwitch:any;
 
-  constructor(private httpClient: HttpClient, private globalService:GlobalService, private router:Router) { }
+  constructor(private httpClient: HttpClient, private globalService:GlobalService) { }
 
   ngOnInit() {
-    if(this.globalService.loadingDone=== false){
-      this.router.navigate(['../home']);
-      alert("Veuillez sélectionner votre dossier à analyser afin d'accéder à cette page");
-    }
     this.timeLastSwitch=(new Date()).getTime()
     this.httpClient
       .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
