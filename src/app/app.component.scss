@@ -30,6 +30,7 @@ p {
 }
 
 .body{
+<<<<<<< HEAD
   background-color:  #EEEEEE;
 }
 
@@ -504,4 +505,7 @@ li > img{
   0% { transform: translate(-.5rem, -.5rem) scale(1.05); opacity: 0; filter: blur(2px); }
   50% { opacity: 1; filter: blur(2px); }
   100% { transform: translateY(0) scale(1.0); opacity: 1; filter: blur(0); }
+=======
+  background-color:  #EEEEEE; 
+>>>>>>> 377ead0872525773f7cf7fe39bcfaaf88a9a9267
 }

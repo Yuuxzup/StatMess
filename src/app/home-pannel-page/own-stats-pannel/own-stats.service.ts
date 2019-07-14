@@ -4,6 +4,7 @@ import * as baseGenre2 from '../../../data/baseGenre2.json';
 
 @Injectable()
 export class OwnStatsService {
+
   userName : any;
   bubbleConv : any;
   hoursISend : any;
@@ -386,7 +387,7 @@ export class OwnStatsService {
     let setKeyInBaseGenre = new Set(Object.keys(baseGenre))
     let setKeyGenreF= new Set(baseGenre2["f"])
     let setKeyGenreM= new Set(baseGenre2["m"])
-    setInterlocuteurs.forEach(function(participant){
+    setInterlocuteurs.forEach(function(participant:string){
       let prenom1 = participant.split(" ")[0].toLowerCase()
       let prenom2 = participant.split(" ")[0].replace("é","e").replace("è","e").replace("ê","e").replace("ë","e").replace("ï","i").replace("î","i").replace("É","E")
         if(setKeyInBaseGenre.has(prenom1)){

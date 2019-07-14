@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ProfilServiceService} from './profil-service.service';
 import {DeterminationService} from './determination.service';
-import {DomSanitizer} from '@angular/platform-browser'
+import {DomSanitizer} from '@angular/platform-browser';
+import {RouterModule,Router} from '@angular/router';
+import { GlobalService } from '../../global.service';
 
 @Component({
   selector: 'app-profil-pannel',
@@ -42,9 +44,13 @@ export class ProfilPannelComponent implements OnInit {
   isProfilFirstRun=true;
 
 
-  constructor(private profilServiceService : ProfilServiceService, private determinationService : DeterminationService,  private sanitizer: DomSanitizer) { }
+  constructor(private profilServiceService : ProfilServiceService, private determinationService : DeterminationService,  private sanitizer: DomSanitizer, private globalService : GlobalService, private router: Router) { }
 
   ngOnInit() {
+    if(this.globalService.loadingDone=== false){
+      this.router.navigate(['../../home']);
+      alert("Veuillez sélectionner votre dossier à analyser afin d'accéder à cette page");
+    }
     this.isProfilFirstRun=this.profilServiceService.firstRun
     this.profilServiceService.switchBooleanFirstRun()
     setTimeout(()=>{
@@ -55,6 +61,7 @@ export class ProfilPannelComponent implements OnInit {
   }
 
   calculDataForSlider(){
+
     this.profilServiceService.findUserName(this.listFilesDico);
     this.profilServiceService.findUserSex(this.listFilesDico);
     this.profilServiceService.findLastMessageUploadTimestamp(this.listFilesDico);

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class StatsConvService {
+  listFiledico : any;
   userName:any;
   lastMessageUploadTimestamp:any;
   firstRun=true;
