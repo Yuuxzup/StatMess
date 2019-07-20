@@ -180,10 +180,12 @@ export class GlobalService {
     console.log("Launching calcul for : calculScoreTch")
     console.log("calculScoreTch = " +    this.profilServiceService.calculScoreTch(listFileDico))
     console.log("Launching calcul for : calculScoreAtWork")
+    console.log(listFileDico)
     console.log("calculScoreAtWork = " +    this.profilServiceService.calculScoreAtWork(listFileDico))
 
-    this.determinationService.determinationProfil(listFileDico);
     console.log("Launching calcul for : determinationProfil")
+    this.determinationService.determinationProfil(listFileDico);
+    
     let profilUser = this.determinationService.profilType
 
     this.httpClient
