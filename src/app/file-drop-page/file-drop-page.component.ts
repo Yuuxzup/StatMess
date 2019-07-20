@@ -30,7 +30,57 @@ export class FileDropPageComponent {
 
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router) { }
 
+  ngOnInit(){
 
+    this.httpClient.get<any[]>(this.globalService.nameDB+'starRate.json').subscribe(
+      (response) => {
+        this.rating = response['mean']
+        let rateTab = response['ratingTab'];
+          
+        this.nbrVote = 0
+        for (var k=0; k<rateTab.length;k++){
+          this.nbrVote+=rateTab[k]
+        }
+      },
+      (error) => { 
+    })
+
+    setTimeout(()=>{this.isRateMoment=true}, 420000)
+          
+    this.httpClient
+      .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
+      .subscribe(
+        (response) => {
+          let idPage = "fileDrop"
+          let compteurVisites = response;
+          let compteurPage;
+          let keyModified;
+          for(var k=0;k<Object.keys(compteurVisites).length ;k++){
+            let key = Object.keys(compteurVisites)[k]
+            if (compteurVisites[key]["idPage"]===idPage){
+              compteurPage=compteurVisites[key]
+              keyModified=key
+            }
+          }
+          this.nbrVisite=compteurPage["nbrVisite"]
+          compteurPage["nbrVisite"]+=1
+          compteurPage["timeSpent"]+=0
+          compteurVisites[keyModified]=compteurPage
+          this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
+            () => {
+              console.log("compteur "+idPage+" succes update")
+            },
+            (error) => {
+            }
+          );
+        },
+        (error) => {
+        })
+        
+        
+  }
+
+  
   onSelectFile(event) {
   this.isLoading=true;
   let files = event.target.files;

@@ -18,8 +18,8 @@ export class GlobalService {
   constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService, private router: Router) { }
 
   defineDB(){
-    //let loc = document.location.href;
-    //this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' : 'https://statmess-trunk.firebaseio.com/';
+    let loc = document.location.href;
+    this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' : 'https://statmess-trunk.firebaseio.com/';
 
     /*
     //Création de la table profil
@@ -180,10 +180,12 @@ export class GlobalService {
     console.log("Launching calcul for : calculScoreTch")
     console.log("calculScoreTch = " +    this.profilServiceService.calculScoreTch(listFileDico))
     console.log("Launching calcul for : calculScoreAtWork")
+    console.log(listFileDico)
     console.log("calculScoreAtWork = " +    this.profilServiceService.calculScoreAtWork(listFileDico))
 
-    this.determinationService.determinationProfil(listFileDico);
     console.log("Launching calcul for : determinationProfil")
+    this.determinationService.determinationProfil(listFileDico);
+    
     let profilUser = this.determinationService.profilType
 
     this.httpClient

@@ -51,6 +51,8 @@ export class ProfilPannelComponent implements OnInit {
       this.router.navigate(['../../home']);
       alert("Veuillez sélectionner votre dossier à analyser afin d'accéder à cette page");
     }
+
+    this.listFilesDico = this.globalService.listFileDicoFilled;
     this.isProfilFirstRun=this.profilServiceService.firstRun
     this.profilServiceService.switchBooleanFirstRun()
     setTimeout(()=>{
@@ -58,6 +60,7 @@ export class ProfilPannelComponent implements OnInit {
     }, 10000)
     this.calculDataForSlider();
     this.determineProfil();
+
   }
 
   calculDataForSlider(){
@@ -72,7 +75,9 @@ export class ProfilPannelComponent implements OnInit {
     this.scoreSolExp = this.profilServiceService.calculScoreSolExp(this.listFilesDico);
     this.scoreConCur = this.profilServiceService.calculScoreConCur(this.listFilesDico);
     this.scoreEgoAlt = this.profilServiceService.calculScoreEgoAlt(this.listFilesDico);
-    this.scorePro = Math.floor((((this.profilServiceService.calculScorePro(this.listFilesDico)+this.profilServiceService.calculScoreAtWork(this.listFilesDico))/2)*100+100)/2);
+    var scoreProTemp = this.profilServiceService.calculScorePro(this.listFilesDico)
+    var scoreWorkTemp = this.profilServiceService.calculScoreAtWork(this.listFilesDico)
+    this.scorePro = Math.floor((((scoreProTemp+scoreWorkTemp)/2)*100+100)/2);
     this.stylePro = "conic-gradient( #E67E22 0 "+this.scorePro+"%, #EEEEEE 0)"
     this.scoreInf = this.profilServiceService.calculScoreInf(this.listFilesDico);
     this.scoreBla = Math.floor((this.profilServiceService.calculScoreBla(this.listFilesDico)*100+100)/2);
