@@ -31,7 +31,7 @@ export class FileDropPageComponent {
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router) { }
 
   ngOnInit(){
-
+    /*
     this.httpClient.get<any[]>(this.globalService.nameDB+'starRate.json').subscribe(
       (response) => {
         this.rating = response['mean']
@@ -77,7 +77,7 @@ export class FileDropPageComponent {
         (error) => {
         })
         
-        
+    */    
   }
 
   
