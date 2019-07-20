@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
+<<<<<<< HEAD
 import {RouterModule,Router} from '@angular/router';
+=======
+>>>>>>> ecb0bbf3b5d0cd9e55dbc1d9ea17cce5489e52c6
 
 @Component({
   selector: 'app-landing',
@@ -14,9 +17,13 @@ export class LandingComponent implements OnInit {
 
   avisA=true;
   avisB=false;
+<<<<<<< HEAD
+
+=======
+>>>>>>> ecb0bbf3b5d0cd9e55dbc1d9ea17cce5489e52c6
 
 
-  constructor(private globalService:GlobalService, private router: Router) { }
+  constructor(private globalService:GlobalService) { }
 
   ngOnInit(){
     setTimeout(()=>{this.changeAvis()}, 7500)
