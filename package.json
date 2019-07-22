@@ -7,13 +7,13 @@
     "@angular/cdk": "7.3.4",
     "@angular/common": "7.2.8",
     "@angular/compiler": "^7.2.15",
-    "@angular/core": "7.2.8",
+    "@angular/core": "^7.2.8",
     "@angular/forms": "7.2.8",
     "@angular/http": "^7.2.15",
     "@angular/material": "7.3.4",
     "@angular/platform-browser": "7.2.8",
     "@angular/platform-browser-dynamic": "7.2.8",
-    "@angular/platform-server": "7.2.8",
+    "@angular/platform-server": "^7.2.8",
     "@angular/router": "7.2.8",
     "@ng-bootstrap/ng-bootstrap": "4.1.0",
     "@nguniversal/express-engine": "^7.1.1",
@@ -77,5 +77,4 @@
     "typescript": "~3.1.1",
     "webpack-cli": "^3.1.0"
   }
-
 }
