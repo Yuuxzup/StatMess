@@ -35,8 +35,7 @@ import { CguComponent } from './cgu/cgu.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { LandingComponent } from './landing/landing.component';
 import {Routes, RouterModule} from "@angular/router"
-
-
+import {SafePipe} from '../tools/safePipe';
 
 const appRoutes: Routes =[
   { path: '', component: LandingComponent},
@@ -52,7 +51,7 @@ const appRoutes: Routes =[
 @NgModule({
   imports:[BrowserModule.withServerTransition({ appId: 'serverApp' }), FormsModule, ReactiveFormsModule,MaterialModule, HttpClientModule, NgbModule, IgxInputGroupModule,
 		IgxSliderModule, AngularFontAwesomeModule, RouterModule.forRoot(appRoutes)],
-  declarations: [ AppComponent, FileDropPageComponent, HomePannelPageComponent, LoadingCustomComponent, ProfilPannelComponent, ConvsPannelComponent, OwnStatsPannelComponent, PrevisuConvComponent, OneConvStatsComponent, OverviewStatComponent, MessagesStatComponent, TimeStatComponent, ReactionsStatComponent, AutresStatComponent, SliderPersoComponent, CguComponent, LandingComponent],
+  declarations: [ AppComponent, FileDropPageComponent, HomePannelPageComponent, LoadingCustomComponent, ProfilPannelComponent, ConvsPannelComponent, OwnStatsPannelComponent, PrevisuConvComponent, OneConvStatsComponent, OverviewStatComponent, MessagesStatComponent, TimeStatComponent, ReactionsStatComponent, AutresStatComponent, SliderPersoComponent, CguComponent, LandingComponent, SafePipe],
   bootstrap:    [ AppComponent ],
   providers: [StatsConvService, OwnStatsService, GlobalService, ProfilServiceService, DeterminationService]
 })
