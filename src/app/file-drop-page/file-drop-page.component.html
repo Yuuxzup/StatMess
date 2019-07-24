@@ -195,15 +195,26 @@
     
         <input class="dropButton" type='file' (change)="onSelectFile($event)" webkitdirectory >
         
-        <ad-custom [urlAddon]=1></ad-custom>
+        
         
         <button class="buttonSelect">Selectionner votre dossier</button>
-        
-    
+        <input type="hidden" name="IL_IN_ARTICLE">
+        <div style ="text-align:center; margin-top:4vh;" class="adInfoLinks">
+            <input type="hidden" name="IL_IN_ARTICLE">
+        </div>
+
+        <div class="youtubeVideo">
+        <iframe width="800" height="500"
+        src="https://www.youtube.com/embed/fBa8wXVhgFQ" style="border:solid; border-width: 15px; border-color:#1A1837">
+        </iframe>
+        </div>
+
+
         <div class="qsn">
           <h2 style="text-align:center; padding-top:1%">Qui sommes nous ?</h2>
           <hr class="overview">
           <p>Nous sommes trois étudiants de l’Ecole Centrale de Marseille. À l’origine, ce projet nous est venu par le constat que nous passions tous de longues heures sur Messenger, et pourtant nous ne savions pas combien. Nous ne savions pas qui étaient les personnes les plus influentes sur nos conversations, quelles étaient les personnes à qui nous parlions le plus à travers le temps, ou encore ce que nos habitudes de conversations pouvaient dire de nous. Nous avons alors cherché à donner sens à nos données Facebook, qui, sans algorithme, étaient illisibles.</p>
+          <input type="hidden" name="IL_IN_ARTICLE">
           <p>Ce projet n’a pas vocation à faire de l’argent, mais simplement de partager l’analyse que nous avons faite de nos messages et faire sourire en formalisant des informations que l’utilisateur ne pouvait que supposer par le passé.</p>
           <p style="padding-bottom:2%">Si vous avez une quelconque remarque sur notre site, que vous l’avez apprécié ou détesté, ou que vous trouvez un bug ou une amélioration possible, n’hésitez pas à nous écrire à <a href="mailto:contact.sightmess@gmail.com">contact.sightmess@gmail.com</a> ! Nous serons ravis de vous lire.</p>
           <div class="listCrea">
@@ -288,4 +299,6 @@
         </div>
       <app-cgu></app-cgu>
     </div>
+    
+    <input type="hidden" name="IL_IN_ARTICLE">
     

@@ -4,6 +4,7 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
 @include igx-core();
 @include igx-theme($default-palette);
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 @font-face {
     font-family: 'robotoReg';

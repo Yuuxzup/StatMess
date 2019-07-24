@@ -856,7 +856,7 @@ hr.overview{
   width: 20vw;
   height: 8vh;
   margin-top: 2.5%;
-  margin-left: -20.6%;
+  margin-left: -19.65%;
   position: absolute;
   box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -1337,4 +1337,9 @@ $social-button-colors: (
   width: 70vw;
   margin: auto;
   justify-content: center;
+}
+
+.youtubeVideo{
+  text-align:center;
+  margin-top:10vh;
 }
