@@ -140,3 +140,9 @@ $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
 p, h1, h2 {
     font-family: "robotoLight";
 }
+
+ad-custom {
+    display:block;
+    border : 1px solid black;
+    margin-top: 2vh;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { StatsConvService } from '../home-pannel-page/convs-pannel/stats-conv.service';
 import { GlobalService } from '../global.service';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +10,7 @@ import {RouterModule,Router} from '@angular/router';
   templateUrl: './file-drop-page.component.html',
   styleUrls: ['./file-drop-page.component.scss']
 })
-export class FileDropPageComponent {
+export class FileDropPageComponent implements OnInit{
 
   listFilesDico = [];
   isZipLoaded = false;
@@ -23,6 +23,7 @@ export class FileDropPageComponent {
 
   isRateMoment=false;
   isCguVisible=false;
+  isFullLoaded=false;
 
   rating=0
   isRated=false;
@@ -78,9 +79,13 @@ export class FileDropPageComponent {
         })
         
     */    
+    this.ngAfterViewInit();
   }
 
-  
+  ngAfterViewInit() {
+    this.isFullLoaded=true;
+  }
+
   onSelectFile(event) {
   this.isLoading=true;
   let files = event.target.files;
