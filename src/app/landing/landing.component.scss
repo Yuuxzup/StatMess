@@ -53,6 +53,16 @@ p {
     font-size:3em;
   }
   
+  a{
+    background: -webkit-linear-gradient(rgb(250, 138, 47), rgb(214, 87, 28));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-size:3em;
+  }
+
   .button-container-2 p{
     background: -webkit-linear-gradient(rgb(250, 138, 47), rgb(214, 87, 28));
     -webkit-background-clip: text;
