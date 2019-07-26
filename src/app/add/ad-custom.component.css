@@ -1,5 +1,6 @@
-#div-that-holds-the-iframe iframe{
+iframe{
     border: none;
     height: 150px;
     margin: auto;
+    width:100%;
 }

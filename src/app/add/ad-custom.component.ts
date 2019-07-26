@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, AfterViewInit} from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
 
 
 
@@ -7,32 +7,16 @@ import { Component, Input, OnInit, AfterViewInit} from '@angular/core';
   templateUrl: './ad-custom.component.html',
   styleUrls: [ './ad-custom.component.css' ]
 })
-export class AdCustomComponent implements OnInit, AfterViewInit {
-
-    @Input() urlAddon:any;
+export class AdCustomComponent implements AfterViewInit {
+    @ViewChild('iframeToFill') iframe: ElementRef;
     url:any
   constructor() {}
 
-  ngOnInit(){
-    var addon = this.urlAddon==2 ? "Double" : "One";
-    this.url="http://ptondereau.perso.centrale-marseille.fr/add"+addon+"Bis.html";
+  ngAfterViewInit(): void {
+    var tag = "<div id='39493-1'><script src='//ads.themoneytizer.com/s/gen.js?type=1'></script><script src='//ads.themoneytizer.com/s/requestform.js?siteId=39493&formatId=1'></script></div>"
+    let doc =  this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
+    doc.open();
+    doc.write(tag);
+    doc.close();
   }
-
-  ngAfterViewInit(){
-    console.log("test")
-    this.createIframe();
-  }
-
-  createIframe(){
-    var i = document.createElement("iframe");
-    i.src = this.url;
-    i.scrolling = "auto";
-    i.width = "100%";
-    i.height = "300px";
-    document.getElementById("div-that-holds-the-iframe").appendChild(i);
-  };
 }
-
-
-
-
