@@ -1,15 +1,15 @@
 <div *ngIf="!isReady">
-    <a href="http://sightmess.com/home"></a>
+    <a href="http://sightmess.com/panels"></a>  <!-- Test pour voir si Google reconnait le lien. A essayer : Zindex = -1 --> 
     <div class="cover">
       <div class="logoSightMess">
         <img alt="SightMess" title="SightMess" src="./assets/img/logo_sightmess_bl.png"/>
       </div>
-       <div alt="Cliquez ici et analysez vos messages" title="Cliquez ici et analysez vos messages" class="button-container-2" [routerLink]="['home']">
+       <div alt="Cliquez ici et analysez vos messages" title="Cliquez ici et analysez vos messages" class="button-container-2">
         <span class="mas" >
           <h1 class="launchText">Lancez Vous</h1>
         </span>
         <button style="padding: 0;" type="button" name="Hover" >
-          <h1 style="letter-spacing: 16px; font-style:italic;" class="launchText"><b style="font-weight:300; font-family: 'robotoReg';">Sight</b><b style="font-weight:600; font-family: 'robotoReg'">Mess</b></h1>
+          <a href="http://sightmess.com/home" style="letter-spacing: 16px; font-style:italic;" class="launchText"><b style="font-weight:300; font-family: 'robotoReg';">Sight</b><b style="font-weight:600; font-family: 'robotoReg'">Mess</b></a>
         </button>
       </div>
     </div>
