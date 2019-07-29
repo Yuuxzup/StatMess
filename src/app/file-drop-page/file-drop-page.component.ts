@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { StatsConvService } from '../home-pannel-page/convs-pannel/stats-conv.service';
 import { GlobalService } from '../global.service';
 import { HttpClient } from '@angular/common/http';
@@ -32,7 +32,7 @@ export class FileDropPageComponent implements OnInit{
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router) { }
 
   ngOnInit(){
-    /*
+    
     this.httpClient.get<any[]>(this.globalService.nameDB+'starRate.json').subscribe(
       (response) => {
         this.rating = response['mean']
@@ -77,13 +77,8 @@ export class FileDropPageComponent implements OnInit{
         },
         (error) => {
         })
-        
-    */    
-    this.ngAfterViewInit();
-  }
-
-  ngAfterViewInit() {
-    this.isFullLoaded=true;
+           
+        this.isFullLoaded=true;
   }
 
   onSelectFile(event) {
