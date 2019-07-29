@@ -19,14 +19,14 @@ export class GlobalService {
 
   defineDB(){
     let loc = document.location.href;
-    this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' : 'https://statmess-trunk.firebaseio.com/';
+    this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' :'https://prod-8bee9.firebaseio.com/';
 
     /*
     //Création de la table profil
     let listProfil=["INTJ", "INTP","ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"]
     for (var k=0; k<listProfil.length; k++){
       let profil={"profil":listProfil[k], "occurence":0}
-      this.httpClient.post('https://statmess-trunk.firebaseio.com/repartitionProfils.json', profil).subscribe(
+      this.httpClient.post(this.nameDB+'repartitionProfils.json', profil).subscribe(
         () => {
           console.log("compteur "+"fileDrop"+" succes update")
         },
@@ -42,7 +42,7 @@ export class GlobalService {
     for (var k=0; k<listePage.length; k++){
       let oneCompteur={"idPage":listePage[k], "nbrVisite":0, "timeSpent":0}
 
-      this.httpClient.post('https://statmess-trunk.firebaseio.com/compteurVisites.json', oneCompteur).subscribe(
+      this.httpClient.post(this.nameDB+'compteurVisites.json', oneCompteur).subscribe(
               () => {
                 console.log("compteur "+"fileDrop"+" succes update")
               },
@@ -53,7 +53,7 @@ export class GlobalService {
 
     //Création de la table visiteur
     let oneUser ={"date": new Date(), "name": "Paul Tondereau", "number":1}
-    this.httpClient.post('https://statmess-trunk.firebaseio.com/oneUser.json', oneUser).subscribe(
+    this.httpClient.post(this.nameDB+'oneUser.json', oneUser).subscribe(
       () => {
         console.log("Rating maj success")
       },
@@ -67,7 +67,7 @@ export class GlobalService {
     rateDico['ratingTab']=[0,0,0,0,0]
     rateDico['mean']=0
 
-    this.httpClient.post('https://statmess-trunk.firebaseio.com/starRate.json', rateDico).subscribe(
+    this.httpClient.post(this.nameDB+'starRate.json', rateDico).subscribe(
       () => {
         console.log("Rating maj success")
       },
