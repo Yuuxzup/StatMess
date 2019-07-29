@@ -243,9 +243,6 @@ p {
     height: 50%;
     transform: none;
     
-    .slide {
-      // filter: blur(3px);
-    }
 
     &--before {
       left: 0;
@@ -734,7 +731,7 @@ html,body {
 }
 
 .card{
-  width: 17vw;
+  width: 19vw;
   padding-bottom: 2vh;
 
   background:white;
@@ -746,7 +743,7 @@ html,body {
   text-align:justify;
   margin-left: 2%;
   margin-right: 2%;
-  font-size:1.5vh
+  font-size:1.1vw;
 }
 
 .card img {
@@ -757,7 +754,7 @@ html,body {
 }
 
 .card h3{
-  font-size:2vw;
+  font-size:1.8vw;
   margin:0;
   margin-top: 1.5%;
   margin-bottom: 3%;
@@ -1342,5 +1339,5 @@ $social-button-colors: (
 
 .youtubeVideo{
   text-align:center;
-  margin-top:10vh;
+  margin-top:1vh;
 }
