@@ -34,9 +34,9 @@ import { DeterminationService } from './home-pannel-page/profil-pannel/determina
 import { CguComponent } from './cgu/cgu.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { LandingComponent } from './landing/landing.component';
-import { AdCustomComponent } from './add/ad-custom.component';
 import {Routes, RouterModule} from "@angular/router"
 import {SafePipe} from '../tools/safePipe';
+import { AdCustomComponent } from './ad-custom/ad-custom.component';
 
 const appRoutes: Routes =[
   { path: '', component: LandingComponent},

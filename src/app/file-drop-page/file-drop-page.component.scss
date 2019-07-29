@@ -243,9 +243,6 @@ p {
     height: 50%;
     transform: none;
     
-    .slide {
-      // filter: blur(3px);
-    }
 
     &--before {
       left: 0;
@@ -734,7 +731,7 @@ html,body {
 }
 
 .card{
-  width: 17vw;
+  width: 19vw;
   padding-bottom: 2vh;
 
   background:white;
@@ -746,6 +743,7 @@ html,body {
   text-align:justify;
   margin-left: 2%;
   margin-right: 2%;
+  font-size:1.1vw;
 }
 
 .card img {
@@ -756,7 +754,7 @@ html,body {
 }
 
 .card h3{
-  font-size:1.4em;
+  font-size:1.8vw;
   margin:0;
   margin-top: 1.5%;
   margin-bottom: 3%;
@@ -773,7 +771,7 @@ html,body {
 }
 
 .bienvenue h1{
-  padding-top:3%;
+  padding-top:2.5%;
   margin-bottom: 1vh;
 }
 
@@ -856,7 +854,7 @@ hr.overview{
   width: 20vw;
   height: 8vh;
   margin-top: 2.5%;
-  margin-left: -20.6%;
+  margin-left: -19.65%;
   position: absolute;
   box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -1337,4 +1335,9 @@ $social-button-colors: (
   width: 70vw;
   margin: auto;
   justify-content: center;
+}
+
+.youtubeVideo{
+  text-align:center;
+  margin-top:1vh;
 }
