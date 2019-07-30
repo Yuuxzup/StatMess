@@ -15,8 +15,10 @@ export class LandingComponent implements OnInit {
   constructor(private globalService:GlobalService, private router: Router) { }
 
 ngOnInit(){
+  /*
     this.globalService.defineDB()
     //console.log("BD on process : "+this.globalService.nameDB) 
+  */
 }
   launch(){
     this.isReady=true;

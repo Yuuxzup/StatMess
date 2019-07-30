@@ -33,6 +33,7 @@ export class FileDropPageComponent implements OnInit{
 
   ngOnInit(){
     
+    /*
     this.httpClient.get<any[]>(this.globalService.nameDB+'starRate.json').subscribe(
       (response) => {
         this.rating = response['mean']
@@ -79,6 +80,7 @@ export class FileDropPageComponent implements OnInit{
         })
            
         this.isFullLoaded=true;
+        */
   }
 
   onSelectFile(event) {
