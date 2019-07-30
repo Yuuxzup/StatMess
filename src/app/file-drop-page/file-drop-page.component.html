@@ -107,7 +107,8 @@
           <p>Vous n'avez pas encore votre dossier ? <a class="clickHere" (click)="showTutorial()">Cliquez ici</a> pour l'obtenir
           
         </div>
-    
+        
+        <!-- Modal for desktop -->
         <div id="modal-container" (click)="hideTutorial()">
           <div class="modal-background">
             <div class="modal">
@@ -192,6 +193,72 @@
             </div>
           </div>
         </div>
+
+        <!-- Modal for Mobile/Tablet -->
+        <div id="modal-container-mobile" (click)="hideTutorial()">
+            <div class="modal-background">
+              <div class="modal">
+                <div class="tutorial">
+                  <div class="oneStep">
+                    <p>CECI EST LE TUTORIEL POUR SMARTPHONE/TABLET</p> 
+                  </div>
+            <div class="oneStep">
+              <p>ETAPE 2 DE CE TUTO</p>
+            </div>
+            <div class="oneStep">
+              <div class="textSide2" style="margin-right:1%">
+                <h1>3. Téléchargez vos messages.</h1>
+                <hr class="overview">
+                <p>Après avoir attendu que Facebook créé votre dossier, vous pouvez télécharger vos messages ! <b>Vous serez notifié.</b></p>
+              </div>
+              <div class="imgSide">
+                <img alt="Téléchargement" title="Téléchargement" src="./assets/img/tutoriel3.png" class="imageTutorial2"/>
+                <img alt="Flèche" title="Flèche" src="./assets/img/tutoriel4.png" id="flecheBas"/>
+                <img alt="Messages prêts" title="Messages prêts" src="./assets/img/tutoriel5.png" class="imageTutorial2"/>
+              </div>
+            </div>
+            <div class="oneStep">
+              <div class="imgSide">
+                <img alt="Extraire fichier Facebook" title="Extraire fichier Facebook" src="./assets/img/tutoriel6.png" 
+                class="imageTutorial2"/>
+              </div>
+              <div class="textSide2" style="margin-left:1%">
+                <h1>4. Extraire votre dossier</h1>
+                <hr class="overview">
+                <p style="margin-bottom:1%">Rendez-vous dans votre dossier “Téléchargements” et <b>décompressez</b> facebook-PrenomNom.zip.</p>
+                <p style="margin-bottom:1%">Vous pouvez utiliser pour cela n’importe quel logiciel de décompression, par exemple : </p>
+                <p>- <a class="clickHere" href="https://www.7-zip.fr/" target="_blank">7zip</a> sur Windows.</p>
+                <p>- <a class="clickHere" href="https://itunes.apple.com/fr/app/the-unarchiver/id425424353?mt=12" target="_blank">Unarchiver</a> sur Mac.</p>
+              </div>
+            </div>
+            <div class="oneStep">
+              <div class="textSide2" style="margin-right:1%">
+                <h1>5. Lancez l'analyse SightMess !</h1>
+                <hr class="overview">
+                <p>Vous n’avez plus qu’à sélectionner votre dossier</p>
+                <p>Et... <b>C’est parti !</b></p>
+              </div>
+              <div class="imgSide">
+                <img alt="Sélectionner vos messages Facebook" title="Sélectionner vos messages Facebook" src="./assets/img/tutoriel7.png" id="boutonUpload"/>
+                <img alt="Flèche" title="Flèche" src="./assets/img/tutoriel4.png" id="flecheBas"/>
+                <img alt="Lancez vous dans l'analyse" title="Lancez vous dans l'analyse" src="./assets/img/tutoriel8.png" class="imageTutorial2"/>
+              </div>
+            </div>
+            <div style="box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+              <h1>Enjoy SightMess !</h1>
+              <hr class="overview">
+              <p style="text-align:left">PS : Sur Chrome, vous aurez ce message, c'est normal !</p>
+              <div class="imgSide">
+                <img alt="Message Chrome" title="Message Chrome" src="./assets/img/tutoriel9.png" class="imageTutorial" style="margin-top:3%; margin-bottom:3%; height:15%; width:50%"/>
+              </div>
+              <p style="text-align:center">Nous vous souhaitons une bonne utilisation et n'oubliez pas de donner votre avis.</p>
+              <p style="text-align:right; margin-top:2%; margin-bottom:1%; margin-right:3%">L'équipe SightMess</p>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+
     
         <input class="dropButton" type='file' (change)="onSelectFile($event)" webkitdirectory >
         
@@ -280,20 +347,9 @@
       <router-outlet></router-outlet>
     </div>
     
-    <div class="footer" *ngIf="!isCguVisible &&!isLoading">
-      <h1 (click)="showHideCgu()" class="CGU">Conditions générales d'utilisation</h1>
+    <div class="footer">
+      <h1 [routerLink]="['cgu']" class="CGU">Conditions générales d'utilisation</h1>
     </div>
     
-    <div class="cguPage" *ngIf="isCguVisible && !isLoading">
-      <div class="wrappercgu" (click)="showHideCgu()">
-        <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <g id="prev" transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
-                <polygon class="arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                <polygon class="arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                <path d="M-1.48029737e-15,0.56157424 L-1.48029737e-15,16.1929159 L9.708,8.33860465 L-2.66453526e-15,0.56157424 L-1.48029737e-15,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
-            </g>
-        </svg>
-        </div>
-      <app-cgu></app-cgu>
-    </div>
+    
     

@@ -1,9 +1,10 @@
-import { Component, OnInit, AfterViewInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { StatsConvService } from '../home-pannel-page/convs-pannel/stats-conv.service';
 import { GlobalService } from '../global.service';
 import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import {RouterModule,Router} from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-file-drop-page',
@@ -29,9 +30,13 @@ export class FileDropPageComponent implements OnInit{
   isRated=false;
   nbrVote=0;
 
-  constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router) { }
+  constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router, private deviceService: DeviceDetectorService) { }
 
   ngOnInit(){
+
+  
+  
+    
     /*
     this.httpClient.get<any[]>(this.globalService.nameDB+'starRate.json').subscribe(
       (response) => {
@@ -77,13 +82,9 @@ export class FileDropPageComponent implements OnInit{
         },
         (error) => {
         })
-        
-    */    
-    this.ngAfterViewInit();
-  }
-
-  ngAfterViewInit() {
-    this.isFullLoaded=true;
+           
+        this.isFullLoaded=true;
+        */
   }
 
   onSelectFile(event) {
@@ -140,13 +141,25 @@ export class FileDropPageComponent implements OnInit{
   }
 
   showTutorial(){
-    $('#modal-container').removeAttr('class').addClass('one');
-    $('body').addClass('modal-active');
+    if(this.deviceService.isDesktop()){
+      $('#modal-container').removeAttr('class').addClass('one');
+      $('body').addClass('modal-active');
+    }
+    else{
+      $('#modal-container-mobile').removeAttr('class').addClass('one');
+      $('body').addClass('modal-active');
+    }
   }
 
   hideTutorial(){
-    $('#modal-container').addClass('out');
-    $('body').removeClass('modal-active');
+    if(this.deviceService.isDesktop()){
+      $('#modal-container').addClass('out');
+      $('body').removeClass('modal-active');
+    }
+    else{
+      $('#modal-container-mobile').addClass('out');
+      $('body').removeClass('modal-active');
+    }
   }
 
   closeTooltip(){

@@ -414,7 +414,7 @@ p {
   
   .logoSightMess img{
     height: 30vh;
-    margin-top: 30vh;
+    margin-top: 25vh;
     margin-bottom: 1%;
     max-height: 400px;
   }
@@ -509,10 +509,9 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 5vh;
 
   &__button {
-    margin: 10px 5px 0;
+    margin: 0
   }
 }
 

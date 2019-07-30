@@ -37,6 +37,7 @@ import { LandingComponent } from './landing/landing.component';
 import {Routes, RouterModule} from "@angular/router"
 import {SafePipe} from '../tools/safePipe';
 import { AdCustomComponent } from './ad-custom/ad-custom.component';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 
 const appRoutes: Routes =[
   { path: '', component: LandingComponent},
@@ -45,13 +46,14 @@ const appRoutes: Routes =[
   { path: 'panels/conv', component: ConvsPannelComponent},
   { path:'panels/profil', component: ProfilPannelComponent},
   { path:'panels', component: HomePannelPageComponent},
+  { path:'home/cgu', component: CguComponent},
   { path:'**', redirectTo:'home', pathMatch:'full'} 
 ]
 
 
 @NgModule({
   imports:[BrowserModule.withServerTransition({ appId: 'serverApp' }), FormsModule, ReactiveFormsModule,MaterialModule, HttpClientModule, NgbModule, IgxInputGroupModule,
-		IgxSliderModule, AngularFontAwesomeModule, RouterModule.forRoot(appRoutes)],
+		IgxSliderModule, AngularFontAwesomeModule, RouterModule.forRoot(appRoutes), DeviceDetectorModule.forRoot()],
   declarations: [ AppComponent, FileDropPageComponent, HomePannelPageComponent, LoadingCustomComponent, ProfilPannelComponent, ConvsPannelComponent, OwnStatsPannelComponent, PrevisuConvComponent, OneConvStatsComponent, OverviewStatComponent, MessagesStatComponent, TimeStatComponent, ReactionsStatComponent, AutresStatComponent, SliderPersoComponent, CguComponent, LandingComponent, SafePipe, AdCustomComponent],
   bootstrap:    [ AppComponent ],
   providers: [StatsConvService, OwnStatsService, GlobalService, ProfilServiceService, DeterminationService]
