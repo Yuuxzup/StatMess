@@ -178,6 +178,32 @@
     <meta name="description" content="Analysez vos messages Facebook: découvrez votre profil Messenger, analysez vos conversations en détail et dans leur globalité et bien plus encore..." /> 
   </head>
   <body>
+
+        <!-- Facebook SDK for developers -->
+
+        <script>
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId            : '368024827166544',
+                    autoLogAppEvents : true,
+                    xfbml            : true,
+                    version          : 'v4.0'
+                  });
+                  FB.ui({
+                     method: 'share',
+                     href: 'http://sightmess.com/'
+                     }, function(response){});
+                  };
+              
+                (function(d, s, id){
+                   var js, fjs = d.getElementsByTagName(s)[0];
+                   if (d.getElementById(id)) {return;}
+                   js = d.createElement(s); js.id = id;
+                   js.src = "https://connect.facebook.net/fr_FR/sdk.js";
+                   fjs.parentNode.insertBefore(js, fjs);
+                 }(document, 'script', 'facebook-jssdk'));
+        </script>
+
   <my-app></my-app>
 
   </body>
