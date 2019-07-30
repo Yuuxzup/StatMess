@@ -5,7 +5,7 @@ import { GlobalService } from '../global.service';
 @Component({
   selector: 'app-cgu',
   templateUrl: './cgu.component.html',
-  styleUrls: ['./cgu.component.css']
+  styleUrls: ['./cgu.component.scss']
 })
 export class CguComponent implements OnInit {
 
