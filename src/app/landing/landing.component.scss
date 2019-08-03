@@ -63,6 +63,18 @@ p {
     font-size:3em;
   }
 
+  #testHref{
+    display:none;
+  }
+
+  #testHref2{
+    z-index:-10;
+  }
+
+  #testHref3{
+    opacity:0;
+  }
+
   .button-container-2 p{
     background: -webkit-linear-gradient(rgb(250, 138, 47), rgb(214, 87, 28));
     -webkit-background-clip: text;
