@@ -180,43 +180,6 @@
   </head>
   <body>
 
-        <!-- Facebook SDK for developers -->
-
-        <script>
-                window.fbAsyncInit = function() {
-                  FB.init({
-                    appId            : '368024827166544',
-                    autoLogAppEvents : true,
-                    xfbml            : true,
-                    version          : 'v4.0'
-                  });
-
-                  // Partie SEND ON MESSENGER
-
-                  FB.ui({
-                    method: 'send',
-                    link: 'http://sightmess.com/',
-                    app_id: '368024827166544'
-                     }, function(response){});
-                  };
-
-                  // Fin partie SEND
-                
-                (function(d, s, id){
-                   var js, fjs = d.getElementsByTagName(s)[0];
-                   if (d.getElementById(id)) {return;}
-                   js = d.createElement(s); js.id = id;
-                   js.src = "https://connect.facebook.net/fr_FR/sdk.js";
-                   fjs.parentNode.insertBefore(js, fjs);
-                 }(document, 'script', 'facebook-jssdk'));
-        </script>
-
-         <!-- Partie SEND IN MESSENGER for MOBILE
-
-             <a href="fb-messenger://share/?link=http%3A%2F%2Fsightmess.com%2F">Send In Messenger</a>  
-            
-        -->
-
   <my-app></my-app>
 
   </body>

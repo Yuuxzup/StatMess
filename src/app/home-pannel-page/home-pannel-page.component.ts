@@ -27,7 +27,7 @@ export class HomePannelPageComponent implements OnInit {
     }
     this.timeLastSwitch=(new Date()).getTime()
     this.httpClient
-      .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
+      .get<any[]>(this.globalService.defineDB()+'compteurVisites.json')
       .subscribe(
         (response) => {
           let idPage = "home"
@@ -44,7 +44,7 @@ export class HomePannelPageComponent implements OnInit {
           compteurPage["nbrVisite"]+=1
           compteurPage["timeSpent"]+=0
           compteurVisites[keyModified]=compteurPage
-          this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
+          this.httpClient.put(this.globalService.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
             () => {
               console.log("compteur "+idPage+" succes update")
             },
@@ -62,7 +62,7 @@ export class HomePannelPageComponent implements OnInit {
     }
     if(this.isMyStats){
       this.httpClient
-        .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
+        .get<any[]>(this.globalService.defineDB()+'compteurVisites.json')
         .subscribe(
           (response) => {
             let idPage="ownStat"
@@ -79,7 +79,7 @@ export class HomePannelPageComponent implements OnInit {
             compteurPage["nbrVisite"]+=1
             compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
             compteurVisites[keyModified]=compteurPage
-            this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
+            this.httpClient.put(this.globalService.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
               () => {
                 console.log("compteur "+idPage+" succes update")
                 this.timeLastSwitch=new Date().getTime()
@@ -93,7 +93,7 @@ export class HomePannelPageComponent implements OnInit {
     }
     if(this.isMyConvs){
       this.httpClient
-        .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
+        .get<any[]>(this.globalService.defineDB()+'compteurVisites.json')
         .subscribe(
           (response) => {
             let idPage="convStat"
@@ -110,7 +110,7 @@ export class HomePannelPageComponent implements OnInit {
             compteurPage["nbrVisite"]+=1
             compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
             compteurVisites[keyModified]=compteurPage
-            this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
+            this.httpClient.put(this.globalService.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
               () => {
                 console.log("compteur "+idPage+" succes update")
                 this.timeLastSwitch=new Date().getTime()
@@ -124,7 +124,7 @@ export class HomePannelPageComponent implements OnInit {
     }
     if(this.isMyProfil){
       this.httpClient
-        .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
+        .get<any[]>(this.globalService.defineDB()+'compteurVisites.json')
         .subscribe(
           (response) => {
             let idPage="profil"
@@ -141,7 +141,7 @@ export class HomePannelPageComponent implements OnInit {
             compteurPage["nbrVisite"]+=1
             compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
             compteurVisites[keyModified]=compteurPage
-            this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
+            this.httpClient.put(this.globalService.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
               () => {
                 console.log("compteur "+idPage+" succes update")
                 this.timeLastSwitch=new Date().getTime()

@@ -34,11 +34,8 @@ export class FileDropPageComponent implements OnInit{
 
   ngOnInit(){
 
-  
-  
-    
-    /*
-    this.httpClient.get<any[]>(this.globalService.nameDB+'starRate.json').subscribe(
+
+    this.httpClient.get<any[]>(this.globalService.defineDB()+'starRate.json').subscribe(
       (response) => {
         this.rating = response['mean']
         let rateTab = response['ratingTab'];
@@ -54,7 +51,7 @@ export class FileDropPageComponent implements OnInit{
     setTimeout(()=>{this.isRateMoment=true}, 420000)
           
     this.httpClient
-      .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
+      .get<any[]>(this.globalService.defineDB()+'compteurVisites.json')
       .subscribe(
         (response) => {
           let idPage = "fileDrop"
@@ -72,7 +69,7 @@ export class FileDropPageComponent implements OnInit{
           compteurPage["nbrVisite"]+=1
           compteurPage["timeSpent"]+=0
           compteurVisites[keyModified]=compteurPage
-          this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
+          this.httpClient.put(this.globalService.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
             () => {
               console.log("compteur "+idPage+" succes update")
             },
@@ -84,7 +81,6 @@ export class FileDropPageComponent implements OnInit{
         })
            
         this.isFullLoaded=true;
-        */
   }
 
   onSelectFile(event) {
@@ -170,7 +166,7 @@ export class FileDropPageComponent implements OnInit{
     this.rating=number;
     
     this.httpClient
-      .get<any[]>(this.globalService.nameDB+'starRate.json')
+      .get<any[]>(this.globalService.defineDB()+'starRate.json')
       .subscribe(
         (response) => {
           let rateDico = response;
@@ -189,7 +185,7 @@ export class FileDropPageComponent implements OnInit{
           rateDico['ratingTab']=rateTab
           rateDico['mean']=mean
 
-          this.httpClient.put(this.globalService.nameDB+'starRate.json', rateDico).subscribe(
+          this.httpClient.put(this.globalService.defineDB()+'starRate.json', rateDico).subscribe(
             () => {
               console.log("Rating maj success")
             },
