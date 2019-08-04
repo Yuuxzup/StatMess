@@ -21,7 +21,7 @@ export class GlobalService {
     let loc = document.location.href;
     this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' :'https://prod-8bee9.firebaseio.com/';
 
-    /*
+    
     //Création de la table profil
     let listProfil=["INTJ", "INTP","ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"]
     for (var k=0; k<listProfil.length; k++){
@@ -73,7 +73,7 @@ export class GlobalService {
       },
       (error) => {
       }
-    );*/
+    );
   }
 
   findUserName(listFileDico : any){
