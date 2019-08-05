@@ -37,15 +37,15 @@ export class FileDropPageComponent implements OnInit{
 
     this.httpClient.get<any[]>(this.globalService.defineDB()+'starRate.json').subscribe(
       (response) => {
-        this.rating = response['mean']
-        let rateTab = response['ratingTab'];
-          
+        this.rating = response[Object.keys(response)[0]]['mean']
+        let rateTab = response[Object.keys(response)[0]]['ratingTab'];
+
         this.nbrVote = 0
         for (var k=0; k<rateTab.length;k++){
           this.nbrVote+=rateTab[k]
         }
       },
-      (error) => { 
+      (error) => {
     })
 
     setTimeout(()=>{this.isRateMoment=true}, 420000)
