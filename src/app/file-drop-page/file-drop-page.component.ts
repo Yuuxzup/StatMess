@@ -169,7 +169,7 @@ export class FileDropPageComponent implements OnInit{
       .get<any[]>(this.globalService.defineDB()+'starRate.json')
       .subscribe(
         (response) => {
-          let rateDico = response;
+          let rateDico = response[Object.keys(response)[0]];
           console.log(rateDico)
           let rateTab = rateDico['ratingTab'];
           
