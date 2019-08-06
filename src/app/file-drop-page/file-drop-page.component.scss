@@ -226,15 +226,15 @@ p {
 
     @media all and (max-device-width: 480px){
       .slide1 {
-        background-image: url("../../assets/img/carroselOwnTxt.jpg");
+        background-image: url("../../assets/img/carroselConvTxtMobile.jpg");
         animation: 20s slides-set-1 -0.1s infinite;
       }
       .slide2 {
-        background-image: url("../../assets/img/carroselOwnTxt.jpg");
+        background-image: url("../../assets/img/carroselOwnTxtMobile.jpg");
         animation: 20s slides-set-2 -0.1s infinite;
       }
       .slide3 {
-        background-image: url("../../assets/img/carroselOwnTxt.jpg");
+        background-image: url("../../assets/img/carroselProfilTxtMobile.jpg");
         animation: 20s slides-set-3 -0.1s infinite;
       }
     }
