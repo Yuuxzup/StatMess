@@ -10,7 +10,6 @@ import {RouterModule,Router} from '@angular/router';
 @Injectable()
 export class GlobalService {
   userName : any;
-  nameDB:any;
   listFileDicoFilled:any;
   loadingDone = false;
 
@@ -19,14 +18,14 @@ export class GlobalService {
 
   defineDB(){
     let loc = document.location.href;
-    this.nameDB = loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' :'https://prod-8bee9.firebaseio.com/';
+    return loc.includes("localhost") ? 'https://statsmess.firebaseio.com/' :'https://prod-8bee9.firebaseio.com/';
 
-    
+    /*
     //Création de la table profil
     let listProfil=["INTJ", "INTP","ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"]
     for (var k=0; k<listProfil.length; k++){
       let profil={"profil":listProfil[k], "occurence":0}
-      this.httpClient.post(this.nameDB+'repartitionProfils.json', profil).subscribe(
+      this.httpClient.post(this.defineDB()+'repartitionProfils.json', profil).subscribe(
         () => {
           console.log("compteur "+"fileDrop"+" succes update")
         },
@@ -35,14 +34,11 @@ export class GlobalService {
         }
       );
     }
-
     //Création de la table visites
     let listePage=["fileDrop", "home", "ownStat", "convStat", "profil", "cgu"]
-
     for (var k=0; k<listePage.length; k++){
       let oneCompteur={"idPage":listePage[k], "nbrVisite":0, "timeSpent":0}
-
-      this.httpClient.post(this.nameDB+'compteurVisites.json', oneCompteur).subscribe(
+      this.httpClient.post(this.defineDB()+'compteurVisites.json', oneCompteur).subscribe(
               () => {
                 console.log("compteur "+"fileDrop"+" succes update")
               },
@@ -50,30 +46,26 @@ export class GlobalService {
               }
             );
     }
-
     //Création de la table visiteur
     let oneUser ={"date": new Date(), "name": "Paul Tondereau", "number":1}
-    this.httpClient.post(this.nameDB+'oneUser.json', oneUser).subscribe(
+    this.httpClient.post(this.defineDB()+'oneUser.json', oneUser).subscribe(
       () => {
         console.log("Rating maj success")
       },
       (error) => {
       }
     );
-
-
     //Création de la table starRate
     let rateDico={}
     rateDico['ratingTab']=[0,0,0,0,0]
     rateDico['mean']=0
-
-    this.httpClient.post(this.nameDB+'starRate.json', rateDico).subscribe(
+    this.httpClient.post(this.defineDB()+'starRate.json', rateDico).subscribe(
       () => {
         console.log("Rating maj success")
       },
       (error) => {
       }
-    );
+    );*/
   }
 
   findUserName(listFileDico : any){
@@ -110,7 +102,7 @@ export class GlobalService {
 
     var listUser = []
     this.httpClient
-      .get<any[]>(this.nameDB+'oneUser.json')
+      .get<any[]>(this.defineDB+'oneUser.json')
       .subscribe(
         (response) => {
           listUser = response;
@@ -124,7 +116,7 @@ export class GlobalService {
             }
           }
           if (!alreadyIn){
-            this.httpClient.post(this.nameDB+'oneUser.json', oneUser).subscribe(
+            this.httpClient.post(this.defineDB()+'oneUser.json', oneUser).subscribe(
             () => {
               //console.log("succes update with add")
             },
@@ -132,7 +124,7 @@ export class GlobalService {
             }
           );
           } else {
-            this.httpClient.put(this.nameDB+'oneUser.json', listUser).subscribe(
+            this.httpClient.put(this.defineDB()+'oneUser.json', listUser).subscribe(
               () => {
                 //console.log("succes update")
               },
@@ -189,7 +181,7 @@ export class GlobalService {
     let profilUser = this.determinationService.profilType
 
     this.httpClient
-      .get<any>(this.nameDB+'repartitionProfils.json')
+      .get<any>(this.defineDB()+'repartitionProfils.json')
       .subscribe(
         (response) => {
           let profilRepar = response;
@@ -204,7 +196,7 @@ export class GlobalService {
           }
           profilToEdit["occurence"]+=1
           profilRepar[keyModified]=profilToEdit
-          this.httpClient.put(this.nameDB+'repartitionProfils.json', profilRepar).subscribe(
+          this.httpClient.put(this.defineDB()+'repartitionProfils.json', profilRepar).subscribe(
             () => {
               console.log("compteur profil succes update")
             },

@@ -13,7 +13,7 @@ export class CguComponent implements OnInit {
 
   ngOnInit() {
     this.httpClient
-      .get<any[]>(this.globalService.nameDB+'compteurVisites.json')
+      .get<any[]>(this.globalService.defineDB()+'compteurVisites.json')
       .subscribe(
         (response) => {
           let idPage = "cgu"
@@ -30,7 +30,7 @@ export class CguComponent implements OnInit {
           compteurPage["nbrVisite"]+=1
           compteurPage["timeSpent"]+=0
           compteurVisites[keyModified]=compteurPage
-          this.httpClient.put(this.globalService.nameDB+'compteurVisites.json', compteurVisites).subscribe(
+          this.httpClient.put(this.globalService.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
             () => {
               console.log("compteur "+idPage+" succes update")
             },
