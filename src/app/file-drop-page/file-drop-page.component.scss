@@ -705,13 +705,13 @@ html,body {
       height: 90vh;
       overflow: auto;
       h2 {
-        font-size:25px;
-        line-height:25px;
+        font-size:3vh;
+        line-height:3vh;
         margin-bottom:15px;
       }
       p {
-        font-size:18px;
-        line-height:22px;
+        font-size:2vh;
+        line-height:2.2vh;
       }
       .modal-svg {
         position:relative;
@@ -912,6 +912,7 @@ hr.overview{
 
 .clickHere{
   background:#F47956;
+  font-size: 120%;
 }
 .clickHere:hover{
   cursor:pointer;
