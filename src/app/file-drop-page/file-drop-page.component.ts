@@ -34,7 +34,7 @@ export class FileDropPageComponent implements OnInit{
 
   ngOnInit(){
 
-
+    console.log("On débute l'init")
     this.httpClient.get<any[]>(this.globalService.defineDB()+'starRate.json').subscribe(
       (response) => {
         this.rating = response[Object.keys(response)[0]]['mean']
@@ -47,6 +47,8 @@ export class FileDropPageComponent implements OnInit{
       },
       (error) => {
     })
+
+    console.log("On passe rate")
 
     setTimeout(()=>{this.isRateMoment=true}, 420000)
           
@@ -81,6 +83,8 @@ export class FileDropPageComponent implements OnInit{
         })
            
         this.isFullLoaded=true;
+
+        console.log("On passe visite et on finit l'init")
   }
 
   onSelectFile(event) {
