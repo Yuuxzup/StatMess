@@ -221,6 +221,27 @@ p {
       animation: 20s slides-set-3 -0.1s infinite;
     }
 
+
+    //Image carousel pour mobile 
+
+    @media all and (max-device-width: 480px){
+      .slide1 {
+        background-image: url("../../assets/img/carroselOwnTxt.jpg");
+        animation: 20s slides-set-1 -0.1s infinite;
+      }
+      .slide2 {
+        background-image: url("../../assets/img/carroselOwnTxt.jpg");
+        animation: 20s slides-set-2 -0.1s infinite;
+      }
+      .slide3 {
+        background-image: url("../../assets/img/carroselOwnTxt.jpg");
+        animation: 20s slides-set-3 -0.1s infinite;
+      }
+    }
+
+    //fin image carousel mobile
+
+
     @media (min-width: 600px) {
       left: 50%;
       top: 0;
@@ -802,6 +823,7 @@ html,body {
   margin-bottom:2.5%;
 }
 
+
 .card{
   width: 19vw;
   padding-bottom: 2vh;
@@ -817,6 +839,24 @@ html,body {
   margin-right: 2%;
   font-size:1.1vw;
 }
+
+@media all and (max-device-width: 480px){
+  .card{
+    width: 22vw;
+  }
+
+  .listIcone{
+    width:90%;
+  }
+
+  .card p{
+    font-size: 1.1vh;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+}
+
+
 
 .card img {
     width: 6vw;
@@ -871,11 +911,11 @@ hr.overview{
 }
 
 .clickHere{
-  color:#3366BB;
+  background:#F47956;
 }
 .clickHere:hover{
   cursor:pointer;
-  color:#F47956;
+  color:black;
 }
 
 .lancezV h1{
@@ -1089,7 +1129,7 @@ $rating-icons-paths: (
 .indicators{
   display: flex;
   margin: auto;
-  width: 40vw;
+  width: 60vw;
   justify-content: space-around;
   color: white;
   padding: 0.7%;
@@ -1352,4 +1392,16 @@ $social-button-colors: (
 .youtubeVideo{
   text-align:center;
   margin-top:1vh;
+}
+
+
+@media all and (max-device-width: 480px){
+  .bienvenue{
+    padding-left:1%;
+    padding-right:1%;
+  }
+  .lancezV{
+    padding-left:1%;
+    padding-right:1%;
+  }
 }

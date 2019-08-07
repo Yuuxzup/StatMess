@@ -80,9 +80,8 @@ p {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    font-size:1em;
+    margin-block-start: 0.1em;
+    margin-block-end: 0.1em;
   }
   
   .rectLaunch:hover{
@@ -111,7 +110,7 @@ p {
     margin-left: auto;
     overflow: hidden;
     transition: 0.5s;
-    width: 424px;
+    width: 450px;
     border-radius: 12px;
     box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
    
@@ -622,4 +621,22 @@ $social-button-colors: (
   width:20vw;
 }
 
-  
+
+.textLancezVous{
+  font-size: 1.5vw;
+}
+
+.nosReseaux {
+  text-align:center; 
+  margin-bottom:0; 
+  opacity:0.8;
+}
+
+@media all and (max-device-width: 480px){
+  .textLancezVous{
+    font-size: 3.5vh;
+  }
+  .nosReseaux{
+    font-size:1.5vh;
+  }
+}
