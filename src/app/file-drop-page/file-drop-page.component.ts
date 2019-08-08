@@ -6,6 +6,7 @@ import * as $ from 'jquery';
 import {RouterModule,Router} from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
+
 @Component({
   selector: 'app-file-drop-page',
   templateUrl: './file-drop-page.component.html',
@@ -33,7 +34,7 @@ export class FileDropPageComponent implements OnInit{
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router, private deviceService: DeviceDetectorService) { }
 
   ngOnInit(){
-
+    
     this.httpClient.get<any[]>(this.globalService.defineDB()+'starRate.json').subscribe(
       (response) => {
         response = response[Object.keys(response)[0]]
@@ -47,13 +48,15 @@ export class FileDropPageComponent implements OnInit{
       },
       (error) => { 
     })
+    
 
-    setTimeout(()=>{this.isRateMoment=true}, 420000)
-          
+    
+       
     this.httpClient
       .get<any[]>(this.globalService.defineDB()+'compteurVisites.json')
       .subscribe(
         (response) => {
+          
           let idPage = "fileDrop"
           let compteurVisites = response;
           let compteurPage;
@@ -64,11 +67,15 @@ export class FileDropPageComponent implements OnInit{
               compteurPage=compteurVisites[key]
               keyModified=key
             }
+            
           }
+          
           this.nbrVisite=compteurPage["nbrVisite"]
           compteurPage["nbrVisite"]+=1
           compteurPage["timeSpent"]+=0
           compteurVisites[keyModified]=compteurPage
+          
+          
           this.httpClient.put(this.globalService.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
             () => {
               console.log("compteur "+idPage+" succes update")
@@ -76,11 +83,18 @@ export class FileDropPageComponent implements OnInit{
             (error) => {
             }
           );
+        
         },
         (error) => {
         })
-           
+         
         this.isFullLoaded=true;
+        
+        if(typeof window !== 'undefined') { // server-side rendering case
+        setTimeout(()=>{this.isRateMoment=true}, 5)//420000)
+        }
+        
+        
   }
 
   onSelectFile(event) {
