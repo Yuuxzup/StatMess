@@ -37,7 +37,6 @@ export class FileDropPageComponent implements OnInit{
     
     this.httpClient.get<any[]>(this.globalService.defineDB()+'starRate.json').subscribe(
       (response) => {
-        response = response[Object.keys(response)[0]]
         this.rating = response['mean']
         let rateTab = response['ratingTab'];
           
@@ -91,7 +90,7 @@ export class FileDropPageComponent implements OnInit{
         this.isFullLoaded=true;
         
         if(typeof window !== 'undefined') { // server-side rendering case
-        setTimeout(()=>{this.isRateMoment=true}, 5)//420000)
+        setTimeout(()=>{this.isRateMoment=true}, 420000)
         }
         
         
@@ -183,9 +182,7 @@ export class FileDropPageComponent implements OnInit{
       .get<any[]>(this.globalService.defineDB()+'starRate.json')
       .subscribe(
         (response) => {
-          response = response[Object.keys(response)[0]]
           let rateDico = response;
-          console.log(rateDico)
           let rateTab = rateDico['ratingTab'];
           
           let nbrVote = 1
