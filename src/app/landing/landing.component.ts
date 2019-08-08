@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { GlobalService } from '../global.service';
-import {RouterModule,Router} from '@angular/router';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -8,15 +6,8 @@ import {RouterModule,Router} from '@angular/router';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent {
 
-  isReady=false;
+  constructor() { }
 
-  constructor(private globalService:GlobalService, private router: Router) { }
-
-ngOnInit(){
-}
-  launch(){
-    this.isReady=true;
-  }
 }

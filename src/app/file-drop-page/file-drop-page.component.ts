@@ -33,10 +33,8 @@ export class FileDropPageComponent implements OnInit{
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router, private deviceService: DeviceDetectorService) { }
 
   ngOnInit(){
-
     this.httpClient.get<any[]>(this.globalService.defineDB()+'starRate.json').subscribe(
       (response) => {
-        response = response[Object.keys(response)[0]]
         this.rating = response['mean']
         let rateTab = response['ratingTab'];
           
@@ -169,9 +167,7 @@ export class FileDropPageComponent implements OnInit{
       .get<any[]>(this.globalService.defineDB()+'starRate.json')
       .subscribe(
         (response) => {
-          response = response[Object.keys(response)[0]]
           let rateDico = response;
-          console.log(rateDico)
           let rateTab = rateDico['ratingTab'];
           
           let nbrVote = 1
