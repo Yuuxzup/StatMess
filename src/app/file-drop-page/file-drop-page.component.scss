@@ -934,8 +934,15 @@ hr.overview{
 
 .clickHereMain{
   background:#F47956;
-  font-size: 120%;
+  font-size: 1.2em;
 }
+
+@media all and (max-device-width: 480px){
+  .clickHereMain{
+    font-size: 1.2vh;
+  }
+}
+
 .clickHereMain:hover{
   cursor:pointer;
   color:black;
