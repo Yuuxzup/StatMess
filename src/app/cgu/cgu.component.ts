@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-cgu',
@@ -9,7 +10,7 @@ import { GlobalService } from '../global.service';
 })
 export class CguComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient, private globalService : GlobalService) { }
+  constructor(private httpClient: HttpClient, private globalService : GlobalService, private router: Router) { }
 
   ngOnInit() {
     this.httpClient
@@ -40,6 +41,11 @@ export class CguComponent implements OnInit {
         },
         (error) => {
         })
+
+
+        //Scroll to the top
+
+        document.body.scrollTop = 0;
   }
 
 }

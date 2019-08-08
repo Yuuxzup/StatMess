@@ -21,6 +21,9 @@ export class HomePannelPageComponent implements OnInit {
   constructor(private httpClient: HttpClient, private globalService:GlobalService, private router:Router) { }
 
   ngOnInit() {
+    //Scroll to the top
+    document.body.scrollTop = 0;
+    
     if(this.globalService.loadingDone=== false){
       this.router.navigate(['../home']);
       alert("Veuillez sélectionner votre dossier à analyser afin d'accéder à cette page");

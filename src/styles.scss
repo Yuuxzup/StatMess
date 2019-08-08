@@ -143,7 +143,11 @@ p, h1, h2 {
 
 ad-custom {
     display:block;
-    border : 1px solid black;
     margin-top: 2vh;
+    overflow:hidden;
+}
+
+.qc-cmp-persistent-link{
+    z-index: -50 !important
 }
 

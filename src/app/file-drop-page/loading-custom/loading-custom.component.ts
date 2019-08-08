@@ -12,7 +12,12 @@ export class LoadingCustomComponent implements OnInit {
   constructor(private statsConvService : StatsConvService) { }
 
   ngOnInit() {
+    //Scroll to the top
+    document.body.scrollTop = 0;
+
+    //chargement
     this.valeurChargement=Math.floor(this.valeurChargement*100)
+    
   }
 
 }

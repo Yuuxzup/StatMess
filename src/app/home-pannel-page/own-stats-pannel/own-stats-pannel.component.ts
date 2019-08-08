@@ -117,6 +117,8 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
   }
 
    ngOnInit() {
+     //Scroll to the top
+    document.body.scrollTop = 0;
 
     if(this.globalService.loadingDone=== false){
       this.router.navigate(['../../home']);
