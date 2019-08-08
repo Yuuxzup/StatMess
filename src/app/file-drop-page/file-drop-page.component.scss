@@ -842,7 +842,7 @@ html,body {
 
 @media all and (max-device-width: 480px){
   .card{
-    width: 22vw;
+    width: 28vw;;
   }
 
   .listIcone{
@@ -850,9 +850,17 @@ html,body {
   }
 
   .card p{
-    font-size: 1.1vh;
+    font-size: 1.5vh;
     margin-left: 1%;
     margin-right: 1%;
+  }
+
+  .card h3{
+    font-size:1.6vh;
+  }
+
+  .card img{
+    font-size: 6vh;
   }
 }
 
@@ -911,10 +919,22 @@ hr.overview{
 }
 
 .clickHere{
+  color: #0000EE;;
+}
+.clickHere:hover{
+  cursor:pointer;
+  color: #F47956;
+}
+
+.clickHere:visited {
+  color: #551A8B;
+}
+
+.clickHereMain{
   background:#F47956;
   font-size: 120%;
 }
-.clickHere:hover{
+.clickHereMain:hover{
   cursor:pointer;
   color:black;
 }
@@ -946,6 +966,17 @@ hr.overview{
 .compteur img{
   width:2vw;
   height:2vw;
+}
+
+@media all and (max-device-width: 480px){
+  .compteur img{
+    width:2vh;
+    height:2vh;
+  }
+
+  .indicators p{
+    font-size: 1.8vh;
+  }
 }
 
 
@@ -1398,11 +1429,11 @@ $social-button-colors: (
 
 @media all and (max-device-width: 480px){
   .bienvenue{
-    padding-left:1%;
-    padding-right:1%;
+    padding-left:3%;
+    padding-right:3%;
   }
   .lancezV{
-    padding-left:1%;
-    padding-right:1%;
+    padding-left:3%;
+    padding-right:3%;
   }
 }
