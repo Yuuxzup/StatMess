@@ -150,6 +150,38 @@ export class FileDropPageComponent implements OnInit{
   }
 
   showTutorial(){
+    this.httpClient
+      .get<any[]>(this.globalService.defineDB()+'compteurClics.json')
+      .subscribe(
+        (response) => {
+          
+          let compteurClics = response;
+          let compteurButtonClick;
+          let keyModified;
+          for(var k=0;k<Object.keys(compteurClics).length ;k++){
+            let key = Object.keys(compteurClics)[k]
+            if (compteurClics[key]["idButton"]==="tutorialClic"){
+              compteurButtonClick=compteurClics[key]
+              keyModified=key
+            }
+            
+          }
+          
+          this.nbrVisite=compteurButtonClick["nbrClic"]
+          compteurButtonClick["nbrClic"]+=1
+          compteurClics[keyModified]=compteurButtonClick
+          
+          
+          this.httpClient.put(this.globalService.defineDB()+'compteurClics.json', compteurClics).subscribe(
+            () => {
+            },
+            (error) => {
+            }
+          );
+        
+        },
+        (error) => {
+        })
     if(this.deviceService.isDesktop()){
       $('#modal-container').removeAttr('class').addClass('one');
       $('body').addClass('modal-active');
