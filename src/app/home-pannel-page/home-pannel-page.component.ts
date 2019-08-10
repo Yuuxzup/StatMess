@@ -16,7 +16,8 @@ export class HomePannelPageComponent implements OnInit {
   isMyConvs = false;
   isMyProfil = false;
 
-  timeLastSwitch:any;
+  isRateMoment = false;
+  isRated= false;
 
   constructor(private httpClient: HttpClient, private globalService:GlobalService, private router:Router) { }
 
@@ -28,8 +29,55 @@ export class HomePannelPageComponent implements OnInit {
       this.router.navigate(['../home']);
       alert("Veuillez sélectionner votre dossier à analyser afin d'accéder à cette page");
     }
-    this.timeLastSwitch=(new Date()).getTime()
 
     this.globalService.switchPannel("home")
+
+    if (this.globalService.isRateMoment){
+        this.isRateMoment=true
+        setTimeout(function(){this.closeTooltip(); }, 15000)
+    }
+  }
+
+  closeTooltip(){
+    this.isRateMoment=false;
+  }
+
+  rateSightMess(number : any){
+    
+    this.httpClient
+      .get<any[]>(this.globalService.defineDB()+'starRate.json')
+      .subscribe(
+        (response) => {
+          let rateDico = response;
+          let rateTab = rateDico['ratingTab'];
+          
+          let nbrVote = 1
+          let sum=number
+          for (var k=0; k<rateTab.length;k++){
+            nbrVote+=rateTab[k]
+            sum+=rateTab[k]*(k+1)
+          }
+
+          rateTab[number-1]+=1
+          let mean=sum/nbrVote
+          rateDico['ratingTab']=rateTab
+          rateDico['mean']=mean
+
+          this.httpClient.put(this.globalService.defineDB()+'starRate.json', rateDico).subscribe(
+            () => {
+              console.log("Rating maj success")
+            },
+            (error) => {
+            }
+          );
+        },
+        (error) => {
+        })
+
+    this.isRated = true;
+    setTimeout(()=>{
+      this.closeTooltip();
+    }, 1500)
+    
   }
 }

@@ -1187,16 +1187,16 @@ $rating-icons-paths: (
 
 .popupToRate{
   z-index: 500;
-  position: -webkit-sticky;
-  position: sticky;
+  position: absolute;
   width: 60%;
-  height: 48vh;
+  height: 50vh;
   font-size: -webkit-xxx-large;
   text-align: center;
   margin: auto;
   background: #1A1837;
   color: white;
-  top: 26%;
+  top: 30%;
+  left: 20%;
   margin-bottom: -21%;
   border: 2px solid white;
 }

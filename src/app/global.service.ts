@@ -15,6 +15,11 @@ export class GlobalService {
   currentPanel:any;
   timeLastSwitch : any;
 
+  isRateMoment = false;
+  setVisitePannel = new Set([]);
+  fullTime=0
+  isAlreadyPopupRated = false;
+
   private isLoading=false;
   constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService, private router: Router) { }
 
@@ -317,6 +322,7 @@ export class GlobalService {
       this.currentPanel=newPanel
       return
     }
+    this.fullTime+=new Date().getTime()-this.timeLastSwitch
     if(this.currentPanel==="ownStat"){
       this.httpClient
         .get<any[]>(this.defineDB()+'compteurVisites.json')
@@ -444,5 +450,13 @@ export class GlobalService {
     }
 
     this.currentPanel = newPanel
+    this.setVisitePannel.add(this.currentPanel)
+    if ((this.setVisitePannel.size >= 3 || this.fullTime>=420000) && !this.isAlreadyPopupRated && newPanel==="home" ){
+      console.log("hello")
+      this.isRateMoment = true;
+      this.isAlreadyPopupRated = true;
+    } else {
+      this.isRateMoment = false;
+    }
   }
 }

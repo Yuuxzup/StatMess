@@ -28,7 +28,6 @@ export class FileDropPageComponent implements OnInit{
   isFullLoaded=false;
 
   rating=0
-  isRated=false;
   nbrVote=0;
 
   constructor(private httpClient: HttpClient, private statsConvService: StatsConvService, private globalService : GlobalService, private router: Router, private deviceService: DeviceDetectorService) { }
@@ -88,12 +87,6 @@ export class FileDropPageComponent implements OnInit{
         })
          
         this.isFullLoaded=true;
-        
-        if(typeof window !== 'undefined') { // server-side rendering case
-        setTimeout(()=>{this.isRateMoment=true}, 420000)
-        }
-        
-        
   }
 
   onSelectFile(event) {
@@ -201,50 +194,6 @@ export class FileDropPageComponent implements OnInit{
       $('#modal-container-mobile').addClass('out');
       $('body').removeClass('modal-active');
     }
-  }
-
-  closeTooltip(){
-    this.isRateMoment=false;
-  }
-
-  rateSightMess(number : any){
-    this.rating=number;
-    
-    this.httpClient
-      .get<any[]>(this.globalService.defineDB()+'starRate.json')
-      .subscribe(
-        (response) => {
-          let rateDico = response;
-          let rateTab = rateDico['ratingTab'];
-          
-          let nbrVote = 1
-          let sum=number
-          for (var k=0; k<rateTab.length;k++){
-            nbrVote+=rateTab[k]
-            sum+=rateTab[k]*(k+1)
-          }
-
-          rateTab[number-1]+=1
-          let mean=sum/nbrVote
-          rateDico['ratingTab']=rateTab
-          rateDico['mean']=mean
-
-          this.httpClient.put(this.globalService.defineDB()+'starRate.json', rateDico).subscribe(
-            () => {
-              console.log("Rating maj success")
-            },
-            (error) => {
-            }
-          );
-        },
-        (error) => {
-        })
-
-    this.isRated = true;
-    setTimeout(()=>{
-      this.closeTooltip();
-    }, 1500)
-    
   }
 
   showHideCgu(){
