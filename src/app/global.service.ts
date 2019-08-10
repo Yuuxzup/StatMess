@@ -12,6 +12,8 @@ export class GlobalService {
   userName : any;
   listFileDicoFilled:any;
   loadingDone = false;
+  currentPanel:any;
+  timeLastSwitch : any;
 
   private isLoading=false;
   constructor(private httpClient: HttpClient, private profilServiceService : ProfilServiceService, private determinationService : DeterminationService, private ownStatsService : OwnStatsService, private statsConvService : StatsConvService, private router: Router) { }
@@ -305,5 +307,142 @@ export class GlobalService {
 
   updateLoading(){
     this.loadingDone = true;
+  }
+
+  switchPannel(newPanel : string){
+    if (!this.timeLastSwitch){
+      this.timeLastSwitch = new Date().getTime();
+    }
+    if (!this.currentPanel){
+      this.currentPanel=newPanel
+      return
+    }
+    if(this.currentPanel==="ownStat"){
+      this.httpClient
+        .get<any[]>(this.defineDB()+'compteurVisites.json')
+        .subscribe(
+          (response) => {
+            let idPage="ownStat"
+            let compteurVisites = response;
+            let compteurPage;
+            let keyModified;
+            for(var k=0;k<Object.keys(compteurVisites).length ;k++){
+              let key = Object.keys(compteurVisites)[k]
+              if (compteurVisites[key]["idPage"]===idPage){
+                compteurPage=compteurVisites[key]
+                keyModified=key
+              }
+            }
+            compteurPage["nbrVisite"]+=1
+            compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
+            compteurVisites[keyModified]=compteurPage
+            this.httpClient.put(this.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
+              () => {
+                console.log("compteur "+idPage+" succes update")
+                this.timeLastSwitch=new Date().getTime()
+              },
+              (error) => {
+              }
+            );
+          },
+          (error) => {
+          })
+    }
+    if(this.currentPanel==="convStat"){
+      this.httpClient
+        .get<any[]>(this.defineDB()+'compteurVisites.json')
+        .subscribe(
+          (response) => {
+            let idPage="convStat"
+            let compteurVisites = response;
+            let compteurPage;
+            let keyModified;
+            for(var k=0;k<Object.keys(compteurVisites).length ;k++){
+              let key = Object.keys(compteurVisites)[k]
+              if (compteurVisites[key]["idPage"]===idPage){
+                compteurPage=compteurVisites[key]
+                keyModified=key
+              }
+            }
+            compteurPage["nbrVisite"]+=1
+            compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
+            compteurVisites[keyModified]=compteurPage
+            this.httpClient.put(this.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
+              () => {
+                console.log("compteur "+idPage+" succes update")
+                this.timeLastSwitch=new Date().getTime()
+              },
+              (error) => {
+              }
+            );
+          },
+          (error) => {
+          })
+    }
+    if(this.currentPanel==="profil"){
+      this.httpClient
+        .get<any[]>(this.defineDB()+'compteurVisites.json')
+        .subscribe(
+          (response) => {
+            let idPage="profil"
+            let compteurVisites = response;
+            let compteurPage;
+            let keyModified;
+            for(var k=0;k<Object.keys(compteurVisites).length ;k++){
+              let key = Object.keys(compteurVisites)[k]
+              if (compteurVisites[key]["idPage"]===idPage){
+                compteurPage=compteurVisites[key]
+                keyModified=key
+              }
+            }
+            compteurPage["nbrVisite"]+=1
+            compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
+            compteurVisites[keyModified]=compteurPage
+            this.httpClient.put(this.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
+              () => {
+                console.log("compteur "+idPage+" succes update")
+                this.timeLastSwitch=new Date().getTime()
+              },
+              (error) => {
+              }
+            );
+          },
+          (error) => {
+          })
+    }
+
+    if(this.currentPanel==="home"){
+      this.httpClient
+        .get<any[]>(this.defineDB()+'compteurVisites.json')
+        .subscribe(
+          (response) => {
+            let idPage="home"
+            let compteurVisites = response;
+            let compteurPage;
+            let keyModified;
+            for(var k=0;k<Object.keys(compteurVisites).length ;k++){
+              let key = Object.keys(compteurVisites)[k]
+              if (compteurVisites[key]["idPage"]===idPage){
+                compteurPage=compteurVisites[key]
+                keyModified=key
+              }
+            }
+            compteurPage["nbrVisite"]+=1
+            compteurPage["timeSpent"]+=Math.floor(((new Date()).getTime()-this.timeLastSwitch)/1000)
+            compteurVisites[keyModified]=compteurPage
+            this.httpClient.put(this.defineDB()+'compteurVisites.json', compteurVisites).subscribe(
+              () => {
+                console.log("compteur "+idPage+" succes update")
+                this.timeLastSwitch=new Date().getTime()
+              },
+              (error) => {
+              }
+            );
+          },
+          (error) => {
+          })
+    }
+
+    this.currentPanel = newPanel
   }
 }

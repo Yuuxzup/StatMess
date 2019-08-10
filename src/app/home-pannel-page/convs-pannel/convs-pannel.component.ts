@@ -54,6 +54,8 @@ export class ConvsPannelComponent implements OnInit {
     //On initialise le tableau pour sort
     this.sortedChoices={"name":"","nbrMessage":"", "currentStreak":"", "maxStreak":"", "maxFreeze":"", "nbrParticipant":"", "lastMessage":"↑"}
     this.sort()
+
+    this.globalService.switchPannel("convStat")
   }
 
   invertStat(){

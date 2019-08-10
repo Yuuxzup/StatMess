@@ -304,7 +304,7 @@ export class OwnStatsPannelComponent implements OnInit, AfterViewInit {
     this.hoursISendModify = constHoursISendModify
 
 
-
+    this.globalService.switchPannel("ownStat")
 
   }
 

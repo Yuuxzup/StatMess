@@ -64,6 +64,8 @@ export class ProfilPannelComponent implements OnInit {
     this.calculDataForSlider();
     this.determineProfil();
 
+    this.globalService.switchPannel("profil")
+
   }
 
   calculDataForSlider(){
