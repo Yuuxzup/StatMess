@@ -102,7 +102,7 @@ export class GlobalService {
 
     var listUser = []
     this.httpClient
-      .get<any[]>(this.defineDB+'oneUser.json')
+      .get<any[]>(this.defineDB()+'oneUser.json')
       .subscribe(
         (response) => {
           listUser = response;
